@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { Typography } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +13,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Moho Events</h1>
+        <Typography color="primary.main" variant="h1">
+          Moho Events
+        </Typography>
       </main>
 
       <footer className={styles.footer}></footer>
