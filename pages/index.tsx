@@ -1,25 +1,27 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Typography } from "@mui/material";
+import { Typography, Container, Box } from "@mui/material";
+import EventList from "../components/EventList";
+import { GroupInfo } from "../typeUtils";
 
 const Home: NextPage = () => {
+  const arrayOfGroups: GroupInfo[] = [];
   return (
-    <div className={styles.container}>
+    <Box className={styles.container}>
       <Head>
         <title>Moho Events</title>
         <meta name="description" content="Gérer des événements à Moho" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <Typography color="primary.main" variant="h1">
+      <Container>
+        <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
           Moho Events
         </Typography>
-      </main>
 
-      <footer className={styles.footer}></footer>
-    </div>
+        <EventList {...arrayOfGroups} />
+      </Container>
+    </Box>
   );
 };
 
