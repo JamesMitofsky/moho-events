@@ -4,9 +4,10 @@ import styles from "../styles/Home.module.css";
 import { Typography, Container, Box } from "@mui/material";
 import EventList from "../components/EventList";
 import { GroupInfo } from "../typeUtils";
+import { useState } from "react";
 
 const Home: NextPage = () => {
-  const arrayOfGroups: GroupInfo[] = [];
+  const [groupsArray, setGroupsArray] = useState<GroupInfo[]>([]);
   return (
     <Box className={styles.container}>
       <Head>
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
           Moho Events
         </Typography>
 
-        <EventList {...arrayOfGroups} />
+        <EventList groups={groupsArray} />
       </Container>
     </Box>
   );

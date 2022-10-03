@@ -4,7 +4,7 @@ import { GroupInfo } from "../typeUtils";
 
 // this should be marked as a NextComponentType, but it's not accepting the Props param
 // in the traditional <Props> fashion
-const EventList = (groups: GroupInfo[]) => {
+const EventList = ({ groups }: { groups: GroupInfo[] }) => {
   return (
     <List>
       {groups.map((group: GroupInfo) => (
