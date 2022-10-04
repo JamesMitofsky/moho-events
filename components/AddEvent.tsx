@@ -23,7 +23,6 @@ const AddEvent = ({ groups, setGroups }: GroupStateObj) => {
     console.log("open modal");
     setGroups([testGroup]);
   };
-  console.log(groups);
 
   return <Button onClick={openCreationModal}>Add Event</Button>;
 };

@@ -5,6 +5,7 @@ import { Typography, Container, Box } from "@mui/material";
 import EventList from "../components/EventList";
 import { GroupInfo, GroupStateObj } from "../typeUtils";
 import { useEffect, useState } from "react";
+import AddEvent from "../components/AddEvent";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
 
     // push response to the group state
     setGroups(parsedRes);
-  }, [groups]);
+  }, []);
 
   return (
     <Box>
@@ -45,6 +46,7 @@ const Home: NextPage = () => {
         </Typography>
 
         <EventList groups={groups} setGroups={setGroups} />
+        <AddEvent groups={groups} setGroups={setGroups} />
       </Container>
     </Box>
   );
