@@ -5,3 +5,11 @@ export type GroupInfo = {
   startTime: Date;
   endTime: Date;
 };
+
+export interface DispatchSetEvents {
+  setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;
+}
+export interface GroupStateObj {
+  groups: GroupInfo[];
+  setGroups: DispatchSetEvents["setGroups"];
+}

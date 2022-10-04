@@ -1,13 +1,11 @@
 import { List } from "@mui/material";
 import EventTile from "./EventTile";
-import { GroupInfo } from "../typeUtils";
+import { GroupStateObj } from "../typeUtils";
 
-// this should be marked as a NextComponentType, but it's not accepting the Props param
-// in the traditional <Props> fashion
-const EventList = ({ groups }: { groups: GroupInfo[] }) => {
+const EventList = ({ groups, setGroups }: GroupStateObj) => {
   return (
     <List>
-      {groups.map((group: GroupInfo) => (
+      {groups.map((group) => (
         <EventTile {...group} />
       ))}
     </List>
