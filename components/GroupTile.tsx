@@ -3,7 +3,7 @@ import { GroupInfo } from "../typeUtils";
 
 // this should be marked as a NextComponentType, but it's not accepting the Props param
 // in the traditional <Props> fashion
-const EventTile = ({
+const GroupTile = ({
   name,
   id,
   description,
@@ -19,4 +19,4 @@ const EventTile = ({
   );
 };
 
-export default EventTile;
+export default GroupTile;

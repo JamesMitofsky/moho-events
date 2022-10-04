@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { Typography, Container, Box } from "@mui/material";
-import EventList from "../components/EventList";
+import { Typography, Container, Box, Button } from "@mui/material";
+import EventList from "../components/GroupList";
 import { GroupInfo, GroupStateObj } from "../typeUtils";
 import { useEffect, useState } from "react";
-import AddEvent from "../components/AddEvent";
+import getLocalGroups from "../utils/getLocalGroups";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -13,25 +13,22 @@ type GroupStateArray = [
 ];
 
 const Home: NextPage = () => {
+  const isPageReady = useRouter().isReady;
+
   // store all group objects in this highest level array
   const [groups, setGroups]: GroupStateArray = useState<GroupInfo[]>([]);
   console.log(groups);
 
-  // initialize router to track page readiness
-  const router = useRouter();
-
-  // every time the state for group changes, push it to the local storage
+  // on page load, push groups to rendered state
   useEffect(() => {
-    // exit function if the page isn't ready
-    if (!router.isReady) return;
-
-    // push local storage to the group state
-    const res: string = localStorage.getItem("groupsArray") || "";
-    const parsedRes: GroupInfo[] = JSON.parse(res);
-
     // push response to the group state
-    setGroups(parsedRes);
+    const localGroups = getLocalGroups(isPageReady);
+    setGroups(localGroups);
   }, []);
+
+  const addGroup = () => {
+    console.log("adding group now!");
+  };
 
   return (
     <Box>
@@ -46,7 +43,7 @@ const Home: NextPage = () => {
         </Typography>
 
         <EventList groups={groups} setGroups={setGroups} />
-        <AddEvent groups={groups} setGroups={setGroups} />
+        <Button onClick={addGroup}>Add Event</Button>
       </Container>
     </Box>
   );

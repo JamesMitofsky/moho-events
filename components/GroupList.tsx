@@ -1,8 +1,8 @@
 import { List } from "@mui/material";
-import EventTile from "./EventTile";
+import EventTile from "./GroupTile";
 import { GroupStateObj } from "../typeUtils";
 
-const EventList = ({ groups, setGroups }: GroupStateObj) => {
+const GroupList = ({ groups, setGroups }: GroupStateObj) => {
   return (
     <List>
       {groups.map((group) => (
@@ -12,4 +12,4 @@ const EventList = ({ groups, setGroups }: GroupStateObj) => {
   );
 };
 
-export default EventList;
+export default GroupList;

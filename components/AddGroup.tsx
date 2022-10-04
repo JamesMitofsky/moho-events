@@ -6,7 +6,7 @@ import { GroupStateObj } from "../typeUtils";
 // this should be marked as a NextComponentType, but it's not accepting the Props param
 // in the traditional <Props> fashion
 
-const AddEvent = ({ groups, setGroups }: GroupStateObj) => {
+const AddGroup = ({ groups, setGroups }: GroupStateObj) => {
   // TODO delete testing data
   const testGroup: GroupInfo = {
     name: "Nouvel événement",
@@ -24,7 +24,7 @@ const AddEvent = ({ groups, setGroups }: GroupStateObj) => {
     setGroups([testGroup]);
   };
 
-  return <Button onClick={openCreationModal}>Add Event</Button>;
+  return <Button onClick={openCreationModal}>Add Testing Data</Button>;
 };
 
-export default AddEvent;
+export default AddGroup;
