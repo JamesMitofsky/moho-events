@@ -34,7 +34,7 @@ function App() {
   }, [groups]);
 
   return (
-    <Box>
+    <>
       {/* <Head>
         <title>Moho Events</title>
         <meta name="description" content="Gérer des événements à Moho" />
@@ -48,7 +48,7 @@ function App() {
         <AddGroup setGroups={setGroups} groups={groups} />
         <EventList groups={groups} setGroups={setGroups} />
       </Container>
-    </Box>
+    </>
   );
 }
 
