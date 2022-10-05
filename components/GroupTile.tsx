@@ -1,17 +1,38 @@
-import { ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { GroupInfo } from "../typeUtils";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  IconButton,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { GroupInfo, DispatchSetEvents } from "../typeUtils";
 
-// this should be marked as a NextComponentType, but it's not accepting the Props param
-// in the traditional <Props> fashion
+interface Props extends GroupInfo {
+  setGroups: DispatchSetEvents["setGroups"];
+}
+
 const GroupTile = ({
   name,
   id,
   description,
   startTime,
   endTime,
-}: GroupInfo) => {
+  setGroups,
+}: Props) => {
+  const deleteTile = () => {
+    console.log("delete tile");
+    setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
+  };
+
   return (
-    <ListItem disablePadding>
+    <ListItem
+      disablePadding
+      secondaryAction={
+        <IconButton onClick={deleteTile} edge="end" aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      }
+    >
       <ListItemButton>
         <ListItemText primary={name} />
       </ListItemButton>
