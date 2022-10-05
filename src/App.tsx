@@ -22,8 +22,7 @@ function App() {
   useEffect(() => {
     // TODO reactivate this with checking page readiness
     // push response to the group state
-    // const localGroups = getLocalGroups(isPageReady);
-    // setGroups(localGroups);
+    setGroups(getLocalGroups());
   }, []);
 
   // as a secondary effect, when the group state changes, push to local in the background

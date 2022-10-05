@@ -1,8 +1,6 @@
 import { LocalStorageKey, GroupInfo } from "../typeUtils";
 
-const getLocalGroups = (isPageReady: boolean): GroupInfo[] | [] => {
-  if (!isPageReady) return [];
-
+const getLocalGroups = (): GroupInfo[] | [] => {
   // push local storage to the group state
   const localKey: LocalStorageKey = "groups";
   const res: string = localStorage.getItem(localKey) || "undefined";
