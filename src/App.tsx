@@ -42,7 +42,7 @@ function App() {
       </Head> */}
       <Container>
         <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
-          Moho Events
+          MOHO EVENTS
         </Typography>
 
         <AddGroup setGroups={setGroups} groups={groups} />
