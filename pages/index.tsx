@@ -32,20 +32,18 @@ const Home: NextPage = () => {
 
   // as a secondary effect, when the group state changes, push to local in the background
   useEffect(() => {
+    // TODO find simpler way to avoid clearing the local storage
+    if (groups.length === 0) return;
     // push response to the group state
     setLocalGroups(groups);
   }, [groups]);
-
-  const addGroup = () => {
-    console.log("opening page for group creation now!");
-  };
 
   return (
     <Box>
       <Head>
         <title>Moho Events</title>
         <meta name="description" content="Gérer des événements à Moho" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
       <Container>
         <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
