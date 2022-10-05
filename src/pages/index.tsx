@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Typography, Container, Box } from "@mui/material";
-import Head from "next/head";
-
-import type { NextPage } from "next";
 import { GroupInfo, GroupStateObj } from "../typeUtils";
 
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
@@ -16,18 +12,17 @@ type GroupStateArray = [
   setGroups: GroupStateObj["setGroups"]
 ];
 
-const Home: NextPage = () => {
-  const isPageReady = useRouter().isReady;
-
+const Home = () => {
   // store all group objects in this highest level array
   const [groups, setGroups]: GroupStateArray = useState<GroupInfo[]>([]);
   console.log(groups);
 
   // on page load, push groups to rendered state
   useEffect(() => {
+    // TODO reactivate this with checking page readiness
     // push response to the group state
-    const localGroups = getLocalGroups(isPageReady);
-    setGroups(localGroups);
+    // const localGroups = getLocalGroups(isPageReady);
+    // setGroups(localGroups);
   }, []);
 
   // as a secondary effect, when the group state changes, push to local in the background
@@ -40,11 +35,11 @@ const Home: NextPage = () => {
 
   return (
     <Box>
-      <Head>
+      {/* <Head>
         <title>Moho Events</title>
         <meta name="description" content="Gérer des événements à Moho" />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head> */}
       <Container>
         <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
           Moho Events

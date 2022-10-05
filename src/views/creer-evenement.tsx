@@ -1,10 +1,8 @@
-import type { NextPage } from "next";
-import Head from "next/head";
 import { Typography, Container, Button } from "@mui/material";
 import { LocalStorageKey, GroupInfo } from "../typeUtils";
 import { useEffect, useState } from "react";
 
-const NewEvent: NextPage = () => {
+const NewEvent = () => {
   // react state for tracking form data
   const [formData, setFormData] = useState<GroupInfo>();
 
@@ -24,9 +22,9 @@ const NewEvent: NextPage = () => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Créer un Evénement</title>
-      </Head>
+      </Head> */}
       <Container>
         <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
           Créer un Evénement
