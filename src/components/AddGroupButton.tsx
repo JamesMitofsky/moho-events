@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const AddGroupButton = () => {
-  return <Button to="/add">Add Testing Data</Button>;
+  return <Link to="creer">Add Real Data</Link>;
 };
 
 export default AddGroupButton;

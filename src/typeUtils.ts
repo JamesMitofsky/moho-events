@@ -15,3 +15,5 @@ export interface GroupStateObj {
 }
 
 export type LocalStorageKey = "groups";
+
+export type UnfinishedGroup = "UnfinishedGroup";

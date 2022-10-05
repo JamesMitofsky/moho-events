@@ -10,7 +10,11 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 const theme = createTheme({
   typography: {
     h1: {
+      fontSize: 60,
       fontFamily: "'Antonio', sans-serif",
+    },
+    h2: {
+      fontSize: 40,
     },
   },
   palette: {

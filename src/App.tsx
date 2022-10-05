@@ -1,6 +1,6 @@
 import "./App.css";
 import { Typography, Container } from "@mui/material";
-import NewEvent from "./views/creer-evenement";
+import NewEvent from "./views/creer";
 import Home from "./views/home";
 import { Routes, Route } from "react-router-dom";
 
@@ -13,12 +13,12 @@ function App() {
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
       <Container sx={{ mt: 3, mb: 3 }}>
-        <Typography color="primary.main" variant="h1" sx={{ fontSize: 50 }}>
+        <Typography color="primary.main" variant="h1">
           MOHO EVENTS
         </Typography>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="creer-evenement" element={<NewEvent />} />
+          <Route path="creer" element={<NewEvent />} />
         </Routes>
       </Container>
     </>

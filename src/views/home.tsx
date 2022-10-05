@@ -6,6 +6,7 @@ import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
 
 import EventList from "../components/GroupList";
 import AddGroup from "../components/AddGroup";
+import AddGroupButton from "../components/AddGroupButton";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -39,6 +40,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head> */}
       <>
+        <AddGroupButton />
         <AddGroup setGroups={setGroups} groups={groups} />
         <EventList groups={groups} setGroups={setGroups} />
       </>
