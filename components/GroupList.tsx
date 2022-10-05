@@ -6,7 +6,7 @@ const GroupList = ({ groups, setGroups }: GroupStateObj) => {
   return (
     <List>
       {groups.map((group) => (
-        <EventTile {...group} />
+        <EventTile key={group.id} {...group} />
       ))}
     </List>
   );
