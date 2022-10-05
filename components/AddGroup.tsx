@@ -17,14 +17,10 @@ const AddGroup = ({ groups, setGroups }: GroupStateObj) => {
   };
 
   const addGroup = () => {
-    setGroups((prevGroups) => ({ ...prevGroups, testGroup }));
-  };
-  const openCreationModal = () => {
-    console.log("open modal");
-    setGroups([testGroup]);
+    setGroups((prevGroups) => [...prevGroups, testGroup]);
   };
 
-  return <Button onClick={openCreationModal}>Add Testing Data</Button>;
+  return <Button onClick={addGroup}>Add Testing Data</Button>;
 };
 
 export default AddGroup;

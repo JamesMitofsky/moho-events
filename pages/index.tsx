@@ -1,11 +1,15 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import { Typography, Container, Box, Button } from "@mui/material";
-import EventList from "../components/GroupList";
-import { GroupInfo, GroupStateObj } from "../typeUtils";
 import { useEffect, useState } from "react";
-import getLocalGroups from "../utils/getLocalGroups";
+import { useRouter } from "next/router";
+import { Typography, Container, Box } from "@mui/material";
+import Head from "next/head";
+
+import type { NextPage } from "next";
+import { GroupInfo, GroupStateObj } from "../typeUtils";
+
+import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
+
+import EventList from "../components/GroupList";
+import AddGroup from "../components/AddGroup";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -26,8 +30,14 @@ const Home: NextPage = () => {
     setGroups(localGroups);
   }, []);
 
+  // as a secondary effect, when the group state changes, push to local in the background
+  useEffect(() => {
+    // push response to the group state
+    setLocalGroups(groups);
+  }, [groups]);
+
   const addGroup = () => {
-    console.log("adding group now!");
+    console.log("opening page for group creation now!");
   };
 
   return (
@@ -42,8 +52,8 @@ const Home: NextPage = () => {
           Moho Events
         </Typography>
 
+        <AddGroup setGroups={setGroups} groups={groups} />
         <EventList groups={groups} setGroups={setGroups} />
-        <Button onClick={addGroup}>Add Event</Button>
       </Container>
     </Box>
   );

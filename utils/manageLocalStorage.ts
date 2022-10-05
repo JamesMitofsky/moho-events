@@ -15,4 +15,13 @@ const getLocalGroups = (isPageReady: boolean): GroupInfo[] | [] => {
   return parsedRes;
 };
 
-export default getLocalGroups;
+const setLocalGroups = (groups: GroupInfo[]) => {
+  // push local storage to the group state
+  const localKey: LocalStorageKey = "groups";
+
+  // stringify groups array
+  const stringifiedGroups: string = JSON.stringify(groups);
+  localStorage.setItem(localKey, stringifiedGroups);
+};
+
+export { getLocalGroups, setLocalGroups };
