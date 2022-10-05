@@ -4,6 +4,8 @@ import App from "./App";
 import "./index.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/antonio";
+import { BrowserRouter } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const theme = createTheme({
   typography: {
@@ -23,8 +25,15 @@ const theme = createTheme({
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Helmet>
+            <title>Moho Events</title>
+          </Helmet>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>
 );
