@@ -26,6 +26,10 @@ const SubmitEvent = ({ emptyFormState, formData, setFormData }: Props) => {
     setFormData({ ...emptyFormState, id: uuidv4() });
   };
 
-  return <Button onClick={pushEventToArray}>Submit</Button>;
+  return (
+    <Button sx={{ mt: 0.5, mb: 4 }} onClick={pushEventToArray}>
+      Submit
+    </Button>
+  );
 };
 export default SubmitEvent;
