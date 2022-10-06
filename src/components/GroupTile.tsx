@@ -11,18 +11,7 @@ interface Props extends GroupInfo {
   setGroups: DispatchSetEvents["setGroups"];
 }
 
-const GroupTile = ({
-  associationName,
-  eventName,
-  eventType,
-  numberOfQuote,
-  category,
-  soldBy,
-  comments,
-  id,
-  contact: { companyName, contactName, telephoneNumber, email },
-  setGroups,
-}: Props) => {
+const GroupTile = ({ associationName, id, setGroups }: Props) => {
   const deleteTile = () => {
     setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
   };
