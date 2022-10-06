@@ -7,9 +7,6 @@ import TextInput from "../components/TextInput";
 import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
-  // array of input fields
-  const [fields, setFields] = useState([]);
-
   // track form data
   const [formData, setFormData] = useState<GroupInfo>({
     associationName: "",
