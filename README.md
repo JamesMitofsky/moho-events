@@ -25,7 +25,7 @@ While a spreadsheet let staff quickly iterate on how to organize information, it
 1. Increase the efficiency of Moho's waitstaff by providing a mobile-friendly, intuitive solution for tracking events.
 2. Simplify the management process for administrators charged with documenting the event details.
 
-## 🙋 User Stories
+### 🙋 User Stories
 
 This project was guided by the following [user stories](https://www.interaction-design.org/literature/topics/user-stories):
 
@@ -40,7 +40,9 @@ This project was guided by the following [user stories](https://www.interaction-
 - Add tests.
 - Use Google Firestore and Auth to secure a sharable database.
 
-## 🚸 Code Challenge Limitations
+### 🚸 Code Challenge Limitations
+
+Some of these improvements are related to the nature of this code challenge. Here are a few of the limitations I created for myself or considered as implied:
 
 - I didn't use a package to solve the LocalStorage state management problem because I assumed this difficulty was quite deliberately meant to be solved manually.
 - There is no server connection or authentification because — although local storage and cloud connections could have co-existed beneficially — I wanted to prioritize my work with local storage for the scope of this task.
