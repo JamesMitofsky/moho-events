@@ -18,11 +18,11 @@ Moho currently uses a Google Spreadsheet to create and internally manage events 
 
 ### 💭 The Challenge
 
-While a spreadsheet let staff quickly iterate on how to organize information, it has outlived this purpose but remains difficult for waitstaff to quickly scan for important guest information while on the move with their smartphones. This difficulty has likewise been felt by administrators who are in a long-term relationship with an improvised solution.
+While a spreadsheet initially allowed for easy iteration of data organization options, it has since outgrown this purpose, leaving administrators in a long-term relationship with an improvised solution. It likewise creates difficulties for the catering staff who have trouble quickly scanning a spreadsheet while on the move with their smartphones.
 
 ### 🍀 The Opportunity
 
-1. Increase the efficiency of Moho's waitstaff by providing a mobile-friendly, intuitive solution for tracking events.
+1. Increase the efficiency of Moho's catering staff by providing a mobile-friendly, intuitive solution for tracking events.
 2. Simplify the management process for administrators charged with documenting the event details.
 
 ### 🙋 User Stories
