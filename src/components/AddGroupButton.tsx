@@ -1,8 +1,23 @@
-import { Button } from "@mui/material";
+import { Box } from "@mui/material";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Link } from "react-router-dom";
 
 const AddGroupButton = () => {
-  return <Link to="creer">Add Real Data</Link>;
+  return (
+    <Box
+      sx={{
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        margin: 1.5,
+        marginRight: 2,
+      }}
+    >
+      <Link to="creer">
+        <AddCircleIcon sx={{ fontSize: 70, color: "primary.main" }} />
+      </Link>
+    </Box>
+  );
 };
 
 export default AddGroupButton;
