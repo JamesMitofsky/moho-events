@@ -15,6 +15,8 @@ const theme = createTheme({
     },
     h2: {
       fontSize: 40,
+      marginTop: 5,
+      marginBottom: 30,
     },
   },
   palette: {
