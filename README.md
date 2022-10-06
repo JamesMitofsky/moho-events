@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Moho Events
+
+An elegant group management solution the wide range of events hosted by [Moho](https://www.moho.co/) any given day.
+
+> React, TypeScript, ReactRouter, Material-UI
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies, then run a development server.
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm i && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development Thinking
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### The Context
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Moho currently uses a Google Spreadsheet as their events management solution.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+> **Pro:** Spreadsheets are easy to update which data is included, allowing for quick iterations, keeping it aligned with Moho's evolving needs.
 
-## Learn More
+> **Con:** Restaurant staff have difficulty viewing the spreadsheet on their phones while they're hosting an event, and the need for data organization changes has stagnated.
 
-To learn more about Next.js, take a look at the following resources:
+### Story Driven Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The following [user stories](https://www.interaction-design.org/literature/topics/user-stories) guided this project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- As a restaurant staff member, I want to be able to see the events for the day so that I can prepare for them.
+- As a server, I want to quickly access specific information about events from my phone so that I can provide the best service to my guests.
+- As an event administrator, I want a clear flow for submitting and distributing event information.
 
-## Deploy on Vercel
+### Next Steps / Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Deploy as a static site using Next.js to a CDN like Vercel. This would increase the speed of the site. A build trigger could be set up to hear when a database has received a new event and automatically rebuild the site.
+- Add alternative ways of filtering and viewing groups. For example, a calendar view.
+- Add tests.
+- Use Google Firestore and Auth to secure a sharable database.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Coding Task Limitations
+
+- Didn't use a package to solve the LocalStorage state management problem because I assumed this difficulty was quite deliberately meant to be solved manually.
+- There is no server connection or authentification because — although local storage and cloud connections could have co-existed beneficially — I wanted to prioritize my work with local storage for the scope of this task.
