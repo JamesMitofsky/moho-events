@@ -8,7 +8,7 @@ import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
   // array of input fields
-  const [fields, setFields] = useState<JSX.Element[]>([]);
+  const [fields, setFields] = useState([]);
 
   // track form data
   const [formData, setFormData] = useState<GroupInfo>({
@@ -19,16 +19,31 @@ const NewEvent = () => {
     category: "",
     soldBy: "",
     comments: "",
-    contact: {
-      companyName: "",
-      contactName: "",
-      telephoneNumber: 0,
-      email: "",
-    },
+    companyName: "",
+    contactName: "",
+    telephoneNumber: 0,
+    email: "",
     id: uuidv4(),
     startTime: new Date(),
     endTime: new Date(),
   });
+
+  const fieldNames: GroupInfoFieldNames = {
+    associationName: "Nom de l'association",
+    eventName: "Nom de l'événement",
+    eventType: "Type d'événement",
+    numberOfQuote: "Nombre de devis",
+    category: "Catégorie",
+    soldBy: "Vendu par",
+    comments: "Commentaires",
+    companyName: "Nom de l'entreprise",
+    contactName: "Nom du contact",
+    telephoneNumber: "Numéro de téléphone",
+    email: "Email",
+    startTime: "Date de début",
+    endTime: "Date de fin",
+  };
+
   // track state of local storage to avoid overwriting it
   const [localChecked, setLocalChecked] = useState<boolean>(false);
 
@@ -60,49 +75,6 @@ const NewEvent = () => {
     }));
   };
 
-  const fieldNames: GroupInfoFieldNames = {
-    associationName: "Nom de l'association",
-    eventName: "Nom de l'événement",
-    eventType: "Type d'événement",
-    numberOfQuote: "Nombre de devis",
-    category: "Catégorie",
-    soldBy: "Vendu par",
-    comments: "Commentaires",
-    contact: {
-      companyName: "Nom de l'entreprise",
-      contactName: "Nom du contact",
-      telephoneNumber: "Numéro de téléphone",
-      email: "Email",
-    },
-    startTime: "Date de début",
-    endTime: "Date de fin",
-  };
-
-  useEffect(() => {
-    for (const [key, value] of Object.entries(fieldNames)) {
-      // only render fields that are text based
-      if (typeof value !== "string") return;
-      setFields((prevFields) => [
-        ...prevFields,
-        <TextInput
-          key={uuidv4()}
-          label={value}
-          value={formData[key as keyof GroupInfo]}
-          name={key}
-          onChange={updateFormData}
-        />,
-      ]);
-      console.log(
-        "key —",
-        key,
-        "\n\nvalue —",
-        value,
-        "\n\nform data —",
-        formData[key as keyof GroupInfo]
-      );
-    }
-  }, []);
-
   return (
     <>
       <Helmet>
@@ -122,7 +94,27 @@ const NewEvent = () => {
         noValidate
         autoComplete="off"
       >
-        {fields}
+        {Object.keys(fieldNames).map((key) => {
+          // if the key is a date object, return a date picker
+          if (key === "startTime" || key === "endTime" || key === "telephone")
+            return;
+
+          return (
+            <TextInput
+              key={key}
+              label={fieldNames[key as keyof GroupInfoFieldNames]}
+              value={formData[key as keyof GroupInfo]}
+              name={key}
+              onChange={updateFormData}
+            />
+          );
+        })}
+        <TextInput
+          label={fieldNames.associationName}
+          value={formData.associationName}
+          name="associationName"
+          onChange={updateFormData}
+        />
         <SubmitEvent formData={formData} setFormData={setFormData} />
       </Box>
     </>

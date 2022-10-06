@@ -8,12 +8,10 @@ export interface GroupInfo {
   category: string;
   soldBy: string;
   comments: string;
-  contact: {
-    companyName: string;
-    contactName: string;
-    telephoneNumber: number;
-    email: string;
-  };
+  companyName: string;
+  contactName: string;
+  telephoneNumber: number;
+  email: string;
   id: string;
   startTime: Date;
   endTime: Date;
@@ -22,15 +20,13 @@ export interface GroupInfo {
 export interface GroupInfoFieldNames
   extends Omit<
     GroupInfo,
-    "numberOfQuote" | "contact" | "startTime" | "endTime" | "id"
+    "numberOfQuote" | "telephoneNumber" | "startTime" | "endTime" | "id"
   > {
   numberOfQuote: string;
-  contact: {
-    telephoneNumber: string;
-    companyName: string;
-    contactName: string;
-    email: string;
-  };
+  telephoneNumber: string;
+  companyName: string;
+  contactName: string;
+  email: string;
   startTime: string;
   endTime: string;
 }
