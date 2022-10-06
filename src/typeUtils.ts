@@ -1,10 +1,21 @@
-export type GroupInfo = {
-  name: string;
+export interface GroupInfo {
+  associationName: string;
+  eventName: string;
+  eventType: string;
+  numberOfQuote: number;
+  category: string;
+  soldBy: string;
+  comments: string;
+  contact: {
+    companyName: string;
+    contactName: string;
+    telephoneNumber: number;
+    email: string;
+  };
   id: string;
-  description: string;
   startTime: Date;
   endTime: Date;
-};
+}
 
 export interface DispatchSetEvents {
   setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;

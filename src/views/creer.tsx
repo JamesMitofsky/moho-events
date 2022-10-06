@@ -1,41 +1,49 @@
-import {
-  Typography,
-  Box,
-  FormControl,
-  InputLabel,
-  Input,
-  Button,
-} from "@mui/material";
+import { Typography, Box, TextField, Input, Button } from "@mui/material";
 import { UnfinishedGroup, GroupInfo } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
+import TextInput from "../components/TextInput";
 
 const NewEvent = () => {
   // react state for tracking form data
   const [formData, setFormData] = useState<GroupInfo>({
-    name: "",
+    associationName: "",
+    eventName: "",
+    eventType: "",
+    numberOfQuote: 0,
+    category: "",
+    soldBy: "",
+    comments: "",
+    contact: {
+      companyName: "",
+      contactName: "",
+      telephoneNumber: 0,
+      email: "",
+    },
     id: uuidv4(),
-    description: "",
     startTime: new Date(),
     endTime: new Date(),
   });
 
-  // store React state in local value
-  const setGroup = () => {
+  const [localChecked, setLocalChecked] = useState<boolean>(false);
+
+  // check for pre-existing data before making React state the point of truth
+  useEffect(() => {
     const localKey: UnfinishedGroup = "UnfinishedGroup";
-    localStorage.setItem(localKey, JSON.stringify(formData));
-  };
+    const localData = localStorage.getItem(localKey);
+    if (localData) {
+      setFormData(JSON.parse(localData));
+    }
+    setLocalChecked(true);
+  }, []);
 
   // when form data changes, push immediately to local storage
   useEffect(() => {
-    // check for pre-existing data before making React state the point of truth
-    // const localKey: UnfinishedGroup = "UnfinishedGroup";
-    // const localData = localStorage.getItem(localKey);
-    // if (localData) {
-    //   setFormData(JSON.parse(localData));
-    // }
-    setGroup();
+    if (!localChecked) return;
+
+    const localKey: UnfinishedGroup = "UnfinishedGroup";
+    localStorage.setItem(localKey, JSON.stringify(formData));
   }, [formData]);
 
   const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,26 +66,27 @@ const NewEvent = () => {
         <Box
           component="form"
           sx={{
-            "& > :not(style)": {
-              m: 1,
-              display: "flex",
-              flexDirection: "column",
-            },
+            m: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
           }}
           noValidate
           autoComplete="off"
         >
-          <FormControl variant="standard">
-            <InputLabel htmlFor="component-simple">
-              Nom de la société
-            </InputLabel>
-            <Input
-              name="name"
-              value={formData?.name}
-              onChange={updateFormData}
-            />
-          </FormControl>
-          <Button component="submit">Submit</Button>
+          <TextInput
+            value={formData.associationName}
+            label={"Nom de la société"}
+            name={"associationName"}
+            onChange={updateFormData}
+          />
+          <TextInput
+            value={formData.category}
+            label={"Catégorie (Mécénes,MIC...)"}
+            name={"category"}
+            onChange={updateFormData}
+          />
+          <Button>Submit</Button>
         </Box>
       </>
     </>

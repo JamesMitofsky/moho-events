@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { GroupInfo, GroupStateObj } from "../typeUtils";
-import { Typography, Container } from "@mui/material";
 
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
 
 import EventList from "../components/GroupList";
-import AddGroup from "../components/AddGroup";
 import AddGroupButton from "../components/AddGroupButton";
 
 type GroupStateArray = [
@@ -16,11 +14,9 @@ type GroupStateArray = [
 const Home = () => {
   // store all group objects in this highest level array
   const [groups, setGroups]: GroupStateArray = useState<GroupInfo[]>([]);
-  console.log(groups);
 
   // on page load, push groups to rendered state
   useEffect(() => {
-    // TODO reactivate this with checking page readiness
     // push response to the group state
     setGroups(getLocalGroups());
   }, []);
@@ -34,16 +30,8 @@ const Home = () => {
   }, [groups]);
   return (
     <>
-      {/* <Head>
-        <title>Moho Events</title>
-        <meta name="description" content="Gérer des événements à Moho" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
-      <>
-        <AddGroupButton />
-        <AddGroup setGroups={setGroups} groups={groups} />
-        <EventList groups={groups} setGroups={setGroups} />
-      </>
+      <AddGroupButton />
+      <EventList groups={groups} setGroups={setGroups} />
     </>
   );
 };

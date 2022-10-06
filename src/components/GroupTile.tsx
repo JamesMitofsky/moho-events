@@ -12,20 +12,24 @@ interface Props extends GroupInfo {
 }
 
 const GroupTile = ({
-  name,
+  associationName,
+  eventName,
+  eventType,
+  numberOfQuote,
+  category,
+  soldBy,
+  comments,
   id,
-  description,
-  startTime,
-  endTime,
+  contact: { companyName, contactName, telephoneNumber, email },
   setGroups,
 }: Props) => {
   const deleteTile = () => {
-    console.log("delete tile");
     setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
   };
 
   return (
     <ListItem
+      divider
       disablePadding
       secondaryAction={
         <IconButton onClick={deleteTile} edge="end" aria-label="delete">
@@ -34,7 +38,7 @@ const GroupTile = ({
       }
     >
       <ListItemButton>
-        <ListItemText primary={name} />
+        <ListItemText primary={associationName} />
       </ListItemButton>
     </ListItem>
   );

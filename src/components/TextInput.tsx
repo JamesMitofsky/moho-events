@@ -1,17 +1,15 @@
-import { FormControl, InputLabel, Input } from "@mui/material";
+import { TextField } from "@mui/material";
 
 interface Props {
   label: string;
   value: string;
+  name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextInput = ({ label, value, onChange }: Props) => {
+const TextInput = ({ label, value, name, onChange }: Props) => {
   return (
-    <FormControl variant="standard">
-      <InputLabel htmlFor="component-simple">{label}</InputLabel>
-      <Input id="component-simple" value={value} onChange={onChange} />
-    </FormControl>
+    <TextField label={label} name={name} value={value} onChange={onChange} />
   );
 };
 
