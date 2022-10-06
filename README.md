@@ -14,7 +14,7 @@ npm i && npm run dev
 
 ## 🖼 Context
 
-Moho currently uses a Google Spreadsheet as their events management solution.
+Moho currently uses a Google Spreadsheet to create and internally manage events among the staff. This principally involves administrative staff creating events and the catering team reading event details throughout the day on their phones.
 
 ### 💭 The Challenge
 
