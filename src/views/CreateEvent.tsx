@@ -1,9 +1,10 @@
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { GroupInfo } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
 import TextInput from "../components/TextInput";
+import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
   // react state for tracking form data
@@ -88,7 +89,7 @@ const NewEvent = () => {
             name={"category"}
             onChange={updateFormData}
           />
-          <Button>Submit</Button>
+          <SubmitEvent formData={formData} />
         </Box>
       </>
     </>
