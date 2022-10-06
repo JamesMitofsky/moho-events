@@ -1,3 +1,5 @@
+import { ComponentFactory } from "react";
+
 export interface GroupInfo {
   associationName: string;
   eventName: string;
@@ -15,6 +17,22 @@ export interface GroupInfo {
   id: string;
   startTime: Date;
   endTime: Date;
+}
+
+export interface GroupInfoFieldNames
+  extends Omit<
+    GroupInfo,
+    "numberOfQuote" | "contact" | "startTime" | "endTime" | "id"
+  > {
+  numberOfQuote: string;
+  contact: {
+    telephoneNumber: string;
+    companyName: string;
+    contactName: string;
+    email: string;
+  };
+  startTime: string;
+  endTime: string;
 }
 
 export interface DispatchSetEvents {

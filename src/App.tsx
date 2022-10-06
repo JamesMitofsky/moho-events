@@ -7,11 +7,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 function App() {
   return (
     <>
-      {/* <Head>
-        <title>Moho Events</title>
-        <meta name="description" content="Gérer des événements à Moho" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
       <Container sx={{ mt: 3, mb: 3 }}>
         <Typography color="primary.main" variant="h1">
           MOHO EVENTS

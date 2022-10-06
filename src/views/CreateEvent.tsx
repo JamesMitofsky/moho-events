@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo, GroupInfoFieldNames } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
@@ -7,6 +7,9 @@ import TextInput from "../components/TextInput";
 import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
+  // array of input fields
+  const [fields, setFields] = useState<JSX.Element[]>([]);
+
   // track form data
   const [formData, setFormData] = useState<GroupInfo>({
     associationName: "",
@@ -57,6 +60,49 @@ const NewEvent = () => {
     }));
   };
 
+  const fieldNames: GroupInfoFieldNames = {
+    associationName: "Nom de l'association",
+    eventName: "Nom de l'événement",
+    eventType: "Type d'événement",
+    numberOfQuote: "Nombre de devis",
+    category: "Catégorie",
+    soldBy: "Vendu par",
+    comments: "Commentaires",
+    contact: {
+      companyName: "Nom de l'entreprise",
+      contactName: "Nom du contact",
+      telephoneNumber: "Numéro de téléphone",
+      email: "Email",
+    },
+    startTime: "Date de début",
+    endTime: "Date de fin",
+  };
+
+  useEffect(() => {
+    for (const [key, value] of Object.entries(fieldNames)) {
+      // only render fields that are text based
+      if (typeof value !== "string") return;
+      setFields((prevFields) => [
+        ...prevFields,
+        <TextInput
+          key={uuidv4()}
+          label={value}
+          value={formData[key as keyof GroupInfo]}
+          name={key}
+          onChange={updateFormData}
+        />,
+      ]);
+      console.log(
+        "key —",
+        key,
+        "\n\nvalue —",
+        value,
+        "\n\nform data —",
+        formData[key as keyof GroupInfo]
+      );
+    }
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -76,18 +122,7 @@ const NewEvent = () => {
         noValidate
         autoComplete="off"
       >
-        <TextInput
-          value={formData.associationName}
-          label={"Nom de la société"}
-          name={"associationName"}
-          onChange={updateFormData}
-        />
-        <TextInput
-          value={formData.category}
-          label={"Catégorie (Mécénes,MIC...)"}
-          name={"category"}
-          onChange={updateFormData}
-        />
+        {fields}
         <SubmitEvent formData={formData} setFormData={setFormData} />
       </Box>
     </>
