@@ -44,5 +44,5 @@ This project was guided by the following [user stories](https://www.interaction-
 
 Some of these improvements are related to the nature of this code challenge. Here are a few of the limitations I created for myself or considered as implied:
 
-- I didn't use a package to solve the LocalStorage state management problem because I assumed this difficulty was quite deliberately meant to be solved manually.
-- There is no server connection or authentification because — although local storage and cloud connections could have co-existed beneficially — I wanted to prioritize my work with local storage for the scope of this task.
+- I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks)to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
+- Although local storage and a cloud database could have co-existed beneficially, I wanted to prioritize my local storage in the time devoted to this task. In a team context, a database connection will be critical for the smooth functioning of an event management platform like this one.
