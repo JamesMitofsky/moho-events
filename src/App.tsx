@@ -2,9 +2,11 @@ import "./App.css";
 import { Typography, Container } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
 import Home from "./views/LandingPage";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
+import ViewEvent from "./views/ViewEvent";
 
 function App() {
+  const { eventID } = useParams<{ eventID: string }>();
   return (
     <>
       <Container sx={{ mt: 3, mb: 3 }}>
@@ -14,7 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="creer" element={<NewEvent />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="evenement">
+            <Route path=":eventID" element={<ViewEvent />} />
+          </Route>
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </Container>
     </>

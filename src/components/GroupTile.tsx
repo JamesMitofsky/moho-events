@@ -6,6 +6,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { GroupInfo, DispatchSetEvents } from "../typeUtils";
+import { Link as RouterLink } from "react-router-dom";
 
 interface Props extends GroupInfo {
   setGroups: DispatchSetEvents["setGroups"];
@@ -18,6 +19,8 @@ const GroupTile = ({ associationName, id, setGroups }: Props) => {
 
   return (
     <ListItem
+      component={RouterLink}
+      to={`/evenement/${id}`}
       divider
       disablePadding
       secondaryAction={
