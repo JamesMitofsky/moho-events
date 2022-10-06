@@ -13,22 +13,15 @@ interface Props extends GroupInfo {
 }
 
 const GroupTile = ({ associationName, id, setGroups }: Props) => {
-  const deleteTile = () => {
-    setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
-  };
+  // const deleteTile = () => {
+  //   setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
+  // };
+  //  <IconButton onClick={deleteTile} edge="end" aria-label="delete">
+  //    <DeleteIcon />
+  //  </IconButton>;
 
   return (
-    <ListItem
-      component={RouterLink}
-      to={`/evenement/${id}`}
-      divider
-      disablePadding
-      secondaryAction={
-        <IconButton onClick={deleteTile} edge="end" aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
-      }
-    >
+    <ListItem component={RouterLink} to={`/evenement/${id}`} dense divider>
       <ListItemButton>
         <ListItemText primary={associationName} />
       </ListItemButton>
