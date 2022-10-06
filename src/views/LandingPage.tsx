@@ -14,17 +14,20 @@ type GroupStateArray = [
 const Home = () => {
   // store all group objects in this highest level array
   const [groups, setGroups]: GroupStateArray = useState<GroupInfo[]>([]);
+  // track state of local storage to avoid overwriting it
+  const [localChecked, setLocalChecked] = useState<boolean>(false);
 
   // on page load, push groups to rendered state
   useEffect(() => {
     // push response to the group state
     setGroups(getLocalGroups());
+    setLocalChecked(true);
   }, []);
 
   // as a secondary effect, when the group state changes, push to local in the background
   useEffect(() => {
-    // TODO find simpler way to avoid clearing the local storage
-    if (groups.length === 0) return;
+    if (!localChecked) return;
+
     // push response to the group state
     setLocalGroups(groups);
   }, [groups]);

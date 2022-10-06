@@ -7,7 +7,7 @@ import TextInput from "../components/TextInput";
 import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
-  // react state for tracking form data
+  // track form data
   const [formData, setFormData] = useState<GroupInfo>({
     associationName: "",
     eventName: "",
@@ -26,7 +26,7 @@ const NewEvent = () => {
     startTime: new Date(),
     endTime: new Date(),
   });
-
+  // track state of local storage to avoid overwriting it
   const [localChecked, setLocalChecked] = useState<boolean>(false);
 
   // check for pre-existing data before making React state the point of truth
@@ -59,39 +59,37 @@ const NewEvent = () => {
 
   return (
     <>
-      <>
-        <Helmet>
-          <title>Créer un Evénement</title>
-        </Helmet>
-        <Typography color="primary.main" variant="h2">
-          Créer un Evénement
-        </Typography>
-        <Box
-          component="form"
-          sx={{
-            m: 1,
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextInput
-            value={formData.associationName}
-            label={"Nom de la société"}
-            name={"associationName"}
-            onChange={updateFormData}
-          />
-          <TextInput
-            value={formData.category}
-            label={"Catégorie (Mécénes,MIC...)"}
-            name={"category"}
-            onChange={updateFormData}
-          />
-          <SubmitEvent formData={formData} />
-        </Box>
-      </>
+      <Helmet>
+        <title>Créer un Evénement</title>
+      </Helmet>
+      <Typography color="primary.main" variant="h2">
+        Créer un Evénement
+      </Typography>
+      <Box
+        component="form"
+        sx={{
+          m: 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextInput
+          value={formData.associationName}
+          label={"Nom de la société"}
+          name={"associationName"}
+          onChange={updateFormData}
+        />
+        <TextInput
+          value={formData.category}
+          label={"Catégorie (Mécénes,MIC...)"}
+          name={"category"}
+          onChange={updateFormData}
+        />
+        <SubmitEvent formData={formData} />
+      </Box>
     </>
   );
 };
