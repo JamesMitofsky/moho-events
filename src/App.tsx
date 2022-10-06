@@ -2,13 +2,12 @@ import "./App.css";
 import { Container } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
 import Home from "./views/LandingPage";
-import { Routes, Route, useParams, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ViewEvent from "./views/ViewEvent";
 import NoResponse from "./views/NoResponse";
 import MohoEventsLogo from "./components/MohoEventsLogo";
 
 function App() {
-  const { eventID } = useParams<{ eventID: string }>();
   return (
     <>
       <Container
