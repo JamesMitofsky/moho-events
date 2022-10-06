@@ -88,7 +88,7 @@ const NewEvent = () => {
           name={"category"}
           onChange={updateFormData}
         />
-        <SubmitEvent formData={formData} />
+        <SubmitEvent formData={formData} setFormData={setFormData} />
       </Box>
     </>
   );
