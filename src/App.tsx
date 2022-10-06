@@ -1,7 +1,7 @@
 import "./App.css";
 import { Typography, Container } from "@mui/material";
-import NewEvent from "./views/creer";
-import Home from "./views/home";
+import NewEvent from "./views/CreateEvent";
+import Home from "./views/LandingPage";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
