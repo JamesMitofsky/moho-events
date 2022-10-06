@@ -4,13 +4,13 @@ export interface GroupInfo {
   associationName: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: number;
+  numberOfQuote: number | null;
   category: string;
   soldBy: string;
   comments: string;
   companyName: string;
   contactName: string;
-  telephoneNumber: number;
+  telephoneNumber: number | null;
   email: string;
   id: string;
   startTime: Date;
@@ -30,6 +30,8 @@ export interface GroupInfoFieldNames
   startTime: string;
   endTime: string;
 }
+
+export type EmptyForm = Omit<GroupInfo, "id">;
 
 export interface DispatchSetEvents {
   setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;

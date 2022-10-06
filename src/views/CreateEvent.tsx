@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import { GroupInfo, GroupInfoFieldNames } from "../typeUtils";
+import { GroupInfo, GroupInfoFieldNames, EmptyForm } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
@@ -8,21 +8,24 @@ import SubmitEvent from "../components/SubmitEvent";
 
 const NewEvent = () => {
   // track form data
-  const [formData, setFormData] = useState<GroupInfo>({
+  const emptyFormState: EmptyForm = {
     associationName: "",
     eventName: "",
     eventType: "",
-    numberOfQuote: 0,
+    numberOfQuote: null,
     category: "",
     soldBy: "",
     comments: "",
     companyName: "",
     contactName: "",
-    telephoneNumber: 0,
+    telephoneNumber: null,
     email: "",
-    id: uuidv4(),
     startTime: new Date(),
     endTime: new Date(),
+  };
+  const [formData, setFormData] = useState<GroupInfo>({
+    ...emptyFormState,
+    id: uuidv4(),
   });
 
   const fieldNames: GroupInfoFieldNames = {
@@ -106,13 +109,11 @@ const NewEvent = () => {
             />
           );
         })}
-        <TextInput
-          label={fieldNames.associationName}
-          value={formData.associationName}
-          name="associationName"
-          onChange={updateFormData}
+        <SubmitEvent
+          emptyFormState={emptyFormState}
+          formData={formData}
+          setFormData={setFormData}
         />
-        <SubmitEvent formData={formData} setFormData={setFormData} />
       </Box>
     </>
   );

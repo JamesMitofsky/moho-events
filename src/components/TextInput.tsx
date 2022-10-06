@@ -9,7 +9,13 @@ interface Props {
 
 const TextInput = ({ label, value, name, onChange }: Props) => {
   return (
-    <TextField label={label} name={name} value={value} onChange={onChange} />
+    <TextField
+      required
+      label={label}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 

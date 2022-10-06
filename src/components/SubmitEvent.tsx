@@ -1,14 +1,15 @@
 import { Button } from "@mui/material";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo, EmptyForm } from "../typeUtils";
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
 import { v4 as uuidv4 } from "uuid";
 
 interface Props {
+  emptyFormState: EmptyForm;
   formData: GroupInfo;
   setFormData: React.Dispatch<React.SetStateAction<GroupInfo>>;
 }
 
-const SubmitEvent = ({ formData, setFormData }: Props) => {
+const SubmitEvent = ({ emptyFormState, formData, setFormData }: Props) => {
   const pushEventToArray = () => {
     console.log("pushing", formData);
 
@@ -22,22 +23,7 @@ const SubmitEvent = ({ formData, setFormData }: Props) => {
   };
 
   const clearOldFormData = () => {
-    setFormData({
-      associationName: "",
-      eventName: "",
-      eventType: "",
-      numberOfQuote: 0,
-      category: "",
-      soldBy: "",
-      comments: "",
-      companyName: "",
-      contactName: "",
-      telephoneNumber: 0,
-      email: "",
-      id: uuidv4(),
-      startTime: new Date(),
-      endTime: new Date(),
-    });
+    setFormData({ ...emptyFormState, id: uuidv4() });
   };
 
   return <Button onClick={pushEventToArray}>Submit</Button>;
