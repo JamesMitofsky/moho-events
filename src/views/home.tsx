@@ -30,8 +30,8 @@ const Home = () => {
   }, [groups]);
   return (
     <>
-      <AddGroupButton />
       <EventList groups={groups} setGroups={setGroups} />
+      <AddGroupButton />
     </>
   );
 };

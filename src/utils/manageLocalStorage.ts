@@ -1,9 +1,10 @@
-import { LocalStorageKey, GroupInfo } from "../typeUtils";
+import { GroupInfo } from "../typeUtils";
 
 const getLocalGroups = (): GroupInfo[] | [] => {
   // push local storage to the group state
-  const localKey: LocalStorageKey = "groups";
-  const res: string = localStorage.getItem(localKey) || "undefined";
+  const res: string =
+    localStorage.getItem(import.meta.env.VITE_LOCALLY_STORED_GROUPS) ||
+    "undefined";
 
   // exit function if there was no local storage
   if (res === "undefined") return [];
@@ -14,12 +15,12 @@ const getLocalGroups = (): GroupInfo[] | [] => {
 };
 
 const setLocalGroups = (groups: GroupInfo[]) => {
-  // push local storage to the group state
-  const localKey: LocalStorageKey = "groups";
-
   // stringify groups array
   const stringifiedGroups: string = JSON.stringify(groups);
-  localStorage.setItem(localKey, stringifiedGroups);
+  localStorage.setItem(
+    import.meta.env.VITE_LOCALLY_STORED_GROUPS,
+    stringifiedGroups
+  );
 };
 
 export { getLocalGroups, setLocalGroups };

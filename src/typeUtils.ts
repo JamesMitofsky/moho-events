@@ -24,7 +24,3 @@ export interface GroupStateObj {
   groups: GroupInfo[];
   setGroups: DispatchSetEvents["setGroups"];
 }
-
-export type LocalStorageKey = "groups";
-
-export type UnfinishedGroup = "UnfinishedGroup";

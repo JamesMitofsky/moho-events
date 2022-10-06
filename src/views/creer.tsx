@@ -1,5 +1,5 @@
-import { Typography, Box, TextField, Input, Button } from "@mui/material";
-import { UnfinishedGroup, GroupInfo } from "../typeUtils";
+import { Typography, Box, Button } from "@mui/material";
+import { GroupInfo } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
@@ -30,8 +30,9 @@ const NewEvent = () => {
 
   // check for pre-existing data before making React state the point of truth
   useEffect(() => {
-    const localKey: UnfinishedGroup = "UnfinishedGroup";
-    const localData = localStorage.getItem(localKey);
+    const localData = localStorage.getItem(
+      import.meta.env.VITE_UNFINISHED_GROUP
+    );
     if (localData) {
       setFormData(JSON.parse(localData));
     }
@@ -42,12 +43,13 @@ const NewEvent = () => {
   useEffect(() => {
     if (!localChecked) return;
 
-    const localKey: UnfinishedGroup = "UnfinishedGroup";
-    localStorage.setItem(localKey, JSON.stringify(formData));
+    localStorage.setItem(
+      import.meta.env.VITE_UNFINISHED_GROUP,
+      JSON.stringify(formData)
+    );
   }, [formData]);
 
   const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("running form dataa");
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
