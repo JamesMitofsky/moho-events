@@ -35,7 +35,11 @@ This project was guided by the following [user stories](https://www.interaction-
 
 ## 🚀 Next Steps / Improvements
 
-- Deploy as a static site using Next.js to a CDN like Vercel. This would increase the speed of the site. A build trigger could be set up to hear when a database has received a new event and automatically rebuild the site.
+- Deploy either as a Statically Generated Site using a JAMstack approach or as a React Native app.
+
+  - Deploy as a static site to a CDN like Vercel. Using Next.js with a build trigger could greatly increase the speed of the site. A build hook could be attached to any time a new event is submitted to a database, then leading to the site's automatic reconstruction. Though this would create a momentary inconsistency between the state of the site and the events submitted, event submissions are not so time sensitive that a two minute build step would be a problem.
+  - Deploying as React Native app would help conserve battery life on mobile devices and allow for the use of native features like push notifications, which could help the catering staff keep track of the many moving parts of an event.
+
 - Add alternative ways of filtering and viewing groups. For example, a calendar view.
 - Add tests.
 - Use Google Firestore and Auth to secure a sharable database.
