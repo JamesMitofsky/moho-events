@@ -4,13 +4,13 @@ export interface GroupInfo {
   associationName: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: number | null;
+  numberOfQuote: number | string;
   category: string;
   soldBy: string;
   comments: string;
   companyName: string;
   contactName: string;
-  telephoneNumber: number | null;
+  telephoneNumber: number | string;
   email: string;
   id: string;
   startTime: Date;
