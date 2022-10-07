@@ -11,21 +11,25 @@ const ViewEvent = () => {
 
   return (
     <>
-      <PageTitle title={group.associationName} subtitle="événement" />
-      <List>
-        {group &&
-          Object.keys(group).map((key: string) => {
-            if (group[key as keyof GroupInfo] === group.id) return null;
-            return (
-              <ListItem divider>
-                <ListItemText
-                  primary={group[key as keyof GroupInfo]}
-                  secondary={key.toString()}
-                />
-              </ListItem>
-            );
-          })}
-      </List>
+      {group && (
+        <>
+          <PageTitle title={group.associationName} subtitle="événement" />
+          <List>
+            {group &&
+              Object.keys(group).map((key: string) => {
+                if (group[key as keyof GroupInfo] === group.id) return null;
+                return (
+                  <ListItem divider>
+                    <ListItemText
+                      primary={group[key as keyof GroupInfo]}
+                      secondary={key.toString()}
+                    />
+                  </ListItem>
+                );
+              })}
+          </List>
+        </>
+      )}
     </>
   );
 };

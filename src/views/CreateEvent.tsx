@@ -20,8 +20,6 @@ const NewEvent = () => {
     contactName: "",
     telephoneNumber: "",
     email: "",
-    startTime: new Date(),
-    endTime: new Date(),
   };
   const [formData, setFormData] = useState<GroupInfo>({
     ...emptyFormState,

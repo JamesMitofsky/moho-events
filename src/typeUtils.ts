@@ -2,17 +2,15 @@ export interface GroupInfo {
   associationName: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: number | string;
+  numberOfQuote: string;
   category: string;
   soldBy: string;
   comments: string;
   companyName: string;
   contactName: string;
-  telephoneNumber: number | string;
+  telephoneNumber: string;
   email: string;
   id: string;
-  startTime: Date;
-  endTime: Date;
 }
 
 export interface GroupInfoFieldNames
