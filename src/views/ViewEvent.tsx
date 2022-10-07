@@ -19,8 +19,8 @@ const ViewEvent = () => {
             return (
               <ListItem divider>
                 <ListItemText
-                  primary={key.toString()}
-                  secondary={group[key as keyof GroupInfo]}
+                  primary={group[key as keyof GroupInfo]}
+                  secondary={key.toString()}
                 />
               </ListItem>
             );

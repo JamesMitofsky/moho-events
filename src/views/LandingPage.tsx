@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { GroupInfo, GroupStateObj } from "../typeUtils";
-
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
-
 import EventList from "../components/GroupList";
+import Welcome from "../components/Welcome";
+import PageTitle from "../components/PageTitle";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -30,7 +30,18 @@ const Home = () => {
     // push response to the group state
     setLocalGroups(groups);
   }, [groups]);
-  return <EventList groups={groups} setGroups={setGroups} />;
+  return (
+    <>
+      {groups.length === 0 ? (
+        <Welcome />
+      ) : (
+        <>
+          <PageTitle title="Liste des groupes" />
+          <EventList groups={groups} setGroups={setGroups} />
+        </>
+      )}
+    </>
+  );
 };
 
 export default Home;
