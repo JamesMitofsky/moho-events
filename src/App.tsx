@@ -8,6 +8,7 @@ import ViewEvent from "./views/ViewEvent";
 import NoResponse from "./views/NoResponse";
 import NavBar from "./components/NavBar";
 import AddGroupButton from "./components/AddGroupButton";
+import EditEvent from "./views/EditEvent";
 
 function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="creer" element={<NewEvent />} />
           <Route path="evenement">
+            <Route path=":eventID/edit" element={<EditEvent />} />
             <Route path=":eventID" element={<ViewEvent />} />
           </Route>
           <Route path="*" element={<NoResponse />} />
