@@ -1,5 +1,3 @@
-import { ComponentFactory } from "react";
-
 export interface GroupInfo {
   associationName: string;
   eventName: string;

@@ -1,25 +1,8 @@
-import {
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  IconButton,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { GroupInfo, DispatchSetEvents } from "../typeUtils";
+import { ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { GroupInfo } from "../typeUtils";
 import { Link as RouterLink } from "react-router-dom";
 
-interface Props extends GroupInfo {
-  setGroups: DispatchSetEvents["setGroups"];
-}
-
-const GroupTile = ({ associationName, id, setGroups }: Props) => {
-  // const deleteTile = () => {
-  //   setGroups((prevGroups) => prevGroups.filter((group) => group.id !== id));
-  // };
-  //  <IconButton onClick={deleteTile} edge="end" aria-label="delete">
-  //    <DeleteIcon />
-  //  </IconButton>;
-
+const GroupTile = ({ associationName, id }: GroupInfo) => {
   return (
     <ListItem component={RouterLink} to={`/evenement/${id}`} dense divider>
       <ListItemButton>

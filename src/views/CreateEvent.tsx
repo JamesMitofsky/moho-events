@@ -1,11 +1,10 @@
-import { Typography, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { GroupInfo, EmptyForm } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import TextInput from "../components/TextInput";
 import SubmitEvent from "../components/SubmitEvent";
-import MetaTags from "../components/MetaTags";
 import AllTextInputs from "../components/AllTextInputs";
+import PageHeader from "../components/PageHeader";
 
 const NewEvent = () => {
   // track form data
@@ -62,10 +61,7 @@ const NewEvent = () => {
 
   return (
     <>
-      <MetaTags title="Créer un Evénement" />
-      <Typography color="primary.main" variant="h2">
-        Créer un Evénement
-      </Typography>
+      <PageHeader title="Créer un Evénement" />
       <Box
         component="form"
         sx={{
