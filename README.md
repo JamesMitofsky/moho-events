@@ -16,15 +16,6 @@ npm i && npm run dev
 
 Moho currently uses a Google Spreadsheet to create and internally manage events among the staff. This principally involves administrative staff creating events and the catering team reading event details throughout the day on their phones.
 
-### 💭 The Challenge
-
-While a spreadsheet initially allowed for easy iteration of data organization options, it has since outgrown this purpose, leaving administrators in a long-term relationship with an improvised solution. It likewise creates difficulties for the catering staff who have trouble quickly scanning a spreadsheet while on the move with their smartphones.
-
-### 🍀 The Opportunity
-
-1. Increase the efficiency of Moho's catering staff by providing a mobile-friendly, intuitive solution for tracking events.
-2. Simplify the management process for administrators charged with documenting the event details.
-
 ### 🙋 User Stories
 
 This project was guided by the following [user stories](https://www.interaction-design.org/literature/topics/user-stories):
@@ -32,6 +23,15 @@ This project was guided by the following [user stories](https://www.interaction-
 - As a restaurant staff member, I want to be able to see the events for the day so that I can prepare for them.
 - As a server, I want to quickly access specific information about events from my phone so that I can provide the best service to my guests.
 - As an event administrator, I want a clear flow for submitting and distributing event information.
+
+### 💭 The Challenge
+
+Though a spreadsheet initially allowed for quick iterating of management flows for Moho events, it has outgrown this purpose and left administrators in a long-term relationship with an improvised solution. It likewise creates difficulties for the catering staff who have trouble quickly scanning a spreadsheet while on the move with their smartphones.
+
+### 🍀 The Opportunity
+
+1. Increase the efficiency of Moho's catering staff by providing a mobile-friendly, intuitive solution for tracking events.
+2. Simplify the management process for administrators charged with documenting the event details.
 
 ## 🚸 Code Challenge Limitations
 
