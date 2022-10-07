@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
 import TextInput from "../components/TextInput";
 import SubmitEvent from "../components/SubmitEvent";
+import MetaTags from "../components/MetaTags";
 
 const NewEvent = () => {
   // track form data
@@ -77,9 +78,7 @@ const NewEvent = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Créer un Evénement</title>
-      </Helmet>
+      <MetaTags title="Créer un Evénement" />
       <Typography color="primary.main" variant="h2">
         Créer un Evénement
       </Typography>

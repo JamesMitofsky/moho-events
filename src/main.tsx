@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/antonio";
 import { BrowserRouter } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import MetaTags from "./components/MetaTags";
 
 const theme = createTheme({
   typography: {
@@ -34,9 +35,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <HelmetProvider>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
-          <Helmet>
-            <title>Moho Events</title>
-          </Helmet>
+          <MetaTags title="Moho Events" />
           <App />
         </ThemeProvider>
       </BrowserRouter>

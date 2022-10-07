@@ -1,16 +1,13 @@
-import { useEffect, useState } from "react";
-import { GroupInfo, GroupStateObj } from "../typeUtils";
-
-import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
-
 import { useParams } from "react-router-dom";
+import MetaTags from "../components/MetaTags";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
+
   return (
     <>
-      Here's the ID:
-      {eventID}
+      <MetaTags title={eventID} />
+      Here's the ID: {eventID}
     </>
   );
 };
