@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import { getLocalGroups } from "../utils/manageLocalStorage";
-import { List, ListItem } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
 import PageTitle from "../components/PageTitle";
+import { GroupInfo } from "../typeUtils";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
@@ -13,9 +14,16 @@ const ViewEvent = () => {
       <PageTitle title={`Evénement: ${group?.associationName}`} />
       <List>
         {group &&
-          Object.values(group).map((value: string) => {
-            if (value === group.id) return null;
-            return <ListItem>{value}</ListItem>;
+          Object.keys(group).map((key: string) => {
+            if (group[key as keyof GroupInfo] === group.id) return null;
+            return (
+              <ListItem divider>
+                <ListItemText
+                  primary={key.toString()}
+                  secondary={group[key as keyof GroupInfo]}
+                />
+              </ListItem>
+            );
           })}
       </List>
     </>
