@@ -2,7 +2,6 @@ const MohoEventsLogo = ({ height }: { height: number }) => {
   return (
     <svg
       height={height}
-      width="fit-content"
       stroke-miterlimit="10"
       version="1.1"
       viewBox="0 0 338.144 124.94"
