@@ -11,7 +11,7 @@ const ViewEvent = () => {
 
   return (
     <>
-      <PageTitle title={`Evénement: ${group?.associationName}`} />
+      <PageTitle title={group.associationName} subtitle="événement" />
       <List>
         {group &&
           Object.keys(group).map((key: string) => {

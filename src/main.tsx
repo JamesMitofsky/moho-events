@@ -5,7 +5,7 @@ import "./index.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/antonio";
 import { BrowserRouter } from "react-router-dom";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
 import MetaTags from "./components/MetaTags";
 
 const theme = createTheme({
@@ -16,8 +16,11 @@ const theme = createTheme({
     },
     h2: {
       fontSize: 40,
-      marginTop: 5,
-      marginBottom: 30,
+    },
+    subtitle1: {
+      fontWeight: 100,
+      color: "rgba(0, 0, 0, 0.6)",
+      fontSize: 17,
     },
   },
   palette: {
