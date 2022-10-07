@@ -40,9 +40,9 @@ Some of these improvements are related to the nature of this code challenge. Her
 - I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks) to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
 - Although local storage and a cloud database could have co-existed beneficially, I wanted to prioritize my local storage in the time devoted to this task. In a team context, a database connection will be critical for the smooth functioning of an event management platform like this one.
 
-## 📝 Technical Documentation
+## ⚙️ Technical Documentation
 
-### Notes
+### 📝 Notes
 
 - Because React is a SPA, it will fail by default to correctly render any route other than the main path (`/`). This is because the server will not be able to find the correct file to serve. To solve this, I've included `vercel.json` to specify that Vercel's build step should redirect all routes to the main path while not changing the URL. This allows React Router to then read the route and handle routing.
 
