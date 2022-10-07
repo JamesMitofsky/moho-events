@@ -36,7 +36,7 @@ const Home = () => {
         <Welcome />
       ) : (
         <>
-          <PageTitle title="Liste des groupes" />
+          <PageTitle title="Liste des Groupes" />
           <EventList groups={groups} setGroups={setGroups} />
         </>
       )}
