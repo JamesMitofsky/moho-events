@@ -25,7 +25,7 @@ const ViewEvent = () => {
               icon={EventAvailableIcon}
             />
           </Box>
-          <Link component={RouterLink} to={`${path}/edddit`}>
+          <Link component={RouterLink} to={`${path}/edit`}>
             <EditIcon fontSize="small" /> Mettre à jour
           </Link>
           <List>
