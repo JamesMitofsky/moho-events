@@ -58,6 +58,7 @@ Some of these improvements are related to the nature of this code challenge. Her
 - [ ] Add form validation.
 - [ ] Prevent the React Router styles from overruling MUI styles.
 - [ ] Provide a more robust typing system code-side.
+- [ ] Add settings route to allow for a manual delete of locally stored events (as a user-friendly alternative to clearing local storage in case of debugging challenges).
 
 ### Desirables
 
