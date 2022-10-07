@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
-import MetaTags from "../components/MetaTags";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import { List, ListItem } from "@mui/material";
-import PageHeader from "../components/PageHeader";
+import PageTitle from "../components/PageTitle";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
@@ -11,7 +10,7 @@ const ViewEvent = () => {
 
   return (
     <>
-      <PageHeader title={`Evénement: ${group?.associationName}`} />
+      <PageTitle title={`Evénement: ${group?.associationName}`} />
       <List>
         {group &&
           Object.values(group).map((value: string) => {

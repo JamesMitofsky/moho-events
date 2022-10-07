@@ -4,7 +4,7 @@ import { GroupStateObj } from "../typeUtils";
 
 const GroupList = ({ groups, setGroups }: GroupStateObj) => {
   const renderedGroups = groups.map((group) => (
-    <EventTile key={group.id} {...group} setGroups={setGroups} />
+    <EventTile key={group.id} {...group} />
   ));
 
   return <List>{renderedGroups}</List>;

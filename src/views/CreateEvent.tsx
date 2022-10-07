@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import SubmitEvent from "../components/SubmitEvent";
 import AllTextInputs from "../components/AllTextInputs";
-import PageHeader from "../components/PageHeader";
+import PageTitle from "../components/PageTitle";
 
 const NewEvent = () => {
   // track form data
@@ -61,7 +61,7 @@ const NewEvent = () => {
 
   return (
     <>
-      <PageHeader title="Créer un Evénement" />
+      <PageTitle title="Créer un Evénement" />
       <Box
         component="form"
         sx={{

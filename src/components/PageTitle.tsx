@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import MetaTags from "./MetaTags";
 
-const PageHeader = ({ title }: { title: string }) => {
+const PageTitle = ({ title }: { title: string }) => {
   return (
     <>
       <MetaTags title={title} />
@@ -12,4 +12,4 @@ const PageHeader = ({ title }: { title: string }) => {
   );
 };
 
-export default PageHeader;
+export default PageTitle;

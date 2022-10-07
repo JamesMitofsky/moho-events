@@ -4,7 +4,6 @@ import { GroupInfo, GroupStateObj } from "../typeUtils";
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
 
 import EventList from "../components/GroupList";
-import AddGroupButton from "../components/AddGroupButton";
 
 type GroupStateArray = [
   groups: GroupInfo[],
@@ -31,12 +30,7 @@ const Home = () => {
     // push response to the group state
     setLocalGroups(groups);
   }, [groups]);
-  return (
-    <>
-      <EventList groups={groups} setGroups={setGroups} />
-      <AddGroupButton />
-    </>
-  );
+  return <EventList groups={groups} setGroups={setGroups} />;
 };
 
 export default Home;
