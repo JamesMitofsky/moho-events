@@ -12,7 +12,7 @@ Install dependencies, then run a development server.
 npm i && npm run dev
 ```
 
-## 🖼 Context
+## 🖼 Project Context
 
 Moho currently uses a Google Spreadsheet to create and internally manage events among the staff. This principally involves administrative staff creating events and the catering team reading event details throughout the day on their phones.
 
@@ -35,14 +35,22 @@ This project was guided by the following [user stories](https://www.interaction-
 
 ## 🚀 Next Steps / Improvements
 
-- Deploy either as a Statically Generated Site using a JAMstack approach or as a React Native app.
+### Priorities
 
-  - Deploy as a static site to a CDN like Vercel. Using Next.js with a build trigger could greatly increase the speed of the site. A build hook could be attached to any time a new event is submitted to a database, then leading to the site's automatic reconstruction. Though this would create a momentary inconsistency between the state of the site and the events submitted, event submissions are not so time sensitive that a two minute build step would be a problem.
-  - Deploying as React Native app would help conserve battery life on mobile devices and allow for the use of native features like push notifications, which could help the catering staff keep track of the many moving parts of an event.
+- [ ] Add form validation.
+- [ ] Prevent the React Router styles from overruling MUI styles.
+- [ ] Provide a more robust typing system code-side.
 
-- Add alternative ways of filtering and viewing groups. For example, a calendar view.
-- Add tests.
-- Use Google Firestore and Auth to secure a sharable database.
+### Desirables
+
+- [ ] Deploy either as a Statically Generated Site using a JAMstack approach or as a React Native app.
+
+  - [ ] Deploy as a static site to a CDN like Vercel. Using Next.js with a build trigger could greatly increase the speed of the site. A build hook could be attached to any time a new event is submitted to a database, then leading to the site's automatic reconstruction. Though this would create a momentary inconsistency between the state of the site and the events submitted, event submissions are not so time sensitive that a two minute build step would be a problem.
+  - [ ] Deploying as React Native app would help conserve battery life on mobile devices and allow for the use of native features like push notifications, which could help the catering staff keep track of the many moving parts of an event.
+
+- [ ] Add alternative ways of filtering and viewing groups. For example, a calendar view.
+- [ ] Add tests.
+- [ ] Use Google Firestore and Auth to secure a sharable database.
 
 ### 🚸 Code Challenge Limitations
 
@@ -50,3 +58,13 @@ Some of these improvements are related to the nature of this code challenge. Her
 
 - I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks) to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
 - Although local storage and a cloud database could have co-existed beneficially, I wanted to prioritize my local storage in the time devoted to this task. In a team context, a database connection will be critical for the smooth functioning of an event management platform like this one.
+
+## 📝 Technical Documentation
+
+### Notes
+
+- Because React is a SPA, it will fail by default to correctly render any route other than the main path (`/`). This is because the server will not be able to find the correct file to serve. To solve this, I've included `vercel.json` to specify that Vercel's build step should redirect all routes to the main path while not changing the URL. This allows React Router to then read the route and handle routing.
+
+### 📦 Resources
+
+- How to [add animations while using React Router 6](https://dev.to/fazliddin04/react-router-v6-animated-transitions-diy-3e6l)
