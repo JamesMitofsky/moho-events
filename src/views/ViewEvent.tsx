@@ -13,7 +13,7 @@ const ViewEvent = () => {
     <>
       {group && (
         <>
-          <PageTitle title={group.associationName} subtitle="événement" />
+          <PageTitle title={group.eventName} subtitle="événement" />
           <List>
             {group &&
               Object.keys(group).map((key: string) => {
