@@ -3,7 +3,7 @@ import { Container, Box } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
 import Home from "./views/LandingPage";
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ViewEvent from "./views/ViewEvent";
 import NoResponse from "./views/NoResponse";
 import NavBar from "./components/NavBar";
@@ -36,8 +36,7 @@ function App() {
           <Route path="evenement">
             <Route path=":eventID" element={<ViewEvent />} />
           </Route>
-          <Route path="*" element={<Navigate to="/404" />} />
-          <Route path="/404" element={<NoResponse />} />
+          <Route path="*" element={<NoResponse />} />
         </Routes>
       </Container>
       {location.pathname === "/" && <AddGroupButton />}
