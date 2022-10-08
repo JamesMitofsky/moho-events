@@ -6,6 +6,7 @@ import SubmitEvent from "../components/SubmitEvent";
 import AllTextInputs from "../components/AllTextInputs";
 import PageTitle from "../components/PageTitle";
 import { emptyFormState } from "../utils/globalVars";
+import ReturnHome from "../components/ReturnHome";
 
 const NewEvent = () => {
   // track form data
@@ -47,6 +48,7 @@ const NewEvent = () => {
 
   return (
     <>
+      <ReturnHome />
       <PageTitle title="Créer un Evénement" />
       <Box
         component="form"
