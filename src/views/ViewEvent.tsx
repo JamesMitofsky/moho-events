@@ -7,6 +7,7 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { v4 as uuidv4 } from "uuid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteTile from "../components/DeleteTile";
+import ReturnToLastPageBtn from "../components/ReturnToLastPageBtn";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
@@ -21,6 +22,7 @@ const ViewEvent = () => {
     <>
       {group && (
         <>
+          <ReturnToLastPageBtn />
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <PageTitle
               title={group.eventName}
