@@ -29,12 +29,8 @@ const SubmitEvent = ({
     setFormData({ ...emptyFormState, id: uuidv4() });
   };
 
-  const routeUserHome = () => {
-    navigate("/");
-  };
-
-  const routeUserBackToEvent = () => {
-    navigate(`/evenement/${formData.id}`);
+  const routeUser = (path: string) => {
+    navigate(path);
   };
 
   const formNotValid = (): boolean => {
@@ -61,7 +57,7 @@ const SubmitEvent = ({
     // push the new inclusive array to local storage
     setLocalGroups(existingGroups);
     clearOldFormData();
-    routeUserHome();
+    routeUser("/");
   };
 
   const updateEventInArray = () => {
@@ -72,7 +68,7 @@ const SubmitEvent = ({
 
     // push the new inclusive array to local storage
     clearOldFormData();
-    routeUserBackToEvent();
+    routeUser(`/evenement/${formData.id}`);
   };
 
   const handleClick: () => void =
