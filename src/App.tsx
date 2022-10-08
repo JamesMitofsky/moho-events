@@ -1,4 +1,3 @@
-import "./App.css";
 import { Container, Box } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
 import Home from "./views/LandingPage";

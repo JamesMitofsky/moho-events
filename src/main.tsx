@@ -9,27 +9,15 @@ import { HelmetProvider } from "react-helmet-async";
 import MetaTags from "./components/MetaTags";
 
 const theme = createTheme({
-  components: {
-    MuiListItem: {
-      styleOverrides: {
-        root: {
-          textDecoration: "none",
-          color: "inherit",
-          "&:hover": {
-            textDecoration: "none",
-            color: "rgb(241, 103, 96)",
-          },
-        },
-      },
-    },
-  },
   typography: {
+    fontFamily: ["sans-serif"].join(","),
     h1: {
       fontSize: 60,
       fontFamily: "'Antonio', sans-serif",
     },
     h2: {
       fontSize: 40,
+      fontFamily: "'Antonio', sans-serif",
     },
     subtitle1: {
       fontWeight: 100,

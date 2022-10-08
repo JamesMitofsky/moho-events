@@ -32,7 +32,8 @@ const ViewEvent = () => {
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Link component={RouterLink} to={`${path}/edit`}>
-              <EditIcon fontSize="small" /> Mettre à jour
+              <EditIcon fontSize="small" />
+              Mettre à jour
             </Link>
             <DeleteTile group={group} />
           </Box>
