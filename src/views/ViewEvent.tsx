@@ -1,6 +1,6 @@
 import { useParams, Link as RouterLink, useLocation } from "react-router-dom";
 import { getLocalGroups } from "../utils/manageLocalStorage";
-import { List, ListItem, ListItemText, Box, Link } from "@mui/material";
+import { List, ListItem, ListItemText, Box, Link, Button } from "@mui/material";
 import PageTitle from "../components/PageTitle";
 import { GroupInfo } from "../typeUtils";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
@@ -32,8 +32,12 @@ const ViewEvent = () => {
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Link component={RouterLink} to={`${path}/edit`}>
-              <EditIcon fontSize="small" />
-              Mettre à jour
+              <Button
+                variant="outlined"
+                startIcon={<EditIcon fontSize="small" />}
+              >
+                Mettre à jour
+              </Button>
             </Link>
             <DeleteTile group={group} />
           </Box>
