@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 
-const ReturnToLastPageBtn = () => {
+const ReturnHome = () => {
   const navigate = useNavigate();
   const routeUser = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
@@ -14,9 +14,9 @@ const ReturnToLastPageBtn = () => {
       onClick={routeUser}
       aria-label="return to last page"
     >
-      Retourner
+      Retourner à l'accueil
     </Button>
   );
 };
 
-export default ReturnToLastPageBtn;
+export default ReturnHome;

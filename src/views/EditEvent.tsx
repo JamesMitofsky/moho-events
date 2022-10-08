@@ -6,6 +6,7 @@ import { useState } from "react";
 import SubmitEvent from "../components/SubmitEvent";
 import { useLocation } from "react-router-dom";
 import { emptyFormState } from "../utils/globalVars";
+import ReturnHome from "../components/ReturnHome";
 
 const EditEvent = () => {
   // get id from URL
@@ -28,6 +29,7 @@ const EditEvent = () => {
 
   return (
     <>
+      <ReturnHome />
       <PageTitle title="Modifier un événement" />
       <AllTextInputs formData={group} updateFormData={updateFormData} />
       <SubmitEvent
