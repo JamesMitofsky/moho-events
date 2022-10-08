@@ -38,4 +38,17 @@ const updateLocalGroup = (group: GroupInfo) => {
   setLocalGroups(filteredGroups);
 };
 
-export { getLocalGroups, setLocalGroups, updateLocalGroup };
+const deleteGroup = (group: GroupInfo) => {
+  // get all groups
+  const groups: GroupInfo[] = getLocalGroups();
+
+  // filter out the group with a matching id
+  const filteredGroups: GroupInfo[] = groups.filter(
+    (groupItem: GroupInfo) => groupItem.id !== group.id
+  );
+
+  // set local groups using the filtered list
+  setLocalGroups(filteredGroups);
+};
+
+export { getLocalGroups, setLocalGroups, updateLocalGroup, deleteGroup };

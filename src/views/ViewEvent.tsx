@@ -6,11 +6,14 @@ import { GroupInfo } from "../typeUtils";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { v4 as uuidv4 } from "uuid";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteTile from "../components/DeleteTile";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
 
-  const group = getLocalGroups().find((group) => group.id === eventID);
+  const group: GroupInfo | undefined = getLocalGroups().find(
+    (group) => group.id === eventID
+  );
 
   const path = useLocation().pathname;
 
@@ -25,9 +28,13 @@ const ViewEvent = () => {
               icon={EventAvailableIcon}
             />
           </Box>
-          <Link component={RouterLink} to={`${path}/edit`}>
-            <EditIcon fontSize="small" /> Mettre à jour
-          </Link>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Link component={RouterLink} to={`${path}/edit`}>
+              <EditIcon fontSize="small" /> Mettre à jour
+            </Link>
+            <DeleteTile group={group} />
+          </Box>
+
           <List>
             {group &&
               Object.keys(group).map((key: string) => {
