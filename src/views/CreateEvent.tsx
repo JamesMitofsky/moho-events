@@ -1,26 +1,14 @@
 import { Box } from "@mui/material";
-import { GroupInfo, EmptyForm } from "../typeUtils";
+import { GroupInfo } from "../typeUtils";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import SubmitEvent from "../components/SubmitEvent";
 import AllTextInputs from "../components/AllTextInputs";
 import PageTitle from "../components/PageTitle";
+import { emptyFormState } from "../utils/globalVars";
 
 const NewEvent = () => {
   // track form data
-  const emptyFormState: EmptyForm = {
-    associationName: "",
-    eventName: "",
-    eventType: "",
-    numberOfQuote: "",
-    category: "",
-    soldBy: "",
-    comments: "",
-    companyName: "",
-    contactName: "",
-    telephoneNumber: "",
-    email: "",
-  };
   const [formData, setFormData] = useState<GroupInfo>({
     ...emptyFormState,
     id: uuidv4(),

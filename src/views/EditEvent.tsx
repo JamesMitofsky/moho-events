@@ -1,10 +1,11 @@
 import AllTextInputs from "../components/AllTextInputs";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import PageTitle from "../components/PageTitle";
-import { GroupInfo, EmptyForm } from "../typeUtils";
+import { GroupInfo } from "../typeUtils";
 import { useState } from "react";
 import SubmitEvent from "../components/SubmitEvent";
 import { useLocation } from "react-router-dom";
+import { emptyFormState } from "../utils/globalVars";
 
 const EditEvent = () => {
   // get id from URL
@@ -23,20 +24,6 @@ const EditEvent = () => {
       ...prevGroup,
       [e.target.name]: e.target.value,
     }));
-  };
-
-  const emptyFormState: EmptyForm = {
-    associationName: "",
-    eventName: "",
-    eventType: "",
-    numberOfQuote: "",
-    category: "",
-    soldBy: "",
-    comments: "",
-    companyName: "",
-    contactName: "",
-    telephoneNumber: "",
-    email: "",
   };
 
   return (
