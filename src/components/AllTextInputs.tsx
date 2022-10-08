@@ -1,5 +1,6 @@
 import TextInput from "./TextInput";
 import { GroupInfo, GroupInfoFieldNames } from "../typeUtils";
+import { Box } from "@mui/material";
 
 interface Props {
   formData: GroupInfo;
@@ -24,7 +25,7 @@ const AllTextInputs = ({ formData, updateFormData }: Props) => {
   };
 
   return (
-    <>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       {Object.keys(fieldNames).map((key) => {
         // if the key is a date object, return a date picker
         if (key === "startTime" || key === "endTime" || key === "telephone")
@@ -40,7 +41,7 @@ const AllTextInputs = ({ formData, updateFormData }: Props) => {
           />
         );
       })}
-    </>
+    </Box>
   );
 };
 

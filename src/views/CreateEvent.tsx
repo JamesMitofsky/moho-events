@@ -66,7 +66,6 @@ const NewEvent = () => {
           m: 1,
           display: "flex",
           flexDirection: "column",
-          gap: 3,
         }}
         noValidate
         autoComplete="off"
