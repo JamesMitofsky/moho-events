@@ -75,6 +75,7 @@ const NewEvent = () => {
           emptyFormState={emptyFormState}
           formData={formData}
           setFormData={setFormData}
+          updateOrAdd="add"
         />
       </Box>
     </>

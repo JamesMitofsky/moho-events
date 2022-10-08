@@ -43,11 +43,12 @@ const EditEvent = () => {
     <>
       <PageTitle title="Modifier un événement" />
       <AllTextInputs formData={group} updateFormData={updateFormData} />
-      {/* <SubmitEvent
+      <SubmitEvent
         emptyFormState={emptyFormState}
-        formData={formData}
-        setFormData={setFormData}
-      /> */}
+        formData={group}
+        setFormData={setGroup}
+        updateOrAdd="update"
+      />
     </>
   );
 };
