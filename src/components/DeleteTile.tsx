@@ -14,6 +14,13 @@ const DeleteTile = ({ group }: Props) => {
     navigate(path);
   };
   const deleteTile = () => {
+    // check with user to make sure they meant to delete this event
+    const deleteConfirmed: boolean = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer cet événement ?"
+    );
+    if (!deleteConfirmed) return;
+
+    // if the user was sure, delete event and navigate home
     deleteGroup(group);
     routeUser("/");
   };
