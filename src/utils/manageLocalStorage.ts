@@ -1,4 +1,4 @@
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo } from "./globalTypes";
 
 const getLocalGroups = (): GroupInfo[] | [] => {
   // push local storage to the group state
