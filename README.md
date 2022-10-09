@@ -33,12 +33,23 @@ Though a spreadsheet initially allowed for quick iterating of management flows f
 1. Increase the efficiency of Moho's catering staff by providing a mobile-friendly, intuitive solution for tracking events.
 2. Simplify the management process for administrators charged with documenting the event details.
 
-## 🚸 Code Challenge Limitations
+## 🚸 Code Challenge
 
-Some of these improvements are related to the nature of this code challenge. Here are a few of the limitations I created for myself or considered as implied:
+This project meets the following challenge requirements:
+
+- 2 views
+- One form to add and store data; another form to edit them
+- The possibility to delete all elements displayed
+- Data storage should be done locally in the App
+- The App should be user-friendly and look nice
+- The concept should be original and different than a standard App – the kind of App that the client will buy immediately!
+
+Here are a few of the limitations I created for myself or considered as implied for the code challenge:
 
 - I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks) to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
-- Although local storage and a cloud database could have co-existed beneficially, I wanted to prioritize my local storage in the time devoted to this task. In a team context, a database connection will be critical for the smooth functioning of an event management platform like this one.
+- Although local storage and a cloud database could have co-existed beneficially, I prioritized developing local storage during what time I had. In a real world context, though, a database connection will be crucial for team communication.
+
+This project was submitted at 4:08pm, October 8th of 2022. The state of the code at this time can be found at commit ID `7f4489c`.
 
 ## ⚙️ Technical Documentation
 
