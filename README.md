@@ -20,9 +20,11 @@ Moho currently uses a Google Spreadsheet to create and internally manage events 
 
 This project was guided by the following [user stories](https://www.interaction-design.org/literature/topics/user-stories):
 
-- As a restaurant staff member, I want to be able to see the events for the day so I can prepare for them.
-- As a server, I want to quickly access specific information about events from my phone so I can know the time, place, and group that needs to be served next.
-- As an event administrator, I want a clear flow for event submission and distribution so I can easily document and share my work.
+> 🧑‍🍳 As a restaurant staff member, I want to be able to see the events for the day so I can prepare for them.
+
+> 🤵 As a server, I want to quickly access specific information about events from my phone so I can know the time, place, and group that needs to be served next.
+
+> 🧑‍💼 As an event administrator, I want a clear flow for event submission and distribution so I can easily document and share my work.
 
 ### 💭 The Challenge
 
