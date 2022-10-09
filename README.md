@@ -35,19 +35,23 @@ Though a spreadsheet initially allowed for quick iterating of management flows f
 
 ## 🚸 Code Challenge
 
-This project meets the following challenge requirements:
+This repo is the result of a code challenge and follows these requirements:
 
-- 2 views
-- One form to add and store data; another form to edit them
-- The possibility to delete all elements displayed
-- Data storage should be done locally in the App
-- The App should be user-friendly and look nice
-- The concept should be original and different than a standard App – the kind of App that the client will buy immediately!
+- [x] 2 views
+- [x] One form to add and store data; another form to edit them
+- [x] The possibility to delete all elements displayed
+- [x] Data storage should be done locally in the App
+- [x] The App should be user-friendly and look nice
+- [x] The concept should be original and different than a standard App – the kind of App that the client will buy immediately!
+
+### Limitations
 
 Here are a few of the limitations I created for myself or considered as implied for the code challenge:
 
 - I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks) to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
 - Although local storage and a cloud database could have co-existed beneficially, I prioritized developing local storage during what time I had. In a real world context, though, a database connection will be crucial for team communication.
+
+### Official Submission
 
 This project was submitted at 4:08pm, October 8th of 2022. The state of the code at this time can be found at commit ID `7f4489c`.
 
