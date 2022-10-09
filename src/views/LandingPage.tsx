@@ -1,35 +1,16 @@
-import { useEffect, useState } from "react";
-import { GroupInfo, GroupStateObj } from "../utils/globalTypes";
-import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
+import { GroupInfo } from "../utils/globalTypes";
 import EventList from "../components/GroupList";
 import Welcome from "../components/Welcome";
 import PageTitle from "../components/PageTitle";
-
-type GroupStateArray = [
-  groups: GroupInfo[],
-  setGroups: GroupStateObj["setGroups"]
-];
+import { useStorageState } from "react-storage-hooks";
 
 const Home = () => {
-  // store all group objects in this highest level array
-  const [groups, setGroups]: GroupStateArray = useState<GroupInfo[]>([]);
-  // track state of local storage to avoid overwriting it
-  const [localChecked, setLocalChecked] = useState<boolean>(false);
+  const [groups, setGroups, writeError] = useStorageState<GroupInfo[]>(
+    localStorage,
+    import.meta.env.VITE_LOCALLY_STORED_GROUPS,
+    []
+  );
 
-  // on page load, push groups to rendered state
-  useEffect(() => {
-    // push response to the group state
-    setGroups(getLocalGroups());
-    setLocalChecked(true);
-  }, []);
-
-  // as a secondary effect, when the group state changes, push to local in the background
-  useEffect(() => {
-    if (!localChecked) return;
-
-    // push response to the group state
-    setLocalGroups(groups);
-  }, [groups]);
   return (
     <>
       {groups.length === 0 ? (
