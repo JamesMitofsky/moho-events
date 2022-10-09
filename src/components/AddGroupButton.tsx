@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Link } from "react-router-dom";
 
@@ -13,9 +13,9 @@ const AddGroupButton = () => {
         marginRight: 2,
       }}
     >
-      <Link to="creer">
+      <IconButton component={Link} to="creer" aria-label="add group">
         <AddCircleIcon sx={{ fontSize: 70, color: "primary.main" }} />
-      </Link>
+      </IconButton>
     </Box>
   );
 };
