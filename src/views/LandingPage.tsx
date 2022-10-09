@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GroupInfo, GroupStateObj } from "../typeUtils";
+import { GroupInfo, GroupStateObj } from "../utils/globalTypes";
 import { getLocalGroups, setLocalGroups } from "../utils/manageLocalStorage";
 import EventList from "../components/GroupList";
 import Welcome from "../components/Welcome";

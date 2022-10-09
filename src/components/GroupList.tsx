@@ -1,5 +1,5 @@
 import EventTile from "./GroupTile";
-import { GroupStateObj } from "../typeUtils";
+import { GroupStateObj } from "../utils/globalTypes";
 import Grid from "@mui/material/Grid"; // Grid version 2
 
 const GroupList = ({ groups }: GroupStateObj) => {

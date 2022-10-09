@@ -1,5 +1,5 @@
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo } from "../utils/globalTypes";
 import { Link as RouterLink } from "react-router-dom";
 
 const GroupTile = ({ eventName, associationName, id }: GroupInfo) => {

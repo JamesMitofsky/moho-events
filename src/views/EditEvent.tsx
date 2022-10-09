@@ -1,7 +1,7 @@
 import AllTextInputs from "../components/AllTextInputs";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import PageTitle from "../components/PageTitle";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo } from "../utils/globalTypes";
 import { useState } from "react";
 import SubmitEvent from "../components/SubmitEvent";
 import { useLocation } from "react-router-dom";

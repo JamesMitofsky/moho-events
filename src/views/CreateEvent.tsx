@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo } from "../utils/globalTypes";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import SubmitEvent from "../components/SubmitEvent";

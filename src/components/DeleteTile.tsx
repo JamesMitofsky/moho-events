@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { GroupInfo } from "../typeUtils";
+import { GroupInfo } from "../utils/globalTypes";
 import { deleteGroup } from "../utils/manageLocalStorage";
 import { useNavigate } from "react-router-dom";
 

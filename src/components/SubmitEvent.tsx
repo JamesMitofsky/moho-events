@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { GroupInfo, EmptyForm } from "../typeUtils";
+import { GroupInfo, EmptyForm } from "../utils/globalTypes";
 import {
   getLocalGroups,
   setLocalGroups,
