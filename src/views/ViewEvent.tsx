@@ -2,12 +2,13 @@ import { useParams, Link as RouterLink, useLocation } from "react-router-dom";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import { List, ListItem, ListItemText, Box, Link, Button } from "@mui/material";
 import PageTitle from "../components/PageTitle";
-import { GroupInfo } from "../utils/globalTypes";
+import { GroupInfo, GroupInfoFieldNames } from "../utils/globalTypes";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { v4 as uuidv4 } from "uuid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteTile from "../components/DeleteTile";
 import ReturnHome from "../components/ReturnHome";
+import { fieldNames } from "../utils/globalVars";
 
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
@@ -50,7 +51,9 @@ const ViewEvent = () => {
                   <ListItem key={uuidv4()} divider>
                     <ListItemText
                       primary={group[key as keyof GroupInfo]}
-                      secondary={key.toString()}
+                      secondary={fieldNames[
+                        key as keyof GroupInfoFieldNames
+                      ].toString()}
                     />
                   </ListItem>
                 );
