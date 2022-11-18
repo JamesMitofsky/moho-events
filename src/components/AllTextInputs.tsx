@@ -1,31 +1,28 @@
 import TextInput from "./TextInput";
-import { GroupInfo, GroupInfoFieldNames } from "../utils/globalTypes";
 import { Box } from "@mui/material";
-import { fieldNames } from "../utils/globalVars";
+import { groupedFieldLabels } from "../utils/globalVars";
 
 interface Props {
-  formData: GroupInfo;
+  formData: any;
   updateFormData: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AllTextInputs = ({ formData, updateFormData }: Props) => {
+const AllTextInputs = ({ updateFormData }: Props) => {
+  const inputFields = Object.keys(groupedFieldLabels).map((key) => {
+    return (
+      <TextInput
+        key={key}
+        label={groupedFieldLabels[key as keyof typeof groupedFieldLabels]}
+        value={""}
+        name={key}
+        onChange={updateFormData}
+      />
+    );
+  });
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-      {Object.keys(fieldNames).map((key) => {
-        // if the key is a date object, return a date picker
-        if (key === "startTime" || key === "endTime" || key === "telephone")
-          return;
-
-        return (
-          <TextInput
-            key={key}
-            label={fieldNames[key as keyof GroupInfoFieldNames]}
-            value={formData[key as keyof GroupInfo]}
-            name={key}
-            onChange={updateFormData}
-          />
-        );
-      })}
+      {inputFields}
     </Box>
   );
 };

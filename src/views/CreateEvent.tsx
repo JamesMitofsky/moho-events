@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { GroupInfo } from "../utils/globalTypes";
+
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import SubmitEvent from "../components/SubmitEvent";
@@ -10,7 +10,7 @@ import ReturnHome from "../components/ReturnHome";
 import { useStorageState } from "react-storage-hooks";
 
 const NewEvent = () => {
-  const [formData, setFormData, writeError] = useStorageState<GroupInfo>(
+  const [formData, setFormData, writeError] = useStorageState(
     localStorage,
     import.meta.env.VITE_UNFINISHED_GROUP,
     { ...emptyFormState, id: uuidv4() }

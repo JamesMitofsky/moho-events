@@ -1,6 +1,55 @@
-import { EmptyForm, GroupInfoFieldNames } from "./globalTypes";
+const societyLabels = {
+  associationName: "Nom de la société",
+  category: "Catégorie",
+  eventName: "Nom de l'événement",
+  eventType: "Type d'événement",
+  numberOfQuote: "Nombre de devis",
+  soldBy: "Vendu par",
+  societyComments: "Commentaires de société",
+};
+const contactLabels = {
+  companyName: "Nom de la société",
+  contactName: "Nom de la personne",
+  telephoneNumber: "Numéro de téléphone",
+  email: "Email",
+  contactComments: "Commentaires de contact",
+};
 
-const emptyFormState: EmptyForm = {
+const programLabels = {
+  numberOfPeople: "Nombre de pax",
+  organiserArrivalTime: "Arrivée organisateurs",
+  participantArrivalTime: "Arrivée participants",
+  welcomeCoffee: "Café d'accueil",
+  firstMeeting: "Réunion / Atelier",
+  lunch: "Déjeuner",
+  secondMeeting: "Réunion / Atelier",
+  departureTime: "Heure de départ",
+  programComments: "Commentaires de programme",
+};
+
+const signageLabels = {
+  lobby: "Tableau d'accueil",
+  otherInfo: "Autres informations",
+  signageComments: "Commentaires de signalétique",
+};
+
+const wifiAccessLabels = {
+  username: "Identifiant",
+  password: "Mot de passe",
+};
+
+// export all objects in an array
+const groupedFieldLabels = {
+  ...societyLabels,
+  ...contactLabels,
+  ...programLabels,
+  ...signageLabels,
+  ...wifiAccessLabels,
+};
+
+const resturantFields = {};
+
+const emptyFormState = {
   associationName: "",
   eventName: "",
   eventType: "",
@@ -14,20 +63,4 @@ const emptyFormState: EmptyForm = {
   email: "",
 };
 
-const fieldNames: GroupInfoFieldNames = {
-  associationName: "Nom de l'association",
-  eventName: "Nom de l'événement",
-  eventType: "Type d'événement",
-  numberOfQuote: "Nombre de devis",
-  category: "Catégorie",
-  soldBy: "Vendu par",
-  comments: "Commentaires",
-  companyName: "Nom de l'entreprise",
-  contactName: "Nom du contact",
-  telephoneNumber: "Numéro de téléphone",
-  email: "Email",
-  startTime: "Date de début",
-  endTime: "Date de fin",
-};
-
-export { emptyFormState, fieldNames };
+export { groupedFieldLabels, emptyFormState };

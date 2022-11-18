@@ -1,38 +1,42 @@
-export interface GroupInfo {
+// new types
+interface dateAndTime {
+  date: string;
+  time: Date;
+}
+export interface SocietyInputs {
   associationName: string;
+  category: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: string;
-  category: string;
+  numberOfQuote: number;
   soldBy: string;
   comments: string;
+}
+
+export interface ContactInputs {
   companyName: string;
   contactName: string;
-  telephoneNumber: string;
+  telephoneNumber: number;
   email: string;
-  id: string;
+  comments: string;
 }
 
-export interface GroupInfoFieldNames
-  extends Omit<
-    GroupInfo,
-    "numberOfQuote" | "telephoneNumber" | "startTime" | "endTime" | "id"
-  > {
-  numberOfQuote: string;
-  telephoneNumber: string;
-  companyName: string;
-  contactName: string;
-  email: string;
-  startTime: string;
-  endTime: string;
+export interface ProgramInputs {
+  numberOfPeople: number;
+  organiserArrivalTime: dateAndTime;
+  participantArrivalTime: dateAndTime;
+  welcomeCoffee: dateAndTime;
+  firstMeetingLocation: dateAndTime;
+  lunch: dateAndTime;
+  secondMeetingLocation: dateAndTime;
+  departureTime: Date;
+  comments: string;
 }
 
-export type EmptyForm = Omit<GroupInfo, "id">;
-
-export interface DispatchSetEvents {
-  setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;
-}
-export interface GroupStateObj {
-  groups: GroupInfo[];
-  setGroups: DispatchSetEvents["setGroups"];
-}
+// export interface DispatchSetEvents {
+//   setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;
+// }
+// export interface GroupStateObj {
+//   groups: GroupInfo[];
+//   setGroups: DispatchSetEvents["setGroups"];
+// }
