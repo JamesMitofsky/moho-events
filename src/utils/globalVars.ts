@@ -1,4 +1,5 @@
 const societyLabels = {
+  labelGroup: "Société",
   associationName: "Nom de la société",
   category: "Catégorie",
   eventName: "Nom de l'événement",
@@ -8,6 +9,7 @@ const societyLabels = {
   societyComments: "Commentaires de société",
 };
 const contactLabels = {
+  labelGroup: "Contact",
   companyName: "Nom de la société",
   contactName: "Nom de la personne",
   telephoneNumber: "Numéro de téléphone",
@@ -16,6 +18,7 @@ const contactLabels = {
 };
 
 const programLabels = {
+  labelGroup: "Programme",
   numberOfPeople: "Nombre de pax",
   organiserArrivalTime: "Arrivée organisateurs",
   participantArrivalTime: "Arrivée participants",
@@ -28,24 +31,26 @@ const programLabels = {
 };
 
 const signageLabels = {
+  labelGroup: "Signalétique",
   lobby: "Tableau d'accueil",
   otherInfo: "Autres informations",
   signageComments: "Commentaires de signalétique",
 };
 
 const wifiAccessLabels = {
+  labelGroup: "Wifi Accés",
   username: "Identifiant",
   password: "Mot de passe",
 };
 
 // export all objects in an array
-const groupedFieldLabels = {
-  ...societyLabels,
-  ...contactLabels,
-  ...programLabels,
-  ...signageLabels,
-  ...wifiAccessLabels,
-};
+const groupedFieldLabels = [
+  societyLabels,
+  contactLabels,
+  programLabels,
+  signageLabels,
+  wifiAccessLabels,
+];
 
 const resturantFields = {};
 

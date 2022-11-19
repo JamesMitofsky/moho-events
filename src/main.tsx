@@ -19,6 +19,10 @@ const theme = createTheme({
       fontSize: 40,
       fontFamily: "'Antonio', sans-serif",
     },
+    h3: {
+      fontSize: 30,
+      fontFamily: "'Antonio', sans-serif",
+    },
     subtitle1: {
       fontWeight: 100,
       color: "rgba(0, 0, 0, 0.6)",
