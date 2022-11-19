@@ -7,14 +7,14 @@ interface Props {
   updateFormData: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AllTextInputs = ({ updateFormData }: Props) => {
+const AllTextInputs = ({ formData, updateFormData }: Props) => {
   const inputFields = groupedFieldLabels.map((group) => {
     const groupOfInputs = Object.keys(group).map((fieldKey) => {
       if (fieldKey === "labelGroup") return null;
       return (
         <TextInput
           label={group[fieldKey as keyof typeof group]}
-          value={""}
+          value={formData[fieldKey as keyof typeof group]}
           name={fieldKey}
           onChange={updateFormData}
         />
