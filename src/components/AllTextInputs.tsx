@@ -8,7 +8,9 @@ interface Props {
 }
 
 const AllTextInputs = ({ formData, updateFormData }: Props) => {
+  // filter through all field groupings
   const inputFields = groupedFieldLabels.map((group) => {
+    // for each field grouping, create input fields
     const groupOfInputs = Object.keys(group).map((fieldKey) => {
       if (fieldKey === "labelGroup") return null;
       return (
@@ -20,12 +22,16 @@ const AllTextInputs = ({ formData, updateFormData }: Props) => {
         />
       );
     });
+
+    // taking this new input fields from the current grouping, add a header
     const groupOfInputsWithHeader = (
       <>
         <Typography variant="h3">{group.labelGroup}</Typography>
         {groupOfInputs}
       </>
     );
+
+    // reader the input fields with their header
     return groupOfInputsWithHeader;
   });
 
