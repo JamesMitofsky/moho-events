@@ -29,20 +29,6 @@ const AllTextInputs = ({ formData, updateFormData }: Props) => {
     return groupOfInputsWithHeader;
   });
 
-  // const something = Object.keys(groupedFieldLabels).map((key) => {
-  //   console.log(key);
-
-  //   return (
-  //     <TextInput
-  //       key={key}
-  //       label={groupedFieldLabels[key as keyof typeof groupedFieldLabels]}
-  //       value={""}
-  //       name={key}
-  //       onChange={updateFormData}
-  //     />
-  //   );
-  // });
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       {inputFields}
