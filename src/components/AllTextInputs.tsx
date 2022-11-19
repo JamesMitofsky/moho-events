@@ -1,6 +1,7 @@
 import TextInput from "./TextInput";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { groupedFieldLabels } from "../utils/globalVars";
+import InputGroup from "./InputGroup";
 
 interface Props {
   formData: any;
@@ -8,11 +9,12 @@ interface Props {
 }
 
 const AllTextInputs = ({ formData, updateFormData }: Props) => {
-  // filter through all field groupings
-  const inputFields = groupedFieldLabels.map((group) => {
-    // for each field grouping, create input fields
-    const groupOfInputs = Object.keys(group).map((fieldKey) => {
+  const createTextInputs = (group: {}) => {
+    return Object.keys(group).map((fieldKey) => {
+      // exclude the header property from being rendered as a text input
       if (fieldKey === "labelGroup") return null;
+
+      // filter the inputs according to their type (expecting Date, string, or number)
       return (
         <TextInput
           label={group[fieldKey as keyof typeof group]}
@@ -22,17 +24,15 @@ const AllTextInputs = ({ formData, updateFormData }: Props) => {
         />
       );
     });
+  };
+
+  // filter through all field groupings
+  const inputFields = groupedFieldLabels.map((group) => {
+    // for each field grouping, create input fields
+    const inputsOfGroup = createTextInputs(group);
 
     // taking this new input fields from the current grouping, add a header
-    const groupOfInputsWithHeader = (
-      <>
-        <Typography variant="h3">{group.labelGroup}</Typography>
-        {groupOfInputs}
-      </>
-    );
-
-    // reader the input fields with their header
-    return groupOfInputsWithHeader;
+    return <InputGroup header={group.labelGroup}>{inputsOfGroup}</InputGroup>;
   });
 
   return (
