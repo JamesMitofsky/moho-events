@@ -23,9 +23,9 @@ const programLabels = {
   organiserArrivalTime: "Arrivée organisateurs",
   participantArrivalTime: "Arrivée participants",
   welcomeCoffee: "Café d'accueil",
-  firstMeeting: "Réunion / Atelier",
+  firstMeeting: "Premier Réunion / Atelier",
   lunch: "Déjeuner",
-  secondMeeting: "Réunion / Atelier",
+  secondMeeting: "Deuxième Réunion / Atelier",
   departureTime: "Heure de départ",
   programComments: "Commentaires de programme",
 };
