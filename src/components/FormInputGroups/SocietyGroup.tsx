@@ -7,7 +7,7 @@ import { PaddedChildren } from "../PaddedChildren";
 interface Props extends SocietyInputs {
   onChange: (
     e: React.ChangeEvent<HTMLInputElement>,
-    inputGroup: string
+    inputGroup: "society" | "contact" | "program" | "wifi"
   ) => void;
 }
 
