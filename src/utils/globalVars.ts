@@ -6,7 +6,7 @@ export enum societyLabels {
   eventType = "Type d'événement",
   numberOfQuote = "Nombre de devis",
   soldBy = "Vendu par",
-  societyComments = "Commentaires de société",
+  comments = "Commentaires de société",
 }
 
 export enum contactLabels {
@@ -15,7 +15,7 @@ export enum contactLabels {
   contactName = "Nom de la personne",
   telephoneNumber = "Numéro de téléphone",
   email = "Email",
-  contactComments = "Commentaires de contact",
+  comments = "Commentaires de contact",
 }
 
 export enum programLabels {
@@ -28,14 +28,14 @@ export enum programLabels {
   lunch = "Déjeuner",
   secondMeeting = "Deuxième Réunion / Atelier",
   departureTime = "Heure de départ",
-  programComments = "Commentaires de programme",
+  comments = "Commentaires de programme",
 }
 
 export enum signageLabels {
   labelGroup = "Signalétique",
   lobby = "Tableau d'accueil",
   otherInfo = "Autres informations",
-  signageComments = "Commentaires de signalétique",
+  comments = "Commentaires de signalétique",
 }
 
 export enum wifiAccessLabels {
