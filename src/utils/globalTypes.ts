@@ -1,8 +1,10 @@
-// new types
-interface dateAndTime {
-  date: string;
-  time: Date;
+// types used locally within this global types file
+interface timeAndPlace {
+  dateAndTime: Date;
+  place: "accueil" | "atrium" | "somewhere else" | "";
 }
+
+// input types
 export interface SocietyInputs {
   associationName: string;
   category: string;
@@ -23,20 +25,18 @@ export interface ContactInputs {
 
 export interface ProgramInputs {
   numberOfPeople: number;
-  organiserArrivalTime: dateAndTime;
-  participantArrivalTime: dateAndTime;
-  welcomeCoffee: dateAndTime;
-  firstMeetingLocation: dateAndTime;
-  lunch: dateAndTime;
-  secondMeetingLocation: dateAndTime;
+  organiserArrivalTime: timeAndPlace;
+  participantArrivalTime: timeAndPlace;
+  welcomeCoffee: timeAndPlace;
+  firstMeetingLocation: timeAndPlace;
+  lunch: timeAndPlace;
+  secondMeetingLocation: timeAndPlace;
   departureTime: Date;
   comments: string;
 }
+export interface WifiInputs {
+  username: string;
+  password: string;
+}
 
-// export interface DispatchSetEvents {
-//   setGroups: React.Dispatch<React.SetStateAction<GroupInfo[]>>;
-// }
-// export interface GroupStateObj {
-//   groups: GroupInfo[];
-//   setGroups: DispatchSetEvents["setGroups"];
-// }
+// export interface AllInputs = {...SocietyInputs; ContactInputs & ProgramInputs};

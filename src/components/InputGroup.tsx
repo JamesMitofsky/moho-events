@@ -1,15 +1,14 @@
 import { Typography } from "@mui/material";
 
 interface Props {
-  header: string;
-  children: React.ReactNode;
+  group: {};
 }
 
-const InputGroup = ({ header, children }: Props) => {
+const InputGroup = ({ group }: Props) => {
   return (
     <>
-      <Typography variant="h3">{header}</Typography>
-      {children}
+      <Typography variant="h3">nothing much</Typography>
+      hmmm okay
     </>
   );
 };

@@ -1,4 +1,4 @@
-import AllTextInputs from "../components/AllTextInputs";
+import AllTextInputs from "../components/AllInputs";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import PageTitle from "../components/PageTitle";
 import { GroupInfo } from "../utils/globalTypes";
