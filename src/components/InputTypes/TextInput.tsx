@@ -3,12 +3,13 @@ import { TextField } from "@mui/material";
 interface Props {
   label: string;
   value: string | number;
+  name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const TextInput = ({ label, value, onChange }: Props) => {
+const TextInput = ({ label, value, name, onChange }: Props) => {
   return (
-    <TextField label={label} name={label} value={value} onChange={onChange} />
+    <TextField label={label} name={name} value={value} onChange={onChange} />
   );
 };
 

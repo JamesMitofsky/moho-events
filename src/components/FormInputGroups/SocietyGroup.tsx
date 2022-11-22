@@ -5,47 +5,62 @@ import TextInput from "../InputTypes/TextInput";
 import { PaddedChildren } from "../PaddedChildren";
 
 interface Props extends SocietyInputs {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    inputGroup: string
+  ) => void;
 }
 
 export const SocietyGroup = (props: Props) => {
+  // create local function to catch form update, indicating group origin
+  const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    return props.onChange(e, "society");
+  };
+
   return (
     <PaddedChildren padding={2}>
       <Typography variant="h3">Société</Typography>
       <TextInput
         label={societyLabels.associationName}
         value={props.associationName}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="associationName"
       />
       <TextInput
         label={societyLabels.category}
         value={props.category}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="category"
       />
       <TextInput
         label={societyLabels.eventName}
         value={props.eventName}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="eventName"
       />
       <TextInput
         label={societyLabels.eventType}
         value={props.eventType}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="eventType"
       />
       <TextInput
         label={societyLabels.numberOfQuote}
         value={props.numberOfQuote}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="numberOfQuote"
       />
       <TextInput
         label={societyLabels.soldBy}
         value={props.soldBy}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="soldBy"
       />
       <TextInput
         label={societyLabels.comments}
         value={props.comments}
-        onChange={props.onChange}
+        onChange={updateFormData}
+        name="comments"
       />
     </PaddedChildren>
   );
