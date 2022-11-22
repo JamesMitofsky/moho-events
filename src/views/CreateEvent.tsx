@@ -91,6 +91,25 @@ const NewEvent = () => {
     emptyForm
   );
 
+  const updateForm = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    inputGroup: "society" | "contact" | "program" | "wifi"
+  ) => {
+    setForm((prevForm) => {
+      return {
+        // spread original form
+        ...prevForm,
+        // select the group being updated
+        [inputGroup]: {
+          // spread the original group
+          ...prevForm[inputGroup],
+          // change only the input being updated
+          [e.target.name]: e.target.value,
+        },
+      };
+    });
+  };
+
   return (
     <>
       <ReturnHome />
@@ -105,7 +124,7 @@ const NewEvent = () => {
         noValidate
         autoComplete="off"
       >
-        <AllTextInputs updateFormData={updateFormData} formData={formData} />
+        <AllTextInputs updateFormData={updateForm} formData={form} />
         <SubmitEvent
           emptyFormState={emptyFormState}
           formData={formData}
