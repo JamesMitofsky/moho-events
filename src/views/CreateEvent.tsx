@@ -1,11 +1,8 @@
 import { Box } from "@mui/material";
-import { v4 as uuidv4 } from "uuid";
 import SubmitEvent from "../components/SubmitEvent";
 import AllTextInputs from "../components/AllInputs";
 import PageTitle from "../components/PageTitle";
-import { emptyFormState } from "../utils/globalVars";
 import ReturnHome from "../components/ReturnHome";
-import { useStorageState } from "react-storage-hooks";
 
 import {
   ContactInputs,
@@ -13,21 +10,10 @@ import {
   ProgramInputs,
   WifiInputs,
 } from "../utils/globalTypes";
+import { useState } from "react";
 
 const NewEvent = () => {
-  const [formData, setFormData, writeError] = useStorageState(
-    localStorage,
-    import.meta.env.VITE_UNFINISHED_GROUP,
-    { ...emptyFormState, id: uuidv4() }
-  );
-
-  const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
+  // default state of the form before or after submission
   const emptyForm: {
     society: SocietyInputs;
     contact: ContactInputs;
@@ -85,12 +71,9 @@ const NewEvent = () => {
     },
   };
 
-  const [form, setForm] = useStorageState(
-    localStorage,
-    "typedFormLayout",
-    emptyForm
-  );
+  const [form, setForm] = useState(emptyForm);
 
+  // catcher function to handle which part of the form object to update
   const updateForm = (
     e: React.ChangeEvent<HTMLInputElement>,
     inputGroup: "society" | "contact" | "program" | "wifi"
@@ -110,6 +93,9 @@ const NewEvent = () => {
     });
   };
 
+  // TODO: remove testing console log statement
+  console.log(form);
+
   return (
     <>
       <ReturnHome />
@@ -125,12 +111,7 @@ const NewEvent = () => {
         autoComplete="off"
       >
         <AllTextInputs updateFormData={updateForm} formData={form} />
-        <SubmitEvent
-          emptyFormState={emptyFormState}
-          formData={formData}
-          setFormData={setFormData}
-          updateOrAdd="add"
-        />
+        {/* <SubmitEvent formData={form} /> */}
       </Box>
     </>
   );
