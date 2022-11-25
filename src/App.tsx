@@ -33,10 +33,10 @@ function App() {
         <Routes location={displayLocation}>
           <Route path="/" element={<Home />} />
           <Route path="creer" element={<NewEvent />} />
-          <Route path="evenement">
+          {/* <Route path="evenement">
             <Route path=":eventID/edit" element={<EditEvent />} />
             <Route path=":eventID" element={<ViewEvent />} />
-          </Route>
+          </Route> */}
           <Route path="*" element={<NoResponse />} />
         </Routes>
       </Container>

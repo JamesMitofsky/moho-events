@@ -1,4 +1,3 @@
-import AllTextInputs from "../components/AllInputs";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import PageTitle from "../components/Layouts/PageTitle";
 import { GroupInfo } from "../utils/globalTypes";
@@ -31,7 +30,7 @@ const EditEvent = () => {
     <>
       <ReturnHome />
       <PageTitle title="Modifier un événement" />
-      <AllTextInputs formData={group} updateFormData={updateFormData} />
+      {/* <AllTextInputs formData={group} updateFormData={updateFormData} /> */}
       <SubmitEvent
         emptyFormState={emptyFormState}
         formData={group}

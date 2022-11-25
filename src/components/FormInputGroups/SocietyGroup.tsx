@@ -18,8 +18,11 @@ export const SocietyGroup = ({ register }: any) => {
         {...register("society.eventType")}
       />
       <TextField
+        type="number"
         label={"Nombre de devis"}
-        {...register("society.numberOfQuote")}
+        {...register("society.numberOfQuote", {
+          valueAsNumber: true,
+        })}
       />
       <TextField label={"Vendu par"} {...register("society.soldBy")} />
       <TextField
@@ -29,13 +32,3 @@ export const SocietyGroup = ({ register }: any) => {
     </TitledGroup>
   );
 };
-
-export interface SocietyInputs {
-  associationName: string;
-  category: string;
-  eventName: string;
-  eventType: string;
-  numberOfQuote: number;
-  soldBy: string;
-  comments: string;
-}
