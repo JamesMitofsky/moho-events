@@ -8,53 +8,15 @@ import { PaddedChildren } from "../Layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
 
+import {
+  SocietyInputs,
+  ProgramInputs,
+  WifiInputs,
+  ContactInputs,
+  SignageInputs,
+} from "../../utils/globalTypes";
+
 const EventSubmissionForm = () => {
-  interface timeAndPlace {
-    dateAndTime: Date;
-    place: "accueil" | "atrium" | "somewhere else" | "";
-  }
-
-  // input types
-  interface SocietyInputs {
-    associationName: string;
-    category: string;
-    eventName: string;
-    eventType: string;
-    numberOfQuote: number;
-    soldBy: string;
-    comments: string;
-  }
-
-  interface ContactInputs {
-    companyName: string;
-    contactName: string;
-    telephoneNumber: number;
-    email: string;
-    comments: string;
-  }
-
-  interface ProgramInputs {
-    numberOfPeople: number;
-    organiserArrivalTime: timeAndPlace;
-    participantArrivalTime: timeAndPlace;
-    welcomeCoffee: timeAndPlace;
-    firstMeetingLocation: timeAndPlace;
-    lunch: timeAndPlace;
-    secondMeetingLocation: timeAndPlace;
-    departureTime: Date;
-    comments: string;
-  }
-  interface WifiInputs {
-    username: string;
-    password: string;
-  }
-
-  interface SignageInputs {
-    lobby: string;
-    otherInfo: string;
-    comments: string;
-  }
-
   type Inputs = {
     society: SocietyInputs;
     contact: ContactInputs;
@@ -90,3 +52,5 @@ const EventSubmissionForm = () => {
     </form>
   );
 };
+
+export default EventSubmissionForm;

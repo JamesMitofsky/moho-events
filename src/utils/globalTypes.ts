@@ -1,11 +1,8 @@
-// types used locally within this global types file
-interface timeAndPlace {
+type timeAndPlace = {
   dateAndTime: Date;
   place: "accueil" | "atrium" | "somewhere else" | "";
-}
-
-// input types
-export interface SocietyInputs {
+};
+type SocietyInputs = {
   associationName: string;
   category: string;
   eventName: string;
@@ -13,17 +10,17 @@ export interface SocietyInputs {
   numberOfQuote: number;
   soldBy: string;
   comments: string;
-}
+};
 
-export interface ContactInputs {
+type ContactInputs = {
   companyName: string;
   contactName: string;
   telephoneNumber: number;
   email: string;
   comments: string;
-}
+};
 
-export interface ProgramInputs {
+type ProgramInputs = {
   numberOfPeople: number;
   organiserArrivalTime: timeAndPlace;
   participantArrivalTime: timeAndPlace;
@@ -33,10 +30,23 @@ export interface ProgramInputs {
   secondMeetingLocation: timeAndPlace;
   departureTime: Date;
   comments: string;
-}
-export interface WifiInputs {
+};
+type WifiInputs = {
   username: string;
   password: string;
-}
+};
 
-// export interface AllInputs = {...SocietyInputs; ContactInputs & ProgramInputs};
+type SignageInputs = {
+  lobby: string;
+  otherInfo: string;
+  comments: string;
+};
+
+export type {
+  SocietyInputs,
+  ContactInputs,
+  ProgramInputs,
+  WifiInputs,
+  SignageInputs,
+  timeAndPlace,
+};
