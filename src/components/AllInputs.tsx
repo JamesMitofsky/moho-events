@@ -5,7 +5,7 @@ import { ContactGroup } from "./FormInputGroups/ContactGroup";
 import { SignageGroup } from "./FormInputGroups/SignageGroup";
 import { WifiGroup } from "./FormInputGroups/WifiGroup";
 
-import { PaddedChildren } from "./PaddedChildren";
+import { PaddedChildren } from "./Layouts/PaddedChildren";
 
 interface Props {
   formData: any;

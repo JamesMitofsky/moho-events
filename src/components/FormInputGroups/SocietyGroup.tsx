@@ -1,67 +1,41 @@
-import { SocietyInputs } from "../../utils/globalTypes";
-import { societyLabels } from "../../utils/globalVars";
-import { Typography, Box } from "@mui/material";
-import TextInput from "../InputTypes/TextInput";
-import { PaddedChildren } from "../PaddedChildren";
+import { TextField } from "@mui/material";
+import { TitledGroup } from "../Layouts/TitledGroup";
 
-interface Props extends SocietyInputs {
-  onChange: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    inputGroup: "society" | "contact" | "program" | "wifi"
-  ) => void;
-}
-
-export const SocietyGroup = (props: Props) => {
-  // create local function to catch form update, indicating group origin
-  const updateFormData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    return props.onChange(e, "society");
-  };
-
+export const SocietyGroup = ({ register }: any) => {
   return (
-    <PaddedChildren padding={2}>
-      <Typography variant="h3">Société</Typography>
-      <TextInput
-        label={societyLabels.associationName}
-        value={props.associationName}
-        onChange={updateFormData}
-        name="associationName"
+    <TitledGroup title={"Société"}>
+      <TextField
+        label={"Nom de la société"}
+        {...register("society.associationName")}
       />
-      <TextInput
-        label={societyLabels.category}
-        value={props.category}
-        onChange={updateFormData}
-        name="category"
+      <TextField label={"Catégorie"} {...register("society.category")} />
+      <TextField
+        label={"Nom de l'événement"}
+        {...register("society.eventName")}
       />
-      <TextInput
-        label={societyLabels.eventName}
-        value={props.eventName}
-        onChange={updateFormData}
-        name="eventName"
+      <TextField
+        label={"Type d'événement"}
+        {...register("society.eventType")}
       />
-      <TextInput
-        label={societyLabels.eventType}
-        value={props.eventType}
-        onChange={updateFormData}
-        name="eventType"
+      <TextField
+        label={"Nombre de devis"}
+        {...register("society.numberOfQuote")}
       />
-      <TextInput
-        label={societyLabels.numberOfQuote}
-        value={props.numberOfQuote}
-        onChange={updateFormData}
-        name="numberOfQuote"
+      <TextField label={"Vendu par"} {...register("society.soldBy")} />
+      <TextField
+        label={"Commentaires de société"}
+        {...register("society.comments")}
       />
-      <TextInput
-        label={societyLabels.soldBy}
-        value={props.soldBy}
-        onChange={updateFormData}
-        name="soldBy"
-      />
-      <TextInput
-        label={societyLabels.comments}
-        value={props.comments}
-        onChange={updateFormData}
-        name="comments"
-      />
-    </PaddedChildren>
+    </TitledGroup>
   );
 };
+
+export interface SocietyInputs {
+  associationName: string;
+  category: string;
+  eventName: string;
+  eventType: string;
+  numberOfQuote: number;
+  soldBy: string;
+  comments: string;
+}
