@@ -1,7 +1,7 @@
 import { useParams, Link as RouterLink, useLocation } from "react-router-dom";
 import { getLocalGroups } from "../utils/manageLocalStorage";
 import { List, ListItem, ListItemText, Box, Link, Button } from "@mui/material";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/Layouts/PageTitle";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { v4 as uuidv4 } from "uuid";
 import EditIcon from "@mui/icons-material/Edit";

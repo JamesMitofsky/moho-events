@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { EventSubmissionForm } from "../components/FormInputGroups/EventSubmissionForm";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/Layouts/PageTitle";
 import ReturnHome from "../components/ReturnHome";
 
 const NewEvent = () => {

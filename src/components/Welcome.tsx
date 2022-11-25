@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "./Layouts/PageTitle";
 
 const Welcome = () => {
   return (

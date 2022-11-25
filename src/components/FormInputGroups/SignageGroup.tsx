@@ -6,12 +6,8 @@ export const SignageGroup = ({ register }: any) => {
     <TitledGroup title="Signalétique">
       <TextField label={"Tableau d'accueil"} {...register("signage.lobby")} />
       <TextField
-        label={"Arrivée organisateurs"}
-        {...register("signage.otherInfo")}
-      />
-      <TextField
         label={"Autres informations"}
-        {...register("signage.participantArrivalTime")}
+        {...register("signage.otherInfo")}
       />
       <TextField
         label={"Commentaires de signalétique"}

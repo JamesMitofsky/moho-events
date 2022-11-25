@@ -1,6 +1,6 @@
 import AllTextInputs from "../components/AllInputs";
 import { getLocalGroups } from "../utils/manageLocalStorage";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/Layouts/PageTitle";
 import { GroupInfo } from "../utils/globalTypes";
 import { useState } from "react";
 import SubmitEvent from "../components/SubmitEvent";

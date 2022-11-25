@@ -1,7 +1,7 @@
 import { GroupInfo } from "../utils/globalTypes";
 import EventList from "../components/GroupList";
 import Welcome from "../components/Welcome";
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../components/Layouts/PageTitle";
 import { useStorageState } from "react-storage-hooks";
 
 const Home = () => {

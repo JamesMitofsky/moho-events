@@ -43,30 +43,3 @@ export enum wifiAccessLabels {
   username = "Identifiant",
   password = "Mot de passe",
 }
-
-// export all objects in an array
-// export enum groupedFieldLabels [
-//   societyLabels,
-//   contactLabels,
-//   programLabels,
-//   signageLabels,
-//   wifiAccessLabels,
-// ];
-
-export enum resturantFields {}
-
-const emptyFormState = {
-  associationName: "",
-  eventName: "",
-  eventType: "",
-  numberOfQuote: "",
-  category: "",
-  soldBy: "",
-  comments: "",
-  companyName: "",
-  contactName: "",
-  telephoneNumber: "",
-  email: "",
-};
-
-export { emptyFormState };

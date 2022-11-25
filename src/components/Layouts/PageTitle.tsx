@@ -1,5 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import MetaTags from "./MetaTags";
+import MetaTags from "../MetaTags";
 
 interface Props {
   title: string;
