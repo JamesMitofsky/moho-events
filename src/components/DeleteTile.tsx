@@ -1,14 +1,9 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { GroupInfo } from "../utils/globalTypes";
 import { deleteGroup } from "../utils/manageLocalStorage";
 import { useNavigate } from "react-router-dom";
 
-interface Props {
-  group: GroupInfo;
-}
-
-const DeleteTile = ({ group }: Props) => {
+const DeleteTile = ({ group }: any) => {
   const navigate = useNavigate();
   const routeUser = (path: string) => {
     navigate(path);

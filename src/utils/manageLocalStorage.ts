@@ -1,6 +1,4 @@
-import { GroupInfo } from "./globalTypes";
-
-const getLocalGroups = (): GroupInfo[] | [] => {
+const getLocalGroups = (): any[] | [] => {
   // push local storage to the group state
   const res: string =
     localStorage.getItem(import.meta.env.VITE_LOCALLY_STORED_GROUPS) ||
@@ -10,11 +8,11 @@ const getLocalGroups = (): GroupInfo[] | [] => {
   if (res === "undefined") return [];
 
   // return array of groups from local storage
-  const parsedRes: GroupInfo[] = JSON.parse(res);
+  const parsedRes: any[] = JSON.parse(res);
   return parsedRes;
 };
 
-const setLocalGroups = (groups: GroupInfo[]) => {
+const setLocalGroups = (groups: any[]) => {
   // stringify groups array
   const stringifiedGroups: string = JSON.stringify(groups);
   localStorage.setItem(
@@ -23,13 +21,13 @@ const setLocalGroups = (groups: GroupInfo[]) => {
   );
 };
 
-const updateLocalGroup = (group: GroupInfo) => {
+const updateLocalGroup = (group: any) => {
   // get all groups
-  const groups: GroupInfo[] = getLocalGroups();
+  const groups: any[] = getLocalGroups();
 
   // filter out the group with a matching id
-  const filteredGroups: GroupInfo[] = groups.filter(
-    (groupItem: GroupInfo) => groupItem.id !== group.id
+  const filteredGroups: any[] = groups.filter(
+    (groupItem: any) => groupItem.id !== group.id
   );
 
   filteredGroups.push(group);
@@ -38,13 +36,13 @@ const updateLocalGroup = (group: GroupInfo) => {
   setLocalGroups(filteredGroups);
 };
 
-const deleteGroup = (group: GroupInfo) => {
+const deleteGroup = (group: any) => {
   // get all groups
-  const groups: GroupInfo[] = getLocalGroups();
+  const groups: any[] = getLocalGroups();
 
   // filter out the group with a matching id
-  const filteredGroups: GroupInfo[] = groups.filter(
-    (groupItem: GroupInfo) => groupItem.id !== group.id
+  const filteredGroups: any[] = groups.filter(
+    (groupItem: any) => groupItem.id !== group.id
   );
 
   // set local groups using the filtered list

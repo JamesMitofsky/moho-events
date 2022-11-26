@@ -1,8 +1,7 @@
 import { ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { GroupInfo } from "../utils/globalTypes";
 import { Link as RouterLink } from "react-router-dom";
 
-const GroupTile = ({ eventName, associationName, id }: GroupInfo) => {
+const GroupTile = ({ eventName, associationName, id }: any) => {
   return (
     <ListItem component={RouterLink} to={`/evenement/${id}`} dense divider>
       <ListItemButton>

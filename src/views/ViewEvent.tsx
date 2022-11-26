@@ -11,9 +11,7 @@ import ReturnHome from "../components/ReturnHome";
 const ViewEvent = () => {
   const { eventID } = useParams<{ eventID: string }>();
 
-  const group: GroupInfo | undefined = getLocalGroups().find(
-    (group) => group.id === eventID
-  );
+  const group: any = getLocalGroups().find((group) => group.id === eventID);
 
   const path = useLocation().pathname;
 
@@ -40,23 +38,6 @@ const ViewEvent = () => {
             </Link>
             <DeleteTile group={group} />
           </Box>
-
-          <List>
-            {group &&
-              Object.keys(group).map((key: string) => {
-                if (group[key as keyof GroupInfo] === group.id) return null;
-                return (
-                  <ListItem key={uuidv4()} divider>
-                    <ListItemText
-                      primary={group[key as keyof GroupInfo]}
-                      secondary={fieldNames[
-                        key as keyof GroupInfoFieldNames
-                      ].toString()}
-                    />
-                  </ListItem>
-                );
-              })}
-          </List>
         </>
       )}
     </>
