@@ -1,4 +1,4 @@
-import { TextField, Divider } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -8,14 +8,6 @@ import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 export const ProgramGroup = ({ register }: any) => {
   return (
     <TitledGroup title="Programme">
-      <TextField
-        label={"Nombre de pax"}
-        {...register("program.numberOfPeople")}
-      />
-      <TextField
-        label={"Commentaires de programme"}
-        {...register("program.comments")}
-      />
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <TimeAndPlaceInput
           componentTitle="Arrivée organisateurs"
@@ -47,10 +39,19 @@ export const ProgramGroup = ({ register }: any) => {
           parentObj="program.secondMeeting"
           register={register}
         />
-        <TimeAndPlaceInput
-          componentTitle="Heure de départ"
-          parentObj="program.departureTime"
-          register={register}
+        <Typography>Misc.</Typography>
+        <TextField
+          label={"Nombre de pax"}
+          {...register("program.numberOfPeople")}
+        />
+        <TextField
+          label={"Commentaires de programme"}
+          {...register("program.comments")}
+        />
+        <TimePicker
+          {...register("program.depatureTime")}
+          label="Heure de départ"
+          renderInput={(params) => <TextField {...params} />}
         />
       </LocalizationProvider>
     </TitledGroup>
