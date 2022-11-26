@@ -16,7 +16,16 @@ export const ContactGroup = ({ register }: any) => {
         label={"Numéro de téléphone"}
         {...register("contact.telephoneNumber")}
       />
-      <TextField label={"Email"} {...register("contact.email")} />
+      <TextField
+        label={"Email"}
+        {...register("contact.email", {
+          required: "Required",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            message: "L'adresse email n'est pas valide",
+          },
+        })}
+      />
       <TextField
         label={"Commentaires de contact"}
         {...register("contact.comments")}

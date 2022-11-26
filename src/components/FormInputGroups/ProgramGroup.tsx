@@ -12,13 +12,15 @@ export const ProgramGroup = ({ register }: any) => {
           label={"Nombre de pax"}
           {...register("program.numberOfPeople")}
         />
-        <TextField
-          label={"Arrivée organisateurs"}
+        <TimePicker
           {...register("program.organiserArrivalTime")}
+          label="Arrivée organisateurs"
+          renderInput={(params) => <TextField {...params} />}
         />
-        <TextField
-          label={"Arrivée participants"}
+        <TimePicker
           {...register("program.participantArrivalTime")}
+          label="Arrivée participants"
+          renderInput={(params) => <TextField {...params} />}
         />
         <TextField
           label={"Café d'accueil"}
@@ -33,21 +35,11 @@ export const ProgramGroup = ({ register }: any) => {
           label={"Deuxième Réunion / Atelier"}
           {...register("program.secondMeeting")}
         />
-
-        {/* working below here */}
-        {/* <TextField
-        InputLabelProps={{ shrink: true }}
-        type="date"
-        label={"Heure de départ"}
-        {...register("program.departureTime", { valueAsDate: true })}
-      /> */}
         <TimePicker
-          {...register("program.departureTime", { valueAsDate: true })}
+          {...register("program.departureTime")}
           label="Heure de départ"
           renderInput={(params) => <TextField {...params} />}
         />
-
-        {/* working above here */}
         <TextField
           label={"Commentaires de programme"}
           {...register("program.comments")}

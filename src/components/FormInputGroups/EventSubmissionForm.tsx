@@ -29,14 +29,16 @@ const EventSubmissionForm = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<Inputs>({ defaultValues: {} });
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+  };
 
-  console.log(watch()); // watch input value by passing the name of it
+  // console.log(watch("program.organiserArrivalTime")); // watch input value by passing the name of it
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       <PaddedChildren padding={3}>
         <SocietyGroup register={register} />
         <ContactGroup register={register} />
@@ -45,7 +47,7 @@ const EventSubmissionForm = () => {
         <WifiGroup register={register} />
         <RestoGroup register={register} />
 
-        <Button type="submit" variant="contained">
+        <Button onClick={handleSubmit(onSubmit)} variant="contained">
           Submit
         </Button>
       </PaddedChildren>
