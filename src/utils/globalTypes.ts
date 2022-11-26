@@ -1,6 +1,6 @@
 type timeAndPlace = {
-  dateAndTime: Date;
-  place: "accueil" | "atrium" | "somewhere else" | "";
+  time: Date;
+  place: "entry1" | "publicSpace" | "vip3";
 };
 type SocietyInputs = {
   associationName: string;
