@@ -23,12 +23,8 @@ export const TimeAndPlaceInput = ({
     <>
       <Typography>{componentTitle}</Typography>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Lieu</InputLabel>
-        <Select
-          {...register(placeProp)}
-          label="Lieu"
-          labelId="demo-simple-select-label"
-        >
+        <InputLabel id={placeProp}>Lieu</InputLabel>
+        <Select {...register(placeProp)} label="Lieu" labelId={placeProp}>
           <MenuItem value="entry1">Entrée 1</MenuItem>
           <MenuItem value="publicSpace">Espace Pub</MenuItem>
           <MenuItem value="vip3">VIP 3</MenuItem>
