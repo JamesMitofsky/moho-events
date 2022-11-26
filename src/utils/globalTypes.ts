@@ -22,8 +22,8 @@ type ContactInputs = {
 
 type ProgramInputs = {
   numberOfPeople: number;
-  organiserArrivalTime: timeAndPlace;
-  participantArrivalTime: timeAndPlace;
+  organiserArrival: timeAndPlace;
+  participantArrival: timeAndPlace;
   welcomeCoffee: timeAndPlace;
   firstMeetingLocation: timeAndPlace;
   lunch: timeAndPlace;
