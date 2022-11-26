@@ -1,4 +1,11 @@
-import { TextField, Typography } from "@mui/material";
+import {
+  TextField,
+  Typography,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControl,
+} from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
 export const TimeAndPlaceInput = ({
@@ -11,11 +18,22 @@ export const TimeAndPlaceInput = ({
   register: any;
 }) => {
   const timeProp = `${parentObj}.time`;
-  const placeProp = `${parentObj}.location`;
+  const placeProp = `${parentObj}.place`;
   return (
     <>
       <Typography>{componentTitle}</Typography>
-      <TextField label="Lieu" {...register(placeProp)} />
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Lieu</InputLabel>
+        <Select
+          {...register(placeProp)}
+          label="Lieu"
+          labelId="demo-simple-select-label"
+        >
+          <MenuItem value="entry1">Entrée 1</MenuItem>
+          <MenuItem value="publicSpace">Espace Pub</MenuItem>
+          <MenuItem value="vip3">VIP 3</MenuItem>
+        </Select>
+      </FormControl>
       <TimePicker
         {...register(timeProp)}
         label="Heure"
