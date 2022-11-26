@@ -1,5 +1,5 @@
 type timeAndPlace = {
-  time: Date;
+  time: string;
   place: "entry1" | "publicSpace" | "vip3";
 };
 type SocietyInputs = {
