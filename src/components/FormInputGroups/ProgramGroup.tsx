@@ -1,48 +1,56 @@
-import { TextField } from "@mui/material";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TextField, Divider } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { TitledGroup } from "../Layouts/TitledGroup";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 
 export const ProgramGroup = ({ register }: any) => {
   return (
     <TitledGroup title="Programme">
+      <TextField
+        label={"Nombre de pax"}
+        {...register("program.numberOfPeople")}
+      />
+      <TextField
+        label={"Commentaires de programme"}
+        {...register("program.comments")}
+      />
       <LocalizationProvider dateAdapter={AdapterMoment}>
-        <TextField
-          label={"Nombre de pax"}
-          {...register("program.numberOfPeople")}
+        <TimeAndPlaceInput
+          componentTitle="Arrivée organisateurs"
+          parentObj="program.organiserArrival"
+          register={register}
         />
-        <TimePicker
-          {...register("program.organiserArrivalTime")}
-          label="Arrivée organisateurs"
-          renderInput={(params) => <TextField {...params} />}
+        <TimeAndPlaceInput
+          componentTitle="Café d'accueil"
+          parentObj="program.welcomeCoffee"
+          register={register}
         />
-        <TimePicker
-          {...register("program.participantArrivalTime")}
-          label="Arrivée participants"
-          renderInput={(params) => <TextField {...params} />}
+        <TimeAndPlaceInput
+          componentTitle="Arrivée participants"
+          parentObj="program.participantArrival"
+          register={register}
         />
-        <TextField
-          label={"Café d'accueil"}
-          {...register("program.welcomeCoffee")}
+        <TimeAndPlaceInput
+          componentTitle="Premier Réunion / Atelier"
+          parentObj="program.firstMeeting"
+          register={register}
         />
-        <TextField
-          label={"Premier Réunion / Atelier"}
-          {...register("program.firstMeeting")}
+        <TimeAndPlaceInput
+          componentTitle="Déjeuner"
+          parentObj="program.lunch"
+          register={register}
         />
-        <TextField label={"Déjeuner"} {...register("program.lunch")} />
-        <TextField
-          label={"Deuxième Réunion / Atelier"}
-          {...register("program.secondMeeting")}
+        <TimeAndPlaceInput
+          componentTitle="Deuxième Réunion / Atelier"
+          parentObj="program.secondMeeting"
+          register={register}
         />
-        <TimePicker
-          {...register("program.departureTime")}
-          label="Heure de départ"
-          renderInput={(params) => <TextField {...params} />}
-        />
-        <TextField
-          label={"Commentaires de programme"}
-          {...register("program.comments")}
+        <TimeAndPlaceInput
+          componentTitle="Heure de départ"
+          parentObj="program.departureTime"
+          register={register}
         />
       </LocalizationProvider>
     </TitledGroup>

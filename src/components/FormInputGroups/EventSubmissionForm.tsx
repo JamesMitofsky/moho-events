@@ -30,9 +30,7 @@ const EventSubmissionForm = () => {
     watch,
     formState: { errors },
   } = useForm<Inputs>({ defaultValues: {} });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-  };
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   // console.log(watch("program.organiserArrivalTime")); // watch input value by passing the name of it
 
