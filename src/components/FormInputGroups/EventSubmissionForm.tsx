@@ -32,11 +32,11 @@ const EventSubmissionForm = () => {
   } = useForm<Inputs>({ defaultValues: {} });
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  // console.log(watch("program.organiserArrivalTime")); // watch input value by passing the name of it
+  console.log(watch("program.organiserArrival.time")); // watch input value by passing the name of it
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form>
+    <>
       <PaddedChildren padding={3}>
         <SocietyGroup register={register} />
         <ContactGroup register={register} />
@@ -49,7 +49,7 @@ const EventSubmissionForm = () => {
           Submit
         </Button>
       </PaddedChildren>
-    </form>
+    </>
   );
 };
 
