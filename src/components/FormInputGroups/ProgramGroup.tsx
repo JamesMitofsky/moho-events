@@ -5,39 +5,44 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 
-export const ProgramGroup = ({ register }: any) => {
+export const ProgramGroup = ({ register, control }: any) => {
+  const allProps = {
+    register,
+    control,
+  };
+
   return (
     <TitledGroup title="Programme">
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <TimeAndPlaceInput
           componentTitle="Arrivée organisateurs"
           parentObj="program.organiserArrival"
-          register={register}
+          {...allProps}
         />
         <TimeAndPlaceInput
           componentTitle="Café d'accueil"
           parentObj="program.welcomeCoffee"
-          register={register}
+          {...allProps}
         />
         <TimeAndPlaceInput
           componentTitle="Arrivée participants"
           parentObj="program.participantArrival"
-          register={register}
+          {...allProps}
         />
         <TimeAndPlaceInput
           componentTitle="Premier Réunion / Atelier"
           parentObj="program.firstMeeting"
-          register={register}
+          {...allProps}
         />
         <TimeAndPlaceInput
           componentTitle="Déjeuner"
           parentObj="program.lunch"
-          register={register}
+          {...allProps}
         />
         <TimeAndPlaceInput
           componentTitle="Deuxième Réunion / Atelier"
           parentObj="program.secondMeeting"
-          register={register}
+          {...allProps}
         />
         <Typography>Misc.</Typography>
         <TextField

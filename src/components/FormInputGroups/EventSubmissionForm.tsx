@@ -28,6 +28,7 @@ const EventSubmissionForm = () => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<Inputs>({ defaultValues: {} });
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
@@ -40,7 +41,7 @@ const EventSubmissionForm = () => {
       <PaddedChildren padding={3}>
         <SocietyGroup register={register} />
         <ContactGroup register={register} />
-        <ProgramGroup register={register} />
+        <ProgramGroup register={register} control={control} />
         <SignageGroup register={register} />
         <WifiGroup register={register} />
         <RestoGroup register={register} />
