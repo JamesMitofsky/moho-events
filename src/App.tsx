@@ -12,9 +12,9 @@ import EditEvent from "./views/EditEvent";
 function App() {
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
-  const [transitionStage, setTransistionStage] = useState("fadeIn");
+  const [transitionStage, setTransitionStage] = useState("fadeIn");
   useEffect(() => {
-    if (location !== displayLocation) setTransistionStage("fadeOut");
+    if (location !== displayLocation) setTransitionStage("fadeOut");
   }, [location, displayLocation]);
 
   return (
@@ -22,10 +22,10 @@ function App() {
       <NavBar />
       <Container
         sx={{ mt: 0.2, mb: 3, display: "flex", flexDirection: "column" }}
-        className={`${transitionStage}`}
+        className={transitionStage}
         onAnimationEnd={() => {
           if (transitionStage === "fadeOut") {
-            setTransistionStage("fadeIn");
+            setTransitionStage("fadeIn");
             setDisplayLocation(location);
           }
         }}

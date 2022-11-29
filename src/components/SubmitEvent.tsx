@@ -34,24 +34,20 @@ const SubmitEvent = ({
   };
 
   const formNotValid = (): boolean => {
-    const valueMissing: boolean = Object.values(formData).some(
-      (value: string) => {
-        if (value === "") {
-          alert("Veuillez remplir tous les champs");
-          return true;
-        }
-        return false;
-      }
-    );
+    const valueMissing = Object.values(formData).some(x => Boolean(x))
 
-    return valueMissing ? true : false;
+    if (valueMissing) {
+      alert("Veuillez remplir tous les champs");
+    }
+
+    return valueMissing;
   };
 
   const pushEventToArray = () => {
     if (formNotValid()) return;
 
     // push new group to existing groups
-    const existingGroups: GroupInfo[] = getLocalGroups();
+    const existingGroups = getLocalGroups();
     existingGroups.push(formData);
 
     // push the new inclusive array to local storage
@@ -71,8 +67,7 @@ const SubmitEvent = ({
     routeUser(`/evenement/${formData.id}`);
   };
 
-  const handleClick: () => void =
-    updateOrAdd === "add" ? pushEventToArray : updateEventInArray;
+  const handleClick = updateOrAdd === "add" ? pushEventToArray : updateEventInArray;
 
   return (
     <Button sx={{ mt: 0.5, mb: 4 }} onClick={handleClick}>

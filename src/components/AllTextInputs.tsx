@@ -2,13 +2,14 @@ import TextInput from "./TextInput";
 import { GroupInfo, GroupInfoFieldNames } from "../utils/globalTypes";
 import { Box } from "@mui/material";
 import { fieldNames } from "../utils/globalVars";
+import { FC } from "react";
 
 interface Props {
   formData: GroupInfo;
   updateFormData: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AllTextInputs = ({ formData, updateFormData }: Props) => {
+const AllTextInputs: FC<Props> = ({ formData, updateFormData }) => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
       {Object.keys(fieldNames).map((key) => {

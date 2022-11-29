@@ -14,7 +14,7 @@ const emptyFormState: EmptyForm = {
   email: "",
 };
 
-const fieldNames: GroupInfoFieldNames = {
+const fieldNames = {
   associationName: "Nom de l'association",
   eventName: "Nom de l'événement",
   eventType: "Type d'événement",
@@ -28,6 +28,6 @@ const fieldNames: GroupInfoFieldNames = {
   email: "Email",
   startTime: "Date de début",
   endTime: "Date de fin",
-};
+} as const;
 
 export { emptyFormState, fieldNames };
