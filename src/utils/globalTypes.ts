@@ -42,6 +42,14 @@ type SignageInputs = {
   comments: string;
 };
 
+type AllEventGroups = {
+  society: SocietyInputs;
+  contact: ContactInputs;
+  program: ProgramInputs;
+  wifi: WifiInputs;
+  signage: SignageInputs;
+};
+
 export type {
   SocietyInputs,
   ContactInputs,
@@ -49,4 +57,5 @@ export type {
   WifiInputs,
   SignageInputs,
   timeAndPlace,
+  AllEventGroups,
 };

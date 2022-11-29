@@ -8,29 +8,16 @@ import { PaddedChildren } from "../Layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
 
-import {
-  SocietyInputs,
-  ProgramInputs,
-  WifiInputs,
-  ContactInputs,
-  SignageInputs,
-} from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utils/globalTypes";
 
 const EventSubmissionForm = () => {
-  type Inputs = {
-    society: SocietyInputs;
-    contact: ContactInputs;
-    program: ProgramInputs;
-    wifi: WifiInputs;
-    signage: SignageInputs;
-  };
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Inputs>({ defaultValues: {} });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  } = useForm<AllEventGroups>({ defaultValues: {} });
+  const onSubmit: SubmitHandler<AllEventGroups> = (data) => console.log(data);
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
