@@ -13,6 +13,7 @@ export default function ControlledPicker({
     <Controller
       control={control}
       name={dataLabel}
+      defaultValue={null}
       render={({ field }) => (
         <TimePicker
           {...field}
