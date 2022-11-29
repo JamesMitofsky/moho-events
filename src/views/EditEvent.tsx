@@ -11,10 +11,10 @@ import ReturnHome from "../components/ReturnHome";
 const EditEvent = () => {
   // get id from URL
   const path = useLocation().pathname;
-  const id = path.split("/")[2];
+  const id = path.split("/")[2]; // TODO - split to method, add unit test - any better way to do this maybe like useParams?
 
   const localGroups = getLocalGroups();
-  const currentGroup: GroupInfo | undefined = localGroups.find(
+  const currentGroup = localGroups.find(
     (thisGroup) => thisGroup.id === id
   );
 

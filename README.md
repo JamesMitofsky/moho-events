@@ -62,6 +62,9 @@ This project was submitted at 4:08pm, October 8th of 2022. The state of the code
 ### 📝 Notes
 
 - Because React is a SPA, it will fail by default to correctly render any route other than the main path (`/`). This is because the server will not be able to find the correct file to serve. To solve this, I've included `vercel.json` to specify that Vercel's build step should redirect all routes to the main path while not changing the URL. This allows React Router to then read the route and handle routing.
+
+https://github.com/JamesMitofsky/moho-events/blob/8aeacb722b32a877f42924fe155dccd0091805b9/vercel.json#L2
+
 - `Vite.js` is being used as the build tool namely for its developer experience. The hot reload speed does not reduce with project size, as is the case with `create-react-app`.
 
 ### 📦 Resources

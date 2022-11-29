@@ -1,13 +1,11 @@
 import { GroupInfo } from "./globalTypes";
 
-const getLocalGroups = (): GroupInfo[] | [] => {
+const getLocalGroups = (): GroupInfo[] => {
   // push local storage to the group state
-  const res: string =
-    localStorage.getItem(import.meta.env.VITE_LOCALLY_STORED_GROUPS) ||
-    "undefined";
+  const res = localStorage.getItem(import.meta.env.VITE_LOCALLY_STORED_GROUPS)
 
   // exit function if there was no local storage
-  if (res === "undefined") return [];
+  if (!res) return [];
 
   // return array of groups from local storage
   const parsedRes: GroupInfo[] = JSON.parse(res);
@@ -15,8 +13,8 @@ const getLocalGroups = (): GroupInfo[] | [] => {
 };
 
 const setLocalGroups = (groups: GroupInfo[]) => {
-  // stringify groups array
-  const stringifiedGroups: string = JSON.stringify(groups);
+  // prepare groups for storage
+  const stringifiedGroups = JSON.stringify(groups);
   localStorage.setItem(
     import.meta.env.VITE_LOCALLY_STORED_GROUPS,
     stringifiedGroups
