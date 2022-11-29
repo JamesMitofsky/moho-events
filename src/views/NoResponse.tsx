@@ -1,6 +1,6 @@
 import { Button, Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import MetaTags from "../components/MetaTags";
+import MetaTags from "../utils/MetaTags";
 
 const NoResponse = () => {
   return (

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import ViewEvent from "./views/ViewEvent";
 import NoResponse from "./views/NoResponse";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Layouts/NavBar";
 import AddGroupButton from "./components/AddGroupButton";
 import EditEvent from "./views/EditEvent";
 

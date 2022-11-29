@@ -6,7 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/antonio";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import MetaTags from "./components/MetaTags";
+import MetaTags from "./utils/MetaTags";
 
 const theme = createTheme({
   typography: {

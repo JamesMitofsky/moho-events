@@ -12,7 +12,7 @@ const ReturnHome = () => {
     <Button
       startIcon={<NavigateBeforeIcon />}
       onClick={routeUser}
-      aria-label="return to last page"
+      aria-label="Retour à l'accueil"
     >
       Retourner à l'accueil
     </Button>

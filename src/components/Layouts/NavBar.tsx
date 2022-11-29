@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from "@mui/material";
-import MohoEventsLogo from "./MohoEventsLogo";
+import MohoEventsLogo from "../MohoEventsLogo";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
