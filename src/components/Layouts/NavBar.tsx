@@ -7,7 +7,6 @@ import Image from "mui-image";
 
 const NavBar = () => {
   const user = useContext(UserContext);
-  console.log(user.photoURL);
   return (
     <AppBar sx={{ mb: 2 }} position="static">
       <Toolbar
@@ -21,13 +20,15 @@ const NavBar = () => {
         <Link to="/">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        <Image
-          style={{ borderRadius: "50%" }}
-          src={user.photoURL}
-          height={45}
-          width="auto"
-          shift="right"
-        />
+        {user && (
+          <Image
+            style={{ borderRadius: "50%" }}
+            src={user.photoURL}
+            height={45}
+            width="auto"
+            shift="right"
+          />
+        )}
       </Toolbar>
     </AppBar>
   );
