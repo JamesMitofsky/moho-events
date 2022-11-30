@@ -27,7 +27,7 @@ const NavBar = () => {
             height={45}
             width="auto"
             shift="right"
-            distance={20}
+            distance={10}
           />
         )}
       </Toolbar>
