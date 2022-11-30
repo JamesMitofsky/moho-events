@@ -7,6 +7,7 @@ import {
   getRedirectResult,
   onAuthStateChanged,
 } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "moho-auth.firebaseapp.com",
@@ -21,7 +22,7 @@ const firebaseConfig = {
 
 // Initialize Firebase, creating instances accessible to login functions in this file
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export async function signInUser(
@@ -49,18 +50,6 @@ export function signInWithGoogle() {
 }
 
 export function verifyUser() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
-      console.log(user);
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
   // getRedirectResult(auth)
   //   .then((result) => {
   //     if (!result) return;

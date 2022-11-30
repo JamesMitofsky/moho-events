@@ -9,7 +9,9 @@ import NoResponse from "./views/NoResponse";
 import NavBar from "./components/Layouts/NavBar";
 import AddGroupButton from "./components/AddGroupButton";
 import Login from "./views/Login";
-import { verifyUser } from "./services/firebase";
+import { auth } from "./services/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import UserContext from "./services/UserContext";
 
 function App() {
   // handle transition animations
@@ -20,38 +22,58 @@ function App() {
     if (location !== displayLocation) setTransistionStage("fadeOut");
   }, [location, displayLocation]);
 
+  const [user, setUser] = useState<Object>({});
+
+  function checkAuthState() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+        console.log("setting");
+        setUser(user);
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }
+
   // authenticate user
   useEffect(() => {
     console.log("Checking for user...");
-    verifyUser();
+    checkAuthState();
   }, []);
 
   return (
-    <Box sx={{ position: "relative" }}>
-      <NavBar />
-      <Container
-        sx={{ mt: 0.2, mb: 3, display: "flex", flexDirection: "column" }}
-        className={transitionStage}
-        onAnimationEnd={() => {
-          if (transitionStage === "fadeOut") {
-            setTransistionStage("fadeIn");
-            setDisplayLocation(location);
-          }
-        }}
-      >
-        <Routes location={displayLocation}>
-          <Route path="/" element={<Home />} />
-          <Route path="creer" element={<NewEvent />} />
-          <Route path="login" element={<Login />} />
-          {/* <Route path="evenement">
+    <UserContext.Provider value={user}>
+      <Box sx={{ position: "relative" }}>
+        <NavBar />
+        <Container
+          sx={{ mt: 0.2, mb: 3, display: "flex", flexDirection: "column" }}
+          className={transitionStage}
+          onAnimationEnd={() => {
+            if (transitionStage === "fadeOut") {
+              setTransistionStage("fadeIn");
+              setDisplayLocation(location);
+            }
+          }}
+        >
+          <Routes location={displayLocation}>
+            <Route path="/" element={<Home />} />
+            <Route path="creer" element={<NewEvent />} />
+            <Route path="login" element={<Login />} />
+            {/* <Route path="evenement">
             <Route path=":eventID/edit" element={<EditEvent />} />
             <Route path=":eventID" element={<ViewEvent />} />
           </Route> */}
-          <Route path="*" element={<NoResponse />} />
-        </Routes>
-      </Container>
-      {location.pathname === "/" && <AddGroupButton />}
-    </Box>
+            <Route path="*" element={<NoResponse />} />
+          </Routes>
+        </Container>
+        {location.pathname === "/" && <AddGroupButton />}
+      </Box>
+    </UserContext.Provider>
   );
 }
 
