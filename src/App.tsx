@@ -1,13 +1,12 @@
 import { Container, Box } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
-import Home from "./views/LandingPage";
+import ListOfEvents from "./views/ListOfEvents";
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, redirect } from "react-router-dom";
 import Event from "./views/Event";
 import EditEvent from "./views/EditEvent";
 import NoResponse from "./views/NoResponse";
 import NavBar from "./components/Layouts/NavBar";
-import AddGroupButton from "./components/AddGroupButton";
 import Login from "./views/Login";
 import { auth } from "./services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -30,12 +29,15 @@ function App() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        // ...
-        console.log("setting");
         setUser(user);
+
+        // redirect to landing page if not signed in
+        if (location.pathname !== "/" && !user) {
+          // redirect to landing page using React Router
+          redirect("/");
+        }
       } else {
         // User is signed out
-        // ...
       }
     });
   }
@@ -61,9 +63,9 @@ function App() {
           }}
         >
           <Routes location={displayLocation}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/tous-les-evenements" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
-            <Route path="login" element={<Login />} />
             {/* <Route path="evenement">
             <Route path=":eventID/edit" element={<EditEvent />} />
             <Route path=":eventID" element={<ViewEvent />} />
@@ -71,7 +73,6 @@ function App() {
             <Route path="*" element={<NoResponse />} />
           </Routes>
         </Container>
-        {location.pathname === "/" && <AddGroupButton />}
       </Box>
     </UserContext.Provider>
   );
