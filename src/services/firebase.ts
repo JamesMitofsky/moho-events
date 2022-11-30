@@ -3,7 +3,9 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  signInWithRedirect,
   getRedirectResult,
+  onAuthStateChanged,
 } from "firebase/auth";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -17,9 +19,10 @@ const firebaseConfig = {
   measurementId: "G-DMC57PQQ3S",
 };
 
-// Initialize Firebase
+// Initialize Firebase, creating instances accessible to login functions in this file
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 export async function signInUser(
   email: string,
@@ -40,29 +43,58 @@ export async function signInUser(
   return { user };
 }
 
-const provider = new GoogleAuthProvider();
-
 export function signInWithGoogle() {
-  getRedirectResult(auth)
-    .then((result) => {
-      // TODO clean up this typescript checking
-      if (!result) return;
-      const credential = GoogleAuthProvider.credentialFromResult(result);
+  console.log("about to run auth change checker");
+  signInWithRedirect(auth, provider);
+}
 
-      if (!credential) return;
-      const token = credential.accessToken;
-
-      // The signed-in user info.
-      const user = result.user;
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
+export function verifyUser() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
       // ...
-    });
+      console.log(user);
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+  // getRedirectResult(auth)
+  //   .then((result) => {
+  //     if (!result) return;
+  //     const credential = GoogleAuthProvider.credentialFromResult(result);
+  //     if (!credential) return;
+  //     const token = credential.accessToken;
+  //     // The signed-in user info.
+  //     const user = result.user;
+  //     console.log(user);
+  //   })
+  //   .catch((error) => {
+  //     // Handle Errors here.
+  //     const errorCode = error.code;
+  //     const errorMessage = error.message;
+  //     // The email of the user's account used.
+  //     const email = error.customData.email;
+  //     // The AuthCredential type that was used.
+  //     const credential = GoogleAuthProvider.credentialFromError(error);
+  //     // ...
+  //   });
+}
+
+export function onAuthStateChange() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      // ...
+      console.log(user);
+    } else {
+      // User is signed out
+      // ...
+      console.log("no user found");
+    }
+  });
 }
