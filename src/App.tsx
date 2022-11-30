@@ -2,7 +2,7 @@ import { Container, Box } from "@mui/material";
 import NewEvent from "./views/CreateEvent";
 import ListOfEvents from "./views/ListOfEvents";
 import { useState, useEffect } from "react";
-import { Routes, Route, useLocation, redirect } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Event from "./views/Event";
 import EditEvent from "./views/EditEvent";
 import NoResponse from "./views/NoResponse";
@@ -21,7 +21,7 @@ function App() {
     if (location !== displayLocation) setTransistionStage("fadeOut");
   }, [location, displayLocation]);
 
-  const [user, setUser] = useState<Object>({});
+  const [user, setUser] = useState<any>({});
 
   function checkAuthState() {
     onAuthStateChanged(auth, (user) => {
@@ -30,17 +30,14 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
-
-        // redirect to landing page if not signed in
-        if (location.pathname !== "/" && !user) {
-          // redirect to landing page using React Router
-          redirect("/");
-        }
       } else {
         // User is signed out
+        if (location.pathname === "/") return;
+        navigate("/");
       }
     });
   }
+  const navigate = useNavigate();
 
   // authenticate user
   useEffect(() => {
