@@ -4,10 +4,10 @@ import PageTitle from "../components/Layouts/PageTitle";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import { v4 as uuidv4 } from "uuid";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteTile from "../components/DeleteTile";
 import ReturnHome from "../components/ReturnHome";
+import EventData from "../components/EventData";
 
-const Event = () => {
+export default function Event() {
   const { eventID } = useParams<{ eventID: string }>();
   const path = useLocation().pathname;
 
@@ -34,10 +34,8 @@ const Event = () => {
         {/* <DeleteTile group={group} /> */}
       </Box>
       <Box>
-        <EventData data={data} />
+        <EventData />
       </Box>
     </>
   );
-};
-
-export default ViewEvent;
+}

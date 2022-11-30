@@ -1,6 +1,5 @@
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteGroup } from "../utils/manageLocalStorage";
 import { useNavigate } from "react-router-dom";
 
 const DeleteTile = ({ group }: any) => {
@@ -16,7 +15,6 @@ const DeleteTile = ({ group }: any) => {
     if (!deleteConfirmed) return;
 
     // if the user was sure, delete event and navigate home
-    deleteGroup(group);
     routeUser("/");
   };
 

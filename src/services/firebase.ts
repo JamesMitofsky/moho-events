@@ -45,8 +45,11 @@ const provider = new GoogleAuthProvider();
 export function signInWithGoogle() {
   getRedirectResult(auth)
     .then((result) => {
+      // TODO clean up this typescript checking
       if (!result) return;
       const credential = GoogleAuthProvider.credentialFromResult(result);
+
+      if (!credential) return;
       const token = credential.accessToken;
 
       // The signed-in user info.
