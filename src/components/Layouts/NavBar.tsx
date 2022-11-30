@@ -20,13 +20,14 @@ const NavBar = () => {
         <Link to="/">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        {user && (
+        {user.photoURL && (
           <Image
             style={{ borderRadius: "50%" }}
             src={user.photoURL}
             height={45}
             width="auto"
             shift="right"
+            distance={20}
           />
         )}
       </Toolbar>
