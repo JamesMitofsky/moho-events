@@ -47,10 +47,16 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
         <NavBar />
         <Container
-          sx={{ mt: 0.2, mb: 3, display: "flex", flexDirection: "column" }}
+          sx={{
+            mt: 0.2,
+            mb: 3,
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+          }}
           className={transitionStage}
           onAnimationEnd={() => {
             if (transitionStage === "fadeOut") {
