@@ -31,10 +31,13 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
-        navigate("/liste-des-evenements");
+
+        // prevent page from rendering twice if the user is already where they should be going
+        const eventsPathName = "/liste-des-evenements";
+        if (location.pathname === eventsPathName) return;
+        navigate(eventsPathName);
       } else {
         // User is signed out
-        if (location.pathname === "/") return;
       }
     });
   }
