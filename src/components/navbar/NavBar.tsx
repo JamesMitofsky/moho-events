@@ -3,10 +3,11 @@ import MohoEventsLogo from "../MohoEventsLogo";
 import { Link } from "react-router-dom";
 import UserContext from "../../services/UserContext";
 import { useContext } from "react";
-import Image from "mui-image";
+import UserIcon from "./UserIcon";
 
 const NavBar = () => {
-  const user = useContext(UserContext);
+  const { photoURL }: { photoURL: string } = useContext(UserContext);
+
   return (
     <AppBar sx={{ mb: 2 }} position="static">
       <Toolbar
@@ -20,16 +21,7 @@ const NavBar = () => {
         <Link to="/">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        {user.photoURL && (
-          <Image
-            style={{ borderRadius: "50%" }}
-            src={user.photoURL}
-            height={45}
-            width="auto"
-            shift="right"
-            distance={10}
-          />
-        )}
+        <UserIcon photoURL={photoURL} />
       </Toolbar>
     </AppBar>
   );

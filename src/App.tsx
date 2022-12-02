@@ -6,7 +6,7 @@ import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Event from "./views/Event";
 import EditEvent from "./views/EditEvent";
 import NoResponse from "./views/NoResponse";
-import NavBar from "./components/Layouts/NavBar";
+import NavBar from "./components/navbar/NavBar";
 import Login from "./views/Login";
 import { auth } from "./services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
