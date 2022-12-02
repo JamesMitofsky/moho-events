@@ -70,10 +70,10 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/liste-des-evenements" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
-            {/* <Route path="evenement">
-            <Route path=":eventID/edit" element={<EditEvent />} />
-            <Route path=":eventID" element={<ViewEvent />} />
-          </Route> */}
+            <Route path="/evenement">
+              <Route path=":eventID/edit" element={<EditEvent />} />
+              {/* <Route path=":eventID" element={<ViewEvent />} /> */}
+            </Route>
             <Route path="*" element={<NoResponse />} />
           </Routes>
         </Container>

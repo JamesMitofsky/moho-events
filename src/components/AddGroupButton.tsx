@@ -13,7 +13,7 @@ const AddGroupButton = () => {
         marginRight: 2,
       }}
     >
-      <IconButton component={Link} to="creer" aria-label="add group">
+      <IconButton component={Link} to="/creer" aria-label="add group">
         <AddCircleIcon sx={{ fontSize: 70, color: "primary.main" }} />
       </IconButton>
     </Box>
