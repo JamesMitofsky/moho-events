@@ -7,14 +7,21 @@ import {
   ListItemIcon,
 } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
+import HomeIcon from "@mui/icons-material/Home";
 import {
   usePopupState,
   bindTrigger,
   bindMenu,
 } from "material-ui-popup-state/hooks";
 import { signOut, getAuth } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function UserIcon({ photoURL }: { photoURL: string }) {
+  const navigate = useNavigate();
+  const routeHome = () => {
+    navigate("/liste-des-evenements");
+  };
+
   const popupState = usePopupState({ variant: "popover", popupId: "menu" });
   const auth = getAuth();
 
@@ -42,6 +49,12 @@ export default function UserIcon({ photoURL }: { photoURL: string }) {
         />
       </Button>
       <Menu {...bindMenu(popupState)}>
+        <MenuItem onClick={routeHome}>
+          <ListItemIcon>
+            <HomeIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>L'Accueil</ListItemText>
+        </MenuItem>
         <MenuItem onClick={() => handleLogout(popupState)}>
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
