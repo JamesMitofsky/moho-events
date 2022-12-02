@@ -24,16 +24,17 @@ function App() {
   const [user, setUser] = useState<any>({});
 
   function checkAuthState() {
+    //TODO — add loading state here
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
+        navigate("/liste-des-evenements");
       } else {
         // User is signed out
         if (location.pathname === "/") return;
-        navigate("/");
       }
     });
   }
@@ -67,7 +68,7 @@ function App() {
         >
           <Routes location={displayLocation}>
             <Route path="/" element={<Login />} />
-            <Route path="/tous-les-evenements" element={<ListOfEvents />} />
+            <Route path="/liste-des-evenements" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
             {/* <Route path="evenement">
             <Route path=":eventID/edit" element={<EditEvent />} />

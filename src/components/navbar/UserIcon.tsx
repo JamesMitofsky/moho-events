@@ -12,13 +12,21 @@ import {
   bindTrigger,
   bindMenu,
 } from "material-ui-popup-state/hooks";
+import { signOut, getAuth } from "firebase/auth";
 
 export default function UserIcon({ photoURL }: { photoURL: string }) {
   const popupState = usePopupState({ variant: "popover", popupId: "menu" });
+  const auth = getAuth();
 
   function handleLogout(popupState: any) {
-    console.log("logout");
-    popupState.close();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        popupState.close();
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   }
 
   return (
