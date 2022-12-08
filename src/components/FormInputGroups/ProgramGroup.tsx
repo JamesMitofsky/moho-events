@@ -4,6 +4,7 @@ import { TitledGroup } from "../Layouts/TitledGroup";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
+import Time from "../inputs/Time";
 
 export const ProgramGroup = ({ register, control }: any) => {
   const allProps = {
@@ -53,10 +54,10 @@ export const ProgramGroup = ({ register, control }: any) => {
           label={"Commentaires de programme"}
           {...register("program.comments")}
         />
-        <TimePicker
-          {...register("program.depatureTime")}
-          label="Heure de départ"
-          renderInput={(params) => <TextField {...params} />}
+        <Time
+          control={control}
+          dataLabel="program.depatureTime"
+          textLabel="Heure de départ"
         />
       </LocalizationProvider>
     </TitledGroup>

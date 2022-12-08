@@ -5,9 +5,11 @@ import { Controller } from "react-hook-form";
 export default function ControlledPicker({
   control,
   dataLabel,
+  textLabel,
 }: {
   control: any;
   dataLabel: string;
+  textLabel?: string;
 }) {
   return (
     <Controller
@@ -16,6 +18,7 @@ export default function ControlledPicker({
       defaultValue={null}
       render={({ field }) => (
         <TimePicker
+          label={textLabel}
           {...field}
           renderInput={(params) => <TextField {...params} />}
         />
