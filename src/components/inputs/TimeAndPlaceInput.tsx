@@ -1,11 +1,12 @@
 import {
   Typography,
-  InputLabel,
-  Select,
-  MenuItem,
   FormControl,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
 import Time from "./Time";
+
+import { Controller } from "react-hook-form";
 
 interface Props {
   componentTitle: string;
@@ -22,38 +23,44 @@ export const TimeAndPlaceInput = ({
 }: Props) => {
   const timeProp = `${parentObj}.time`;
   const placeProp = `${parentObj}.place`;
+
+  const locations = [
+    "VIP 1",
+    "VIP 2",
+    "VIP 3",
+    "Amphi",
+    "Atrium",
+    "Biergarten",
+    "Cube Rez de Chaussée",
+    "Cube +1",
+    "Experiment room",
+    "Share",
+    "Moholicious",
+    "Imagine",
+    "Conference Room (Inspire)",
+    "Solve",
+    "Make Room",
+    "Lead",
+    "Cocktail espcae (à côté du Gymnase)",
+    "Gymnase",
+  ];
   return (
     <>
       <Typography>{componentTitle}</Typography>
       <FormControl fullWidth>
-        <InputLabel id={placeProp}>Lieu</InputLabel>
-        <Select
-          defaultValue=""
-          {...register(placeProp)}
-          label="Lieu"
-          labelId={placeProp}
-        >
-          <MenuItem value="vip1">VIP 1</MenuItem>
-          <MenuItem value="vip2">VIP 3</MenuItem>
-          <MenuItem value="vip3">VIP 2</MenuItem>
-          <MenuItem value="amphi">Amphi</MenuItem>
-          <MenuItem value="atrium">Atrium</MenuItem>
-          <MenuItem value="biergarten">Biergarten</MenuItem>
-          <MenuItem value="cube+0">Cube | Rez de Chausser</MenuItem>
-          <MenuItem value="cube+1">Cube | +1</MenuItem>
-          <MenuItem value="experiment-room">Experiment room</MenuItem>
-          <MenuItem value="share">Share</MenuItem>
-          <MenuItem value="moholicious">Moholicious</MenuItem>
-          <MenuItem value="imagine">Imagine</MenuItem>
-          <MenuItem value="inspire">Conference Room (Inspire)</MenuItem>
-          <MenuItem value="solve">Solve</MenuItem>
-          <MenuItem value="make">Make</MenuItem>
-          <MenuItem value="lead">Lead</MenuItem>
-          <MenuItem value="cocktail">
-            Espace de Cocktail (à côté du Gymnase)
-          </MenuItem>
-          <MenuItem value="gymnase">Gymnase</MenuItem>
-        </Select>
+        <Controller
+          control={control}
+          name={placeProp}
+          render={({ field }) => (
+            <Autocomplete
+              disablePortal
+              freeSolo
+              {...field}
+              options={locations}
+              renderInput={(params) => <TextField {...params} label="Lieu" />}
+            />
+          )}
+        />
       </FormControl>
       <Time control={control} dataLabel={timeProp} />
     </>
