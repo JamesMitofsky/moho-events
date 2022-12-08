@@ -1,4 +1,5 @@
 import AddGroupButton from "../components/AddGroupButton";
+import EventsList from "../components/EventsList";
 import PageTitle from "../components/Layouts/PageTitle";
 
 const ListOfEvents = () => {
@@ -6,7 +7,7 @@ const ListOfEvents = () => {
     <>
       <PageTitle title="Liste des Groupes" />
       List of events
-      {/* <EventList groups={groups} setGroups={setGroups} /> */}
+      <EventsList />
       <AddGroupButton />
     </>
   );
