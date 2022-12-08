@@ -50,6 +50,16 @@ type AllEventGroups = {
   signage: SignageInputs;
 };
 
+interface ModifiedServerResponse extends AllEventGroups {
+  creationDetails: {
+    creatorId: string;
+    createdAt: Date;
+    createdBy: string;
+    creatorEmail: string;
+  };
+  docId: string;
+}
+
 export type {
   SocietyInputs,
   ContactInputs,
@@ -58,4 +68,5 @@ export type {
   SignageInputs,
   timeAndPlace,
   AllEventGroups,
+  ModifiedServerResponse,
 };

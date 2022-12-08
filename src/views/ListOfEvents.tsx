@@ -6,7 +6,6 @@ const ListOfEvents = () => {
   return (
     <>
       <PageTitle title="Liste des Groupes" />
-      List of events
       <EventsList />
       <AddGroupButton />
     </>

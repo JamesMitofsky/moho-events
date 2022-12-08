@@ -1,20 +1,10 @@
-import { AllEventGroups } from "../utils/globalTypes";
 import { fetchAllEvents } from "../services/cloudFirestore";
 import { useEffect, useState } from "react";
 import { ListItem, List, ListItemText } from "@mui/material";
-
-interface EventWithMetadata extends AllEventGroups {
-  creationDetails: {
-    creatorId: string;
-    createdAt: Date;
-    createdBy: string;
-    creatorEmail: string;
-  };
-  docId: string;
-}
+import { ModifiedServerResponse } from "../utils/globalTypes";
 
 export default function EventsList() {
-  const [events, setEvents] = useState<EventWithMetadata[]>([]);
+  const [events, setEvents] = useState<ModifiedServerResponse[]>([]);
 
   useEffect(() => {
     const getEvents = async function () {

@@ -5,6 +5,7 @@ import {
   serverTimestamp,
   getDocs,
 } from "firebase/firestore";
+import { ModifiedServerResponse } from "../utils/globalTypes";
 import { auth } from "./firebase";
 
 // get already initialized instance of firebase app
@@ -31,7 +32,7 @@ export async function uploadEventData(data: any) {
   }
 }
 
-export async function fetchAllEvents() {
+export async function fetchAllEvents(): Promise<ModifiedServerResponse[]> {
   const querySnapshot = await getDocs(collection(db, "eventsData"));
   let allEvents: any = [];
   querySnapshot.forEach((doc) => {
