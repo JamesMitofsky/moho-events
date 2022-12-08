@@ -1,6 +1,25 @@
 type timeAndPlace = {
   time: string;
-  place: "entry1" | "publicSpace" | "vip3";
+  place:
+    | "VIP 1"
+    | "VIP 2"
+    | "VIP 3"
+    | "Amphi"
+    | "Atrium"
+    | "Biergarten"
+    | "Cube | Rez de Chausser"
+    | "Cube | +1"
+    | "Atrium"
+    | "Experiment room"
+    | "Share"
+    | "Moholicious"
+    | "Imagine"
+    | "Conference Room (Inspire)"
+    | "Solve"
+    | "Make Room"
+    | "Lead"
+    | "Cocktail espcae (à côté du Gymnase)"
+    | "Gymnase";
 };
 type SocietyInputs = {
   associationName: string;
