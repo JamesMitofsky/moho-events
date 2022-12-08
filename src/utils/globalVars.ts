@@ -4,7 +4,7 @@ export enum societyLabels {
   category = "Catégorie",
   eventName = "Nom de l'événement",
   eventType = "Type d'événement",
-  numberOfQuote = "Nombre de devis",
+  numberOfQuote = "Numéro de devis",
   soldBy = "Vendu par",
   comments = "Commentaires de société",
 }
