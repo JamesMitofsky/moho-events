@@ -31,6 +31,7 @@ function App() {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
         setUser(user);
+        console.log(user);
 
         // prevent page from rendering twice if the user is already where they should be going
         const eventsPathName = "/liste-des-evenements";
@@ -38,6 +39,8 @@ function App() {
         navigate(eventsPathName);
       } else {
         // User is signed out
+        const loginPath = "/";
+        navigate(loginPath);
       }
     });
   }

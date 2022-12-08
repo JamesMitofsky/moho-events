@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
 
 import { AllEventGroups } from "../../utils/globalTypes";
+import { uploadEventData } from "../../services/cloudFirestore";
 
 const EventSubmissionForm = () => {
   const {
@@ -17,7 +18,9 @@ const EventSubmissionForm = () => {
     control,
     formState: { errors },
   } = useForm<AllEventGroups>({ defaultValues: {} });
-  const onSubmit: SubmitHandler<AllEventGroups> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<AllEventGroups> = (data) => {
+    uploadEventData(data);
+  };
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
