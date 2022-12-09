@@ -1,8 +1,7 @@
 import { TextField, Typography } from "@mui/material";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 
@@ -14,7 +13,7 @@ export const ProgramGroup = ({ register, control }: any) => {
 
   return (
     <TitledGroup title="Programme">
-      <LocalizationProvider dateAdapter={AdapterMoment}>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
         <TimeAndPlaceInput
           componentTitle="Arrivée organisateurs"
           parentObj="program.organiserArrival"
