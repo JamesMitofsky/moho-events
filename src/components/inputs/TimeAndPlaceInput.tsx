@@ -25,42 +25,46 @@ export const TimeAndPlaceInput = ({
   const placeProp = `${parentObj}.place`;
 
   const locations = [
-    { roomName: "VIP 1" },
-    { roomName: "VIP 2" },
-    { roomName: "VIP 3" },
-    { roomName: "Amphi" },
-    { roomName: "Atrium" },
-    { roomName: "Biergarten" },
-    { roomName: "Cube Rez de Chaussée" },
-    { roomName: "Cube +1" },
-    { roomName: "Experiment room" },
-    { roomName: "Share" },
-    { roomName: "Moholicious" },
-    { roomName: "Imagine" },
-    { roomName: "Conference Room (Inspire)" },
-    { roomName: "Solve" },
-    { roomName: "Make Room" },
-    { roomName: "Lead" },
-    { roomName: "Cocktail espcae (à côté du Gymnase)" },
-    { roomName: "Gymnase" },
+    "",
+    "VIP 1",
+    "VIP 2",
+    "VIP 3",
+    "Amphi",
+    "Atrium",
+    "Biergarten",
+    "Cube Rez de Chaussée",
+    "Cube +1",
+    "Experiment room",
+    "Share",
+    "Moholicious",
+    "Imagine",
+    "Conference Room (Inspire)",
+    "Solve",
+    "Make Room",
+    "Lead",
+    "Cocktail espcae (à côté du Gymnase)",
+    "Gymnase",
   ];
+
+  const defaultLocation = locations[0];
+
   return (
     <>
       <Typography>{componentTitle}</Typography>
       <Controller
-        control={control}
         name={placeProp}
-        render={({ field }) => (
-          <Autocomplete
-            freeSolo
-            defaultValue={field.value}
-            value={field.value}
-            onChange={(e, value) => field.onChange(value)}
-            options={locations}
-            getOptionLabel={(option) => option.roomName}
-            renderInput={(params) => <TextField {...params} label="Lieu" />}
-          />
-        )}
+        control={control}
+        defaultValue={defaultLocation}
+        render={({ field: { onChange, value } }) => {
+          return (
+            <Autocomplete
+              onChange={(_, data) => onChange(data)}
+              value={value}
+              options={locations}
+              renderInput={(params) => <TextField {...params} label="Lieu" />}
+            />
+          );
+        }}
       />
       <Time control={control} dataLabel={timeProp} />
     </>
