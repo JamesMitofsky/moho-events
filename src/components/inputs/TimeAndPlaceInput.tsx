@@ -1,13 +1,6 @@
-import {
-  Typography,
-  FormControl,
-  Autocomplete,
-  TextField,
-} from "@mui/material";
-import Time from "./Time";
-
+import { Typography, Autocomplete, TextField } from "@mui/material";
 import { Controller } from "react-hook-form";
-
+import TimeRangePicker from "./TimeRangePicker";
 interface Props {
   componentTitle: string;
   parentObj: string;
@@ -18,7 +11,6 @@ interface Props {
 export const TimeAndPlaceInput = ({
   componentTitle,
   parentObj,
-  register,
   control,
 }: Props) => {
   const timeProp = `${parentObj}.time`;
@@ -66,7 +58,7 @@ export const TimeAndPlaceInput = ({
           );
         }}
       />
-      <Time control={control} dataLabel={timeProp} />
+      <TimeRangePicker control={control} dataLabel={timeProp} />
     </>
   );
 };

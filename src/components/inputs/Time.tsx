@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { Controller } from "react-hook-form";
 
-export default function ControlledPicker({
+export default function Time({
   control,
   dataLabel,
   textLabel,
@@ -20,7 +20,7 @@ export default function ControlledPicker({
         <TimePicker
           label={textLabel}
           {...field}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => <TextField fullWidth {...params} />}
         />
       )}
     />
