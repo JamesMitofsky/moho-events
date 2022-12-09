@@ -1,5 +1,8 @@
 type timeAndPlace = {
-  time: string;
+  time: {
+    start: string;
+    end: string;
+  };
   place:
     | "VIP 1"
     | "VIP 2"
