@@ -41,7 +41,7 @@ export const TimeAndPlaceInput = ({
   const defaultLocation = locations[0];
 
   return (
-    <Box sx={{ display: "grid", gap: 1 }}>
+    <Box sx={{ display: "grid", gap: 2 }}>
       <Typography>{componentTitle}</Typography>
       <Controller
         name={placeProp}
