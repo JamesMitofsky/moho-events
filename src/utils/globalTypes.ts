@@ -1,9 +1,29 @@
-type timeAndPlace = {
+type SocietyInputs = {
+  associationName: string;
+  category: string;
+  eventName: string;
+  eventType: string;
+  numberOfQuote: number;
+  soldBy: string;
+  comments: string;
+};
+
+type ContactInputs = {
+  companyName: string;
+  contactName: string;
+  telephoneNumber: number;
+  email: string;
+  comments: string;
+};
+
+type EventComponent = {
+  title: string;
   time: {
     start: string;
     end: string;
   };
   place:
+    | ""
     | "VIP 1"
     | "VIP 2"
     | "VIP 3"
@@ -24,35 +44,13 @@ type timeAndPlace = {
     | "Cocktail espcae (à côté du Gymnase)"
     | "Gymnase";
 };
-type SocietyInputs = {
-  associationName: string;
-  category: string;
-  eventName: string;
-  eventType: string;
-  numberOfQuote: number;
-  soldBy: string;
+interface ProgramInputs extends EventComponent {
   comments: string;
-};
-
-type ContactInputs = {
-  companyName: string;
-  contactName: string;
-  telephoneNumber: number;
-  email: string;
-  comments: string;
-};
-
-type ProgramInputs = {
   numberOfPeople: number;
-  organiserArrival: timeAndPlace;
-  participantArrival: timeAndPlace;
-  welcomeCoffee: timeAndPlace;
-  firstMeetingLocation: timeAndPlace;
-  lunch: timeAndPlace;
-  secondMeetingLocation: timeAndPlace;
   departureTime: Date;
-  comments: string;
-};
+  events: EventComponent[];
+}
+
 type WifiInputs = {
   username: string;
   password: string;
@@ -88,7 +86,6 @@ export type {
   ProgramInputs,
   WifiInputs,
   SignageInputs,
-  timeAndPlace,
   AllEventGroups,
   ModifiedServerResponse,
 };

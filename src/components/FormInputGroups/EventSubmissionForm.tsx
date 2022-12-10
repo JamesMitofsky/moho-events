@@ -16,11 +16,29 @@ const EventSubmissionForm = () => {
     register,
     handleSubmit,
     control,
+    watch,
     formState: { errors },
-  } = useForm<AllEventGroups>({ defaultValues: {} });
+  } = useForm<AllEventGroups>({
+    defaultValues: {
+      program: {
+        events: [
+          {
+            title: "",
+            time: {
+              start: "",
+              end: "",
+            },
+            place: "",
+          },
+        ],
+      },
+    },
+  });
   const onSubmit: SubmitHandler<AllEventGroups> = (data) => {
     uploadEventData(data);
   };
+
+  // console.log(watch("program.events[0].title"));
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */

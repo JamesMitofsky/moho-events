@@ -2,17 +2,12 @@ import { Typography, Autocomplete, TextField, Box } from "@mui/material";
 import { Controller } from "react-hook-form";
 import TimeRangePicker from "./TimeRangePicker";
 interface Props {
-  componentTitle: string;
   parentObj: string;
   register: any;
   control: any;
 }
 
-export const TimeAndPlaceInput = ({
-  componentTitle,
-  parentObj,
-  control,
-}: Props) => {
+export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
   const timeProp = `${parentObj}.time`;
   const placeProp = `${parentObj}.place`;
 
@@ -41,8 +36,7 @@ export const TimeAndPlaceInput = ({
   const defaultLocation = locations[0];
 
   return (
-    <Box sx={{ display: "grid", gap: 2 }}>
-      <Typography>{componentTitle}</Typography>
+    <>
       <Controller
         name={placeProp}
         control={control}
@@ -50,6 +44,7 @@ export const TimeAndPlaceInput = ({
         render={({ field: { onChange, value } }) => {
           return (
             <Autocomplete
+              freeSolo
               onChange={(_, data) => onChange(data)}
               value={value}
               options={locations}
@@ -59,6 +54,6 @@ export const TimeAndPlaceInput = ({
         }}
       />
       <TimeRangePicker control={control} dataLabel={timeProp} />
-    </Box>
+    </>
   );
 };
