@@ -22,7 +22,7 @@ export const ProgramGroup = ({ register, control }: any) => {
   return (
     <TitledGroup title="Programme">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {/* TODO: abstract into component container of all instances of program.eventComponent */}
+        {/* TODO: abstract into component container  */}
         <Box sx={{ display: "grid", gap: 2 }}>
           {fields.map((field, index) => (
             <Box key={field.id} sx={{ display: "grid", gap: 2, mb: 5 }}>
@@ -31,7 +31,7 @@ export const ProgramGroup = ({ register, control }: any) => {
                 {...register(`program.events[${index}].title` as const)}
               />
               <TimeAndPlaceInput
-                parentObj={`program.eventComponent[${index}]`}
+                parentObj={`program.events[${index}]`}
                 {...allProps}
               />
             </Box>
