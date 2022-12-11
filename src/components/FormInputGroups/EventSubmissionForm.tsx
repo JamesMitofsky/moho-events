@@ -28,7 +28,7 @@ const EventSubmissionForm = () => {
               start: "",
               end: "",
             },
-            place: "",
+            place: [],
           },
         ],
       },

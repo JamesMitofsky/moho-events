@@ -42,7 +42,7 @@ type EventComponent = {
     | "Make Room"
     | "Lead"
     | "Cocktail espcae (à côté du Gymnase)"
-    | "Gymnase";
+    | "Gymnase"[];
 };
 interface ProgramInputs extends EventComponent {
   comments: string;
