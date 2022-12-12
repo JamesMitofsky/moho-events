@@ -21,7 +21,7 @@ type Places =
   | "Entrée principale"
   | "Salle de conférence (Inspire)"
   | "Gymnase"
-  | "Cube | Rez de Chausser"
+  | "Cube | Rez de Chaussée"
   | "Cube | +1"
   | "VIP 1"
   | "VIP 2"
@@ -85,6 +85,7 @@ interface ModifiedServerResponse extends AllEventGroups {
 }
 
 export type {
+  Places,
   SocietyInputs,
   ContactInputs,
   ProgramInputs,

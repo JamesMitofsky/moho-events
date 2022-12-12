@@ -1,6 +1,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import TimeRangePicker from "./TimeRangePicker";
 import { Controller } from "react-hook-form";
+import { Places } from "../../utils/globalTypes";
 
 interface Props {
   parentObj: string;
@@ -11,25 +12,28 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
   const timeProp = `${parentObj}.time`;
   const placeProp = `${parentObj}.place`;
 
-  const locations = [
+  const locations: Places[] = [
+    "Entrée principale",
+    "Salle de conférence (Inspire)",
+    "Gymnase",
+    "Cube | Rez de Chaussée",
+    "Cube | +1",
     "VIP 1",
     "VIP 2",
     "VIP 3",
+    "4 Rue de la Gare",
     "Amphi",
     "Atrium",
     "Biergarten",
-    "Cube Rez de Chaussée",
-    "Cube +1",
-    "Experiment room",
+    "Atrium",
+    "Experiment",
     "Share",
     "Moholicious",
     "Imagine",
-    "Conference Room (Inspire)",
     "Solve",
-    "Make Room",
+    "Make",
     "Lead",
     "Cocktail espcae (à côté du Gymnase)",
-    "Gymnase",
   ];
 
   return (
