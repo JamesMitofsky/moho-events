@@ -31,7 +31,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
         {/* TODO: abstract into component container  */}
         <Box sx={{ display: "grid", gap: 2 }}>
           {fields.map((field, index) => (
-            <Box key={field.id} sx={{ display: "grid", gap: 2, mb: 5 }}>
+            <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
               <TextField
                 label="Contenu"
                 {...register(`program.events[${index}].title` as const)}
@@ -42,7 +42,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
               />
             </Box>
           ))}
-          <Button variant="outlined" onClick={() => append({})}>
+          <Button variant="contained" onClick={() => append({})}>
             Ajouter une autre programme
           </Button>
 
