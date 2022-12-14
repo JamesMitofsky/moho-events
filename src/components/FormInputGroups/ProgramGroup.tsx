@@ -53,8 +53,9 @@ export const ProgramGroup = ({ register, control, setValue }: Props) => {
             {...register("program.numberOfPeople")}
           />
           <TextEditor
-            setValue={setValue}
-            registeredAddress="program.comments"
+            objLabel="program.comments"
+            register={register}
+            control={control}
           />
           {/* <TextField label={"Remarque"} {...register("program.comments")} /> */}
           <Time
