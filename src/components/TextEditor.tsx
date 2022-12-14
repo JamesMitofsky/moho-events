@@ -15,7 +15,7 @@ export default function TextEditor({ control, objLabel }: Props) {
         name={objLabel}
         control={control}
         render={({ field }) => (
-          <ReactQuill placeholder="Remarque" theme="snow" {...field} />
+          <ReactQuill placeholder="Remarques" theme="snow" {...field} />
         )}
       />
     </Box>

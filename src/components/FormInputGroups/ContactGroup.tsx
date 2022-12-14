@@ -1,7 +1,13 @@
 import { TitledGroup } from "../Layouts/TitledGroup";
 import { TextField } from "@mui/material";
+import TextEditor from "../TextEditor";
 
-export const ContactGroup = ({ register }: any) => {
+interface Props {
+  register: any;
+  control: any;
+}
+
+export const ContactGroup = ({ register, control }: Props) => {
   return (
     <TitledGroup title="Contact">
       <TextField
@@ -26,10 +32,7 @@ export const ContactGroup = ({ register }: any) => {
           },
         })}
       />
-      <TextField
-        label={"Commentaires de contact"}
-        {...register("contact.comments")}
-      />
+      <TextEditor objLabel="contact.comments" control={control} />
     </TitledGroup>
   );
 };

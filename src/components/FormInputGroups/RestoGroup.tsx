@@ -1,7 +1,13 @@
 import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
+import TextEditor from "../TextEditor";
 
-export const RestoGroup = ({ register }: any) => {
+interface Props {
+  register: any;
+  control: any;
+}
+
+export const RestoGroup = ({ register, control }: Props) => {
   return (
     <TitledGroup title="Restauration">
       <TextField

@@ -1,7 +1,13 @@
 import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
+import TextEditor from "../TextEditor";
 
-export const SocietyGroup = ({ register }: any) => {
+interface Props {
+  register: any;
+  control: any;
+}
+
+export const SocietyGroup = ({ register, control }: Props) => {
   return (
     <TitledGroup title={"Société"}>
       <TextField
@@ -25,10 +31,7 @@ export const SocietyGroup = ({ register }: any) => {
         })}
       />
       <TextField label={"Vendu par"} {...register("society.soldBy")} />
-      <TextField
-        label={"Commentaires de société"}
-        {...register("society.comments")}
-      />
+      <TextEditor objLabel="society.comments" control={control} />
     </TitledGroup>
   );
 };

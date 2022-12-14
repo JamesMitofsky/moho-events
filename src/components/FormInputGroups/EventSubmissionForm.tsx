@@ -39,22 +39,20 @@ const EventSubmissionForm = () => {
     uploadEventData(data);
   };
 
+  const regCtrlProps = { register, control };
+
   console.log("proof", watch("program.comments"));
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <>
       <PaddedChildren padding={3}>
-        <SocietyGroup register={register} />
-        <ContactGroup register={register} />
-        <ProgramGroup
-          register={register}
-          control={control}
-          setValue={setValue}
-        />
-        <SignageGroup register={register} />
+        <SocietyGroup {...regCtrlProps} />
+        <ContactGroup {...regCtrlProps} />
+        <ProgramGroup {...regCtrlProps} />
+        <SignageGroup {...regCtrlProps} />
         <WifiGroup register={register} />
-        <RestoGroup register={register} />
+        <RestoGroup {...regCtrlProps} />
 
         <Button onClick={handleSubmit(onSubmit)} variant="contained">
           Submit

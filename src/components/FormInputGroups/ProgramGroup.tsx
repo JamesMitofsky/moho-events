@@ -10,10 +10,9 @@ import TextEditor from "../TextEditor";
 interface Props {
   register: any;
   control: any;
-  setValue: any;
 }
 
-export const ProgramGroup = ({ register, control, setValue }: Props) => {
+export const ProgramGroup = ({ register, control }: Props) => {
   const allProps = {
     register,
     control,
