@@ -17,6 +17,7 @@ const EventSubmissionForm = () => {
     handleSubmit,
     control,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<AllEventGroups>({
     defaultValues: {
@@ -38,7 +39,7 @@ const EventSubmissionForm = () => {
     uploadEventData(data);
   };
 
-  // console.log(watch("program.events[0].title"));
+  console.log("proof", watch("program.comments"));
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
@@ -46,7 +47,11 @@ const EventSubmissionForm = () => {
       <PaddedChildren padding={3}>
         <SocietyGroup register={register} />
         <ContactGroup register={register} />
-        <ProgramGroup register={register} control={control} />
+        <ProgramGroup
+          register={register}
+          control={control}
+          setValue={setValue}
+        />
         <SignageGroup register={register} />
         <WifiGroup register={register} />
         <RestoGroup register={register} />

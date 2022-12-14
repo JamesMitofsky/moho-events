@@ -5,8 +5,15 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import { useFieldArray } from "react-hook-form";
+import TextEditor from "../TextEditor";
 
-export const ProgramGroup = ({ register, control }: any) => {
+interface Props {
+  register: any;
+  control: any;
+  setValue: any;
+}
+
+export const ProgramGroup = ({ register, control, setValue }: Props) => {
   const allProps = {
     register,
     control,
@@ -45,10 +52,11 @@ export const ProgramGroup = ({ register, control }: any) => {
             label={"Nombre de pax"}
             {...register("program.numberOfPeople")}
           />
-          <TextField
-            label={"Commentaires de programme"}
-            {...register("program.comments")}
+          <TextEditor
+            setValue={setValue}
+            registeredAddress="program.comments"
           />
+          {/* <TextField label={"Remarque"} {...register("program.comments")} /> */}
           <Time
             control={control}
             dataLabel="program.depatureTime"
