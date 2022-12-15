@@ -27,42 +27,42 @@ export const ProgramGroup = ({ register, control }: Props) => {
 
   return (
     <TitledGroup title="Programme">
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {/* TODO: abstract into component container  */}
-        <Box sx={{ display: "grid", gap: 2 }}>
-          {fields.map((field, index) => (
-            <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-              <TextField
-                label="Contenu"
-                {...register(`program.events[${index}].title` as const)}
-              />
-              <TimeAndPlaceInput
-                parentObj={`program.events[${index}]`}
-                {...allProps}
-              />
-            </Box>
-          ))}
-          <Button variant="contained" onClick={() => append({})}>
-            Ajouter une autre programme
-          </Button>
+      {/* TODO: abstract into component container  */}
+      <Box sx={{ display: "grid", gap: 2 }}>
+        {fields.map((field, index) => (
+          <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
+            <TextField
+              label="Contenu"
+              {...register(`program.events[${index}].title` as const)}
+            />
+            <TimeAndPlaceInput
+              parentObj={`program.events[${index}]`}
+              {...allProps}
+            />
+          </Box>
+        ))}
+        <Button variant="contained" onClick={() => append({})}>
+          Ajouter une autre programme
+        </Button>
 
-          <Typography>Misc.</Typography>
-          <TextField
-            label={"Nombre de pax"}
-            {...register("program.numberOfPeople")}
-          />
-          <TextEditor
-            objLabel="program.comments"
-            control={control}
-            displayLabel="Remarques"
-          />
+        <Typography>Misc.</Typography>
+        <TextField
+          label={"Nombre de pax"}
+          {...register("program.numberOfPeople")}
+        />
+        <TextEditor
+          objLabel="program.comments"
+          control={control}
+          displayLabel="Remarques"
+        />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
           <Time
             control={control}
             dataLabel="program.depatureTime"
             textLabel="Heure de départ"
           />
-        </Box>
-      </LocalizationProvider>
+        </LocalizationProvider>
+      </Box>
     </TitledGroup>
   );
 };
