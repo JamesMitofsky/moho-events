@@ -31,7 +31,6 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
     "Amphi",
     "Atrium",
     "Biergarten",
-    "Atrium",
     "Experiment",
     "Share",
     "Moholicious",
