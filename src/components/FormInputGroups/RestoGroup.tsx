@@ -2,10 +2,13 @@ import { TextField, Box } from "@mui/material";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import TextEditor from "../TextEditor";
+import { Control, UseFormRegister } from "react-hook-form";
+import { AllEventGroups } from "../../utils/globalTypes";
+import SelectOptions from "../inputs/SelectOptions";
 
 interface Props {
-  register: any;
-  control: any;
+  register: UseFormRegister<AllEventGroups>;
+  control: Control<AllEventGroups>;
 }
 
 export const RestoGroup = ({ register, control }: Props) => {
@@ -26,8 +29,19 @@ export const RestoGroup = ({ register, control }: Props) => {
         objLabel={`${restoObj}.details`}
         displayLabel="Détails"
       />
-      <TextField label={"Prix"} {...register(`${restoObj}.price`)} />
-      <TextField label={"Traiteurs"} {...register(`${restoObj}.catering`)} />
+      <TextEditor
+        control={control}
+        objLabel={`${restoObj}.price`}
+        displayLabel="Prix"
+      />
+      {/* <TextField label={"Traiteurs"} {...register(`${restoObj}.catering`)} /> */}
+      <SelectOptions
+        control={control}
+        propLabel={`${restoObj}.catering`}
+        textLabel="Traiteurs"
+        options={[]}
+        helperText="Tappez 'Entrée' pour ajouter un nouveau traiteur"
+      />
       <TextEditor
         control={control}
         objLabel={`${restoObj}.furnitureUsed`}

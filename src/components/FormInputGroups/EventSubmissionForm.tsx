@@ -33,6 +33,9 @@ const EventSubmissionForm = () => {
           },
         ],
       },
+      restaurant: {
+        catering: [],
+      },
     },
   });
   const onSubmit: SubmitHandler<AllEventGroups> = (data) => {

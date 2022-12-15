@@ -74,7 +74,7 @@ interface RestaurantInputs {
   details: string;
   price: number;
   furnitureUsed: string;
-  catering: string;
+  catering: string[];
   comments: string;
 }
 
