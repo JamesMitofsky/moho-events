@@ -69,12 +69,22 @@ type SignageInputs = {
   comments: string;
 };
 
+interface RestaurantInputs {
+  numberOfPeople: number;
+  details: string;
+  price: number;
+  furnitureUsed: string;
+  catering: string;
+  comments: string;
+}
+
 type AllEventGroups = {
   society: SocietyInputs;
   contact: ContactInputs;
   program: ProgramInputs;
   wifi: WifiInputs;
   signage: SignageInputs;
+  restaurant: RestaurantInputs;
 };
 
 interface ModifiedServerResponse extends AllEventGroups {
