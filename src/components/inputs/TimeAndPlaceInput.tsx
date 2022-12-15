@@ -2,7 +2,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import TimeRangePicker from "./TimeRangePicker";
 import { Controller } from "react-hook-form";
 import { Places } from "../../utils/globalTypes";
-
+import SelectOptions from "./SelectOptions";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
@@ -43,7 +43,7 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Controller
+      {/* <Controller
         name={placeProp}
         control={control}
         render={({ field: { value, onChange } }) => (
@@ -56,6 +56,12 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
             renderInput={(params) => <TextField {...params} label="Lieu" />}
           />
         )}
+      /> */}
+      <SelectOptions
+        options={locations}
+        control={control}
+        propLabel={placeProp}
+        textLabel="Lieu"
       />
 
       <TimeRangePicker control={control} dataLabel={timeProp} />
