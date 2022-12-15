@@ -43,20 +43,6 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      {/* <Controller
-        name={placeProp}
-        control={control}
-        render={({ field: { value, onChange } }) => (
-          <Autocomplete
-            onChange={(_, data) => onChange(data)}
-            value={value}
-            multiple
-            freeSolo
-            options={locations}
-            renderInput={(params) => <TextField {...params} label="Lieu" />}
-          />
-        )}
-      /> */}
       <SelectOptions
         options={locations}
         control={control}
