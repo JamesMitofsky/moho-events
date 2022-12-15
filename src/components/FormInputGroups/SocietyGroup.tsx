@@ -31,7 +31,11 @@ export const SocietyGroup = ({ register, control }: Props) => {
         })}
       />
       <TextField label={"Vendu par"} {...register("society.soldBy")} />
-      <TextEditor objLabel="society.comments" control={control} />
+      <TextEditor
+        objLabel="society.comments"
+        displayLabel="Remarques"
+        control={control}
+      />
     </TitledGroup>
   );
 };

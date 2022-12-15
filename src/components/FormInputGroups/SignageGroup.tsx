@@ -15,7 +15,11 @@ export const SignageGroup = ({ register, control }: Props) => {
         label={"Autres informations"}
         {...register("signage.otherInfo")}
       />
-      <TextEditor objLabel="signage.comments" control={control} />
+      <TextEditor
+        objLabel="signage.comments"
+        control={control}
+        displayLabel="Remarques"
+      />
     </TitledGroup>
   );
 };

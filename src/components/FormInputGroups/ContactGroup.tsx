@@ -32,7 +32,11 @@ export const ContactGroup = ({ register, control }: Props) => {
           },
         })}
       />
-      <TextEditor objLabel="contact.comments" control={control} />
+      <TextEditor
+        objLabel="contact.comments"
+        displayLabel="Remarques"
+        control={control}
+      />
     </TitledGroup>
   );
 };
