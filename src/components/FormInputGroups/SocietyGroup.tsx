@@ -1,10 +1,11 @@
 import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import TextEditor from "../TextEditor";
+import { Control } from "react-hook-form";
 
 interface Props {
   register: any;
-  control: any;
+  control: Control;
 }
 
 export const SocietyGroup = ({ register, control }: Props) => {

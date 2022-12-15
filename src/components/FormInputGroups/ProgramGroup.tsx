@@ -4,12 +4,13 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
-import { useFieldArray } from "react-hook-form";
 import TextEditor from "../TextEditor";
+import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
+import { AllEventGroups } from "../../utils/globalTypes";
 
 interface Props {
-  register: any;
-  control: any;
+  register: UseFormRegister<any>;
+  control: Control<any>;
 }
 
 export const ProgramGroup = ({ register, control }: Props) => {
@@ -33,7 +34,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
             <TextField
               label="Contenu"
-              {...register(`program.events[${index}].title` as const)}
+              {...register(`program.events[${index}].title`)}
             />
             <TimeAndPlaceInput
               parentObj={`program.events[${index}]`}

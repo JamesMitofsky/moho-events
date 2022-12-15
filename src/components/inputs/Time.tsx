@@ -1,13 +1,13 @@
 import TextField from "@mui/material/TextField";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { Controller } from "react-hook-form";
+import { Controller, Control } from "react-hook-form";
 
 export default function Time({
   control,
   dataLabel,
   textLabel,
 }: {
-  control: any;
+  control: Control;
   dataLabel: string;
   textLabel?: string;
 }) {

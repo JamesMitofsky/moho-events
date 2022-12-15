@@ -1,11 +1,12 @@
-import { Controller } from "react-hook-form";
+import { Controller, Control } from "react-hook-form";
 import { Autocomplete, TextField } from "@mui/material";
 
 interface Props {
   options: string[];
-  control: any;
+  control: Control;
   textLabel: string;
   propLabel: string;
+  helperText?: string;
 }
 
 export default function SelectOptions({
@@ -13,6 +14,7 @@ export default function SelectOptions({
   control,
   textLabel,
   propLabel,
+  helperText,
 }: Props) {
   return (
     <Controller
@@ -25,7 +27,9 @@ export default function SelectOptions({
           multiple
           freeSolo
           options={options}
-          renderInput={(params) => <TextField {...params} label={textLabel} />}
+          renderInput={(params) => (
+            <TextField {...params} label={textLabel} helperText={helperText} />
+          )}
         />
       )}
     />

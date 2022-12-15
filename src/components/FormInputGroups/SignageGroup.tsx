@@ -1,10 +1,12 @@
 import { TitledGroup } from "../Layouts/TitledGroup";
 import { TextField } from "@mui/material";
 import TextEditor from "../TextEditor";
+import { Control, UseFormRegister } from "react-hook-form";
+import { AllEventGroups } from "../../utils/globalTypes";
 
 interface Props {
-  register: any;
-  control: any;
+  register: UseFormRegister<AllEventGroups>;
+  control: Control<AllEventGroups>;
 }
 
 export const SignageGroup = ({ register, control }: Props) => {

@@ -1,11 +1,12 @@
 import { Box } from "@mui/material";
 import Time from "./Time";
+import { Control } from "react-hook-form";
 
 export default function TimeRangePicker({
   control,
   dataLabel,
 }: {
-  control: any;
+  control: Control;
   dataLabel: string;
 }) {
   const startTime = `${dataLabel}.start`;
