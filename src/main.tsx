@@ -7,8 +7,9 @@ import "@fontsource/antonio";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import MetaTags from "./utils/MetaTags";
+import { frFR } from "@mui/material/locale";
 
-const theme = createTheme({
+const theme = {
   typography: {
     fontFamily: ["sans-serif"].join(","),
     h1: {
@@ -37,13 +38,15 @@ const theme = createTheme({
       main: "rgb(254,248,76)",
     },
   },
-});
+};
+
+const themeWithLocale = createTheme(theme, frFR);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={themeWithLocale}>
           <MetaTags title="Moho Events" />
           <App />
         </ThemeProvider>
