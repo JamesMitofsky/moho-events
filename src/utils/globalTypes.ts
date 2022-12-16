@@ -3,6 +3,7 @@ type SocietyInputs = {
   category: string;
   eventName: string;
   eventType: string;
+  date: Date;
   numberOfQuote: number;
   soldBy: string;
   comments: string;

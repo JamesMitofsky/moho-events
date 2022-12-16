@@ -2,6 +2,7 @@ import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import TextEditor from "../TextEditor";
 import { Control } from "react-hook-form";
+import Date from "../inputs/Date";
 
 interface Props {
   register: any;
@@ -24,6 +25,7 @@ export const SocietyGroup = ({ register, control }: Props) => {
         label={"Type d'événement"}
         {...register("society.eventType")}
       />
+      <Date dataLabel="society.date" control={control} />
       <TextField
         type="number"
         label={"Nombre de devis"}
