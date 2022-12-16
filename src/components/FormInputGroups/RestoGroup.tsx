@@ -34,7 +34,6 @@ export const RestoGroup = ({ register, control }: Props) => {
         objLabel={`${restoObj}.price`}
         displayLabel="Prix"
       />
-      {/* <TextField label={"Traiteurs"} {...register(`${restoObj}.catering`)} /> */}
       <SelectOptions
         control={control}
         propLabel={`${restoObj}.catering`}

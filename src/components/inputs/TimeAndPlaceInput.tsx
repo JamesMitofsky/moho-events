@@ -2,8 +2,6 @@ import TimeRangePicker from "./TimeRangePicker";
 import { Control } from "react-hook-form";
 import { Places } from "../../utils/globalTypes";
 import SelectOptions from "./SelectOptions";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 interface Props {
   parentObj: string;
@@ -41,7 +39,7 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
   ];
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <>
       <SelectOptions
         options={locations}
         control={control}
@@ -50,6 +48,6 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
       />
 
       <TimeRangePicker control={control} dataLabel={timeProp} />
-    </LocalizationProvider>
+    </>
   );
 };

@@ -56,13 +56,11 @@ export const ProgramGroup = ({ register, control }: Props) => {
           control={control}
           displayLabel="Remarques"
         />
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <Time
-            control={control}
-            dataLabel="program.depatureTime"
-            textLabel="Heure de départ"
-          />
-        </LocalizationProvider>
+        <Time
+          control={control}
+          dataLabel="program.depatureTime"
+          textLabel="Heure de départ"
+        />
       </Box>
     </TitledGroup>
   );
