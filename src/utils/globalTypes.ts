@@ -83,7 +83,7 @@ type AllEventGroups = {
   society: SocietyInputs;
   contact: ContactInputs;
   program: ProgramInputs;
-  wifi: WifiInputs;
+  wifi: WifiInputs[];
   signage: SignageInputs;
   restaurant: RestaurantInputs;
 };

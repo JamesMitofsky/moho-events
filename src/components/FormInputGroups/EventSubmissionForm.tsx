@@ -36,6 +36,12 @@ const EventSubmissionForm = () => {
       restaurant: {
         catering: [],
       },
+      wifi: [
+        {
+          username: "",
+          password: "",
+        },
+      ],
     },
   });
   const onSubmit: SubmitHandler<AllEventGroups> = (data) => {
@@ -54,7 +60,7 @@ const EventSubmissionForm = () => {
         <ContactGroup {...regCtrlProps} />
         <ProgramGroup {...regCtrlProps} />
         <SignageGroup {...regCtrlProps} />
-        <WifiGroup register={register} />
+        <WifiGroup {...regCtrlProps} />
         <RestoGroup {...regCtrlProps} />
 
         <Button onClick={handleSubmit(onSubmit)} variant="contained">
