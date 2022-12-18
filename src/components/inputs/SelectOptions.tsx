@@ -20,6 +20,7 @@ export default function SelectOptions({
     <Controller
       name={propLabel}
       control={control}
+      defaultValue={[]}
       render={({ field: { value, onChange } }) => (
         <Autocomplete
           onChange={(_, data) => onChange(data)}

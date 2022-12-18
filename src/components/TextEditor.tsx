@@ -15,6 +15,7 @@ export default function TextEditor({ control, objLabel, displayLabel }: Props) {
       <Controller
         name={objLabel}
         control={control}
+        defaultValue=""
         render={({ field }) => (
           <ReactQuill placeholder={displayLabel} theme="snow" {...field} />
         )}
