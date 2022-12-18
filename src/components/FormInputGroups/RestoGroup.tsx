@@ -19,38 +19,38 @@ export const RestoGroup = ({ register, control }: Props) => {
     <Box sx={{ display: "grid", gap: 2 }}>
       <TitledGroup title="Restauration">
         <TimeAndPlaceInput control={control} parentObj={`${restoObj}`} />
+        <TextField
+          label={"Nombre de pax"}
+          {...register(`${restoObj}.numberOfPeople`)}
+        />
+        <TextEditor
+          control={control}
+          objLabel={`${restoObj}.details`}
+          displayLabel="Détails"
+        />
+        <TextEditor
+          control={control}
+          objLabel={`${restoObj}.price`}
+          displayLabel="Prix"
+        />
+        <SelectOptions
+          control={control}
+          propLabel={`${restoObj}.catering`}
+          textLabel="Traiteurs"
+          options={[]}
+          helperText="Tappez 'Entrée' après chaque traiteur"
+        />
+        <TextEditor
+          control={control}
+          objLabel={`${restoObj}.furnitureUsed`}
+          displayLabel="Mobilier utilisé"
+        />
+        <TextEditor
+          control={control}
+          objLabel={`${restoObj}.comments`}
+          displayLabel="Remarques"
+        />
       </TitledGroup>
-      <TextField
-        label={"Nombre de pax"}
-        {...register(`${restoObj}.numberOfPeople`)}
-      />
-      <TextEditor
-        control={control}
-        objLabel={`${restoObj}.details`}
-        displayLabel="Détails"
-      />
-      <TextEditor
-        control={control}
-        objLabel={`${restoObj}.price`}
-        displayLabel="Prix"
-      />
-      <SelectOptions
-        control={control}
-        propLabel={`${restoObj}.catering`}
-        textLabel="Traiteurs"
-        options={[]}
-        helperText="Tappez 'Entrée' pour ajouter un nouveau traiteur"
-      />
-      <TextEditor
-        control={control}
-        objLabel={`${restoObj}.furnitureUsed`}
-        displayLabel="Mobilier utilisé"
-      />
-      <TextEditor
-        control={control}
-        objLabel={`${restoObj}.comments`}
-        displayLabel="Remarques"
-      />
     </Box>
   );
 };
