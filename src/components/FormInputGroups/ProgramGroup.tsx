@@ -1,7 +1,5 @@
-import { TextField, Typography, Box, Button } from "@mui/material";
+import { TextField, Typography, Box, Button, Divider } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";
@@ -34,12 +32,17 @@ export const ProgramGroup = ({ register, control }: Props) => {
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
             <TextField
               label="Contenu"
+              helperText="Ex: Pause café, Déjeuner, etc."
               {...register(`program.events[${index}].title`)}
             />
             <TimeAndPlaceInput
               parentObj={`program.events[${index}]`}
               {...allProps}
             />
+            {/* prevent divider appearing beneath the last list item */}
+            {fields.length > 1 && fields.length !== index + 1 && (
+              <Divider sx={{ mt: 2, mb: 2 }} />
+            )}
           </Box>
         ))}
         <Button variant="contained" onClick={() => append({})}>

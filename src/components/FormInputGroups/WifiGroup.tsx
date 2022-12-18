@@ -1,5 +1,5 @@
 import { TitledGroup } from "../Layouts/TitledGroup";
-import { TextField, Box, Button } from "@mui/material";
+import { TextField, Box, Button, Divider } from "@mui/material";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
 
@@ -28,6 +28,10 @@ export const WifiGroup = ({ register, control }: Props) => {
               label={"Mot de passe"}
               {...register(`wifi.${index}.password`)}
             />
+            {/* prevent divider appearing beneath the last list item */}
+            {fields.length > 1 && fields.length !== index + 1 && (
+              <Divider sx={{ mt: 2, mb: 2 }} />
+            )}
           </Box>
         ))}
         <Button
