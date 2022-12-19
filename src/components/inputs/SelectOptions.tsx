@@ -14,7 +14,7 @@ export default function SelectOptions({
   control,
   textLabel,
   propLabel,
-  helperText,
+  helperText = `Tappez 'Entrée' après chaque réponse`,
 }: Props) {
   return (
     <Controller
