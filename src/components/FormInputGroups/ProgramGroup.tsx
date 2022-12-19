@@ -5,6 +5,7 @@ import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
+import SelectOptions from "../inputs/SelectOptions";
 
 interface Props {
   register: UseFormRegister<any>;
@@ -16,6 +17,18 @@ export const ProgramGroup = ({ register, control }: Props) => {
     register,
     control,
   };
+
+  const formatConfigurations = [
+    "Debout",
+    "Cocktail",
+    "Buffet",
+    "Assis",
+    "Table ronde",
+    "Table carrée",
+    "Table rectangulaire",
+  ];
+
+  const cateringOptions = ["Le Spot", "Moholicious", "Dely"];
 
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
@@ -37,6 +50,35 @@ export const ProgramGroup = ({ register, control }: Props) => {
             />
             <TimeAndPlaceInput
               parentObj={`program.events[${index}]`}
+              {...allProps}
+            />
+            <TextField
+              label="Nombre de pax"
+              {...register(`program.events[${index}].numberOfPeople`)}
+            />
+            <TextField
+              label="Mobilier utilisé"
+              {...register(`program.events[${index}].furnitureUsed`)}
+            />
+            <SelectOptions
+              textLabel="Traiteurs"
+              propLabel={`program.events[${index}].catering`}
+              options={cateringOptions}
+              {...allProps}
+            />
+            <TextField
+              label="Service facturé"
+              {...register(`program.events[${index}].billedService`)}
+            />
+            <SelectOptions
+              textLabel="Format"
+              propLabel={`program.events[${index}].format`}
+              options={formatConfigurations}
+              {...allProps}
+            />
+            <TextEditor
+              displayLabel="Détails"
+              objLabel={`program.events[${index}].details`}
               {...allProps}
             />
             {/* prevent divider appearing beneath the last list item */}

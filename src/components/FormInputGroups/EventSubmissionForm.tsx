@@ -3,7 +3,6 @@ import { ContactGroup } from "./ContactGroup";
 import { SocietyGroup } from "./SocietyGroup";
 import { SignageGroup } from "./SignageGroup";
 import { WifiGroup } from "./WifiGroup";
-import { RestoGroup } from "./RestoGroup";
 import { PaddedChildren } from "../Layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
@@ -33,9 +32,6 @@ const EventSubmissionForm = () => {
           },
         ],
       },
-      restaurant: {
-        catering: [],
-      },
       wifi: [
         {
           username: "",
@@ -61,7 +57,6 @@ const EventSubmissionForm = () => {
         <ProgramGroup {...regCtrlProps} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
-        <RestoGroup {...regCtrlProps} />
 
         <Button onClick={handleSubmit(onSubmit)} variant="contained">
           Submit
