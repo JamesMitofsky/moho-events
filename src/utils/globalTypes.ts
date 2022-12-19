@@ -51,10 +51,10 @@ type EventComponent = {
     end: string;
   };
   place: Places[];
-  numberOfPeople: number;
+  numberOfPeople: number | null;
   furnitureUsed: string;
   catering: string;
-  billedService: number;
+  billedService: number | null;
   eventLayout: string;
   details: string;
   involvesRestaurant: boolean;

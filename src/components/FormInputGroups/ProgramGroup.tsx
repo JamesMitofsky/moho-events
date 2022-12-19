@@ -9,8 +9,8 @@ import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 
 interface Props {
-  register: UseFormRegister<any>;
-  control: Control<any>;
+  register: UseFormRegister<AllEventGroups>;
+  control: Control<AllEventGroups>;
 }
 
 export const ProgramGroup = ({ register, control }: Props) => {
@@ -47,44 +47,45 @@ export const ProgramGroup = ({ register, control }: Props) => {
             <TextField
               label="Contenu"
               helperText="Ex: Pause café, Déjeuner, etc."
-              {...register(`program.events[${index}].title`)}
+              {...register(`program.events.${index}.title`)}
             />
             <TimeAndPlaceInput
-              parentObj={`program.events[${index}]`}
+              parentObj={`program.events.${index}`}
               {...allProps}
             />
             <TextField
               label="Nombre de pax"
-              {...register(`program.events[${index}].numberOfPeople`)}
+              {...register(`program.events.${index}.numberOfPeople`)}
             />
             <TextField
               label="Mobilier utilisé"
-              {...register(`program.events[${index}].furnitureUsed`)}
+              {...register(`program.events.${index}.furnitureUsed`)}
             />
             <SelectOptions
               textLabel="Traiteurs"
-              propLabel={`program.events[${index}].catering`}
+              propLabel={`program.events.${index}.catering`}
               options={cateringOptions}
               {...allProps}
             />
             <TextField
               label="Service facturé"
-              {...register(`program.events[${index}].billedService`)}
+              {...register(`program.events.${index}.billedService`)}
             />
             <SelectOptions
               textLabel="Format"
-              propLabel={`program.events[${index}].eventLayout`}
+              propLabel={`program.events.${index}.eventLayout`}
               options={formatConfigurations}
               {...allProps}
             />
             <TextEditor
               displayLabel="Détails"
-              objLabel={`program.events[${index}].details`}
+              objLabel={`program.events.${index}.details`}
               {...allProps}
             />
             <ControlledCheckbox
               control={control}
-              propLabel={`program.events[${index}].involvesRestaurant`}
+              textLabel="checkbox test"
+              propLabel={`program.events.${index}.involvesRestaurant`}
             />
             {/* prevent divider appearing beneath the last list item */}
             {fields.length > 1 && fields.length !== index + 1 && (
@@ -92,7 +93,26 @@ export const ProgramGroup = ({ register, control }: Props) => {
             )}
           </Box>
         ))}
-        <Button variant="contained" onClick={() => append({})}>
+        <Button
+          variant="contained"
+          onClick={() =>
+            append({
+              title: "",
+              time: {
+                start: "",
+                end: "",
+              },
+              place: [],
+              numberOfPeople: null,
+              furnitureUsed: "",
+              catering: "",
+              billedService: null,
+              eventLayout: "",
+              details: "",
+              involvesRestaurant: false,
+            })
+          }
+        >
           Ajouter une autre programme
         </Button>
 

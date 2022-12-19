@@ -23,12 +23,10 @@ const EventSubmissionForm = () => {
       program: {
         events: [
           {
-            title: "",
             time: {
               start: "",
               end: "",
             },
-            place: [],
           },
         ],
       },
