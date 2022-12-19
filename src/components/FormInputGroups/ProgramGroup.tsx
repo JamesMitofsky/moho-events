@@ -6,6 +6,7 @@ import TextEditor from "../TextEditor";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
+import ControlledCheckbox from "../inputs/ControlledCheckbox";
 
 interface Props {
   register: UseFormRegister<any>;
@@ -72,7 +73,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             />
             <SelectOptions
               textLabel="Format"
-              propLabel={`program.events[${index}].format`}
+              propLabel={`program.events[${index}].eventLayout`}
               options={formatConfigurations}
               {...allProps}
             />
@@ -80,6 +81,10 @@ export const ProgramGroup = ({ register, control }: Props) => {
               displayLabel="Détails"
               objLabel={`program.events[${index}].details`}
               {...allProps}
+            />
+            <ControlledCheckbox
+              control={control}
+              propLabel={`program.events[${index}].involvesRestaurant`}
             />
             {/* prevent divider appearing beneath the last list item */}
             {fields.length > 1 && fields.length !== index + 1 && (

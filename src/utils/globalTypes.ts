@@ -51,6 +51,13 @@ type EventComponent = {
     end: string;
   };
   place: Places[];
+  numberOfPeople: number;
+  furnitureUsed: string;
+  catering: string;
+  billedService: number;
+  eventLayout: string;
+  details: string;
+  involvesRestaurant: boolean;
 };
 interface ProgramInputs extends EventComponent {
   comments: string;
@@ -70,22 +77,12 @@ type SignageInputs = {
   comments: string;
 };
 
-interface RestaurantInputs {
-  numberOfPeople: number;
-  details: string;
-  price: number;
-  furnitureUsed: string;
-  catering: string[];
-  comments: string;
-}
-
 type AllEventGroups = {
   society: SocietyInputs;
   contact: ContactInputs;
   program: ProgramInputs;
   wifi: WifiInputs[];
   signage: SignageInputs;
-  restaurant: RestaurantInputs;
 };
 
 interface ModifiedServerResponse extends AllEventGroups {
