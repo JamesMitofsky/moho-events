@@ -1,18 +1,17 @@
 import TextField from "@mui/material/TextField";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { Controller, Control } from "react-hook-form";
+import { Controller, Control, FieldPath } from "react-hook-form";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AllEventGroups } from "../../utils/globalTypes";
 
-export default function Time({
-  control,
-  dataLabel,
-  textLabel,
-}: {
-  control: Control;
-  dataLabel: string;
+interface Props {
+  dataLabel: FieldPath<AllEventGroups>;
+  control: Control<AllEventGroups>;
   textLabel?: string;
-}) {
+}
+
+export default function Time({ control, dataLabel, textLabel }: Props) {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Controller

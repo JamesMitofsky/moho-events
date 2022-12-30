@@ -1,3 +1,5 @@
+import { FieldPath } from "react-hook-form";
+
 type SocietyInputs = {
   associationName: string;
   category: string;
@@ -53,13 +55,13 @@ type EventComponent = {
   place: Places[];
   numberOfPeople: number | null;
   furnitureUsed: string;
-  catering: string;
+  catering: string[];
   billedService: number | null;
   eventLayout: string;
   details: string;
   involvesRestaurant: boolean;
 };
-interface ProgramInputs extends EventComponent {
+interface ProgramInputs {
   comments: string;
   numberOfPeople: number;
   departureTime: Date;
@@ -95,6 +97,10 @@ interface ModifiedServerResponse extends AllEventGroups {
   docId: string;
 }
 
+export const nameof = <T>(name: keyof T) => name;
+
+type AllEventGroupPaths = FieldPath<AllEventGroups>;
+
 export type {
   Places,
   SocietyInputs,
@@ -104,4 +110,6 @@ export type {
   SignageInputs,
   AllEventGroups,
   ModifiedServerResponse,
+  EventComponent,
+  AllEventGroupPaths,
 };

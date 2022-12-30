@@ -1,13 +1,15 @@
-import { TextField, TablePagination } from "@mui/material";
+import { TextField } from "@mui/material";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { Controller, Control } from "react-hook-form";
+
 import { fr } from "date-fns/locale";
+import { AllEventGroups } from "../../utils/globalTypes";
+import { Controller, Control, FieldPath } from "react-hook-form";
 
 interface Props {
-  control: Control;
-  dataLabel: string;
+  control: Control<AllEventGroups>;
+  dataLabel: FieldPath<AllEventGroups>;
   textLabel?: string;
 }
 

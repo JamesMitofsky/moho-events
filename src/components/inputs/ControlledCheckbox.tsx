@@ -1,9 +1,10 @@
 import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
-import { Controller, Control } from "react-hook-form";
+import { Controller, Control, FieldPath } from "react-hook-form";
+import { AllEventGroups } from "../../utils/globalTypes";
 
 interface Props {
-  control: Control;
-  propLabel: string;
+  control: Control<AllEventGroups>;
+  propLabel: FieldPath<AllEventGroups>;
   textLabel: string;
 }
 
@@ -19,7 +20,10 @@ export default function ControlledCheckbox({
       defaultValue={false}
       render={({ field }) => (
         <FormGroup>
-          <FormControlLabel control={<Checkbox {...field} />} label={textLabel} />
+          <FormControlLabel
+            control={<Checkbox {...field} />}
+            label={textLabel}
+          />
         </FormGroup>
       )}
     />

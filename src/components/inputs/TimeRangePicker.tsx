@@ -1,16 +1,18 @@
 import { Box } from "@mui/material";
 import Time from "./Time";
-import { Control } from "react-hook-form";
+import { Control, FieldPath } from "react-hook-form";
+import { AllEventGroups } from "../../utils/globalTypes";
 
 export default function TimeRangePicker({
   control,
   dataLabel,
 }: {
-  control: Control;
-  dataLabel: string;
+  control: Control<AllEventGroups>;
+  dataLabel: FieldPath<AllEventGroups>;
 }) {
-  const startTime = `${dataLabel}.start`;
-  const endTime = `${dataLabel}.end`;
+  // coerce dataLabel to consider constructed strings as valid paths
+  const startTime = `${dataLabel}.start` as typeof dataLabel;
+  const endTime = `${dataLabel}.end` as typeof dataLabel;
 
   return (
     <Box sx={{ display: "grid", gap: 2, gridTemplateColumns: "1fr 1fr" }}>

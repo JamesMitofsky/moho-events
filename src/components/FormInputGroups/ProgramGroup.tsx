@@ -51,7 +51,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             />
             <TimeAndPlaceInput
               parentObj={`program.events.${index}`}
-              {...allProps}
+              control={control}
             />
             <TextField
               label="Nombre de pax"
@@ -64,6 +64,14 @@ export const ProgramGroup = ({ register, control }: Props) => {
             <SelectOptions
               textLabel="Traiteurs"
               propLabel={`program.events.${index}.catering`}
+              options={cateringOptions}
+              {...allProps}
+            />
+
+            {/* testing for breaking */}
+            <SelectOptions
+              textLabel="Test"
+              propLabel={`program.events.${index}.details`}
               options={cateringOptions}
               {...allProps}
             />
@@ -105,7 +113,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
               place: [],
               numberOfPeople: null,
               furnitureUsed: "",
-              catering: "",
+              catering: [],
               billedService: null,
               eventLayout: "",
               details: "",
@@ -128,7 +136,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
         />
         <Time
           control={control}
-          dataLabel="program.depatureTime"
+          dataLabel="program.departureTime"
           textLabel="Heure de départ"
         />
       </Box>

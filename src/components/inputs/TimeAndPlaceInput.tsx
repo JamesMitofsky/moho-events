@@ -1,16 +1,26 @@
 import TimeRangePicker from "./TimeRangePicker";
 import { Control } from "react-hook-form";
-import { Places } from "../../utils/globalTypes";
+import {
+  AllEventGroupPaths,
+  AllEventGroups,
+  EventComponent,
+  Places,
+  nameof,
+} from "../../utils/globalTypes";
 import SelectOptions from "./SelectOptions";
 
 interface Props {
   parentObj: string;
-  control: Control;
+  control: Control<AllEventGroups>;
 }
 
 export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
-  const timeProp = `${parentObj}.time`;
-  const placeProp = `${parentObj}.place`;
+  const timeProp = `${parentObj}.${nameof<EventComponent>(
+    "time"
+  )} }` as AllEventGroupPaths;
+  const placeProp = `${parentObj}.${nameof<EventComponent>(
+    "place"
+  )} }` as AllEventGroupPaths;
 
   const locations: Places[] = [
     "Entrée principale",
