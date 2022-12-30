@@ -2,7 +2,7 @@
 
 📆 A management solution for events hosted by the good folks at [Moho](https://www.moho.co/).
 
-> React, TypeScript, ReactRouter, Material-UI
+> React, TypeScript, Material UI, Firebase Auth & Cloud Storage, & React Router
 
 ## 🧑‍💻 Getting Started
 
@@ -35,29 +35,11 @@ Though a spreadsheet initially allowed for quick iterating of management flows f
 1. Increase the efficiency of Moho's catering staff by providing a mobile-friendly, intuitive solution for tracking events.
 2. Simplify the management process for administrators charged with documenting the event details.
 
-## 🚸 Code Challenge
-
-This repo is the result of a code challenge and follows these requirements:
-
-- [x] 2 views
-- [x] One form to add and store data; another form to edit them
-- [x] The possibility to delete all elements displayed
-- [x] Data storage should be done locally in the App
-- [x] The App should be user-friendly and look nice
-- [x] The concept should be original and different than a standard App – the kind of App that the client will buy immediately!
-
-### Limitations
-
-Here are a few of the limitations I created for myself or considered as implied for the code challenge:
-
-- I elected to avoid using libraries like [react-storage-hooks](https://www.npmjs.com/package/react-storage-hooks) to solve the local-storage / useState challenges because I assumed this difficulty was deliberately included to be solved manually.
-- Although local storage and a cloud database could have co-existed beneficially, I prioritized developing local storage during what time I had. In a real world context, though, a database connection will be crucial for team communication.
-
-### Official Submission
-
-This project was submitted at 4:08pm, October 8th of 2022. The state of the code at this time can be found at commit ID `7f4489c`.
-
 ## ⚙️ Technical Documentation
+
+### 🔐 Authentication
+
+Using Google Firebase, users and their roles are stored in a database using this [schema](https://github.com/JamesMitofsky/moho-access#database-structure). The database is kept secure by internal rules which restrict access to specific user roles, and user roles are assignable by users with the `admin` role or [this cloud function](https://github.com/JamesMitofsky/moho-auth-functions) when any user signs up.
 
 ### 📝 Notes
 
@@ -70,20 +52,4 @@ This project was submitted at 4:08pm, October 8th of 2022. The state of the code
 
 ## 🚀 Next Steps / Improvements
 
-### Priorities
-
-- [ ] Add form validation.
-- [ ] Prevent the React Router styles from overruling MUI styles.
-- [ ] Provide a more robust typing system code-side.
-- [ ] Add settings route to allow for a manual delete of locally stored events (as a user-friendly alternative to clearing local storage in case of debugging challenges).
-
-### Desirables
-
-- [ ] Deploy either as a Statically Generated Site using a JAMstack approach or as a React Native app.
-
-  - [ ] Deploy as a static site to a CDN like Vercel. Using Next.js with a build trigger could greatly increase the speed of the site. A build hook could be attached to any time a new event is submitted to a database, then leading to the site's automatic reconstruction. Though this would create a momentary inconsistency between the state of the site and the events submitted, event submissions are not so time sensitive that a two minute build step would be a problem.
-  - [ ] Deploying as React Native app would help conserve battery life on mobile devices and allow for the use of native features like push notifications, which could help the catering staff keep track of the many moving parts of an event.
-
-- [ ] Add alternative ways of filtering and viewing groups. For example, a calendar view.
-- [ ] Add tests.
-- [ ] Use Google Firestore and Auth to secure a sharable database.
+Track this project in [Gitub Projects](https://github.com/users/JamesMitofsky/projects/1).
