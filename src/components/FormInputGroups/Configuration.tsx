@@ -3,6 +3,7 @@ import { TextField, Box, Button, Divider } from "@mui/material";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
 import TextEditor from "../TextEditor";
+import SelectMohoRoom from "../inputs/SelectMohoRoom";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -37,9 +38,9 @@ export const Configuration = ({ register, control }: Props) => {
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-            <TextField
-              label="Espace"
-              {...register(`configuration.${index}.room`)}
+            <SelectMohoRoom
+              control={control}
+              propLabel={`configuration.${index}.room`}
             />
             <TextField
               label="Nombre de pax"
