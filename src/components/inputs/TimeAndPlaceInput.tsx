@@ -16,10 +16,10 @@ interface Props {
 export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
   const timeProp = `${parentObj}.${nameof<EventComponent>(
     "time"
-  )} }` as AllEventGroupPaths;
+  )}` as AllEventGroupPaths;
   const placeProp = `${parentObj}.${nameof<EventComponent>(
     "place"
-  )} }` as AllEventGroupPaths;
+  )}` as AllEventGroupPaths;
 
   return (
     <>
