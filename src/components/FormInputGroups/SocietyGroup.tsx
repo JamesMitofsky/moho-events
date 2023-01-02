@@ -4,6 +4,7 @@ import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
 import Date from "../inputs/Date";
 import { AllEventGroups } from "../../utils/globalTypes";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -12,7 +13,7 @@ interface Props {
 
 export const SocietyGroup = ({ register, control }: Props) => {
   return (
-    <TitledGroup title={"Société"}>
+    <TitledGroup icon={GroupsIcon} title={"Société"}>
       <TextField
         label={"Nom de la société"}
         {...register("society.associationName")}

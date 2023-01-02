@@ -3,6 +3,7 @@ import { TextField } from "@mui/material";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -11,7 +12,7 @@ interface Props {
 
 export const ContactGroup = ({ register, control }: Props) => {
   return (
-    <TitledGroup title="Contact">
+    <TitledGroup icon={AddIcCallIcon} title="Contact">
       <TextField
         label={"Nom de la société"}
         {...register("contact.companyName")}

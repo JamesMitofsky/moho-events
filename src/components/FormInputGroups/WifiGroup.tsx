@@ -2,6 +2,7 @@ import { TitledGroup } from "../Layouts/TitledGroup";
 import { TextField, Box, Button, Divider } from "@mui/material";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
+import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -16,7 +17,7 @@ export const WifiGroup = ({ register, control }: Props) => {
     }
   );
   return (
-    <TitledGroup title={"Wifi Accés"}>
+    <TitledGroup icon={WifiPasswordIcon} title={"Wifi Accés"}>
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>

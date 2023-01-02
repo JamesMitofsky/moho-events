@@ -4,6 +4,7 @@ import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
 import TextEditor from "../TextEditor";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -34,7 +35,7 @@ export const Configuration = ({ register, control }: Props) => {
   };
 
   return (
-    <TitledGroup title="Mise en Place">
+    <TitledGroup icon={DashboardIcon} title="Mise en Place">
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>

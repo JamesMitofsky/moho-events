@@ -7,6 +7,7 @@ import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -59,7 +60,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
   );
 
   return (
-    <TitledGroup title="Programme">
+    <TitledGroup icon={DateRangeIcon} title="Programme">
       {/* TODO: abstract into component container  */}
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
