@@ -38,7 +38,7 @@ export const WifiGroup = ({ register, control }: Props) => {
           variant="contained"
           onClick={() => append({ username: "", password: "" })}
         >
-          Ajouter un autre wifi identifiant
+          Ajouter un autre « Wifi Identifiant »
         </Button>
       </Box>
     </TitledGroup>

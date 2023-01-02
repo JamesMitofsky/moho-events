@@ -116,7 +116,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             })
           }
         >
-          Ajouter une autre programme
+          Ajouter une autre « programme »
         </Button>
 
         <Typography>Misc.</Typography>
