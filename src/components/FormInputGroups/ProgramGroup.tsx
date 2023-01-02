@@ -117,7 +117,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             )}
           </Box>
         ))}
-        <Button variant="contained" onClick={() => handleAdd()}>
+        <Button variant="outlined" onClick={() => handleAdd()}>
           Ajouter une autre « programme »
         </Button>
 

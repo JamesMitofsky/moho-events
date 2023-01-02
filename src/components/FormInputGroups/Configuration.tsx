@@ -82,7 +82,7 @@ export const Configuration = ({ register, control }: Props) => {
             )}
           </Box>
         ))}
-        <Button variant="contained" onClick={() => handleAdd()}>
+        <Button variant="outlined" onClick={() => handleAdd()}>
           Ajouter un autre « Mise en Place »
         </Button>
       </Box>

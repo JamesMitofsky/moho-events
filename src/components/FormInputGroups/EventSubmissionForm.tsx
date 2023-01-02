@@ -81,7 +81,7 @@ const EventSubmissionForm = () => {
         <Button
           sx={{ mt: 3, mb: 4 }}
           onClick={handleSubmit(onSubmit)}
-          variant="outlined"
+          variant="contained"
         >
           Submit
         </Button>
