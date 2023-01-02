@@ -125,15 +125,15 @@ export const ProgramGroup = ({ register, control }: Props) => {
           label={"Nombre de pax"}
           {...register("program.numberOfPeople")}
         />
-        <TextEditor
-          objLabel="program.comments"
-          control={control}
-          displayLabel="Remarques"
-        />
         <Time
           control={control}
           dataLabel="program.departureTime"
           textLabel="Heure de départ"
+        />
+        <TextEditor
+          objLabel="program.comments"
+          control={control}
+          displayLabel="Remarques"
         />
       </Box>
     </TitledGroup>
