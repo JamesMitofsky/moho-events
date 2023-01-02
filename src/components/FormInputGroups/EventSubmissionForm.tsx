@@ -9,6 +9,7 @@ import { ProgramGroup } from "./ProgramGroup";
 
 import { AllEventGroups } from "../../utils/globalTypes";
 import { uploadEventData } from "../../services/cloudFirestore";
+import { Configuration } from "./Configuration";
 
 const EventSubmissionForm = () => {
   const {
@@ -36,6 +37,19 @@ const EventSubmissionForm = () => {
           password: "",
         },
       ],
+      configuration: [
+        {
+          room: "",
+          numberOfPeople: null,
+          layout: "",
+          furnishedBy: "",
+          microphones: null,
+          visio: "",
+          captioning: "",
+          services: "",
+          comments: "",
+        },
+      ],
     },
   });
   const onSubmit: SubmitHandler<AllEventGroups> = (data) => {
@@ -43,8 +57,6 @@ const EventSubmissionForm = () => {
   };
 
   const regCtrlProps = { register, control };
-
-  console.log("proof", watch("program.comments"));
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
@@ -55,8 +67,13 @@ const EventSubmissionForm = () => {
         <ProgramGroup {...regCtrlProps} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
+        <Configuration {...regCtrlProps} />
 
-        <Button onClick={handleSubmit(onSubmit)} variant="contained">
+        <Button
+          sx={{ mt: 3, mb: 4 }}
+          onClick={handleSubmit(onSubmit)}
+          variant="outlined"
+        >
           Submit
         </Button>
       </PaddedChildren>

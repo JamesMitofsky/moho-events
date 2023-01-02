@@ -79,12 +79,25 @@ type SignageInputs = {
   comments: string;
 };
 
+type ConfigurationInputs = {
+  room: string;
+  numberOfPeople: number | null;
+  layout: string;
+  furnishedBy: string; // text editor
+  microphones: number | null;
+  visio: string;
+  captioning: string;
+  services: string;
+  comments: string; // text editor
+};
+
 type AllEventGroups = {
   society: SocietyInputs;
   contact: ContactInputs;
   program: ProgramInputs;
   wifi: WifiInputs[];
   signage: SignageInputs;
+  configuration: ConfigurationInputs[];
 };
 
 interface ModifiedServerResponse extends AllEventGroups {
