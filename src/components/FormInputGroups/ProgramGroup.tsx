@@ -67,14 +67,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
               options={cateringOptions}
               {...allProps}
             />
-
-            {/* testing for breaking */}
-            <SelectOptions
-              textLabel="Test"
-              propLabel={`program.events.${index}.details`}
-              options={cateringOptions}
-              {...allProps}
-            />
             <TextField
               label="Service facturé"
               {...register(`program.events.${index}.billedService`)}
