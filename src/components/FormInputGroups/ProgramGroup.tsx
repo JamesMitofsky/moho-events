@@ -4,7 +4,7 @@ import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 
@@ -17,6 +17,26 @@ export const ProgramGroup = ({ register, control }: Props) => {
   const allProps = {
     register,
     control,
+  };
+
+  const blankProgramEvent: EventComponent = {
+    title: "",
+    time: {
+      start: null,
+      end: null,
+    },
+    place: [],
+    numberOfPeople: null,
+    furnitureUsed: "",
+    catering: [],
+    billedService: null,
+    eventLayout: "",
+    details: "",
+    involvesRestaurant: false,
+  };
+
+  const handleAdd = () => {
+    append(blankProgramEvent);
   };
 
   const formatConfigurations = [
@@ -96,26 +116,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             )}
           </Box>
         ))}
-        <Button
-          variant="contained"
-          onClick={() =>
-            append({
-              title: "",
-              time: {
-                start: "",
-                end: "",
-              },
-              place: [],
-              numberOfPeople: null,
-              furnitureUsed: "",
-              catering: [],
-              billedService: null,
-              eventLayout: "",
-              details: "",
-              involvesRestaurant: false,
-            })
-          }
-        >
+        <Button variant="contained" onClick={() => handleAdd()}>
           Ajouter une autre « programme »
         </Button>
 

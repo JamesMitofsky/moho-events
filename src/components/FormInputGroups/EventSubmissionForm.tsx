@@ -24,10 +24,19 @@ const EventSubmissionForm = () => {
       program: {
         events: [
           {
+            title: "",
             time: {
-              start: "",
-              end: "",
+              start: null,
+              end: null,
             },
+            place: [],
+            numberOfPeople: null,
+            furnitureUsed: "",
+            catering: [],
+            billedService: null,
+            eventLayout: "",
+            details: "",
+            involvesRestaurant: false,
           },
         ],
       },
