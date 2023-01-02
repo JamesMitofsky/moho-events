@@ -92,7 +92,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             />
             <ControlledCheckbox
               control={control}
-              textLabel="checkbox test"
+              textLabel="Pertinent à l'equip du restauration ?"
               propLabel={`program.events.${index}.involvesRestaurant`}
             />
             {/* prevent divider appearing beneath the last list item */}
