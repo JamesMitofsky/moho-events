@@ -8,7 +8,6 @@ import SelectOptions from "./SelectOptions";
 
 interface Props {
   control: Control<AllEventGroups>;
-  textLabel: string;
   propLabel: AllEventGroupPaths;
   helperText?: string;
 }
@@ -40,5 +39,5 @@ export default function SelectMohoRoom(props: Props) {
     "Cocktail espcae (à côté du Gymnase)",
   ];
 
-  return <SelectOptions {...props} options={rooms} />;
+  return <SelectOptions {...props} options={rooms} textLabel="Lieu" />;
 }

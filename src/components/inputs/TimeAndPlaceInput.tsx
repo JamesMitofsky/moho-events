@@ -23,11 +23,7 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
 
   return (
     <>
-      <SelectMohoRoom
-        control={control}
-        propLabel={placeProp}
-        textLabel="Lieu"
-      />
+      <SelectMohoRoom control={control} propLabel={placeProp} />
       <TimeRangePicker control={control} dataLabel={timeProp} />
     </>
   );
