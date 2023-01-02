@@ -29,6 +29,11 @@ const theme = {
       color: "rgba(0, 0, 0, 0.6)",
       fontSize: 17,
     },
+    subtitle2: {
+      fontWeight: 100,
+      color: "rgb(241, 103, 96)",
+      fontSize: 17,
+    },
   },
   palette: {
     primary: {

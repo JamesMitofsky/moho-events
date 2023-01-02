@@ -89,7 +89,10 @@ export const ProgramGroup = ({ register, control }: Props) => {
             />
             {/* prevent divider appearing beneath the last list item */}
             {fields.length > 1 && fields.length !== index + 1 && (
-              <Divider sx={{ mt: 2, mb: 2 }} />
+              <>
+                <Divider sx={{ mt: 2, mb: 2 }} />
+                <Typography variant="subtitle2">Nouvelle programme</Typography>
+              </>
             )}
           </Box>
         ))}
