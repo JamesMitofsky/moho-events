@@ -26,7 +26,7 @@ export default function SelectOptions({
         <Autocomplete
           onChange={(_, data) => onChange(data)}
           // coercing "value" because SelectOptions should not  must receive string[]
-          value={value as string[]}
+          value={(value as string[]) || []}
           options={options}
           multiple
           freeSolo
