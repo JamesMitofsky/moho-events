@@ -49,8 +49,8 @@ type Places =
 type EventComponent = {
   title: string;
   time: {
-    start: string;
-    end: string;
+    start: Date | null;
+    end: Date | null;
   };
   place: Places[];
   numberOfPeople: number | null;
