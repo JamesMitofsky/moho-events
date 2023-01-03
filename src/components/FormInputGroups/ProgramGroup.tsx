@@ -8,6 +8,7 @@ import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import Date from "../inputs/Date";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -125,6 +126,11 @@ export const ProgramGroup = ({ register, control }: Props) => {
         <TextField
           label={"Nombre de pax"}
           {...register("program.numberOfPeople")}
+        />
+        <Date
+          control={control}
+          dataLabel="program.eventDate"
+          textLabel="Date d'événement"
         />
         <Time
           control={control}

@@ -5,7 +5,6 @@ type SocietyInputs = {
   category: string;
   eventName: string;
   eventType: string;
-  date: Date;
   numberOfQuote: number;
   soldBy: string;
   comments: string;
@@ -68,6 +67,7 @@ type EventComponent = {
 interface ProgramInputs {
   comments: string;
   numberOfPeople: number;
+  eventDate: Date;
   departureTime: Date;
   events: EventComponent[];
 }

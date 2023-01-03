@@ -2,7 +2,6 @@ import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
-import Date from "../inputs/Date";
 import { AllEventGroups } from "../../utils/globalTypes";
 import GroupsIcon from "@mui/icons-material/Groups";
 
@@ -27,7 +26,6 @@ export const SocietyGroup = ({ register, control }: Props) => {
         label={"Type d'événement"}
         {...register("society.eventType")}
       />
-      <Date dataLabel="society.date" control={control} />
       <TextField
         type="number"
         label={"Nombre de devis"}
