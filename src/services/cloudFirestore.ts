@@ -47,3 +47,23 @@ export async function fetchAllEvents(): Promise<ModifiedServerResponse[]> {
   });
   return allEvents;
 }
+
+export async function fetchSpecificEvent(
+  eventId: string
+): Promise<ModifiedServerResponse> {
+  const querySnapshot = await getDocs(collection(db, "eventsData"));
+  let specificEvent: any = {};
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+
+    const docData = doc.data();
+    const docId = doc.id;
+    const docWithId = { ...docData, docId: docId };
+
+    if (docId === eventId) {
+      specificEvent = docWithId;
+    }
+  });
+  return specificEvent;
+}
