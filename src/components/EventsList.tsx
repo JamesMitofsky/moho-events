@@ -23,8 +23,8 @@ export default function EventsList() {
           <Link key={event.docId} to={`/evenement/${event.docId}`}>
             <ListItem divider>
               <ListItemText
-                primary={event?.society?.associationName}
-                secondary={event.society.eventName}
+                primary={event.society.eventName}
+                secondary={event?.society?.associationName}
               />
             </ListItem>
           </Link>
