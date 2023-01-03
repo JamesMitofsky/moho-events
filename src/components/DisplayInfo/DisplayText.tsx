@@ -8,10 +8,8 @@ interface Props {
 export default function DisplayText({ content, label }: Props) {
   return (
     <Box>
-      <Typography sx={{ fontSize: 13, color: "grey" }} variant="h4">
-        {label}
-      </Typography>
-      <Typography variant="body1">{content}</Typography>
+      <Typography sx={{ fontSize: 14, color: "grey" }}>{label}</Typography>
+      <Typography sx={{ fontSize: 18 }}>{content}</Typography>
     </Box>
   );
 }
