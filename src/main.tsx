@@ -24,6 +24,10 @@ const theme = {
       fontSize: 30,
       fontFamily: "'Antonio', sans-serif",
     },
+    h4: {
+      fontSize: 20,
+      fontFamily: "sans-serif",
+    },
     subtitle1: {
       fontWeight: 100,
       color: "rgba(0, 0, 0, 0.6)",
