@@ -22,6 +22,8 @@ function App() {
 
   const [user, setUser] = useState<any>({});
 
+  const navigate = useNavigate();
+
   function navigateNewUserHome() {
     const eventsPath = "/tout";
     const currentPath = location.pathname;
@@ -49,7 +51,6 @@ function App() {
       }
     });
   }
-  const navigate = useNavigate();
 
   // authenticate user
   useEffect(() => {
