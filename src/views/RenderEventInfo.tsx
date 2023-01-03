@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { ModifiedServerResponse } from "../utils/globalTypes";
 import DisplaySociety from "../components/DisplayInfo/DisplaySociety";
 import DisplayContact from "../components/DisplayInfo/DisplayContact";
+import DisplayProgram from "../components/DisplayInfo/DisplayProgram";
+import DisplaySignage from "../components/DisplayInfo/DisplaySignage";
 
 export default function RenderEventInfo() {
   const { eventId } = useParams<{ eventId: string }>();
@@ -38,12 +40,19 @@ export default function RenderEventInfo() {
         container
         rowSpacing={{ xs: 5, sm: 10, md: 15 }}
         columnSpacing={{ xs: 1, sm: 10, md: 20 }}
+        columns={2}
       >
-        <Grid>
+        <Grid xs={2} sm={1}>
           {eventData?.society && <DisplaySociety {...eventData.society} />}
         </Grid>
-        <Grid>
+        <Grid xs={2} sm={1}>
           {eventData?.contact && <DisplayContact {...eventData.contact} />}
+        </Grid>
+        <Grid xs={2} sm={1}>
+          {eventData?.program && <DisplayProgram {...eventData.program} />}
+        </Grid>
+        <Grid xs={2} sm={1}>
+          {eventData?.signage && <DisplaySignage {...eventData.signage} />}
         </Grid>
       </Grid>
     </>
