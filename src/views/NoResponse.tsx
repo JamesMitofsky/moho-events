@@ -21,7 +21,7 @@ const NoResponse = () => {
           Oup la, pardonnez-nous! C'est un page introuvable.
         </Typography>
         <Typography>Nous n'avons pas trouvé ce que vous cherchez.</Typography>
-        <Box component={Link} to="/">
+        <Box component={Link} to="/tout">
           <Button variant="contained">Revenir à l'Accueil</Button>
         </Box>
       </Box>
