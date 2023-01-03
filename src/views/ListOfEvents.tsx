@@ -5,7 +5,7 @@ import PageTitle from "../components/Layouts/PageTitle";
 const ListOfEvents = () => {
   return (
     <>
-      <PageTitle title="Liste des Groupes" />
+      <PageTitle title="Les Events" />
       <EventsList />
       <AddGroupButton />
     </>
