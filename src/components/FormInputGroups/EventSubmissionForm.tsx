@@ -59,6 +59,17 @@ const EventSubmissionForm = () => {
           comments: "",
         },
       ],
+      contact: {
+        individuals: [
+          {
+            companyName: "",
+            contactName: "",
+            email: "",
+            telephoneNumber: "",
+          },
+        ],
+        comments: "",
+      },
     },
   });
   const onSubmit: SubmitHandler<AllEventGroups> = (data) => {

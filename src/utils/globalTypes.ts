@@ -11,11 +11,15 @@ type SocietyInputs = {
   comments: string;
 };
 
-type ContactInputs = {
+type ContactIndividual = {
   companyName: string;
   contactName: string;
-  telephoneNumber: number;
+  telephoneNumber: string;
   email: string;
+};
+
+type ContactInputs = {
+  individuals: ContactIndividual[];
   comments: string;
 };
 
@@ -118,6 +122,7 @@ export type {
   Places,
   SocietyInputs,
   ContactInputs,
+  ContactIndividual,
   ProgramInputs,
   WifiInputs,
   SignageInputs,
