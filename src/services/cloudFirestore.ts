@@ -39,7 +39,7 @@ export async function fetchAllEvents(): Promise<ModifiedServerResponse[]> {
   let allEvents: any = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    // console.log(doc.id, " => ", doc.data());
 
     const docData = doc.data();
     const docId = doc.id;
