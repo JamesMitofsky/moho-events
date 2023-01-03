@@ -72,8 +72,12 @@ const EventSubmissionForm = () => {
       },
     },
   });
-  const onSubmit: SubmitHandler<AllEventGroups> = (data) => {
-    uploadEventData(data);
+  const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
+    const res = await uploadEventData(data);
+    if (res) {
+      console.log("success");
+      // TODO redirect to page with the completed, static form, triggering confetti
+    }
   };
 
   const regCtrlProps = { register, control };

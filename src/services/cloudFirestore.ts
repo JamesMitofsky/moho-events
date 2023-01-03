@@ -13,7 +13,7 @@ import { app } from "./firebase";
 
 export const db = getFirestore(app);
 
-export async function uploadEventData(data: any) {
+export async function uploadEventData(data: any): Promise<boolean> {
   console.log(data);
   const authorIncluded = {
     ...data,
@@ -27,8 +27,10 @@ export async function uploadEventData(data: any) {
   try {
     const docRef = await addDoc(collection(db, "eventsData"), authorIncluded);
     console.log("Document written with ID: ", docRef.id);
+    return true;
   } catch (e) {
     console.error("Error adding document: ", e);
+    return false;
   }
 }
 
