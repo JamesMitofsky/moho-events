@@ -1,6 +1,7 @@
 import { ContactInputs } from "../../utils/globalTypes";
 import { TitledGroup } from "../Layouts/TitledGroup";
-import DisplayText from "./DisplayText";
+import DisplayHTML from "./DisplayFormats/DisplayHTML";
+import DisplayText from "./DisplayFormats/DisplayText";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 
 export default function DisplayContact({
@@ -9,7 +10,7 @@ export default function DisplayContact({
 }: ContactInputs) {
   return (
     <TitledGroup icon={AddIcCallIcon} title="Contact">
-      <DisplayText content={comments} label="Remarques" />
+      <DisplayHTML html={comments} label="Remarques" />
     </TitledGroup>
   );
 }

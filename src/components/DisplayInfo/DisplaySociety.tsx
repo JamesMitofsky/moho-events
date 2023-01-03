@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { SocietyInputs } from "../../utils/globalTypes";
-import DisplayText from "./DisplayText";
+import DisplayText from "./DisplayFormats/DisplayText";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import GroupsIcon from "@mui/icons-material/Groups";
+import DisplayHTML from "./DisplayFormats/DisplayHTML";
 
 export default function DisplaySociety({
   associationName,
@@ -10,6 +11,7 @@ export default function DisplaySociety({
   eventName,
   numberOfQuote,
   soldBy,
+  comments,
 }: SocietyInputs) {
   return (
     <TitledGroup icon={GroupsIcon} title="Société">
@@ -18,6 +20,7 @@ export default function DisplaySociety({
       <DisplayText content={eventName} label="Nom de l'événement" />
       <DisplayText content={numberOfQuote.toString()} label="Nombre de devis" />
       <DisplayText content={soldBy} label="Vendu par" />
+      <DisplayHTML html={comments} label="Remarques" />
     </TitledGroup>
   );
 }
