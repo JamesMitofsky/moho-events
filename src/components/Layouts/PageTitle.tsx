@@ -13,7 +13,7 @@ const PageTitle = ({ title, subtitle, icon }: Props) => {
     <>
       <MetaTags title={title} />
       <Box sx={{ mt: 2, mb: 2 }}>
-        <Typography color="primary.main" variant="h2">
+        <Typography color="#414141" sx={{ fontSize: 25 }} variant="h1">
           {title}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
