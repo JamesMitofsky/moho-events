@@ -10,8 +10,11 @@ import { ProgramGroup } from "./ProgramGroup";
 import { AllEventGroups } from "../../utils/globalTypes";
 import { uploadEventData } from "../../services/cloudFirestore";
 import { Configuration } from "./Configuration";
+import { useNavigate } from "react-router-dom";
 
 const EventSubmissionForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -73,10 +76,11 @@ const EventSubmissionForm = () => {
     },
   });
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
-    const res = await uploadEventData(data);
-    if (res) {
+    const docRef = await uploadEventData(data);
+    if (docRef) {
       console.log("success");
       // TODO redirect to page with the completed, static form, triggering confetti
+      navigate(`/evenement/${docRef}`);
     }
   };
 
