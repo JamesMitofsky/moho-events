@@ -11,6 +11,7 @@ import Login from "./views/Login";
 import { auth } from "./services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import UserContext from "./services/UserContext";
+import RenderEventInfo from "./views/RenderEventInfo";
 
 function App() {
   // handle transition animations
@@ -83,8 +84,8 @@ function App() {
             <Route path="/tout" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
             <Route path="/evenement">
-              <Route path=":eventID/edit" element={<EditEvent />} />
-              {/* <Route path=":eventID" element={<ViewEvent />} /> */}
+              <Route path=":eventID" element={<RenderEventInfo />} />
+              {/* <Route path=":eventID/edit" element={<EditEvent />} /> */}
             </Route>
             <Route path="*" element={<NoResponse />} />
           </Routes>
