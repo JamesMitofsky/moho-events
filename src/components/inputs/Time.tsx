@@ -20,6 +20,7 @@ export default function Time({ control, dataLabel, textLabel }: Props) {
         defaultValue={null}
         render={({ field }) => (
           <TimePicker
+            ampm={false}
             label={textLabel}
             {...field}
             renderInput={(params) => <TextField fullWidth {...params} />}
