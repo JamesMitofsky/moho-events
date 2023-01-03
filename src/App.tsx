@@ -23,6 +23,14 @@ function App() {
 
   const [user, setUser] = useState<any>({});
 
+  function navigateNewUserHome() {
+    const eventsPath = "/tout";
+    const currentPath = location.pathname;
+    // if the signed in user is anywhere other than the login screen
+    if (currentPath !== "/") return;
+    navigate(eventsPath);
+  }
+
   function checkAuthState() {
     //TODO — add loading state here
     onAuthStateChanged(auth, (user) => {
@@ -34,9 +42,7 @@ function App() {
         console.log(user);
 
         // prevent page from rendering twice if the user is already where they should be going
-        const eventsPathName = "/liste-des-evenements";
-        if (location.pathname === eventsPathName) return;
-        navigate(eventsPathName);
+        navigateNewUserHome();
       } else {
         // User is signed out
         const loginPath = "/";
@@ -74,7 +80,7 @@ function App() {
         >
           <Routes location={displayLocation}>
             <Route path="/" element={<Login />} />
-            <Route path="/liste-des-evenements" element={<ListOfEvents />} />
+            <Route path="/tout" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
             <Route path="/evenement">
               <Route path=":eventID/edit" element={<EditEvent />} />
