@@ -3,8 +3,6 @@ import NewEvent from "./views/CreateEvent";
 import ListOfEvents from "./views/ListOfEvents";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import Event from "./views/Event";
-import EditEvent from "./views/EditEvent";
 import NoResponse from "./views/NoResponse";
 import NavBar from "./components/navbar/NavBar";
 import Login from "./views/Login";
@@ -84,7 +82,7 @@ function App() {
             <Route path="/tout" element={<ListOfEvents />} />
             <Route path="creer" element={<NewEvent />} />
             <Route path="/evenement">
-              <Route path=":eventID" element={<RenderEventInfo />} />
+              <Route path=":eventId" element={<RenderEventInfo />} />
               {/* <Route path=":eventID/edit" element={<EditEvent />} /> */}
             </Route>
             <Route path="*" element={<NoResponse />} />
