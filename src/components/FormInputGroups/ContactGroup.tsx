@@ -4,6 +4,7 @@ import TextEditor from "../TextEditor";
 import { Control, UseFormRegister, useFieldArray } from "react-hook-form";
 import { AllEventGroups, ContactIndividual } from "../../utils/globalTypes";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import PhoneNumber from "../inputs/PhoneNumber";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -41,9 +42,10 @@ export const ContactGroup = ({ register, control }: Props) => {
             label={"Nom de la personne"}
             {...register(`contact.individuals.${index}.contactName`)}
           />
-          <TextField
-            label={"Numéro de téléphone"}
-            {...register(`contact.individuals.${index}.telephoneNumber`)}
+          <PhoneNumber
+            control={control}
+            textLabel={"Numéro de téléphone"}
+            propLabel={`contact.individuals.${index}.telephoneNumber`}
           />
           <TextField
             label={"Email"}
@@ -67,6 +69,7 @@ export const ContactGroup = ({ register, control }: Props) => {
       <Button variant="outlined" onClick={() => handleAdd()}>
         Ajouter une autre « contact »
       </Button>
+
       <TextEditor
         objLabel={`contact.comments`}
         displayLabel="Remarques"

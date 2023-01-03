@@ -67,3 +67,8 @@ a {
   font-family: sans-serif;
   color: rgba(0, 0, 0, 0.57);
 }
+
+/* React telephone number library; format to stretch */
+.react-tel-input .form-control {
+  width: 100%;
+}
