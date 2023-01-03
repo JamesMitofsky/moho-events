@@ -6,6 +6,7 @@ import ReturnHome from "../components/ReturnHome";
 import { fetchSpecificEvent } from "../services/cloudFirestore";
 import { useEffect, useState } from "react";
 import { ModifiedServerResponse } from "../utils/globalTypes";
+import DisplaySociety from "../components/DisplayInfo/DisplaySociety";
 
 export default function RenderEventInfo() {
   const { eventId } = useParams<{ eventId: string }>();
@@ -26,6 +27,7 @@ export default function RenderEventInfo() {
   return (
     <>
       <ReturnHome />
+      {/* have the grid display two columns when the page is wide enough to allow */}
       <Box sx={{ display: "grid", gap: 2 }}>
         <PageTitle
           title={eventData?.society?.eventName}
@@ -33,18 +35,7 @@ export default function RenderEventInfo() {
           icon={EventAvailableIcon}
         />
         {eventData?.society?.category && (
-          <Box sx={{ display: "grid", gap: 2 }}>
-            <Typography>
-              Association Name: {eventData.society.associationName}
-            </Typography>
-            <Typography>Category: {eventData.society.category}</Typography>
-            <Typography>Event Name: {eventData.society.eventName}</Typography>
-            <Typography>
-              Number of Quote: {eventData.society.numberOfQuote}
-            </Typography>
-            <Typography>Sold by: {eventData.society.soldBy}</Typography>
-            <Typography>Comments: {eventData.society.comments}</Typography>
-          </Box>
+          <DisplaySociety {...eventData.society} />
         )}
       </Box>
     </>
