@@ -5,7 +5,7 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 const ReturnHome = () => {
   const navigate = useNavigate();
   const routeUser = () => {
-    navigate("/liste-des-evenements");
+    navigate("/tout");
   };
 
   return (
