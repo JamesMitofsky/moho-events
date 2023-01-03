@@ -20,8 +20,8 @@ export default function EventsList() {
     <List>
       {events.map((event) => {
         return (
-          <Link to={`/evenement/${event.docId}`}>
-            <ListItem divider key={event.docId}>
+          <Link key={event.docId} to={`/evenement/${event.docId}`}>
+            <ListItem divider>
               <ListItemText
                 primary={event?.society?.associationName}
                 secondary={event.society.eventName}
