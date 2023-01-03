@@ -10,6 +10,7 @@ import DisplaySociety from "../components/DisplayInfo/DisplaySociety";
 import DisplayContact from "../components/DisplayInfo/DisplayContact";
 import DisplayProgram from "../components/DisplayInfo/DisplayProgram";
 import DisplaySignage from "../components/DisplayInfo/DisplaySignage";
+import DisplayWifi from "../components/DisplayInfo/DisplayWifi";
 
 export default function RenderEventInfo() {
   const { eventId } = useParams<{ eventId: string }>();
@@ -53,6 +54,9 @@ export default function RenderEventInfo() {
         </Grid>
         <Grid xs={2} sm={1}>
           {eventData?.signage && <DisplaySignage {...eventData.signage} />}
+        </Grid>
+        <Grid xs={2} sm={1}>
+          {eventData?.wifi && <DisplayWifi arrayOfWifis={eventData.wifi} />}
         </Grid>
       </Grid>
     </>
