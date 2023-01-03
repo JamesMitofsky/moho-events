@@ -15,7 +15,7 @@ export const TitledGroup = ({
       <PaddedChildren padding={2}>
         <Stack direction="row" alignItems="center" gap={1}>
           <SvgIcon color="primary" component={icon} />
-          <Typography color="primary" variant="h3">
+          <Typography color="primary" variant="h2">
             {title}
           </Typography>
         </Stack>
