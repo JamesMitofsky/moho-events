@@ -22,7 +22,6 @@ export default function Date({
   textLabel = "Date",
 }: Props) {
   const isReadOnly = useContext<boolean>(IsReadOnly);
-  console.log(isReadOnly);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
       <Controller
