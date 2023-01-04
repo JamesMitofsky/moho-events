@@ -17,15 +17,21 @@ export default function ControlledCheckbox({
     <Controller
       name={propLabel}
       control={control}
-      defaultValue={false}
-      render={({ field }) => (
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox {...field} />}
-            label={textLabel}
-          />
-        </FormGroup>
-      )}
+      render={({ field: { value, onChange } }) => {
+        return (
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={(boolean) => onChange(boolean)}
+                  checked={value as boolean}
+                />
+              }
+              label={textLabel}
+            />
+          </FormGroup>
+        );
+      }}
     />
   );
 }
