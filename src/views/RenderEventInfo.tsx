@@ -5,21 +5,33 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import ReturnHome from "../components/ReturnHome";
 import { fetchSpecificEvent } from "../services/cloudFirestore";
 import { useEffect, useState } from "react";
-import { ModifiedServerResponse } from "../utils/globalTypes";
-import DisplaySociety from "../components/DisplayInfo/DisplaySociety";
-import DisplayContact from "../components/DisplayInfo/DisplayContact";
-import DisplayProgram from "../components/DisplayInfo/DisplayProgram";
-import DisplaySignage from "../components/DisplayInfo/DisplaySignage";
-import DisplayWifi from "../components/DisplayInfo/DisplayWifi";
+import { AllEventGroups, ModifiedServerResponse } from "../utils/globalTypes";
+import { PaddedChildren } from "../components/Layouts/PaddedChildren";
+import { SocietyGroup } from "../components/FormInputGroups/SocietyGroup";
+import { ContactGroup } from "../components/FormInputGroups/ContactGroup";
+import { ProgramGroup } from "../components/FormInputGroups/ProgramGroup";
+import { WifiGroup } from "../components/FormInputGroups/WifiGroup";
+import { Configuration } from "../components/FormInputGroups/Configuration";
+import { Button } from "@mui/material";
+import { SignageGroup } from "../components/FormInputGroups/SignageGroup";
+import { useForm } from "react-hook-form";
 
 export default function RenderEventInfo() {
-  const { eventId } = useParams<{ eventId: string }>();
-
   const [eventData, setEventData] = useState<ModifiedServerResponse>(
     {} as ModifiedServerResponse
   );
 
-  // query firebase suing the eventId
+  // set form state with event data
+  const {
+    register,
+    control,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm<AllEventGroups>({ defaultValues: eventData });
+
+  // query firebase using the eventId
+  const { eventId } = useParams<{ eventId: string }>();
   useEffect(() => {
     const getEvent = async function () {
       const res = await fetchSpecificEvent(eventId as string);
@@ -27,6 +39,12 @@ export default function RenderEventInfo() {
     };
     getEvent();
   }, [eventId]);
+
+  useEffect(() => {
+    reset(eventData);
+  }, [eventData, reset]);
+
+  const regCtrlProps = { register, control };
 
   return (
     <>
@@ -37,28 +55,14 @@ export default function RenderEventInfo() {
         subtitle="événement"
         icon={EventAvailableIcon}
       />
-      <Grid
-        container
-        rowSpacing={{ xs: 5, sm: 10, md: 15 }}
-        columnSpacing={{ xs: 1, sm: 10, md: 20 }}
-        columns={2}
-      >
-        <Grid xs={2} sm={1}>
-          {eventData?.society && <DisplaySociety {...eventData.society} />}
-        </Grid>
-        <Grid xs={2} sm={1}>
-          {eventData?.contact && <DisplayContact {...eventData.contact} />}
-        </Grid>
-        <Grid xs={2} sm={1}>
-          {eventData?.program && <DisplayProgram {...eventData.program} />}
-        </Grid>
-        <Grid xs={2} sm={1}>
-          {eventData?.signage && <DisplaySignage {...eventData.signage} />}
-        </Grid>
-        <Grid xs={2} sm={1}>
-          {eventData?.wifi && <DisplayWifi arrayOfWifis={eventData.wifi} />}
-        </Grid>
-      </Grid>
+      <PaddedChildren padding={3}>
+        <SocietyGroup {...regCtrlProps} />
+        <ContactGroup {...regCtrlProps} />
+        <ProgramGroup {...regCtrlProps} />
+        <SignageGroup {...regCtrlProps} />
+        <WifiGroup {...regCtrlProps} />
+        <Configuration {...regCtrlProps} />
+      </PaddedChildren>
     </>
   );
 }
