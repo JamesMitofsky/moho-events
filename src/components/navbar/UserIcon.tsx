@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 export default function UserIcon({ photoURL }: { photoURL: string }) {
   const navigate = useNavigate();
   const routeHome = () => {
-    navigate("/liste-des-evenements");
+    navigate("/tout");
   };
 
   const popupState = usePopupState({ variant: "popover", popupId: "menu" });

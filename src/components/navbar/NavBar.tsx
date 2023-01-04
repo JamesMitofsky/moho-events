@@ -18,7 +18,7 @@ const NavBar = () => {
           justifyContent: "space-between",
         }}
       >
-        <Link to="/liste-des-evenements">
+        <Link to="/tout">
           <MohoEventsLogo color="white" height={45} />
         </Link>
         {photoURL && <UserIcon photoURL={photoURL} />}
