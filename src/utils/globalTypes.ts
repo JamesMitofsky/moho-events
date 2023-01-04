@@ -79,7 +79,6 @@ type WifiInputs = {
 
 type SignageInputs = {
   lobby: string;
-  otherInfo: string;
   comments: string;
 };
 

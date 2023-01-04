@@ -14,10 +14,6 @@ export const SignageGroup = ({ register, control }: Props) => {
   return (
     <TitledGroup icon={SignpostIcon} title="Signalétique">
       <TextField label={"Tableau d'accueil"} {...register("signage.lobby")} />
-      <TextField
-        label={"Autres informations"}
-        {...register("signage.otherInfo")}
-      />
       <TextEditor
         objLabel="signage.comments"
         control={control}
