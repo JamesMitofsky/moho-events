@@ -65,7 +65,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
   );
 
   return (
-    <IsReadOnly.Provider value={isReadOnly}>
+    <>
       <TitledGroup icon={DateRangeIcon} title="Programme">
         {/* TODO: abstract into component container  */}
         <Box sx={{ display: "grid", gap: 2 }}>
@@ -156,6 +156,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
           />
         </Box>
       </TitledGroup>
-    </IsReadOnly.Provider>
+    </>
   );
 };
