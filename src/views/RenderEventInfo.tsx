@@ -14,7 +14,7 @@ import { WifiGroup } from "../components/FormInputGroups/WifiGroup";
 import { Configuration } from "../components/FormInputGroups/Configuration";
 import { Button } from "@mui/material";
 import { SignageGroup } from "../components/FormInputGroups/SignageGroup";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function RenderEventInfo() {
   const [eventData, setEventData] = useState<ModifiedServerResponse>(
@@ -27,8 +27,81 @@ export default function RenderEventInfo() {
     control,
     setValue,
     reset,
+    handleSubmit,
     formState: { errors },
-  } = useForm<AllEventGroups>({ defaultValues: eventData });
+  } = useForm<AllEventGroups>({
+    defaultValues: {
+      society: {
+        eventName: " ",
+        associationName: " ",
+        category: " ",
+        comments: " ",
+        eventType: " ",
+        numberOfQuote: 0,
+        soldBy: " ",
+      },
+      program: {
+        events: [
+          {
+            title: "",
+            time: {
+              start: null,
+              end: null,
+            },
+            place: [],
+            numberOfPeople: null,
+            furnitureUsed: "",
+            catering: [],
+            billedService: null,
+            eventLayout: "",
+            details: "",
+            involvesRestaurant: false,
+          },
+        ],
+        numberOfPeople: 0,
+      },
+      signage: {
+        lobby: " ",
+      },
+      wifi: [
+        {
+          username: "",
+          password: "",
+        },
+      ],
+      configuration: [
+        {
+          room: "",
+          numberOfPeople: null,
+          layout: "",
+          furnishedBy: "",
+          microphones: null,
+          visio: "",
+          captioning: "",
+          services: "",
+          comments: "",
+        },
+      ],
+      contact: {
+        individuals: [
+          {
+            companyName: "",
+            contactName: "",
+            email: "",
+            telephoneNumber: "",
+          },
+        ],
+        comments: "",
+      },
+    },
+  });
+
+  const onUpdate: SubmitHandler<AllEventGroups> = async (data) => {
+    // const docRef = await updateEventData(data);
+    // if (docRef) {
+    console.log("update function called, data passed");
+    // TODO redirect to page with the completed, static form, triggering confetti
+  };
 
   // query firebase using the eventId
   const { eventId } = useParams<{ eventId: string }>();
@@ -55,6 +128,7 @@ export default function RenderEventInfo() {
         subtitle="événement"
         icon={EventAvailableIcon}
       />
+      <Button size="small">Mise à jour</Button>
       <PaddedChildren padding={3}>
         <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
