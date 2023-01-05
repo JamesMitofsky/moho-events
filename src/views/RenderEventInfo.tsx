@@ -15,6 +15,7 @@ import { Configuration } from "../components/FormInputGroups/Configuration";
 import { Button } from "@mui/material";
 import { SignageGroup } from "../components/FormInputGroups/SignageGroup";
 import { SubmitHandler, useForm } from "react-hook-form";
+import IsReadOnly from "../services/IsReadOnly";
 
 export default function RenderEventInfo() {
   const [eventData, setEventData] = useState<ModifiedServerResponse>(
@@ -120,7 +121,7 @@ export default function RenderEventInfo() {
   const regCtrlProps = { register, control };
 
   return (
-    <>
+    <IsReadOnly.Provider value={true}>
       <ReturnHome />
       {/* have the grid display two columns when the page is wide enough to allow */}
       <PageTitle
@@ -137,6 +138,6 @@ export default function RenderEventInfo() {
         <WifiGroup {...regCtrlProps} />
         <Configuration {...regCtrlProps} />
       </PaddedChildren>
-    </>
+    </IsReadOnly.Provider>
   );
 }
