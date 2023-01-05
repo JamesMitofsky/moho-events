@@ -6,7 +6,6 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { fr } from "date-fns/locale";
 import { AllEventGroups } from "../../utils/globalTypes";
 import { Controller, Control, FieldPath } from "react-hook-form";
-import { fromUnixTime } from "date-fns";
 import IsReadOnly from "../../services/IsReadOnly";
 import { useContext } from "react";
 
@@ -16,7 +15,7 @@ interface Props {
   textLabel?: string;
 }
 
-export default function Date({
+export default function ControlledDate({
   control,
   dataLabel,
   textLabel = "Date",
@@ -34,11 +33,13 @@ export default function Date({
           field: { value: any; onChange: any };
         }) => {
           // when rendering the form for display only, the value arrives as an object with a seconds property. Change this into an object.
-          let formattedSecondsToDate = value;
+          let formattedSecondsToDate: Date = value;
           const seconds: number = value?.seconds;
           if (seconds) {
-            formattedSecondsToDate = fromUnixTime(seconds);
+            formattedSecondsToDate = new Date(seconds);
           }
+
+          console.log(value);
 
           return (
             <DatePicker

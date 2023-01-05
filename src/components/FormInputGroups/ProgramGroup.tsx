@@ -127,7 +127,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
           label={"Nombre de pax"}
           {...register("program.numberOfPeople")}
         />
-        <Date
+          <ControlledDate
           control={control}
           dataLabel="program.eventDate"
           textLabel="Date d'événement"
