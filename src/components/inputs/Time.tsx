@@ -4,6 +4,7 @@ import { Controller, Control, FieldPath } from "react-hook-form";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AllEventGroups } from "../../utils/globalTypes";
+import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;
@@ -18,14 +19,23 @@ export default function Time({ control, dataLabel, textLabel }: Props) {
         control={control}
         name={dataLabel}
         defaultValue={null}
-        render={({ field }) => (
-          <TimePicker
-            ampm={false}
-            label={textLabel}
-            {...field}
-            renderInput={(params) => <TextField fullWidth {...params} />}
-          />
-        )}
+        render={({
+          field: { value, onChange },
+        }: {
+          field: { value: any; onChange: any };
+        }) => {
+          const date = filterDateOrNumberToDate(value?.seconds || value);
+
+          return (
+            <TimePicker
+              ampm={false}
+              label={textLabel}
+              value={date}
+              onChange={(newValue) => onChange(newValue)}
+              renderInput={(params) => <TextField fullWidth {...params} />}
+            />
+          );
+        }}
       />
     </LocalizationProvider>
   );
