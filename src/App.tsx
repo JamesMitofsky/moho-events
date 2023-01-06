@@ -11,6 +11,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import UserContext from "./services/UserContext";
 import RenderEventInfo from "./views/RenderEventInfo";
 import Footer from "./components/Footer";
+import IsReadOnly from "./services/ReadOnlyContext";
 
 function App() {
   // handle transition animations
@@ -22,6 +23,10 @@ function App() {
   }, [location, displayLocation]);
 
   const [user, setUser] = useState<any>({});
+
+  // prepare input field readability state to be passed to the provider component
+  const [isReadOnly, setIsReadOnly] = useState<boolean>(false);
+  const passableValue = { isReadOnly, setIsReadOnly };
 
   const navigate = useNavigate();
 
@@ -61,36 +66,38 @@ function App() {
 
   return (
     <UserContext.Provider value={user}>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <NavBar />
-        <Container
-          sx={{
-            mt: 0.2,
-            mb: 3,
-            display: "flex",
-            flex: 1,
-            flexDirection: "column",
-          }}
-          className={transitionStage}
-          onAnimationEnd={() => {
-            if (transitionStage === "fadeOut") {
-              setTransistionStage("fadeIn");
-              setDisplayLocation(location);
-            }
-          }}
-        >
-          <Routes location={displayLocation}>
-            <Route path="/" element={<Login />} />
-            <Route path="/tout" element={<ListOfEvents />} />
-            <Route path="creer" element={<NewEvent />} />
-            <Route path="/evenement">
-              <Route path=":eventId" element={<RenderEventInfo />} />
-            </Route>
-            <Route path="*" element={<NoResponse />} />
-          </Routes>
-        </Container>
-        <Footer />
-      </Box>
+      <IsReadOnly.Provider value={passableValue}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <NavBar />
+          <Container
+            sx={{
+              mt: 0.2,
+              mb: 3,
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+            }}
+            className={transitionStage}
+            onAnimationEnd={() => {
+              if (transitionStage === "fadeOut") {
+                setTransistionStage("fadeIn");
+                setDisplayLocation(location);
+              }
+            }}
+          >
+            <Routes location={displayLocation}>
+              <Route path="/" element={<Login />} />
+              <Route path="/tout" element={<ListOfEvents />} />
+              <Route path="creer" element={<NewEvent />} />
+              <Route path="/evenement">
+                <Route path=":eventId" element={<RenderEventInfo />} />
+              </Route>
+              <Route path="*" element={<NoResponse />} />
+            </Routes>
+          </Container>
+          <Footer />
+        </Box>
+      </IsReadOnly.Provider>
     </UserContext.Provider>
   );
 }
