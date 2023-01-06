@@ -8,6 +8,7 @@ import { AllEventGroups } from "../../utils/globalTypes";
 import { Controller, Control, FieldPath } from "react-hook-form";
 import IsReadOnly from "../../services/IsReadOnly";
 import { useContext } from "react";
+import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
 
 interface Props {
   control: Control<AllEventGroups>;
@@ -33,20 +34,14 @@ export default function ControlledDate({
           field: { value: any; onChange: any };
         }) => {
           // when rendering the form for display only, the value arrives as an object with a seconds property. Change this into an object.
-          let formattedSecondsToDate: Date = value;
-          const seconds: number = value?.seconds;
-          if (seconds) {
-            formattedSecondsToDate = new Date(seconds);
-          }
-
-          console.log(value);
+          const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
             <DatePicker
               readOnly={isReadOnly}
               label={textLabel}
               inputFormat="dd/MM/yyyy"
-              value={formattedSecondsToDate}
+              value={date}
               onChange={(newValue) => onChange(newValue)}
               renderInput={(params) => <TextField {...params} />}
             />
