@@ -22,6 +22,8 @@ export default function RenderEventInfo() {
     {} as ModifiedServerResponse
   );
 
+  const [isReadOnly, setIsReadOnly] = useState(false);
+
   // set form state with event data
   const {
     register,
@@ -118,10 +120,16 @@ export default function RenderEventInfo() {
     reset(eventData);
   }, [eventData, reset]);
 
+  function toggleEdit() {
+    setIsReadOnly((prev) => {
+      return !prev;
+    });
+  }
+
   const regCtrlProps = { register, control };
 
   return (
-    <IsReadOnly.Provider value={true}>
+    <IsReadOnly.Provider value={isReadOnly}>
       <ReturnHome />
       {/* have the grid display two columns when the page is wide enough to allow */}
       <PageTitle
@@ -129,7 +137,9 @@ export default function RenderEventInfo() {
         subtitle="événement"
         icon={EventAvailableIcon}
       />
-      <Button size="small">Mise à jour</Button>
+      <Button size="small" onClick={toggleEdit}>
+        {isReadOnly ? "Locked" : "Open"}
+      </Button>
       <PaddedChildren padding={3}>
         <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
