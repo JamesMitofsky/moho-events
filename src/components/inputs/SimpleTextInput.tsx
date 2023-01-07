@@ -8,14 +8,21 @@ interface Props {
   register: UseFormRegister<AllEventGroups>;
   propLabel: AllEventGroupPaths;
   label: string;
+  type?: "number";
 }
-export default function SimpleTextInput({ propLabel, label, register }: Props) {
+export default function SimpleTextInput({
+  propLabel,
+  label,
+  register,
+  type,
+}: Props) {
   const { isReadOnly } = useContext(ReadOnlyContext);
   return (
     <TextField
       inputProps={{ readOnly: isReadOnly }}
       {...register(propLabel)}
       label={label}
+      type={type}
     />
   );
 }
