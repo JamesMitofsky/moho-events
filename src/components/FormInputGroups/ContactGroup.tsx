@@ -6,6 +6,8 @@ import { AllEventGroups, ContactIndividual } from "../../utils/globalTypes";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 import PhoneNumber from "../inputs/PhoneNumber";
 import SimpleTextInput from "../inputs/SimpleTextInput";
+import { useContext } from "react";
+import ReadOnlyContext from "../../services/ReadOnlyContext";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -13,6 +15,8 @@ interface Props {
 }
 
 export const ContactGroup = ({ register, control }: Props) => {
+  const { isReadOnly } = useContext(ReadOnlyContext);
+
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
       control, // control props comes from useForm (optional: if you are using FormContext)
@@ -71,9 +75,11 @@ export const ContactGroup = ({ register, control }: Props) => {
           )}
         </Box>
       ))}
-      <Button variant="outlined" onClick={() => handleAdd()}>
-        Ajouter une autre « contact »
-      </Button>
+      {!isReadOnly && (
+        <Button variant="outlined" onClick={() => handleAdd()}>
+          Ajouter une autre « contact »
+        </Button>
+      )}
 
       <TextEditor
         objLabel={`contact.comments`}
