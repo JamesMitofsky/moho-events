@@ -22,11 +22,17 @@ function App() {
     if (location !== displayLocation) setTransistionStage("fadeOut");
   }, [location, displayLocation]);
 
-  const [user, setUser] = useState<any>({});
-
-  // prepare input field readability state to be passed to the provider component
-  const [isReadOnly, setIsReadOnly] = useState<boolean>(false);
-  const passableValue = { isReadOnly, setIsReadOnly };
+  const [user, setUser] = useState<{
+    uid: string;
+    displayName: string | null;
+    email: string | null;
+    photoURL: string | null;
+  }>({
+    uid: "",
+    displayName: "",
+    email: "",
+    photoURL: "",
+  });
 
   const navigate = useNavigate();
 
