@@ -9,6 +9,9 @@ import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import ControlledDate from "../inputs/ControlledDate";
+import SimpleTextInput from "../inputs/SimpleTextInput";
+import { useContext } from "react";
+import ReadOnlyContext from "../../services/ReadOnlyContext";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -16,6 +19,8 @@ interface Props {
 }
 
 export const ProgramGroup = ({ register, control }: Props) => {
+  const { isReadOnly } = useContext(ReadOnlyContext);
+
   const allProps = {
     register,
     control,
@@ -67,22 +72,28 @@ export const ProgramGroup = ({ register, control }: Props) => {
         <Box sx={{ display: "grid", gap: 2 }}>
           {fields.map((field, index) => (
             <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-              <TextField
+              <Typography variant="subtitle2">
+                Programme #{index + 1}
+              </Typography>
+              <SimpleTextInput
                 label="Contenu"
+                propLabel={`program.events.${index}.title`}
                 helperText="Ex: Pause café, Déjeuner, etc."
-                {...register(`program.events.${index}.title`)}
+                register={register}
               />
               <TimeAndPlaceInput
                 parentObj={`program.events.${index}`}
                 control={control}
               />
-              <TextField
+              <SimpleTextInput
                 label="Nombre de pax"
-                {...register(`program.events.${index}.numberOfPeople`)}
+                propLabel={`program.events.${index}.numberOfPeople`}
+                register={register}
               />
-              <TextField
+              <SimpleTextInput
                 label="Mobilier utilisé"
-                {...register(`program.events.${index}.furnitureUsed`)}
+                propLabel={`program.events.${index}.furnitureUsed`}
+                register={register}
               />
               <SelectOptions
                 textLabel="Traiteurs"
@@ -90,9 +101,10 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 options={cateringOptions}
                 {...allProps}
               />
-              <TextField
+              <SimpleTextInput
                 label="Service facturé"
-                {...register(`program.events.${index}.billedService`)}
+                propLabel={`program.events.${index}.billedService`}
+                register={register}
               />
               <SelectOptions
                 textLabel="Format"
@@ -110,20 +122,14 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 textLabel="Pertinent à l'equip du restauration ?"
                 propLabel={`program.events.${index}.involvesRestaurant`}
               />
-              {/* prevent divider appearing beneath the last list item */}
-              {fields.length > 1 && fields.length !== index + 1 && (
-                <>
-                  <Divider sx={{ mt: 2, mb: 2 }} />
-                  <Typography variant="subtitle2">
-                    Nouvelle programme
-                  </Typography>
-                </>
-              )}
+              <Divider sx={{ mt: 2, mb: 2 }} />
             </Box>
           ))}
-          <Button variant="outlined" onClick={() => handleAdd()}>
-            Ajouter une autre « programme »
-          </Button>
+          {!isReadOnly && (
+            <Button variant="outlined" onClick={() => handleAdd()}>
+              Ajouter une autre « programme »
+            </Button>
+          )}
 
           <Typography>Misc.</Typography>
           <TextField
