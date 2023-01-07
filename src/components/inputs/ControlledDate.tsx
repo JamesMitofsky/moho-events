@@ -6,9 +6,10 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { fr } from "date-fns/locale";
 import { AllEventGroups } from "../../utils/globalTypes";
 import { Controller, Control, FieldPath } from "react-hook-form";
-import IsReadOnly from "../../services/IsReadOnly";
+import IsReadOnly from "../../services/ReadOnlyContext";
 import { useContext } from "react";
 import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
+import ReadOnlyContext from "../../services/ReadOnlyContext";
 
 interface Props {
   control: Control<AllEventGroups>;
@@ -21,7 +22,7 @@ export default function ControlledDate({
   dataLabel,
   textLabel = "Date",
 }: Props) {
-  const isReadOnly = useContext<boolean>(IsReadOnly);
+  const { isReadOnly } = useContext(ReadOnlyContext);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
       <Controller
