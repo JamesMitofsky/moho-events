@@ -9,7 +9,7 @@ import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import ControlledDate from "../inputs/ControlledDate";
-import IsReadOnly from "../../services/IsReadOnly";
+import IsReadOnly from "../../services/ReadOnlyContext";
 import { useContext } from "react";
 
 interface Props {
@@ -22,8 +22,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
     register,
     control,
   };
-
-  const isReadOnly = useContext<boolean>(IsReadOnly);
 
   const blankProgramEvent: EventComponent = {
     title: "",
@@ -72,7 +70,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
           {fields.map((field, index) => (
             <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
               <TextField
-                inputProps={{ readOnly: isReadOnly }}
                 label="Contenu"
                 helperText="Ex: Pause café, Déjeuner, etc."
                 {...register(`program.events.${index}.title`)}
@@ -82,12 +79,10 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 control={control}
               />
               <TextField
-                inputProps={{ readOnly: isReadOnly }}
                 label="Nombre de pax"
                 {...register(`program.events.${index}.numberOfPeople`)}
               />
               <TextField
-                inputProps={{ readOnly: isReadOnly }}
                 label="Mobilier utilisé"
                 {...register(`program.events.${index}.furnitureUsed`)}
               />
@@ -98,7 +93,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 {...allProps}
               />
               <TextField
-                inputProps={{ readOnly: isReadOnly }}
                 label="Service facturé"
                 {...register(`program.events.${index}.billedService`)}
               />
@@ -135,7 +129,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
 
           <Typography>Misc.</Typography>
           <TextField
-            inputProps={{ readOnly: isReadOnly }}
             label={"Nombre de pax"}
             {...register("program.numberOfPeople")}
           />
