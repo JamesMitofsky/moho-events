@@ -5,6 +5,7 @@ import { Control, UseFormRegister, useFieldArray } from "react-hook-form";
 import { AllEventGroups, ContactIndividual } from "../../utils/globalTypes";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 import PhoneNumber from "../inputs/PhoneNumber";
+import SimpleTextInput from "../inputs/SimpleTextInput";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -34,28 +35,32 @@ export const ContactGroup = ({ register, control }: Props) => {
     <TitledGroup icon={AddIcCallIcon} title="Contact">
       {fields.map((field, index) => (
         <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-          <TextField
-            label={"Nom de la société"}
-            {...register(`contact.individuals.${index}.companyName`)}
+          <SimpleTextInput
+            label="Nom de la société"
+            propLabel={`contact.individuals.${index}.companyName`}
+            register={register}
           />
-          <TextField
-            label={"Nom de la personne"}
-            {...register(`contact.individuals.${index}.contactName`)}
+          <SimpleTextInput
+            label="Nom de la personne"
+            propLabel={`contact.individuals.${index}.contactName`}
+            register={register}
           />
           <PhoneNumber
             control={control}
             textLabel={"Numéro de téléphone"}
             propLabel={`contact.individuals.${index}.telephoneNumber`}
           />
-          <TextField
-            label={"Email"}
-            {...register(`contact.individuals.${index}.email`, {
+          <SimpleTextInput
+            label="Email"
+            propLabel={`contact.individuals.${index}.email`}
+            register={register}
+            registerOptions={{
               required: "Required",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: "L'adresse email n'est pas valide",
               },
-            })}
+            }}
           />
           {/* prevent divider appearing beneath the last list item */}
           {fields.length > 1 && fields.length !== index + 1 && (
