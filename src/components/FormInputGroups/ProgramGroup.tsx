@@ -131,7 +131,7 @@ export const ProgramGroup = ({ register, control }: Props) => {
             </Button>
           )}
 
-          <Typography>Misc.</Typography>
+          <Typography variant="subtitle2">Autres détails</Typography>
           <TextField
             label={"Nombre de pax"}
             {...register("program.numberOfPeople")}
