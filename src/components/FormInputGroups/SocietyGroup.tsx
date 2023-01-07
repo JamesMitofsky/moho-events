@@ -4,6 +4,7 @@ import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
 import GroupsIcon from "@mui/icons-material/Groups";
+import SimpleTextInput from "../inputs/SimpleTextInput";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -13,27 +14,42 @@ interface Props {
 export const SocietyGroup = ({ register, control }: Props) => {
   return (
     <TitledGroup icon={GroupsIcon} title={"Société"}>
-      <TextField
-        label={"Nom de la société"}
-        {...register("society.associationName")}
+      <SimpleTextInput
+        label="Nom de la société"
+        propLabel="society.associationName"
+        register={register}
       />
-      <TextField label={"Catégorie"} {...register("society.category")} />
-      <TextField
-        label={"Nom de l'événement"}
-        {...register("society.eventName")}
+      <SimpleTextInput
+        label="Catégorie"
+        propLabel="society.category"
+        register={register}
       />
-      <TextField
-        label={"Type d'événement"}
-        {...register("society.eventType")}
+      <SimpleTextInput
+        label="Nom de l'événement"
+        propLabel="society.eventName"
+        register={register}
       />
-      <TextField
+      <SimpleTextInput
+        label="Type d'événement"
+        propLabel="society.eventType"
+        register={register}
+      />
+      <SimpleTextInput
+        label="Type d'événement"
+        propLabel="society.eventType"
+        register={register}
+      />
+      <SimpleTextInput
+        label="Nombre de devis"
+        propLabel="society.numberOfQuote"
+        register={register}
         type="number"
-        label={"Nombre de devis"}
-        {...register("society.numberOfQuote", {
-          valueAsNumber: true,
-        })}
       />
-      <TextField label={"Vendu par"} {...register("society.soldBy")} />
+      <SimpleTextInput
+        label="Vendu par"
+        propLabel="society.soldBy"
+        register={register}
+      />
       <TextEditor
         objLabel="society.comments"
         displayLabel="Remarques"
