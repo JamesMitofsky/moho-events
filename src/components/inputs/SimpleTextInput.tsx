@@ -10,6 +10,7 @@ interface Props {
   label: string;
   type?: "number";
   registerOptions?: any;
+  helperText?: string;
 }
 export default function SimpleTextInput({
   propLabel,
@@ -17,6 +18,7 @@ export default function SimpleTextInput({
   register,
   type,
   registerOptions,
+  helperText,
 }: Props) {
   const { isReadOnly } = useContext(ReadOnlyContext);
   return (
@@ -25,6 +27,7 @@ export default function SimpleTextInput({
       {...register(propLabel, registerOptions)}
       label={label}
       type={type}
+      helperText={helperText}
     />
   );
 }
