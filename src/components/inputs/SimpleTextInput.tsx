@@ -28,6 +28,7 @@ export default function SimpleTextInput({
       label={label}
       type={type}
       helperText={helperText}
+      multiline
     />
   );
 }
