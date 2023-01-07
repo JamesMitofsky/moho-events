@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "@fontsource/antonio";
 import { BrowserRouter } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import MetaTags from "./utils/MetaTags";
+import { ThemeOptions, ThemeProvider, createTheme } from "@mui/material";
 import { frFR } from "@mui/material/locale";
 
-const theme = {
+const theme: ThemeOptions = {
   typography: {
     fontFamily: ["sans-serif"].join(","),
     h1: {
