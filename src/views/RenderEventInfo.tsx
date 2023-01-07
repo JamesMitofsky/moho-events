@@ -4,7 +4,7 @@ import PageTitle from "../components/Layouts/PageTitle";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import ReturnHome from "../components/ReturnHome";
 import { fetchSpecificEvent } from "../services/cloudFirestore";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AllEventGroups, ModifiedServerResponse } from "../utils/globalTypes";
 import { PaddedChildren } from "../components/Layouts/PaddedChildren";
 import { SocietyGroup } from "../components/FormInputGroups/SocietyGroup";
@@ -15,14 +15,18 @@ import { Configuration } from "../components/FormInputGroups/Configuration";
 import { Button } from "@mui/material";
 import { SignageGroup } from "../components/FormInputGroups/SignageGroup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import IsReadOnly from "../services/IsReadOnly";
+import ReadOnlyContext from "../services/ReadOnlyContext";
 
 export default function RenderEventInfo() {
   const [eventData, setEventData] = useState<ModifiedServerResponse>(
     {} as ModifiedServerResponse
   );
 
-  const [isReadOnly, setIsReadOnly] = useState(false);
+  const { isReadOnly, setIsReadOnly } = useContext(ReadOnlyContext);
+  // set state as read only on initial load
+  useEffect(() => {
+    setIsReadOnly(true);
+  }, []);
 
   // set form state with event data
   const {
@@ -126,10 +130,11 @@ export default function RenderEventInfo() {
     });
   }
 
+  console.log("eventData", eventData);
   const regCtrlProps = { register, control };
 
   return (
-    <IsReadOnly.Provider value={isReadOnly}>
+    <>
       <ReturnHome />
       {/* have the grid display two columns when the page is wide enough to allow */}
       <PageTitle
@@ -148,6 +153,6 @@ export default function RenderEventInfo() {
         <WifiGroup {...regCtrlProps} />
         <Configuration {...regCtrlProps} />
       </PaddedChildren>
-    </IsReadOnly.Provider>
+    </>
   );
 }

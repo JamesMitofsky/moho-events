@@ -2,11 +2,10 @@ import { Box } from "@mui/material";
 import EventSubmissionForm from "../components/FormInputGroups/EventSubmissionForm";
 import PageTitle from "../components/Layouts/PageTitle";
 import ReturnHome from "../components/ReturnHome";
-import IsReadOnly from "../services/IsReadOnly";
 
 const NewEvent = () => {
   return (
-    <IsReadOnly.Provider value={false}>
+    <>
       <ReturnHome />
       <PageTitle title="Créer un Evénement" />
       <Box
@@ -21,7 +20,7 @@ const NewEvent = () => {
       >
         <EventSubmissionForm />
       </Box>
-    </IsReadOnly.Provider>
+    </>
   );
 };
 
