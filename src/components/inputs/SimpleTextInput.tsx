@@ -9,18 +9,20 @@ interface Props {
   propLabel: AllEventGroupPaths;
   label: string;
   type?: "number";
+  registerOptions?: any;
 }
 export default function SimpleTextInput({
   propLabel,
   label,
   register,
   type,
+  registerOptions,
 }: Props) {
   const { isReadOnly } = useContext(ReadOnlyContext);
   return (
     <TextField
       inputProps={{ readOnly: isReadOnly }}
-      {...register(propLabel)}
+      {...register(propLabel, registerOptions)}
       label={label}
       type={type}
     />
