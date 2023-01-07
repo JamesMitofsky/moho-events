@@ -9,8 +9,6 @@ import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import ControlledDate from "../inputs/ControlledDate";
-import IsReadOnly from "../../services/ReadOnlyContext";
-import { useContext } from "react";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
