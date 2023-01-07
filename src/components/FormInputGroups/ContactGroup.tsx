@@ -39,6 +39,7 @@ export const ContactGroup = ({ register, control }: Props) => {
     <TitledGroup icon={AddIcCallIcon} title="Contact">
       {fields.map((field, index) => (
         <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
+          <Typography variant="subtitle2">Contact #{index + 1}</Typography>
           <SimpleTextInput
             label="Nom de la société"
             propLabel={`contact.individuals.${index}.companyName`}
@@ -70,7 +71,6 @@ export const ContactGroup = ({ register, control }: Props) => {
           {fields.length > 1 && fields.length !== index + 1 && (
             <>
               <Divider sx={{ mt: 2, mb: 2 }} />
-              <Typography variant="subtitle2">Nouveau contact</Typography>
             </>
           )}
         </Box>
