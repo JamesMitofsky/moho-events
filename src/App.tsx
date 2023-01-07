@@ -14,6 +14,10 @@ import Footer from "./components/Footer";
 import IsReadOnly from "./services/ReadOnlyContext";
 
 function App() {
+  // prepare input field readability state to be passed to the provider component
+  const [isReadOnly, setIsReadOnly] = useState<boolean>(false);
+  const passableValue = { isReadOnly, setIsReadOnly };
+
   // handle transition animations
   const location = useLocation();
   const [displayLocation, setDisplayLocation] = useState(location);
