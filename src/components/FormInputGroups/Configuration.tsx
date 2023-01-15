@@ -43,6 +43,7 @@ export const Configuration = ({ register, control }: Props) => {
             <SelectMohoRoom
               control={control}
               propLabel={`configuration.${index}.room`}
+              isUnique={true}
             />
             <TextField
               label="Nombre de pax"
