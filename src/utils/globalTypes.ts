@@ -113,6 +113,13 @@ interface ModifiedServerResponse extends AllEventGroups {
   docId: string;
 }
 
+interface UserObject {
+  uid: string;
+  displayName: string;
+  email: string;
+  photoURL: string;
+}
+
 export const nameof = <T>(name: keyof T) => name;
 
 type AllEventGroupPaths = FieldPath<AllEventGroups>;
@@ -129,4 +136,5 @@ export type {
   ModifiedServerResponse,
   EventComponent,
   AllEventGroupPaths,
+  UserObject,
 };

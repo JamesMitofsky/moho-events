@@ -12,6 +12,7 @@ import UserContext from "./services/UserContext";
 import RenderEventInfo from "./views/RenderEventInfo";
 import Footer from "./components/Footer";
 import IsReadOnly from "./services/ReadOnlyContext";
+import { UserObject } from "./utils/globalTypes";
 
 function App() {
   // prepare input field readability state to be passed to the provider component
@@ -26,12 +27,7 @@ function App() {
     if (location !== displayLocation) setTransistionStage("fadeOut");
   }, [location, displayLocation]);
 
-  const [user, setUser] = useState<{
-    uid: string;
-    displayName: string | null;
-    email: string | null;
-    photoURL: string | null;
-  }>({
+  const [user, setUser] = useState<UserObject>({
     uid: "",
     displayName: "",
     email: "",
@@ -55,7 +51,7 @@ function App() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        setUser(user);
+        setUser(user as UserObject);
         console.log(user);
 
         // prevent page from rendering twice if the user is already where they should be going
