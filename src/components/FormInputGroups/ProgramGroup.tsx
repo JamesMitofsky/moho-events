@@ -85,6 +85,12 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 parentObj={`program.events.${index}`}
                 control={control}
               />
+              <ControlledCheckbox
+                control={control}
+                textLabel="Pertinent à l'equipe du restauration?"
+                propLabel={`program.events.${index}.involvesRestaurant`}
+                useSwitch={true}
+              />
               <SimpleTextInput
                 label="Nombre de pax"
                 propLabel={`program.events.${index}.numberOfPeople`}
@@ -116,11 +122,6 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 displayLabel="Détails"
                 objLabel={`program.events.${index}.details`}
                 {...allProps}
-              />
-              <ControlledCheckbox
-                control={control}
-                textLabel="Pertinent à l'equip du restauration ?"
-                propLabel={`program.events.${index}.involvesRestaurant`}
               />
               <Divider sx={{ mt: 2, mb: 2 }} />
             </Box>
