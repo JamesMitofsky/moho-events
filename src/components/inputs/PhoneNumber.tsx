@@ -1,9 +1,9 @@
 import { Controller, Control, FieldPath } from "react-hook-form";
 import { AllEventGroups } from "../../utils/globalTypes";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 import fr from "react-phone-input-2/lang/fr.json";
-
+import PI from "react-phone-input-2";
+const ReactPhoneInput = (PI as any).default !== null ? (PI as any).default : PI;
 interface Props {
   control: Control<AllEventGroups>;
   propLabel: FieldPath<AllEventGroups>;
@@ -16,11 +16,12 @@ export default function PhoneNumber({ control, propLabel, textLabel }: Props) {
       name={propLabel}
       control={control}
       render={({ field: { value, onChange } }) => (
-        <PhoneInput
+        <ReactPhoneInput
           country={"fr"}
           localization={fr}
           // coercing "value" & "data" because PhoneNumber must receive string
-          value={value as string}
+          value={String(value)}
+          // @ts-ignore
           onChange={(value) => onChange(value)}
         />
       )}
