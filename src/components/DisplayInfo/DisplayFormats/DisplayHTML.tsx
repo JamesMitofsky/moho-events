@@ -12,7 +12,7 @@ export default function DisplayHTML({ html, label }: Props) {
   const parsedHTML = parse(html);
   return (
     <Box>
-      <Typography sx={{ fontSize: 14, color: "grey" }}>{label}</Typography>
+      <Typography sx={{ fontSize: 14 }}>{label}</Typography>
       {html.length > 0 ? (
         <Typography
           sx={{
@@ -26,7 +26,7 @@ export default function DisplayHTML({ html, label }: Props) {
           {parsedHTML}
         </Typography>
       ) : (
-        <Typography sx={{ fontSize: 14 }}>—</Typography>
+        <Typography sx={{ fontSize: 14, color: "grey" }}>Aucune</Typography>
       )}
     </Box>
   );

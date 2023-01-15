@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import PageTitle from "../components/Layouts/PageTitle";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import ReturnHome from "../components/ReturnHome";
@@ -7,15 +6,10 @@ import { fetchSpecificEvent } from "../services/cloudFirestore";
 import { useContext, useEffect, useState } from "react";
 import { AllEventGroups, ModifiedServerResponse } from "../utils/globalTypes";
 import { PaddedChildren } from "../components/Layouts/PaddedChildren";
-import { SocietyGroup } from "../components/FormInputGroups/SocietyGroup";
-import { ContactGroup } from "../components/FormInputGroups/ContactGroup";
-import { ProgramGroup } from "../components/FormInputGroups/ProgramGroup";
-import { WifiGroup } from "../components/FormInputGroups/WifiGroup";
-import { Configuration } from "../components/FormInputGroups/Configuration";
 import { Button } from "@mui/material";
-import { SignageGroup } from "../components/FormInputGroups/SignageGroup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ReadOnlyContext from "../services/ReadOnlyContext";
+import DisplayContact from "../components/DisplayInfo/DisplayContact";
 
 export default function RenderEventInfo() {
   const [eventData, setEventData] = useState<ModifiedServerResponse>(
@@ -124,15 +118,6 @@ export default function RenderEventInfo() {
     reset(eventData);
   }, [eventData, reset]);
 
-  function toggleEdit() {
-    setIsReadOnly((prev) => {
-      return !prev;
-    });
-  }
-
-  console.log("eventData", eventData);
-  const regCtrlProps = { register, control };
-
   return (
     <>
       <ReturnHome />
@@ -142,16 +127,14 @@ export default function RenderEventInfo() {
         subtitle="événement"
         icon={EventAvailableIcon}
       />
-      <Button size="small" onClick={toggleEdit}>
-        {isReadOnly ? "Locked" : "Open"}
-      </Button>
       <PaddedChildren padding={3}>
-        <SocietyGroup {...regCtrlProps} />
+        <DisplayContact {...eventData.contact} />
+        {/* <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
         <ProgramGroup {...regCtrlProps} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
-        <Configuration {...regCtrlProps} />
+        <Configuration {...regCtrlProps} /> */}
       </PaddedChildren>
     </>
   );
