@@ -90,10 +90,10 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 propLabel={`program.events.${index}.numberOfPeople`}
                 register={register}
               />
-              <SimpleTextInput
-                label="Mobilier utilisé"
-                propLabel={`program.events.${index}.furnitureUsed`}
-                register={register}
+              <TextEditor
+                objLabel={`program.events.${index}.furnitureUsed`}
+                control={control}
+                displayLabel="Mobilier utilisé"
               />
               <SelectOptions
                 textLabel="Traiteurs"
