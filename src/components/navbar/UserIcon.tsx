@@ -1,4 +1,3 @@
-import Image from "mui-image";
 import {
   MenuItem,
   Menu,
@@ -15,8 +14,15 @@ import {
 } from "material-ui-popup-state/hooks";
 import { signOut, getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
 
-export default function UserIcon({ photoURL }: { photoURL: string }) {
+export default function UserIcon({
+  photoURL,
+  name,
+}: {
+  photoURL: string;
+  name?: string;
+}) {
   const navigate = useNavigate();
   const routeHome = () => {
     navigate("/tout");
@@ -39,14 +45,7 @@ export default function UserIcon({ photoURL }: { photoURL: string }) {
   return (
     <>
       <Button id="user-profile-button" {...bindTrigger(popupState)}>
-        <Image
-          style={{ borderRadius: "50%" }}
-          src={photoURL}
-          height={45}
-          width="auto"
-          shift="right"
-          distance={10}
-        />
+        <Avatar alt={name} src={photoURL} />
       </Button>
       <Menu {...bindMenu(popupState)}>
         <MenuItem onClick={routeHome}>

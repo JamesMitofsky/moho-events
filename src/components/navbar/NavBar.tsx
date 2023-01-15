@@ -6,7 +6,7 @@ import { useContext } from "react";
 import UserIcon from "./UserIcon";
 
 const NavBar = () => {
-  const { photoURL }: { photoURL: string } = useContext(UserContext);
+  const { photoURL, displayName } = useContext(UserContext);
 
   return (
     <AppBar sx={{ mb: 2 }} position="static">
@@ -21,7 +21,7 @@ const NavBar = () => {
         <Link to="/tout">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        {photoURL && <UserIcon photoURL={photoURL} />}
+        <UserIcon photoURL={photoURL} name={displayName} />
       </Toolbar>
     </AppBar>
   );
