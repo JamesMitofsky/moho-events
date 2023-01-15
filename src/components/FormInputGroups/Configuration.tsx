@@ -5,6 +5,7 @@ import { AllEventGroups } from "../../utils/globalTypes";
 import TextEditor from "../TextEditor";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import ControlledCheckbox from "../inputs/ControlledCheckbox";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;
@@ -26,8 +27,8 @@ export const Configuration = ({ register, control }: Props) => {
       layout: "",
       furnishedBy: "",
       microphones: null,
-      visio: "",
-      captioning: "",
+      visio: null,
+      captioning: null,
       services: "",
       comments: "",
     };
@@ -58,14 +59,17 @@ export const Configuration = ({ register, control }: Props) => {
             <TextField
               label="Microphones"
               {...register(`configuration.${index}.microphones`)}
+              type="number"
             />
-            <TextField
-              label="Visio"
-              {...register(`configuration.${index}.visio`)}
+            <ControlledCheckbox
+              control={control}
+              propLabel={`configuration.${index}.visio`}
+              textLabel="Visio"
             />
-            <TextField
-              label="Captation"
-              {...register(`configuration.${index}.captioning`)}
+            <ControlledCheckbox
+              control={control}
+              propLabel={`configuration.${index}.captioning`}
+              textLabel="Captation"
             />
             <TextField
               label="Prestetaires"
