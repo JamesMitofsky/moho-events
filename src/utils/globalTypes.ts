@@ -67,7 +67,7 @@ type EventComponent = {
 interface ProgramInputs {
   comments: string;
   numberOfPeople: number;
-  eventDate: Date;
+  eventDate: Date | { seconds: number };
   departureTime: Date;
   events: EventComponent[];
 }
