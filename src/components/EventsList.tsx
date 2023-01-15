@@ -11,6 +11,23 @@ export default function EventsList() {
   useEffect(() => {
     const getEvents = async function () {
       const res = await fetchAllEvents();
+
+      // sort res array by decending date and when there is no date, put it at the end
+      res.sort((a, b) => {
+        const dateA = a.program?.eventDate as { seconds: number };
+        const dateB = b.program?.eventDate as { seconds: number };
+
+        if (dateA && dateB) {
+          return dateB.seconds - dateA.seconds;
+        } else if (dateA && !dateB) {
+          return -1;
+        } else if (!dateA && dateB) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
       setEvents(res);
     };
     getEvents();
@@ -37,7 +54,7 @@ export default function EventsList() {
             )
           : "Pas de date";
 
-        console.log(typeof dateFromServer, dateFromServer);
+        // console.log(typeof dateFromServer, dateFromServer);
 
         return (
           <Link key={event.docId} to={`/evenement/${event.docId}`}>
