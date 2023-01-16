@@ -20,7 +20,6 @@ const EventSubmissionForm = () => {
     handleSubmit,
     control,
     watch,
-    setValue,
     formState: { errors },
   } = useForm<AllEventGroups>({
     defaultValues: {
@@ -92,7 +91,7 @@ const EventSubmissionForm = () => {
       <PaddedChildren padding={3}>
         <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
-        <ProgramGroup {...regCtrlProps} />
+        <ProgramGroup {...regCtrlProps} watch={watch} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
         <Configuration {...regCtrlProps} />
