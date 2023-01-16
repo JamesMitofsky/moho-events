@@ -32,9 +32,8 @@ export default function RenderEventInfo() {
   const {
     register,
     control,
-    setValue,
     reset,
-    handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<AllEventGroups>({
     defaultValues: {
@@ -148,7 +147,7 @@ export default function RenderEventInfo() {
       <PaddedChildren padding={3}>
         <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
-        <ProgramGroup {...regCtrlProps} />
+        <ProgramGroup {...regCtrlProps} watch={watch} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
         <Configuration {...regCtrlProps} />
