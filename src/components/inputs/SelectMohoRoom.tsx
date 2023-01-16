@@ -1,18 +1,10 @@
-import {
-  AllEventGroups,
-  AllEventGroupPaths,
-  Places,
-} from "../../utils/globalTypes";
-import { Control } from "react-hook-form";
+import { Places } from "../../utils/globalTypes";
 import SelectOptions from "./SelectOptions";
+import { SelectProps } from "./SelectOptions";
 
-interface Props {
-  control: Control<AllEventGroups>;
-  propLabel: AllEventGroupPaths;
-  helperText?: string;
-}
-
-export default function SelectMohoRoom(props: Props) {
+export default function SelectMohoRoom(
+  props: Omit<SelectProps, "options" | "textLabel">
+) {
   const rooms: Places[] = [
     "Entrée principale",
     "Salle de conférence (Inspire)",
