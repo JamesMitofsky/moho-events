@@ -2,12 +2,13 @@ import { Autocomplete, TextField } from "@mui/material";
 import { AllEventGroups, AllEventGroupPaths } from "../../utils/globalTypes";
 import { Controller, Control } from "react-hook-form";
 
-interface Props {
+export interface SelectProps {
   options: string[];
-  control: Control<AllEventGroups>;
   textLabel: string;
+  control: Control<AllEventGroups>;
   propLabel: AllEventGroupPaths;
   helperText?: string;
+  isUnique?: boolean;
 }
 
 export default function SelectOptions({
@@ -16,7 +17,8 @@ export default function SelectOptions({
   textLabel,
   propLabel,
   helperText = `Tappez 'Entrée' après chaque réponse`,
-}: Props) {
+  isUnique = false,
+}: SelectProps) {
   return (
     <Controller
       name={propLabel}
@@ -28,10 +30,14 @@ export default function SelectOptions({
           // coercing "value" because SelectOptions should not  must receive string[]
           value={(value as string[]) || []}
           options={options}
-          multiple
+          multiple={isUnique ? false : true}
           freeSolo
           renderInput={(params) => (
-            <TextField {...params} label={textLabel} helperText={helperText} />
+            <TextField
+              {...params}
+              label={textLabel}
+              helperText={isUnique ? "" : helperText}
+            />
           )}
         />
       )}
