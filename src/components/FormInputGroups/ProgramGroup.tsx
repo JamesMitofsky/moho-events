@@ -3,7 +3,12 @@ import { TitledGroup } from "../Layouts/TitledGroup";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";
-import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
+import {
+  useFieldArray,
+  Control,
+  UseFormRegister,
+  UseFormWatch,
+} from "react-hook-form";
 import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
@@ -16,9 +21,10 @@ import ReadOnlyContext from "../../services/ReadOnlyContext";
 interface Props {
   register: UseFormRegister<AllEventGroups>;
   control: Control<AllEventGroups>;
+  watch: UseFormWatch<AllEventGroups>;
 }
 
-export const ProgramGroup = ({ register, control }: Props) => {
+export const ProgramGroup = ({ register, control, watch }: Props) => {
   const { isReadOnly } = useContext(ReadOnlyContext);
 
   const allProps = {
@@ -91,38 +97,43 @@ export const ProgramGroup = ({ register, control }: Props) => {
                 propLabel={`program.events.${index}.involvesRestaurant`}
                 useSwitch={true}
               />
-              <SimpleTextInput
-                label="Nombre de pax"
-                propLabel={`program.events.${index}.numberOfPeople`}
-                register={register}
-              />
-              <TextEditor
-                objLabel={`program.events.${index}.furnitureUsed`}
-                control={control}
-                displayLabel="Mobilier utilisé"
-              />
-              <SelectOptions
-                textLabel="Traiteurs"
-                propLabel={`program.events.${index}.catering`}
-                options={cateringOptions}
-                {...allProps}
-              />
-              <SimpleTextInput
-                label="Service facturé"
-                propLabel={`program.events.${index}.billedService`}
-                register={register}
-              />
-              <SelectOptions
-                textLabel="Format"
-                propLabel={`program.events.${index}.eventLayout`}
-                options={formatConfigurations}
-                {...allProps}
-              />
-              <TextEditor
-                displayLabel="Détails"
-                objLabel={`program.events.${index}.details`}
-                {...allProps}
-              />
+
+              {watch(`program.events.${index}.involvesRestaurant`) && (
+                <>
+                  <SimpleTextInput
+                    label="Nombre de pax"
+                    propLabel={`program.events.${index}.numberOfPeople`}
+                    register={register}
+                  />
+                  <TextEditor
+                    objLabel={`program.events.${index}.furnitureUsed`}
+                    control={control}
+                    displayLabel="Mobilier utilisé"
+                  />
+                  <SelectOptions
+                    textLabel="Traiteurs"
+                    propLabel={`program.events.${index}.catering`}
+                    options={cateringOptions}
+                    {...allProps}
+                  />
+                  <SimpleTextInput
+                    label="Service facturé"
+                    propLabel={`program.events.${index}.billedService`}
+                    register={register}
+                  />
+                  <SelectOptions
+                    textLabel="Format"
+                    propLabel={`program.events.${index}.eventLayout`}
+                    options={formatConfigurations}
+                    {...allProps}
+                  />
+                  <TextEditor
+                    displayLabel="Détails"
+                    objLabel={`program.events.${index}.details`}
+                    {...allProps}
+                  />
+                </>
+              )}
               <Divider sx={{ mt: 2, mb: 2 }} />
             </Box>
           ))}
