@@ -40,7 +40,7 @@ export const SocietyGroup = ({ register, control }: Props) => {
         register={register}
       />
       <SimpleTextInput
-        label="Nombre de devis"
+        label="Numero de devis"
         propLabel="society.numberOfQuote"
         register={register}
         type="number"

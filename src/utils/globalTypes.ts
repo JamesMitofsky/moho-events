@@ -67,7 +67,7 @@ type EventComponent = {
 interface ProgramInputs {
   comments: string;
   numberOfPeople: number;
-  eventDate: Date;
+  eventDate: Date | { seconds: number };
   departureTime: Date;
   events: EventComponent[];
 }
@@ -88,8 +88,8 @@ type ConfigurationInputs = {
   layout: string;
   furnishedBy: string; // text editor
   microphones: number | null;
-  visio: string;
-  captioning: string;
+  visio: boolean | null;
+  captioning: boolean | null;
   services: string;
   comments: string; // text editor
 };
