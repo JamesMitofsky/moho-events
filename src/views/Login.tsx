@@ -14,6 +14,10 @@ export default function Login() {
     signInWithGoogle();
   };
 
+  function loginSuccess() {
+    console.log("yip yuip");
+  }
+
   return (
     <>
       <PageTitle title="Bienvenu" />
@@ -21,15 +25,17 @@ export default function Login() {
         Moho Events permet de facilement ajouter, modifier et partager les
         evenements.
       </Typography>
-      <LoadingButton
-        startIcon={<HowToRegIcon />}
-        variant="outlined"
-        onClick={handleClick}
-        loading={isLoading}
-        sx={{ mt: 5, mb: 5 }}
+      <div
+        id="g_id_onload"
+        data-client_id="1034566431316-6spots3luhs3t32baoutqc4rfoe2ejg8.apps.googleusercontent.com"
+        data-context="signin"
+        data-callback="loginSuccess"
+        data-auto_select="true"
+        data-itp_support="true"
+        referrer-policy="no-referrer-when-downgrade"
       >
-        Authentifier avec Google
-      </LoadingButton>
+        this is it
+      </div>
       <CalendarPeople widthLimit={3} />
     </>
   );
