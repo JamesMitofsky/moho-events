@@ -7,7 +7,7 @@ import { PaddedChildren } from "../Layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
 
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import { uploadEventData } from "../../services/cloudFirestore";
 import { Configuration } from "./Configuration";
 import { useNavigate } from "react-router-dom";

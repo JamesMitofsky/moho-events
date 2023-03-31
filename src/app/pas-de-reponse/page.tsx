@@ -1,11 +1,11 @@
+import PageTitle from "@/components/Layouts/PageTitle";
 import { Button, Box, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import MetaTags from "../utils/MetaTags";
+import Link from "next/link";
 
 const NoResponse = () => {
   return (
     <>
-      <MetaTags title="Page Introuvable" />
+      <PageTitle title="Page Introuvable" />
       <Box
         sx={{
           display: "flex",
@@ -21,7 +21,7 @@ const NoResponse = () => {
           Oup la, pardonnez-nous! C'est un page introuvable.
         </Typography>
         <Typography>Nous n'avons pas trouvé ce que vous cherchez.</Typography>
-        <Box component={Link} to="/tout">
+        <Box component={Link} href="/tout">
           <Button variant="contained">Revenir à l'Accueil</Button>
         </Box>
       </Box>

@@ -5,7 +5,7 @@ import {
   AllEventGroups,
   EventComponent,
   nameof,
-} from "../../utils/globalTypes";
+} from "../../utilities/globalTypes";
 import SelectMohoRoom from "./SelectMohoRoom";
 
 interface Props {

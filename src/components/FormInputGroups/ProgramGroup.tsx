@@ -9,7 +9,7 @@ import {
   UseFormRegister,
   UseFormWatch,
 } from "react-hook-form";
-import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
+import { AllEventGroups, EventComponent } from "../../utilities/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";

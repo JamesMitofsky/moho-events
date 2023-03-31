@@ -1,10 +1,12 @@
-import PageTitle from "../components/Layouts/PageTitle";
-import CalendarPeople from "../components/design/CalendarPeople";
+"use client";
+
+import PageTitle from "@/components/Layouts/PageTitle";
+import CalendarPeople from "@/components/design/CalendarPeople";
+import { signInWithGoogle } from "@/services/firebase";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
-import { signInWithGoogle } from "../services/firebase";
 import { Typography } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
 import { useState } from "react";
+import { LoadingButton } from "@mui/lab";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);

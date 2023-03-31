@@ -13,7 +13,6 @@ import {
   bindMenu,
 } from "material-ui-popup-state/hooks";
 import { signOut, getAuth } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 
 export default function UserIcon({
@@ -23,9 +22,9 @@ export default function UserIcon({
   photoURL: string;
   name?: string;
 }) {
-  const navigate = useNavigate();
   const routeHome = () => {
-    navigate("/tout");
+    // navigate("/tout");
+    console.log("navigate home to /tout");
   };
 
   const popupState = usePopupState({ variant: "popover", popupId: "menu" });

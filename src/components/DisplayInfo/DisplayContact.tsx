@@ -1,8 +1,8 @@
-import { Box } from "@mui/material";
-import { ContactInputs } from "../../utils/globalTypes";
+import { ContactInputs } from "../../utilities/globalTypes";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
+import { Box } from "@mui/material";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 
 export default function DisplayContact({

@@ -1,7 +1,7 @@
 import { TitledGroup } from "../Layouts/TitledGroup";
 import { TextField, Box, Button, Divider } from "@mui/material";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
 
 interface Props {

@@ -1,13 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
-import "@fontsource/antonio";
-import { BrowserRouter } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import MetaTags from "./utils/MetaTags";
-import { ThemeOptions, ThemeProvider, createTheme } from "@mui/material";
 import { frFR } from "@mui/material/locale";
+import { ThemeOptions, createTheme } from "@mui/material/styles";
 
 const theme: ThemeOptions = {
   typography: {
@@ -49,17 +41,6 @@ const theme: ThemeOptions = {
   },
 };
 
-const themeWithLocale = createTheme(theme, frFR);
+const localizedTheme = createTheme(theme, frFR);
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <BrowserRouter>
-        <ThemeProvider theme={themeWithLocale}>
-          <MetaTags title="Moho Events" />
-          <App />
-        </ThemeProvider>
-      </BrowserRouter>
-    </HelmetProvider>
-  </React.StrictMode>
-);
+export default localizedTheme;

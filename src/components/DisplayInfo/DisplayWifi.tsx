@@ -3,7 +3,7 @@ import {
   ProgramInputs,
   SignageInputs,
   WifiInputs,
-} from "../../utils/globalTypes";
+} from "../../utilities/globalTypes";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import DisplayText from "./DisplayFormats/DisplayText";
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";

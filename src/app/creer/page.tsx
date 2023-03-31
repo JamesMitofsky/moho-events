@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
-import EventSubmissionForm from "../components/FormInputGroups/EventSubmissionForm";
-import PageTitle from "../components/Layouts/PageTitle";
-import ReturnHome from "../components/ReturnHome";
+import EventSubmissionForm from "../../components/FormInputGroups/EventSubmissionForm";
+import PageTitle from "../../components/Layouts/PageTitle";
+import ReturnHome from "../../components/ReturnHome";
 
-const NewEvent = () => {
+export default function NewEvent() {
   return (
     <>
       <ReturnHome />
@@ -22,6 +22,4 @@ const NewEvent = () => {
       </Box>
     </>
   );
-};
-
-export default NewEvent;
+}

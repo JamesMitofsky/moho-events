@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { TitledGroup } from "../Layouts/TitledGroup";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SimpleTextInput from "../inputs/SimpleTextInput";
 

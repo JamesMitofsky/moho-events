@@ -1,4 +1,4 @@
-import { Places } from "../../utils/globalTypes";
+import { Places } from "../../utilities/globalTypes";
 import SelectOptions from "./SelectOptions";
 import { SelectProps } from "./SelectOptions";
 

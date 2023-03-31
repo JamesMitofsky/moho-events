@@ -4,11 +4,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { fr } from "date-fns/locale";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import { Controller, Control, FieldPath } from "react-hook-form";
 import IsReadOnly from "../../services/ReadOnlyContext";
 import { useContext } from "react";
-import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
+import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
 import ReadOnlyContext from "../../services/ReadOnlyContext";
 
 interface Props {

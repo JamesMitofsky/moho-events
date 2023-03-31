@@ -1,5 +1,8 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { AllEventGroups, AllEventGroupPaths } from "../../utils/globalTypes";
+import {
+  AllEventGroups,
+  AllEventGroupPaths,
+} from "../../utilities/globalTypes";
 import { Controller, Control } from "react-hook-form";
 
 export interface SelectProps {

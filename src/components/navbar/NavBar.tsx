@@ -1,9 +1,9 @@
 import { AppBar, Toolbar } from "@mui/material";
 import MohoEventsLogo from "../MohoEventsLogo";
-import { Link } from "react-router-dom";
 import UserContext from "../../services/UserContext";
 import { useContext } from "react";
 import UserIcon from "./UserIcon";
+import Link from "next/link";
 
 const NavBar = () => {
   const { photoURL, displayName } = useContext(UserContext);
@@ -18,7 +18,7 @@ const NavBar = () => {
           justifyContent: "space-between",
         }}
       >
-        <Link to="/tout">
+        <Link href="/tout">
           <MohoEventsLogo color="white" height={45} />
         </Link>
         <UserIcon photoURL={photoURL} name={displayName} />
