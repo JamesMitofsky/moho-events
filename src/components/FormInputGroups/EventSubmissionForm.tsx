@@ -91,11 +91,11 @@ const EventSubmissionForm = () => {
     <FormContainer defaultValues={formDefaultValues}>
       <SpacedChildren>
         <SocietyGroup {...regCtrlProps} />
-        <ContactGroup {...regCtrlProps} />
+        {/* <ContactGroup {...regCtrlProps} />
         <ProgramGroup {...regCtrlProps} watch={watch} />
         <SignageGroup {...regCtrlProps} />
         <WifiGroup {...regCtrlProps} />
-        <Configuration {...regCtrlProps} />
+        <Configuration {...regCtrlProps} /> */}
 
         <Button
           endIcon={<SendSharp />}

@@ -27,13 +27,14 @@ export default function Time({ control, dataLabel, textLabel }: Props) {
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <TimePicker
-              ampm={false}
-              label={textLabel}
-              value={date}
-              onChange={(newValue) => onChange(newValue)}
-              renderInput={(params) => <TextField fullWidth {...params} />}
-            />
+            <>use time picker</>
+            // <TimePicker
+            //   ampm={false}
+            //   label={textLabel}
+            //   value={date}
+            //   onChange={(newValue) => onChange(newValue)}
+            //   renderInput={(params) => <TextField fullWidth {...params} />}
+            // />
           );
         }}
       />

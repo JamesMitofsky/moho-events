@@ -1,9 +1,9 @@
 "use client";
-import PageTitle from "@/components/layouts/PageTitle";
-import { Button, Box, Typography } from "@mui/material";
-import Link from "next/link";
 
-const NoResponse = () => {
+import PageTitle from "@/components/layouts/PageTitle";
+import { Box, Button, Link, Typography } from "@mui/material";
+
+export default function NotFound() {
   return (
     <>
       <PageTitle title="Page Introuvable" />
@@ -28,6 +28,4 @@ const NoResponse = () => {
       </Box>
     </>
   );
-};
-
-export default NoResponse;
+}

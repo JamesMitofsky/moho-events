@@ -9,18 +9,7 @@ export default function NewEvent() {
     <>
       <PageTitle title="Créer un Evénement" />
       <ReturnHome />
-      <Box
-        component="form"
-        sx={{
-          m: 1,
-          display: "flex",
-          flexDirection: "column",
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <EventSubmissionForm />
-      </Box>
+      <EventSubmissionForm />
     </>
   );
 }
