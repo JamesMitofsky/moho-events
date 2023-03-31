@@ -1,6 +1,6 @@
 "use client";
 
-import PageTitle from "@/components/Layouts/PageTitle";
+import PageTitle from "@/components/layouts/PageTitle";
 import CalendarPeople from "@/components/design/CalendarPeople";
 import { signInWithGoogle } from "@/services/firebase";
 import HowToRegIcon from "@mui/icons-material/HowToReg";

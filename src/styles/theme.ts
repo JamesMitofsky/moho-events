@@ -5,15 +5,16 @@ const theme: ThemeOptions = {
   typography: {
     fontFamily: ["sans-serif"].join(","),
     h1: {
-      fontSize: 60,
-      fontFamily: "'Antonio', sans-serif",
-    },
-    h2: {
       fontSize: 40,
       fontFamily: "'Antonio', sans-serif",
     },
-    h3: {
+    h2: {
       fontSize: 30,
+      fontWeight: 100,
+      fontFamily: "'Antonio', sans-serif",
+    },
+    h3: {
+      fontSize: 25,
       fontFamily: "'Antonio', sans-serif",
     },
     h4: {

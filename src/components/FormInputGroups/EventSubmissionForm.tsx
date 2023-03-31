@@ -3,76 +3,77 @@ import { ContactGroup } from "./ContactGroup";
 import { SocietyGroup } from "./SocietyGroup";
 import { SignageGroup } from "./SignageGroup";
 import { WifiGroup } from "./WifiGroup";
-import { PaddedChildren } from "../Layouts/PaddedChildren";
+import { PaddedChildren } from "../layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
 import { useRouter } from "next/navigation";
 import { AllEventGroups } from "../../utilities/globalTypes";
 import { uploadEventData } from "../../services/cloudFirestore";
 import { Configuration } from "./Configuration";
+import SpacedChildren from "../layouts/SpacedChildren";
+import { FormContainer } from "react-hook-form-mui";
+import { FormEvent } from "react";
+import { SendSharp } from "@mui/icons-material";
 
 const EventSubmissionForm = () => {
   const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors },
-  } = useForm<AllEventGroups>({
-    defaultValues: {
-      program: {
-        events: [
-          {
-            title: "",
-            time: {
-              start: null,
-              end: null,
-            },
-            place: [],
-            numberOfPeople: null,
-            furnitureUsed: "",
-            catering: [],
-            billedService: null,
-            eventLayout: "",
-            details: "",
-            involvesRestaurant: false,
+  const formDefaultValues = {
+    program: {
+      events: [
+        {
+          title: "",
+          time: {
+            start: null,
+            end: null,
           },
-        ],
-      },
-      wifi: [
-        {
-          username: "",
-          password: "",
-        },
-      ],
-      configuration: [
-        {
-          room: "",
+          place: [],
           numberOfPeople: null,
-          layout: "",
-          furnishedBy: "",
-          microphones: null,
-          visio: null,
-          captioning: null,
-          services: "",
-          comments: "",
+          furnitureUsed: "",
+          catering: [],
+          billedService: null,
+          eventLayout: "",
+          details: "",
+          involvesRestaurant: false,
         },
       ],
-      contact: {
-        individuals: [
-          {
-            companyName: "",
-            contactName: "",
-            email: "",
-            telephoneNumber: "",
-          },
-        ],
+    },
+    wifi: [
+      {
+        username: "",
+        password: "",
+      },
+    ],
+    configuration: [
+      {
+        room: "",
+        numberOfPeople: null,
+        layout: "",
+        furnishedBy: "",
+        microphones: null,
+        visio: null,
+        captioning: null,
+        services: "",
         comments: "",
       },
+    ],
+    contact: {
+      individuals: [
+        {
+          companyName: "",
+          contactName: "",
+          email: "",
+          telephoneNumber: "",
+        },
+      ],
+      comments: "",
     },
-  });
+  };
+
+  const { register, handleSubmit, control, watch } = useForm<AllEventGroups>();
+
+  console.log(watch());
+
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
     const docRef = await uploadEventData(data);
     if (docRef) {
@@ -86,8 +87,9 @@ const EventSubmissionForm = () => {
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <>
-      <PaddedChildren padding={3}>
+
+    <FormContainer defaultValues={formDefaultValues}>
+      <SpacedChildren>
         <SocietyGroup {...regCtrlProps} />
         <ContactGroup {...regCtrlProps} />
         <ProgramGroup {...regCtrlProps} watch={watch} />
@@ -96,14 +98,14 @@ const EventSubmissionForm = () => {
         <Configuration {...regCtrlProps} />
 
         <Button
-          sx={{ mt: 3, mb: 4 }}
-          onClick={handleSubmit(onSubmit)}
+          endIcon={<SendSharp />}
+          sx={{ width: "fit-content", ml: "auto" }}
           variant="contained"
         >
           Submit
         </Button>
-      </PaddedChildren>
-    </>
+      </SpacedChildren>
+    </FormContainer>
   );
 };
 

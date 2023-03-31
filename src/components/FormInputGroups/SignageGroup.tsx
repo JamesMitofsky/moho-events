@@ -1,4 +1,4 @@
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import { TextField } from "@mui/material";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";

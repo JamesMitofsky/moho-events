@@ -1,5 +1,5 @@
 import { TextField, Typography, Box, Button, Divider } from "@mui/material";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";

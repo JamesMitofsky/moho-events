@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { SocietyInputs } from "../../utilities/globalTypes";
 import DisplayText from "./DisplayFormats/DisplayText";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import GroupsIcon from "@mui/icons-material/Groups";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 

@@ -4,7 +4,7 @@ import { Box, Button, Link } from "@mui/material";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import EventsList from "@/components/EventsList";
-import PageTitle from "@/components/Layouts/PageTitle";
+import PageTitle from "@/components/layouts/PageTitle";
 
 const ListOfEvents = () => {
   return (

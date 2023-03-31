@@ -1,5 +1,5 @@
 import { ContactInputs } from "../../utilities/globalTypes";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 import { Box } from "@mui/material";

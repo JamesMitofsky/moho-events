@@ -55,36 +55,36 @@ export default function Layout({ children }: any) {
   }
 
   // authenticate user
-  useEffect(() => {
-    console.log("Checking for user...");
-    checkAuthState();
-  }, []);
+  // useEffect(() => {
+  //   console.log("Checking for user...");
+  //   checkAuthState();
+  // }, []);
   return (
     <React.StrictMode>
       <ThemeProvider theme={localizedTheme}>
         <html>
-          <UserContext.Provider value={user}>
-            {/* <IsReadOnly.Provider value={passableValue}> */}
-            <Box
-              component="body"
-              sx={{ display: "flex", flexDirection: "column" }}
+          {/* <UserContext.Provider value={user}> */}
+          {/* <IsReadOnly.Provider value={passableValue}> */}
+          <Box
+            component="body"
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
+            <NavBar />
+            <Container
+              sx={{
+                mt: 0.2,
+                mb: 3,
+                display: "flex",
+                flex: 1,
+                flexDirection: "column",
+              }}
             >
-              <NavBar />
-              <Container
-                sx={{
-                  mt: 0.2,
-                  mb: 3,
-                  display: "flex",
-                  flex: 1,
-                  flexDirection: "column",
-                }}
-              >
-                {children}
-              </Container>
-              <Footer />
-            </Box>
-            {/* </IsReadOnly.Provider> */}
-          </UserContext.Provider>
+              {children}
+            </Container>
+            <Footer />
+          </Box>
+          {/* </IsReadOnly.Provider> */}
+          {/* </UserContext.Provider> */}
         </html>
       </ThemeProvider>
     </React.StrictMode>

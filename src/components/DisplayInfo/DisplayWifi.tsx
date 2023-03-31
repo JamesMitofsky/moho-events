@@ -4,7 +4,7 @@ import {
   SignageInputs,
   WifiInputs,
 } from "../../utilities/globalTypes";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayText from "./DisplayFormats/DisplayText";
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
 
