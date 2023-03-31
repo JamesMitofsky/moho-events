@@ -6,14 +6,13 @@ import { WifiGroup } from "./WifiGroup";
 import { PaddedChildren } from "../Layouts/PaddedChildren";
 import { Button } from "@mui/material";
 import { ProgramGroup } from "./ProgramGroup";
-
+import { useRouter } from "next/navigation";
 import { AllEventGroups } from "../../utilities/globalTypes";
 import { uploadEventData } from "../../services/cloudFirestore";
 import { Configuration } from "./Configuration";
-import { useNavigate } from "react-router-dom";
 
 const EventSubmissionForm = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const {
     register,
@@ -79,7 +78,7 @@ const EventSubmissionForm = () => {
     if (docRef) {
       console.log("success");
       // TODO redirect to page with the completed, static form, triggering confetti
-      navigate(`/evenement/${docRef}`);
+      router.push(`/evenement/${docRef}`);
     }
   };
 

@@ -1,3 +1,4 @@
+"use client";
 import PageTitle from "@/components/Layouts/PageTitle";
 import { Button, Box, Typography } from "@mui/material";
 import Link from "next/link";

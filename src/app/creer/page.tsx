@@ -1,3 +1,4 @@
+"use client";
 import { Box } from "@mui/material";
 import EventSubmissionForm from "../../components/FormInputGroups/EventSubmissionForm";
 import PageTitle from "../../components/Layouts/PageTitle";
