@@ -10,7 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
     "@fontsource/antonio": "^4.5.10",
     "@mui/icons-material": "^5.11.11",
@@ -18,13 +20,8 @@
     "@mui/material": "^5.11.15",
     "@mui/system": "^5.11.15",
     "@mui/x-date-pickers": "^6.0.4",
-    "@types/node": "18.15.11",
-    "@types/react": "18.0.31",
-    "@types/react-dom": "18.0.11",
     "date-fns": "^2.29.3",
     "encoding": "^0.1.13",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
     "firebase": "^9.19.0",
     "html-react-parser": "^3.0.15",
     "material-ui-popup-state": "^5.0.8",
@@ -36,10 +33,15 @@
     "react-hook-form-mui": "^6.0.1",
     "react-phone-input-2": "^2.15.1",
     "react-quill": "^2.0.0",
-    "typescript": "5.0.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@types/uuid": "^9.0.1"
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.31",
+    "@types/react-dom": "18.0.11",
+    "@types/uuid": "^9.0.1",
+    "eslint": "8.37.0",
+    "eslint-config-next": "13.2.4",
+    "typescript": "5.0.3"
   }
 }

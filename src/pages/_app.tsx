@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import "@fontsource/antonio";
 import { Box, Container, ThemeProvider } from "@mui/material";
@@ -11,8 +9,23 @@ import { UserObject } from "@/utilities/globalTypes";
 import { onAuthStateChanged } from "firebase/auth";
 import localizedTheme from "@/styles/theme";
 import "../styles/global.css";
+import createEmotionCache from "../server/createEmotionCache";
+import { CacheProvider } from "@emotion/react";
+import { EmotionCache } from "@emotion/cache";
+import { AppProps } from "next/app";
 
-export default function Layout({ children }: any) {
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
+
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function Layout({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}: MyAppProps) {
   // prepare input field readability state to be passed to the provider component
   const [isReadOnly, setIsReadOnly] = useState(false);
   const passableValue = { isReadOnly, setIsReadOnly };
@@ -60,33 +73,28 @@ export default function Layout({ children }: any) {
   //   checkAuthState();
   // }, []);
   return (
-    <React.StrictMode>
+    <CacheProvider value={emotionCache}>
       <ThemeProvider theme={localizedTheme}>
-        <html>
-          {/* <UserContext.Provider value={user}> */}
-          {/* <IsReadOnly.Provider value={passableValue}> */}
-          <Box
-            component="body"
-            sx={{ display: "flex", flexDirection: "column" }}
+        {/* <UserContext.Provider value={user}> */}
+        {/* <IsReadOnly.Provider value={passableValue}> */}
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <NavBar />
+          <Container
+            sx={{
+              mt: 0.2,
+              mb: 3,
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+            }}
           >
-            <NavBar />
-            <Container
-              sx={{
-                mt: 0.2,
-                mb: 3,
-                display: "flex",
-                flex: 1,
-                flexDirection: "column",
-              }}
-            >
-              {children}
-            </Container>
-            <Footer />
-          </Box>
-          {/* </IsReadOnly.Provider> */}
-          {/* </UserContext.Provider> */}
-        </html>
+            <Component {...pageProps} />
+          </Container>
+          <Footer />
+        </Box>
+        {/* </IsReadOnly.Provider> */}
+        {/* </UserContext.Provider> */}
       </ThemeProvider>
-    </React.StrictMode>
+    </CacheProvider>
   );
 }

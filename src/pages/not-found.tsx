@@ -1,5 +1,3 @@
-"use client";
-
 import PageTitle from "@/components/layouts/PageTitle";
 import { Box, Button, Link, Typography } from "@mui/material";
 

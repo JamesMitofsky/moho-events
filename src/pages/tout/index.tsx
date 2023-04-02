@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Button, Link } from "@mui/material";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
