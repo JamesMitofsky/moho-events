@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "@fontsource/antonio";
 import { Box, Container, ThemeProvider } from "@mui/material";
 import NavBar from "@/components/navbar/NavBar";
 import UserContext from "@/services/UserContext";
@@ -77,7 +76,7 @@ export default function Layout({
       <ThemeProvider theme={localizedTheme}>
         {/* <UserContext.Provider value={user}> */}
         {/* <IsReadOnly.Provider value={passableValue}> */}
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
           <NavBar />
           <Container
             sx={{

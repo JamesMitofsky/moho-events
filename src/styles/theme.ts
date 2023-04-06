@@ -1,21 +1,29 @@
 import { frFR } from "@mui/material/locale";
 import { ThemeOptions, createTheme } from "@mui/material/styles";
+import { Antonio } from "next/font/google";
+
+export const antonio = Antonio({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["sans-serif", "Arial"],
+});
 
 const theme: ThemeOptions = {
   typography: {
-    fontFamily: ["sans-serif"].join(","),
+    fontFamily: "sans-serif",
     h1: {
       fontSize: 40,
-      fontFamily: "'Antonio', sans-serif",
+      fontFamily: antonio.style.fontFamily,
     },
     h2: {
       fontSize: 30,
       fontWeight: 100,
-      fontFamily: "'Antonio', sans-serif",
+      fontFamily: antonio.style.fontFamily,
     },
     h3: {
       fontSize: 25,
-      fontFamily: "'Antonio', sans-serif",
+      fontFamily: antonio.style.fontFamily,
     },
     h4: {
       fontSize: 20,
