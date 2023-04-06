@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { UserObject } from "../utils/globalTypes";
+import { UserObject } from "../utilities/globalTypes";
 
 const UserContext = createContext<UserObject>({} as UserObject);
 

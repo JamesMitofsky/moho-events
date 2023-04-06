@@ -1,5 +1,6 @@
 import { Typography, Stack, Box, SvgIcon } from "@mui/material";
-import { PaddedChildren } from "./PaddedChildren";
+
+import SpacedChildren from "./SpacedChildren";
 
 export const TitledGroup = ({
   children,
@@ -11,16 +12,14 @@ export const TitledGroup = ({
   icon: any;
 }) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <PaddedChildren padding={2}>
-        <Stack direction="row" alignItems="center" gap={1}>
-          <SvgIcon color="primary" component={icon} />
-          <Typography color="primary" variant="h2">
-            {title}
-          </Typography>
-        </Stack>
-        {children}
-      </PaddedChildren>
-    </Box>
+    <SpacedChildren>
+      <Stack direction="row" alignItems="center" gap={1}>
+        <SvgIcon color="primary" component={icon} />
+        <Typography color="primary" variant="h2">
+          {title}
+        </Typography>
+      </Stack>
+      {children}
+    </SpacedChildren>
   );
 };

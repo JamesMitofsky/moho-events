@@ -7,14 +7,14 @@ import {
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
   authDomain: "moho-auth.firebaseapp.com",
   databaseURL:
     "https://moho-auth-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "moho-auth",
   storageBucket: "moho-auth.appspot.com",
   messagingSenderId: "1034566431316",
-  appId: import.meta.env.VITE_APP_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
   measurementId: "G-DMC57PQQ3S",
 };
 

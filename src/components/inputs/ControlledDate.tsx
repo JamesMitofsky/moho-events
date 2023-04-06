@@ -4,11 +4,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { fr } from "date-fns/locale";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import { Controller, Control, FieldPath } from "react-hook-form";
 import IsReadOnly from "../../services/ReadOnlyContext";
 import { useContext } from "react";
-import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
+import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
 import ReadOnlyContext from "../../services/ReadOnlyContext";
 
 interface Props {
@@ -38,14 +38,15 @@ export default function ControlledDate({
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <DatePicker
-              readOnly={isReadOnly}
-              label={textLabel}
-              inputFormat="dd/MM/yyyy"
-              value={date}
-              onChange={(newValue) => onChange(newValue)}
-              renderInput={(params) => <TextField {...params} />}
-            />
+            <>should be a date picker here -- use the library</>
+            // <DatePicker
+            //   readOnly={isReadOnly}
+            //   label={textLabel}
+            //   inputFormat="dd/MM/yyyy"
+            //   value={date}
+            //   onChange={(newValue) => onChange(newValue)}
+            //   renderInput={(params) => <TextField {...params} />}
+            // />
           );
         }}
       />

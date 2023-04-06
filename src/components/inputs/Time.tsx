@@ -3,8 +3,8 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { Controller, Control, FieldPath } from "react-hook-form";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AllEventGroups } from "../../utils/globalTypes";
-import filterDateOrNumberToDate from "../../utils/filterDateOrNumberToDate";
+import { AllEventGroups } from "../../utilities/globalTypes";
+import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;
@@ -27,13 +27,14 @@ export default function Time({ control, dataLabel, textLabel }: Props) {
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <TimePicker
-              ampm={false}
-              label={textLabel}
-              value={date}
-              onChange={(newValue) => onChange(newValue)}
-              renderInput={(params) => <TextField fullWidth {...params} />}
-            />
+            <>use time picker</>
+            // <TimePicker
+            //   ampm={false}
+            //   label={textLabel}
+            //   value={date}
+            //   onChange={(newValue) => onChange(newValue)}
+            //   renderInput={(params) => <TextField fullWidth {...params} />}
+            // />
           );
         }}
       />

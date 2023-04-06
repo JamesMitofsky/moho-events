@@ -1,7 +1,7 @@
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import { TextField, Box, Button, Divider } from "@mui/material";
 import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import TextEditor from "../TextEditor";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import DashboardIcon from "@mui/icons-material/Dashboard";

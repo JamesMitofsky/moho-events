@@ -1,9 +1,9 @@
 import { fetchAllEvents } from "../services/cloudFirestore";
 import { useEffect, useState } from "react";
-import { ListItem, List, ListItemText, Typography } from "@mui/material";
-import { ModifiedServerResponse } from "../utils/globalTypes";
-import { Link } from "react-router-dom";
-import filterDateOrNumberToDate from "../utils/filterDateOrNumberToDate";
+import { ListItem, List, ListItemText, Typography, Link } from "@mui/material";
+import { ModifiedServerResponse } from "../utilities/globalTypes";
+import filterDateOrNumberToDate from "../utilities/filterDateOrNumberToDate";
+import NextLink from "next/link";
 
 export default function EventsList() {
   const [events, setEvents] = useState<ModifiedServerResponse[]>([]);
@@ -77,7 +77,11 @@ export default function EventsList() {
             : "Pas de date";
 
           return (
-            <Link key={event.docId} to={`/evenement/${event.docId}`}>
+            <Link
+              component={NextLink}
+              key={event.docId}
+              href={`/evenement/${event.docId}`}
+            >
               <ListItem divider>
                 <ListItemText
                   primary={`${eventName} - ${associationName}`}
@@ -111,7 +115,7 @@ export default function EventsList() {
             : "Pas de date";
 
           return (
-            <Link key={event.docId} to={`/evenement/${event.docId}`}>
+            <Link key={event.docId} href={`/evenement/${event.docId}`}>
               <ListItem divider>
                 <ListItemText
                   primary={`${eventName} - ${associationName}`}

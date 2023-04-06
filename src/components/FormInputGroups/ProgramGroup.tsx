@@ -1,5 +1,5 @@
 import { TextField, Typography, Box, Button, Divider } from "@mui/material";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
 import Time from "../inputs/Time";
 import TextEditor from "../TextEditor";
@@ -9,7 +9,7 @@ import {
   UseFormRegister,
   UseFormWatch,
 } from "react-hook-form";
-import { AllEventGroups, EventComponent } from "../../utils/globalTypes";
+import { AllEventGroups, EventComponent } from "../../utilities/globalTypes";
 import SelectOptions from "../inputs/SelectOptions";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";

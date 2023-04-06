@@ -1,55 +1,43 @@
 import { TextField } from "@mui/material";
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 import GroupsIcon from "@mui/icons-material/Groups";
 import SimpleTextInput from "../inputs/SimpleTextInput";
+import { FormContainer, TextFieldElement } from "react-hook-form-mui";
+import SpacedChildren from "../layouts/SpacedChildren";
 
 interface Props {
-  register: UseFormRegister<AllEventGroups>;
   control: Control<AllEventGroups>;
 }
 
-export const SocietyGroup = ({ register, control }: Props) => {
+export const SocietyGroup = ({ control }: Props) => {
   return (
     <TitledGroup icon={GroupsIcon} title={"Société"}>
-      <SimpleTextInput
+      <TextFieldElement
+        fullWidth
         label="Nom de la société"
-        propLabel="society.associationName"
-        register={register}
+        name="something-here"
       />
-      <SimpleTextInput
-        label="Catégorie"
-        propLabel="society.category"
-        register={register}
-      />
-      <SimpleTextInput
+      <TextFieldElement fullWidth label="Catégorie" name="society.category" />
+      <TextFieldElement
+        fullWidth
         label="Nom de l'événement"
-        propLabel="society.eventName"
-        register={register}
+        name="society.eventName"
       />
-      <SimpleTextInput
+      <TextFieldElement
+        fullWidth
         label="Type d'événement"
-        propLabel="society.eventType"
-        register={register}
+        name="society.eventType"
       />
-      <SimpleTextInput
-        label="Type d'événement"
-        propLabel="society.eventType"
-        register={register}
-      />
-      <SimpleTextInput
-        label="Numero de devis"
-        propLabel="society.numberOfQuote"
-        register={register}
+      <TextFieldElement
+        fullWidth
+        label="Numéro de devis"
+        name="society.numberOfQuote"
         type="number"
       />
-      <SimpleTextInput
-        label="Vendu par"
-        propLabel="society.soldBy"
-        register={register}
-      />
+      <TextFieldElement fullWidth label="Vendu par" name="society.soldBy" />
       <TextEditor
         objLabel="society.comments"
         displayLabel="Remarques"

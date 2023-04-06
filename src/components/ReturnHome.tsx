@@ -1,17 +1,13 @@
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import Link from "next/link";
 
 const ReturnHome = () => {
-  const navigate = useNavigate();
-  const routeUser = () => {
-    navigate("/tout");
-  };
-
   return (
     <Button
       startIcon={<NavigateBeforeIcon />}
-      onClick={routeUser}
+      component={Link}
+      href="/tout"
       aria-label="Retour à l'accueil"
     >
       Retourner à l'accueil

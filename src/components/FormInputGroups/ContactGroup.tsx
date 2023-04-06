@@ -1,8 +1,8 @@
-import { TitledGroup } from "../Layouts/TitledGroup";
+import { TitledGroup } from "../layouts/TitledGroup";
 import { TextField, Box, Divider, Typography, Button } from "@mui/material";
 import TextEditor from "../TextEditor";
 import { Control, UseFormRegister, useFieldArray } from "react-hook-form";
-import { AllEventGroups, ContactIndividual } from "../../utils/globalTypes";
+import { AllEventGroups, ContactIndividual } from "../../utilities/globalTypes";
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
 import PhoneNumber from "../inputs/PhoneNumber";
 import SimpleTextInput from "../inputs/SimpleTextInput";

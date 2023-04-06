@@ -1,8 +1,8 @@
-import { Box, Button } from "@mui/material";
-import EventsList from "../components/EventsList";
-import PageTitle from "../components/Layouts/PageTitle";
+import { Box, Button, Link } from "@mui/material";
+
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Link } from "react-router-dom";
+import EventsList from "@/components/EventsList";
+import PageTitle from "@/components/layouts/PageTitle";
 
 const ListOfEvents = () => {
   return (
@@ -17,7 +17,7 @@ const ListOfEvents = () => {
         <PageTitle title="L'Accueil" />
         <Button
           component={Link}
-          to="/creer"
+          href="/creer"
           startIcon={<AddCircleIcon />}
           variant="outlined"
         >

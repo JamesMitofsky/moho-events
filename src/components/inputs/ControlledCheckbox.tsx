@@ -1,6 +1,6 @@
 import { Checkbox, FormGroup, FormControlLabel, Switch } from "@mui/material";
 import { Controller, Control, FieldPath } from "react-hook-form";
-import { AllEventGroups } from "../../utils/globalTypes";
+import { AllEventGroups } from "../../utilities/globalTypes";
 
 interface Props {
   control: Control<AllEventGroups>;
