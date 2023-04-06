@@ -10,7 +10,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
     "@fontsource/antonio": "^4.5.10",
     "@mui/icons-material": "^5.11.11",

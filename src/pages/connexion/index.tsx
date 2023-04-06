@@ -1,5 +1,3 @@
-"use client";
-
 import PageTitle from "@/components/layouts/PageTitle";
 import CalendarPeople from "@/components/design/CalendarPeople";
 import { signInWithGoogle } from "@/services/firebase";
