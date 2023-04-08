@@ -1,9 +1,13 @@
-import { Box } from "@mui/material";
-import EventSubmissionForm from "../../components/FormInputGroups/EventSubmissionForm";
-import PageTitle from "../../components/layouts/PageTitle";
-import ReturnHome from "../../components/ReturnHome";
+import PageTitle from "@/components/layouts/PageTitle";
+import ReturnHome from "@/components/ReturnHome";
+import dynamic from "next/dynamic";
 
 export default function NewEvent() {
+  const EventSubmissionForm = dynamic(
+    () => import("@/components/FormInputGroups/EventSubmissionForm"),
+    { ssr: false }
+  );
+
   return (
     <>
       <PageTitle title="Créer un Evénement" />
