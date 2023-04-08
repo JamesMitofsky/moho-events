@@ -1,12 +1,9 @@
-import { TextField } from "@mui/material";
-import { TitledGroup } from "../layouts/TitledGroup";
-import TextEditor from "../TextEditor";
-import { Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utilities/globalTypes";
 import GroupsIcon from "@mui/icons-material/Groups";
-import SimpleTextInput from "../inputs/SimpleTextInput";
-import { FormContainer, TextFieldElement } from "react-hook-form-mui";
-import SpacedChildren from "../layouts/SpacedChildren";
+import { Control } from "react-hook-form";
+import { TextFieldElement } from "react-hook-form-mui";
+import { AllEventGroups } from "../../utilities/globalTypes";
+import TextEditor from "../TextEditor";
+import { TitledGroup } from "../layouts/TitledGroup";
 
 interface Props {
   control: Control<AllEventGroups>;
@@ -18,7 +15,7 @@ export const SocietyGroup = ({ control }: Props) => {
       <TextFieldElement
         fullWidth
         label="Nom de la société"
-        name="something-here"
+        name="society.associationName"
       />
       <TextFieldElement fullWidth label="Catégorie" name="society.category" />
       <TextFieldElement
@@ -38,11 +35,7 @@ export const SocietyGroup = ({ control }: Props) => {
         type="number"
       />
       <TextFieldElement fullWidth label="Vendu par" name="society.soldBy" />
-      <TextEditor
-        objLabel="society.comments"
-        displayLabel="Remarques"
-        control={control}
-      />
+      <TextEditor objLabel="society.comments" displayLabel="Remarques" />
     </TitledGroup>
   );
 };

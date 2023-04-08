@@ -1,22 +1,15 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { ContactGroup } from "./ContactGroup";
-import { SocietyGroup } from "./SocietyGroup";
-import { SignageGroup } from "./SignageGroup";
-import { WifiGroup } from "./WifiGroup";
-import { PaddedChildren } from "../layouts/PaddedChildren";
-import { Button } from "@mui/material";
-import { ProgramGroup } from "./ProgramGroup";
-import { useRouter } from "next/navigation";
-import { AllEventGroups } from "../../utilities/globalTypes";
-import { uploadEventData } from "../../services/cloudFirestore";
-import { Configuration } from "./Configuration";
-import SpacedChildren from "../layouts/SpacedChildren";
-import { FormContainer } from "react-hook-form-mui";
-import { FormEvent } from "react";
+import { uploadEventData } from "@/services/cloudFirestore";
+import { AllEventGroups } from "@/utilities/globalTypes";
 import { SendSharp } from "@mui/icons-material";
+import { Button } from "@mui/material";
+import router from "next/router";
+import { FormContainer, SubmitHandler, useForm } from "react-hook-form-mui";
+import TextEditor from "../TextEditor";
+import SpacedChildren from "../layouts/SpacedChildren";
+import { SocietyGroup } from "./SocietyGroup";
 
 const EventSubmissionForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const formDefaultValues = {
     program: {
@@ -70,11 +63,12 @@ const EventSubmissionForm = () => {
     },
   };
 
-  const { register, handleSubmit, control, watch } = useForm<AllEventGroups>();
+  const { handleSubmit, control, watch } = useForm<AllEventGroups>();
 
-  console.log(watch());
+  // console.log(watch());
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
+    console.log(data);
     const docRef = await uploadEventData(data);
     if (docRef) {
       console.log("success");
@@ -83,24 +77,35 @@ const EventSubmissionForm = () => {
     }
   };
 
-  const regCtrlProps = { register, control };
+  // You can pass an async function for asynchronous validation.
+  // function submitNow() {
+  //   console.log("test");
+  //   handleSubmit(onSubmit)();
+  //   handleSubmit((data) => console.log(data))();
+  // }
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
 
-    <FormContainer defaultValues={formDefaultValues}>
+    <FormContainer
+      defaultValues={formDefaultValues}
+      // onSubmit={() => handleSubmit(onSubmit)}
+      onSuccess={(data) => console.log(" on success ", data)}
+    >
       <SpacedChildren>
-        <SocietyGroup {...regCtrlProps} />
+        <TextEditor displayLabel="Test" objLabel="test" />
+        <SocietyGroup control={control} />
         {/* <ContactGroup {...regCtrlProps} />
-        <ProgramGroup {...regCtrlProps} watch={watch} />
-        <SignageGroup {...regCtrlProps} />
-        <WifiGroup {...regCtrlProps} />
-        <Configuration {...regCtrlProps} /> */}
+      <ProgramGroup {...regCtrlProps} watch={watch} />
+      <SignageGroup {...regCtrlProps} />
+      <WifiGroup {...regCtrlProps} />
+      <Configuration {...regCtrlProps} /> */}
 
         <Button
           endIcon={<SendSharp />}
           sx={{ width: "fit-content", ml: "auto" }}
           variant="contained"
+          type="submit"
         >
           Submit
         </Button>
