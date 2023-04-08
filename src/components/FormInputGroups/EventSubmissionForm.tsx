@@ -3,10 +3,14 @@ import { AllEventGroups } from "@/utilities/globalTypes";
 import { SendSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import router from "next/router";
-import { FormContainer, SubmitHandler, useForm } from "react-hook-form-mui";
-import TextEditor from "../TextEditor";
+import { FormContainer, SubmitHandler } from "react-hook-form-mui";
 import SpacedChildren from "../layouts/SpacedChildren";
-import { SocietyGroup } from "./SocietyGroup";
+import Configuration from "./Configuration";
+import ContactGroup from "./ContactGroup";
+import ProgramGroup from "./ProgramGroup";
+import SignageGroup from "./SignageGroup";
+import SocietyGroup from "./SocietyGroup";
+import WifiGroup from "./WifiGroup";
 
 const EventSubmissionForm = () => {
   // const router = useRouter();
@@ -63,10 +67,6 @@ const EventSubmissionForm = () => {
     },
   };
 
-  const { handleSubmit, control, watch } = useForm<AllEventGroups>();
-
-  // console.log(watch());
-
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
     console.log(data);
     const docRef = await uploadEventData(data);
@@ -77,29 +77,21 @@ const EventSubmissionForm = () => {
     }
   };
 
-  // You can pass an async function for asynchronous validation.
-  // function submitNow() {
-  //   console.log("test");
-  //   handleSubmit(onSubmit)();
-  //   handleSubmit((data) => console.log(data))();
-  // }
-
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
 
     <FormContainer
       defaultValues={formDefaultValues}
       // onSubmit={() => handleSubmit(onSubmit)}
-      onSuccess={(data) => console.log(" on success ", data)}
+      onSuccess={onSubmit}
     >
       <SpacedChildren>
-        <TextEditor displayLabel="Test" objLabel="test" />
-        <SocietyGroup control={control} />
-        {/* <ContactGroup {...regCtrlProps} />
-      <ProgramGroup {...regCtrlProps} watch={watch} />
-      <SignageGroup {...regCtrlProps} />
-      <WifiGroup {...regCtrlProps} />
-      <Configuration {...regCtrlProps} /> */}
+        <SocietyGroup />
+        <ContactGroup />
+        <ProgramGroup />
+        <SignageGroup />
+        <WifiGroup />
+        <Configuration />
 
         <Button
           endIcon={<SendSharp />}

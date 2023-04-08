@@ -1,14 +1,10 @@
 import { Autocomplete, TextField } from "@mui/material";
-import {
-  AllEventGroups,
-  AllEventGroupPaths,
-} from "../../utilities/globalTypes";
-import { Controller, Control } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
+import { AllEventGroupPaths } from "../../utilities/globalTypes";
 
 export interface SelectProps {
   options: string[];
   textLabel: string;
-  control: Control<AllEventGroups>;
   propLabel: AllEventGroupPaths;
   helperText?: string;
   isUnique?: boolean;
@@ -16,12 +12,13 @@ export interface SelectProps {
 
 export default function SelectOptions({
   options,
-  control,
   textLabel,
   propLabel,
   helperText = `Tappez 'Entrée' après chaque réponse`,
   isUnique = false,
 }: SelectProps) {
+  const { control } = useFormContext();
+
   return (
     <Controller
       name={propLabel}
@@ -30,7 +27,7 @@ export default function SelectOptions({
       render={({ field: { value, onChange } }) => (
         <Autocomplete
           onChange={(_, data) => onChange(data)}
-          // coercing "value" because SelectOptions should not  must receive string[]
+          // coercing "value" because SelectOptions must receive string[]
           value={(value as string[]) || []}
           options={options}
           multiple={isUnique ? false : true}

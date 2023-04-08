@@ -1,18 +1,18 @@
-import TextField from "@mui/material/TextField";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { Controller, Control, FieldPath } from "react-hook-form";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AllEventGroups } from "../../utilities/globalTypes";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import { Controller, FieldPath, useFormContext } from "react-hook-form";
 import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
+import { AllEventGroups } from "../../utilities/globalTypes";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;
-  control: Control<AllEventGroups>;
   textLabel?: string;
 }
 
-export default function Time({ control, dataLabel, textLabel }: Props) {
+export default function ControlledTime({ dataLabel, textLabel }: Props) {
+  const { control } = useFormContext();
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Controller
@@ -27,14 +27,13 @@ export default function Time({ control, dataLabel, textLabel }: Props) {
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <>use time picker</>
-            // <TimePicker
-            //   ampm={false}
-            //   label={textLabel}
-            //   value={date}
-            //   onChange={(newValue) => onChange(newValue)}
-            //   renderInput={(params) => <TextField fullWidth {...params} />}
-            // />
+            <TimePicker
+              ampm={false}
+              label={textLabel}
+              value={date}
+              onChange={(newValue) => onChange(newValue)}
+              // renderInput={(params) => <TextField fullWidth {...params} />}
+            />
           );
         }}
       />

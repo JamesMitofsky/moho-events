@@ -1,27 +1,24 @@
-import { TextField } from "@mui/material";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 import { fr } from "date-fns/locale";
-import { AllEventGroups } from "../../utilities/globalTypes";
-import { Controller, Control, FieldPath } from "react-hook-form";
-import IsReadOnly from "../../services/ReadOnlyContext";
 import { useContext } from "react";
-import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
+import { Controller, FieldPath, useFormContext } from "react-hook-form";
 import ReadOnlyContext from "../../services/ReadOnlyContext";
+import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
+import { AllEventGroups } from "../../utilities/globalTypes";
 
 interface Props {
-  control: Control<AllEventGroups>;
   dataLabel: FieldPath<AllEventGroups>;
   textLabel?: string;
 }
 
 export default function ControlledDate({
-  control,
   dataLabel,
   textLabel = "Date",
 }: Props) {
+  const { control } = useFormContext();
   const { isReadOnly } = useContext(ReadOnlyContext);
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
@@ -38,15 +35,14 @@ export default function ControlledDate({
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <>should be a date picker here -- use the library</>
-            // <DatePicker
-            //   readOnly={isReadOnly}
-            //   label={textLabel}
-            //   inputFormat="dd/MM/yyyy"
-            //   value={date}
-            //   onChange={(newValue) => onChange(newValue)}
-            //   renderInput={(params) => <TextField {...params} />}
-            // />
+            <DatePicker
+              readOnly={isReadOnly}
+              label={textLabel}
+              // inputFormat="dd/MM/yyyy"
+              value={date}
+              onChange={(newValue) => onChange(newValue)}
+              // renderInput={(params) => <TextField {...params} />}
+            />
           );
         }}
       />

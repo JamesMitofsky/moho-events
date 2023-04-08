@@ -1,19 +1,16 @@
-import TimeRangePicker from "./TimeRangePicker";
-import { Control } from "react-hook-form";
 import {
   AllEventGroupPaths,
-  AllEventGroups,
   EventComponent,
   nameof,
 } from "../../utilities/globalTypes";
 import SelectMohoRoom from "./SelectMohoRoom";
+import TimeRangePicker from "./TimeRangePicker";
 
 interface Props {
   parentObj: string;
-  control: Control<AllEventGroups>;
 }
 
-export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
+export const TimeAndPlaceInput = ({ parentObj }: Props) => {
   const timeProp = `${parentObj}.${nameof<EventComponent>(
     "time"
   )}` as AllEventGroupPaths;
@@ -23,8 +20,8 @@ export const TimeAndPlaceInput = ({ parentObj, control }: Props) => {
 
   return (
     <>
-      <SelectMohoRoom control={control} propLabel={placeProp} />
-      <TimeRangePicker control={control} dataLabel={timeProp} />
+      <SelectMohoRoom propLabel={placeProp} />
+      <TimeRangePicker dataLabel={timeProp} />
     </>
   );
 };
