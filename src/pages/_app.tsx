@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Box, Container, ThemeProvider } from "@mui/material";
-import NavBar from "@/components/navbar/NavBar";
-import UserContext from "@/services/UserContext";
 import Footer from "@/components/Footer";
+import NavBar from "@/components/navbar/NavBar";
+import { UserObject } from "@/functions/globalTypes";
 import { auth } from "@/services/firebase";
-import { UserObject } from "@/utilities/globalTypes";
-import { onAuthStateChanged } from "firebase/auth";
 import localizedTheme from "@/styles/theme";
-import "../styles/global.css";
-import createEmotionCache from "../server/createEmotionCache";
-import { CacheProvider } from "@emotion/react";
 import { EmotionCache } from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { Box, Container, ThemeProvider } from "@mui/material";
+import { onAuthStateChanged } from "firebase/auth";
 import { AppProps } from "next/app";
+import { useState } from "react";
+import createEmotionCache from "../services/server/createEmotionCache";
+import "../styles/global.css";
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

@@ -1,9 +1,9 @@
-import {
-  AllEventGroups,
-  AllEventGroupPaths,
-} from "../../utilities/globalTypes";
-import { UseFormRegister } from "react-hook-form";
 import { TextField } from "@mui/material";
+import { UseFormRegister } from "react-hook-form";
+import {
+  AllEventGroupPaths,
+  AllEventGroups,
+} from "../../functions/globalTypes";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;

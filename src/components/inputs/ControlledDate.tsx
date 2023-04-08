@@ -5,9 +5,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { fr } from "date-fns/locale";
 import { useContext } from "react";
 import { Controller, FieldPath, useFormContext } from "react-hook-form";
-import ReadOnlyContext from "../../services/ReadOnlyContext";
-import filterDateOrNumberToDate from "../../utilities/filterDateOrNumberToDate";
-import { AllEventGroups } from "../../utilities/globalTypes";
+import filterDateOrNumberToDate from "../../functions/filterDateOrNumberToDate";
+import { AllEventGroups } from "../../functions/globalTypes";
+import ReadOnlyContext from "../contexts/ReadOnlyContext";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;

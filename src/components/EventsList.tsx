@@ -1,9 +1,9 @@
-import { fetchAllEvents } from "../services/cloudFirestore";
-import { useEffect, useState } from "react";
-import { ListItem, List, ListItemText, Typography, Link } from "@mui/material";
-import { ModifiedServerResponse } from "../utilities/globalTypes";
-import filterDateOrNumberToDate from "../utilities/filterDateOrNumberToDate";
+import { Link, List, ListItem, ListItemText, Typography } from "@mui/material";
 import NextLink from "next/link";
+import { useEffect, useState } from "react";
+import filterDateOrNumberToDate from "../functions/filterDateOrNumberToDate";
+import { ModifiedServerResponse } from "../functions/globalTypes";
+import { fetchAllEvents } from "../services/cloudFirestore";
 
 export default function EventsList() {
   const [events, setEvents] = useState<ModifiedServerResponse[]>([]);

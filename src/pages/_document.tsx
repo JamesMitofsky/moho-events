@@ -1,15 +1,15 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentProps,
-  DocumentContext,
-} from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import { AppType } from "next/app";
+import Document, {
+  DocumentContext,
+  DocumentProps,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document";
+import createEmotionCache from "../services/server/createEmotionCache";
 import theme from "../styles/theme";
-import createEmotionCache from "../server/createEmotionCache";
 import { MyAppProps } from "./_app";
 
 interface MyDocumentProps extends DocumentProps {

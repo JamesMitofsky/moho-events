@@ -1,12 +1,7 @@
-import { Box, Typography } from "@mui/material";
-import {
-  ProgramInputs,
-  SignageInputs,
-  WifiInputs,
-} from "../../utilities/globalTypes";
+import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
+import { WifiInputs } from "../../functions/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayText from "./DisplayFormats/DisplayText";
-import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
 
 export default function DisplayWifi({
   arrayOfWifis,

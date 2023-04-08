@@ -2,7 +2,7 @@ import {
   AllEventGroupPaths,
   EventComponent,
   nameof,
-} from "../../utilities/globalTypes";
+} from "../../functions/globalTypes";
 import SelectMohoRoom from "./SelectMohoRoom";
 import TimeRangePicker from "./TimeRangePicker";
 

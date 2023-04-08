@@ -1,7 +1,7 @@
 import { Controller, FieldPath, useFormContext } from "react-hook-form";
 import fr from "react-phone-input-2/lang/fr.json";
 import "react-phone-input-2/lib/material.css";
-import { AllEventGroups } from "../../utilities/globalTypes";
+import { AllEventGroups } from "../../functions/globalTypes";
 // this import can be named anything because there is only one default export from the library
 import PI from "react-phone-input-2";
 const ReactPhoneInput = process.env.PROD ? (PI as any).default : PI;

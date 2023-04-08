@@ -1,10 +1,10 @@
-import { ContactInputs } from "../../utilities/globalTypes";
+import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import { Box } from "@mui/material";
+import { v4 as generateId } from "uuid";
+import { ContactInputs } from "../../functions/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
-import { Box } from "@mui/material";
-import AddIcCallIcon from "@mui/icons-material/AddIcCall";
-import { v4 as generateId } from "uuid";
 
 export default function DisplayContact({
   comments,
