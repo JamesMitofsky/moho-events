@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { FieldPath, useFormContext } from "react-hook-form";
-import { AllEventGroups } from "../../functions/globalTypes";
+import { AllEventGroups } from "../../types/globalTypes";
 import ControlledTime from "./ControlledTime";
 
 export default function TimeRangePicker({

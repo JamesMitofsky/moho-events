@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useFieldArray, useWatch } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
-import { EventComponent } from "../../functions/globalTypes";
+import { EventComponent } from "../../types/globalTypes";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import ControlledDate from "../inputs/ControlledDate";
 import ControlledTime from "../inputs/ControlledTime";

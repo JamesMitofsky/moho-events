@@ -1,5 +1,5 @@
 import DateRangeIcon from "@mui/icons-material/DateRange";
-import { ProgramInputs } from "../../functions/globalTypes";
+import { ProgramInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 

@@ -1,4 +1,4 @@
-import { Places } from "../../functions/globalTypes";
+import { Places } from "../../types/globalTypes";
 import SelectOptions, { SelectProps } from "./SelectOptions";
 
 export default function SelectMohoRoom(

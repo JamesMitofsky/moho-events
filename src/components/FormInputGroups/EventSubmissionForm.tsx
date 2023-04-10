@@ -1,5 +1,5 @@
-import { AllEventGroups } from "@/functions/globalTypes";
 import { uploadEventData } from "@/services/cloudFirestore";
+import { AllEventGroups } from "@/types/globalTypes";
 import { SendSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import router from "next/router";

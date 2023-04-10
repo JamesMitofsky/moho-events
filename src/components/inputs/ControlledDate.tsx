@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { Controller, FieldPath, useFormContext } from "react-hook-form";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import filterDateOrNumberToDate from "../../functions/filterDateOrNumberToDate";
-import { AllEventGroups } from "../../functions/globalTypes";
+import { AllEventGroups } from "../../types/globalTypes";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;

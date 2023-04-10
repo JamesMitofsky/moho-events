@@ -1,5 +1,5 @@
 import GroupsIcon from "@mui/icons-material/Groups";
-import { SocietyInputs } from "../../functions/globalTypes";
+import { SocietyInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";

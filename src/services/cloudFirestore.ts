@@ -5,7 +5,7 @@ import {
   getFirestore,
   serverTimestamp,
 } from "firebase/firestore";
-import { ModifiedServerResponse } from "../functions/globalTypes";
+import { ModifiedServerResponse } from "../types/globalTypes";
 import { auth } from "./firebase";
 
 // get already initialized instance of firebase app

@@ -1,9 +1,6 @@
 import { TextField } from "@mui/material";
 import { UseFormRegister } from "react-hook-form";
-import {
-  AllEventGroupPaths,
-  AllEventGroups,
-} from "../../functions/globalTypes";
+import { AllEventGroupPaths, AllEventGroups } from "../../types/globalTypes";
 
 interface Props {
   register: UseFormRegister<AllEventGroups>;

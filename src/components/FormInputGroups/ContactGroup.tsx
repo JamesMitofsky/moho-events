@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
-import { ContactIndividual } from "../../functions/globalTypes";
+import { ContactIndividual } from "../../types/globalTypes";
 import PhoneNumber from "../inputs/PhoneNumber";
 import TextEditor from "../inputs/TextEditor";
 import { TitledGroup } from "../layouts/TitledGroup";

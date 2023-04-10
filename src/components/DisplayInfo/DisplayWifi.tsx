@@ -1,5 +1,5 @@
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
-import { WifiInputs } from "../../functions/globalTypes";
+import { WifiInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayText from "./DisplayFormats/DisplayText";
 

@@ -1,5 +1,5 @@
 import SignpostIcon from "@mui/icons-material/Signpost";
-import { SignageInputs } from "../../functions/globalTypes";
+import { SignageInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
