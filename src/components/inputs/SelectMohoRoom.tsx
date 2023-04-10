@@ -1,6 +1,5 @@
-import { Places } from "../../utilities/globalTypes";
-import SelectOptions from "./SelectOptions";
-import { SelectProps } from "./SelectOptions";
+import { Places } from "../../functions/globalTypes";
+import SelectOptions, { SelectProps } from "./SelectOptions";
 
 export default function SelectMohoRoom(
   props: Omit<SelectProps, "options" | "textLabel">

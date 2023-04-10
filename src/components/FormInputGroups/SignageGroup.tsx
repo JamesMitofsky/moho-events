@@ -1,24 +1,16 @@
-import { TitledGroup } from "../layouts/TitledGroup";
-import { TextField } from "@mui/material";
-import TextEditor from "../TextEditor";
-import { Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utilities/globalTypes";
 import SignpostIcon from "@mui/icons-material/Signpost";
+import { TextFieldElement } from "react-hook-form-mui";
+import { TitledGroup } from "../layouts/TitledGroup";
 
-interface Props {
-  register: UseFormRegister<AllEventGroups>;
-  control: Control<AllEventGroups>;
-}
-
-export const SignageGroup = ({ register, control }: Props) => {
+export default function SignageGroup() {
   return (
     <TitledGroup icon={SignpostIcon} title="Signalétique">
-      <TextField label={"Tableau d'accueil"} {...register("signage.lobby")} />
-      <TextEditor
-        objLabel="signage.comments"
-        control={control}
-        displayLabel="Remarques"
+      <TextFieldElement
+        fullWidth
+        label="Tableau d'accueil"
+        name="signage.lobby"
       />
+      <TextFieldElement fullWidth label="Remarques" name="signage.comments" />
     </TitledGroup>
   );
-};
+}

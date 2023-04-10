@@ -1,21 +1,16 @@
-import { TitledGroup } from "../layouts/TitledGroup";
-import { TextField, Box, Button, Divider } from "@mui/material";
-import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utilities/globalTypes";
-import TextEditor from "../TextEditor";
-import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import { Box, Button, Divider } from "@mui/material";
+import { useFieldArray } from "react-hook-form";
+import { TextFieldElement } from "react-hook-form-mui";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
+import SelectMohoRoom from "../inputs/SelectMohoRoom";
+import TextEditor from "../inputs/TextEditor";
+import { TitledGroup } from "../layouts/TitledGroup";
+import TitledGroupSubtitle from "../layouts/TitledGroupSubtitle";
 
-interface Props {
-  register: UseFormRegister<AllEventGroups>;
-  control: Control<AllEventGroups>;
-}
-
-export const Configuration = ({ register, control }: Props) => {
+export default function ConfigurationGroup() {
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
-      control, // control props comes from useForm (optional: if you are using FormContext)
       name: "configuration",
     }
   );
@@ -40,51 +35,55 @@ export const Configuration = ({ register, control }: Props) => {
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
+            <TitledGroupSubtitle
+              label="Configuration"
+              index={index}
+              listLength={fields.length}
+            />
             <SelectMohoRoom
-              control={control}
               propLabel={`configuration.${index}.room`}
               isUnique={true}
             />
-            <TextField
+            <TextFieldElement
+              fullWidth
               label="Nombre de pax"
-              {...register(`configuration.${index}.numberOfPeople`)}
+              name={`configuration.${index}.numberOfPeople`}
             />
-            <TextField
+            <TextFieldElement
+              fullWidth
               label="Configuration"
-              {...register(`configuration.${index}.layout`)}
+              name={`configuration.${index}.layout`}
             />
-            <TextField
+            <TextFieldElement
+              fullWidth
               label="Mobilier"
-              {...register(`configuration.${index}.furnishedBy`)}
+              name={`configuration.${index}.furnishedBy`}
             />
-            <TextField
+            <TextFieldElement
+              fullWidth
               label="Microphones"
-              {...register(`configuration.${index}.microphones`)}
+              name={`configuration.${index}.microphones`}
               type="number"
             />
             <ControlledCheckbox
-              control={control}
               propLabel={`configuration.${index}.visio`}
               textLabel="Visio"
             />
             <ControlledCheckbox
-              control={control}
               propLabel={`configuration.${index}.captioning`}
               textLabel="Captation"
             />
-            <TextField
+            <TextFieldElement
+              fullWidth
               label="Prestetaires"
-              {...register(`configuration.${index}.services`)}
+              name={`configuration.${index}.services`}
+              type="number"
             />
             <TextEditor
               displayLabel="Remarques"
               objLabel={`configuration.${index}.comments`}
-              control={control}
             />
-            {/* prevent divider appearing beneath the last list item */}
-            {fields.length > 1 && fields.length !== index + 1 && (
-              <Divider sx={{ mt: 2, mb: 2 }} />
-            )}
+            <Divider sx={{ my: 2 }} />
           </Box>
         ))}
         <Button variant="outlined" onClick={() => handleAdd()}>
@@ -93,4 +92,4 @@ export const Configuration = ({ register, control }: Props) => {
       </Box>
     </TitledGroup>
   );
-};
+}

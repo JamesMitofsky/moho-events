@@ -1,15 +1,9 @@
 import GroupsIcon from "@mui/icons-material/Groups";
-import { Control } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
-import { AllEventGroups } from "../../utilities/globalTypes";
-import TextEditor from "../TextEditor";
+import TextEditor from "../inputs/TextEditor";
 import { TitledGroup } from "../layouts/TitledGroup";
 
-interface Props {
-  control: Control<AllEventGroups>;
-}
-
-export const SocietyGroup = ({ control }: Props) => {
+export default function SocietyGroup() {
   return (
     <TitledGroup icon={GroupsIcon} title={"Société"}>
       <TextFieldElement
@@ -38,4 +32,4 @@ export const SocietyGroup = ({ control }: Props) => {
       <TextEditor objLabel="society.comments" displayLabel="Remarques" />
     </TitledGroup>
   );
-};
+}

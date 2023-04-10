@@ -1,18 +1,13 @@
-import { TitledGroup } from "../layouts/TitledGroup";
-import { TextField, Box, Button, Divider } from "@mui/material";
-import { useFieldArray, Control, UseFormRegister } from "react-hook-form";
-import { AllEventGroups } from "../../utilities/globalTypes";
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
+import { Box, Button, Divider } from "@mui/material";
+import { useFieldArray } from "react-hook-form";
+import { TextFieldElement } from "react-hook-form-mui";
+import { TitledGroup } from "../layouts/TitledGroup";
+import TitledGroupSubtitle from "../layouts/TitledGroupSubtitle";
 
-interface Props {
-  register: UseFormRegister<AllEventGroups>;
-  control: Control<AllEventGroups>;
-}
-
-export const WifiGroup = ({ register, control }: Props) => {
+export default function WifiGroup() {
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
-      control, // control props comes from useForm (optional: if you are using FormContext)
       name: "wifi",
     }
   );
@@ -21,18 +16,22 @@ export const WifiGroup = ({ register, control }: Props) => {
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-            <TextField
-              label={"Identifiant"}
-              {...register(`wifi.${index}.username`)}
+            <TitledGroupSubtitle
+              label="Code"
+              index={index}
+              listLength={fields.length}
             />
-            <TextField
-              label={"Mot de passe"}
-              {...register(`wifi.${index}.password`)}
+            <TextFieldElement
+              fullWidth
+              label="Identifiant"
+              name={`wifi.${index}.username`}
             />
-            {/* prevent divider appearing beneath the last list item */}
-            {fields.length > 1 && fields.length !== index + 1 && (
-              <Divider sx={{ mt: 2, mb: 2 }} />
-            )}
+            <TextFieldElement
+              fullWidth
+              label="Mot de passe"
+              name={`wifi.${index}.password`}
+            />
+            <Divider sx={{ my: 2 }} />
           </Box>
         ))}
         <Button
@@ -44,4 +43,4 @@ export const WifiGroup = ({ register, control }: Props) => {
       </Box>
     </TitledGroup>
   );
-};
+}

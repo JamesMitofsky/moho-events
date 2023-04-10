@@ -1,9 +1,9 @@
 import { AppBar, Toolbar } from "@mui/material";
-import MohoEventsLogo from "../MohoEventsLogo";
-import UserContext from "../../services/UserContext";
-import { useContext } from "react";
-import UserIcon from "./UserIcon";
 import Link from "next/link";
+import { useContext } from "react";
+import MohoEventsLogo from "../MohoEventsLogo";
+import UserContext from "../contexts/UserContext";
+import UserIcon from "./UserIcon";
 
 const NavBar = () => {
   const { photoURL, displayName } = useContext(UserContext);

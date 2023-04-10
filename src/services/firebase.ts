@@ -1,10 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithRedirect,
-} from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -23,24 +18,24 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-export async function signInUser(
-  email: string,
-  password: string
-): Promise<{ user: any }> {
-  const user = await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-      return user;
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+// export async function signInUser(
+//   email: string,
+//   password: string
+// ): Promise<{ user: any }> {
+//   const user = await signInWithEmailAndPassword(auth, email, password)
+//     .then((userCredential) => {
+//       // Signed in
+//       const user = userCredential.user;
+//       // ...
+//       return user;
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//     });
 
-  return { user };
-}
+//   return { user };
+// }
 
 export function signInWithGoogle() {
   signInWithRedirect(auth, provider);

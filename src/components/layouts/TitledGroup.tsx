@@ -1,5 +1,5 @@
-import { Typography, Stack, Box, SvgIcon } from "@mui/material";
-
+import { SvgIconComponent } from "@mui/icons-material";
+import { Stack, SvgIcon, Typography } from "@mui/material";
 import SpacedChildren from "./SpacedChildren";
 
 export const TitledGroup = ({
@@ -9,7 +9,7 @@ export const TitledGroup = ({
 }: {
   children: React.ReactNode;
   title: string;
-  icon: any;
+  icon: SvgIconComponent;
 }) => {
   return (
     <SpacedChildren>

@@ -148,14 +148,12 @@ export default function Temp() {
 //       <Button size="small" onClick={toggleEdit}>
 //         {isReadOnly ? "Locked" : "Open"}
 //       </Button>
-//       <PaddedChildren padding={3}>
 //         <SocietyGroup {...regCtrlProps} />
 //         <ContactGroup {...regCtrlProps} />
 //         <ProgramGroup {...regCtrlProps} watch={watch} />
 //         <SignageGroup {...regCtrlProps} />
 //         <WifiGroup {...regCtrlProps} />
 //         <Configuration {...regCtrlProps} />
-//       </PaddedChildren>
 //     </>
 //   );
 // }

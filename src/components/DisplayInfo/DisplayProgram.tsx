@@ -1,8 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import { ProgramInputs } from "../../utilities/globalTypes";
-import DisplayText from "./DisplayFormats/DisplayText";
-import { TitledGroup } from "../layouts/TitledGroup";
 import DateRangeIcon from "@mui/icons-material/DateRange";
+import { ProgramInputs } from "../../functions/globalTypes";
+import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 
 export default function DisplayProgram({

@@ -1,9 +1,8 @@
-import { Box, Typography } from "@mui/material";
-import { SocietyInputs } from "../../utilities/globalTypes";
-import DisplayText from "./DisplayFormats/DisplayText";
-import { TitledGroup } from "../layouts/TitledGroup";
 import GroupsIcon from "@mui/icons-material/Groups";
+import { SocietyInputs } from "../../functions/globalTypes";
+import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
+import DisplayText from "./DisplayFormats/DisplayText";
 
 export default function DisplaySociety({
   associationName,

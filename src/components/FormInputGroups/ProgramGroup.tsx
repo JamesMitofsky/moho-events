@@ -1,36 +1,25 @@
-import { TextField, Typography, Box, Button, Divider } from "@mui/material";
-import { TitledGroup } from "../layouts/TitledGroup";
-import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
-import Time from "../inputs/Time";
-import TextEditor from "../TextEditor";
-import {
-  useFieldArray,
-  Control,
-  UseFormRegister,
-  UseFormWatch,
-} from "react-hook-form";
-import { AllEventGroups, EventComponent } from "../../utilities/globalTypes";
-import SelectOptions from "../inputs/SelectOptions";
-import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import DateRangeIcon from "@mui/icons-material/DateRange";
-import ControlledDate from "../inputs/ControlledDate";
-import SimpleTextInput from "../inputs/SimpleTextInput";
+import { Box, Button, Divider, Typography } from "@mui/material";
 import { useContext } from "react";
-import ReadOnlyContext from "../../services/ReadOnlyContext";
+import { useFieldArray, useWatch } from "react-hook-form";
+import { TextFieldElement } from "react-hook-form-mui";
+import { EventComponent } from "../../functions/globalTypes";
+import ReadOnlyContext from "../contexts/ReadOnlyContext";
+import ControlledCheckbox from "../inputs/ControlledCheckbox";
+import ControlledDate from "../inputs/ControlledDate";
+import ControlledTime from "../inputs/ControlledTime";
+import SelectOptions from "../inputs/SelectOptions";
+import TextEditor from "../inputs/TextEditor";
+import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
+import { TitledGroup } from "../layouts/TitledGroup";
+import TitledGroupSubtitle from "../layouts/TitledGroupSubtitle";
 
-interface Props {
-  register: UseFormRegister<AllEventGroups>;
-  control: Control<AllEventGroups>;
-  watch: UseFormWatch<AllEventGroups>;
-}
+export default function ProgramGroup() {
+  const watchArray = useWatch({
+    name: `program.events`,
+  });
 
-export const ProgramGroup = ({ register, control, watch }: Props) => {
   const { isReadOnly } = useContext(ReadOnlyContext);
-
-  const allProps = {
-    register,
-    control,
-  };
 
   const blankProgramEvent: EventComponent = {
     title: "",
@@ -66,7 +55,6 @@ export const ProgramGroup = ({ register, control, watch }: Props) => {
 
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
-      control, // control props comes from useForm (optional: if you are using FormContext)
       name: "program.events", // unique name for your Field Array
     }
   );
@@ -74,67 +62,74 @@ export const ProgramGroup = ({ register, control, watch }: Props) => {
   return (
     <>
       <TitledGroup icon={DateRangeIcon} title="Programme">
+        <TextFieldElement
+          fullWidth
+          label="Nombre de pax"
+          name="program.numberOfPeople"
+        />
+        <ControlledDate
+          dataLabel="program.eventDate"
+          textLabel="Date d'événement"
+        />
+        <ControlledTime
+          dataLabel="program.departureTime"
+          textLabel="Heure de départ"
+        />
         {/* TODO: abstract into component container  */}
         <Box sx={{ display: "grid", gap: 2 }}>
           {fields.map((field, index) => (
             <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-              <Typography variant="subtitle2">
-                Programme #{index + 1}
-              </Typography>
-              <SimpleTextInput
+              <TitledGroupSubtitle
+                label="Partie"
+                index={index}
+                listLength={fields.length}
+              />
+              <TextFieldElement
+                fullWidth
                 label="Contenu"
-                propLabel={`program.events.${index}.title`}
+                name={`program.events.${index}.title`}
                 helperText="Ex: Pause café, Déjeuner, etc."
-                register={register}
               />
-              <TimeAndPlaceInput
-                parentObj={`program.events.${index}`}
-                control={control}
-              />
+              <TimeAndPlaceInput parentObj={`program.events.${index}`} />
               <ControlledCheckbox
-                control={control}
                 textLabel="Pertinent à l'equipe du restauration?"
                 propLabel={`program.events.${index}.involvesRestaurant`}
                 useSwitch={true}
               />
 
-              {watch(`program.events.${index}.involvesRestaurant`) && (
+              {watchArray[index]?.involvesRestaurant && (
                 <>
-                  <SimpleTextInput
+                  <TextFieldElement
+                    fullWidth
                     label="Nombre de pax"
-                    propLabel={`program.events.${index}.numberOfPeople`}
-                    register={register}
+                    name={`program.events.${index}.numberOfPeople`}
                   />
                   <TextEditor
-                    objLabel={`program.events.${index}.furnitureUsed`}
-                    control={control}
                     displayLabel="Mobilier utilisé"
+                    objLabel={`program.events.${index}.furnitureUsed`}
                   />
                   <SelectOptions
                     textLabel="Traiteurs"
                     propLabel={`program.events.${index}.catering`}
                     options={cateringOptions}
-                    {...allProps}
                   />
-                  <SimpleTextInput
+                  <TextFieldElement
+                    fullWidth
                     label="Service facturé"
-                    propLabel={`program.events.${index}.billedService`}
-                    register={register}
+                    name={`program.events.${index}.billedService`}
                   />
                   <SelectOptions
                     textLabel="Format"
                     propLabel={`program.events.${index}.eventLayout`}
                     options={formatConfigurations}
-                    {...allProps}
                   />
                   <TextEditor
                     displayLabel="Détails"
                     objLabel={`program.events.${index}.details`}
-                    {...allProps}
                   />
                 </>
               )}
-              <Divider sx={{ mt: 2, mb: 2 }} />
+              <Divider sx={{ my: 2 }} />
             </Box>
           ))}
           {!isReadOnly && (
@@ -144,27 +139,10 @@ export const ProgramGroup = ({ register, control, watch }: Props) => {
           )}
 
           <Typography variant="subtitle2">Autres détails</Typography>
-          <TextField
-            label={"Nombre de pax"}
-            {...register("program.numberOfPeople")}
-          />
-          <ControlledDate
-            control={control}
-            dataLabel="program.eventDate"
-            textLabel="Date d'événement"
-          />
-          <Time
-            control={control}
-            dataLabel="program.departureTime"
-            textLabel="Heure de départ"
-          />
-          <TextEditor
-            objLabel="program.comments"
-            control={control}
-            displayLabel="Remarques"
-          />
+
+          <TextEditor objLabel="program.comments" displayLabel="Remarques" />
         </Box>
       </TitledGroup>
     </>
   );
-};
+}

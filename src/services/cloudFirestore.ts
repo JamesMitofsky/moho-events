@@ -1,11 +1,11 @@
 import {
-  getFirestore,
-  collection,
   addDoc,
-  serverTimestamp,
+  collection,
   getDocs,
+  getFirestore,
+  serverTimestamp,
 } from "firebase/firestore";
-import { ModifiedServerResponse } from "../utilities/globalTypes";
+import { ModifiedServerResponse } from "../functions/globalTypes";
 import { auth } from "./firebase";
 
 // get already initialized instance of firebase app

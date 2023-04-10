@@ -1,27 +1,20 @@
-import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
-import { fr } from "date-fns/locale";
-import { useContext } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { Controller, FieldPath, useFormContext } from "react-hook-form";
 import filterDateOrNumberToDate from "../../functions/filterDateOrNumberToDate";
 import { AllEventGroups } from "../../functions/globalTypes";
-import ReadOnlyContext from "../contexts/ReadOnlyContext";
 
 interface Props {
   dataLabel: FieldPath<AllEventGroups>;
   textLabel?: string;
 }
 
-export default function ControlledDate({
-  dataLabel,
-  textLabel = "Date",
-}: Props) {
+export default function ControlledTime({ dataLabel, textLabel }: Props) {
   const { control } = useFormContext();
-  const { isReadOnly } = useContext(ReadOnlyContext);
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Controller
         control={control}
         name={dataLabel}
@@ -31,17 +24,15 @@ export default function ControlledDate({
         }: {
           field: { value: any; onChange: any };
         }) => {
-          // when rendering the form for display only, the value arrives as an object with a seconds property. Change this into an object.
           const date = filterDateOrNumberToDate(value?.seconds || value);
 
           return (
-            <DatePicker
-              readOnly={isReadOnly}
+            <TimePicker
+              ampm={false}
               label={textLabel}
-              // inputFormat="dd/MM/yyyy"
               value={date}
               onChange={(newValue) => onChange(newValue)}
-              // renderInput={(params) => <TextField {...params} />}
+              // renderInput={(params) => <TextField fullWidth {...params} />}
             />
           );
         }}
