@@ -10,7 +10,7 @@ export default function SpecificEventInformation() {
   useEffect(() => {
     if (!id) return;
     const getEvent = async function () {
-      const res = await fetchSpecificEvent(id);
+      const res = await fetchSpecificEvent(id as string);
       // setEventData(res);
       console.log(res);
     };

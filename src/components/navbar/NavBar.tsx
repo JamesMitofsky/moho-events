@@ -21,7 +21,9 @@ const NavBar = () => {
         <Link href="/tout">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        <UserIcon photoURL={photoURL} name={displayName} />
+        {photoURL && displayName && (
+          <UserIcon photoURL={photoURL} name={displayName} />
+        )}
       </Toolbar>
     </AppBar>
   );
