@@ -1,14 +1,15 @@
 import Footer from "@/components/Footer";
 import NavBar from "@/components/navbar/NavBar";
-import { UserObject } from "@/functions/globalTypes";
+import UserContext from "@/contexts/UserContext";
 import { auth } from "@/services/firebase";
 import localizedTheme from "@/styles/theme";
 import { EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { Box, Container, ThemeProvider } from "@mui/material";
-import { onAuthStateChanged } from "firebase/auth";
+import { User, onAuthStateChanged } from "firebase/auth";
 import { AppProps } from "next/app";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import createEmotionCache from "../services/server/createEmotionCache";
 import "../styles/global.css";
 
@@ -28,70 +29,65 @@ export default function Layout({
   const [isReadOnly, setIsReadOnly] = useState(false);
   const passableValue = { isReadOnly, setIsReadOnly };
 
-  const [user, setUser] = useState<UserObject>({
+  const [user, setUser] = useState<User>({
     uid: "",
     displayName: "",
     email: "",
     photoURL: "",
-  });
+  } as User);
 
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   function navigateNewUserHome() {
-    const eventsPath = "/tout";
-    // TODO manage auto user navigation
-    // if the signed in user is anywhere other than the login screen
-    // if (currentPath !== "/") return;
-    // navigate(eventsPath);
+    // only allow this function to run if the user is on the login page
+    const currentPath = router.pathname;
+    const loginPagePath = "connexion";
+    if (currentPath === loginPagePath) {
+      const pathToListOfEvents = "/tout";
+      router.push(pathToListOfEvents);
+    }
   }
 
-  function checkAuthState() {
-    //TODO — add loading state here
+  // authenticate user
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
+      console.log("Checking for user...");
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
-        setUser(user as UserObject);
+        setUser(user);
         console.log(user);
 
         // prevent page from rendering twice if the user is already where they should be going
         navigateNewUserHome();
       } else {
         // User is signed out
-        const loginPath = "/";
-        // navigate(loginPath);
+        console.log("No user is signed in.");
       }
     });
-  }
-
-  // authenticate user
-  // useEffect(() => {
-  //   console.log("Checking for user...");
-  //   checkAuthState();
-  // }, []);
+  }, []);
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={localizedTheme}>
-        {/* <UserContext.Provider value={user}> */}
-        {/* <IsReadOnly.Provider value={passableValue}> */}
-        <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-          <NavBar />
-          <Container
-            sx={{
-              mt: 0.2,
-              mb: 3,
-              display: "flex",
-              flex: 1,
-              flexDirection: "column",
-            }}
-          >
-            <Component {...pageProps} />
-          </Container>
-          <Footer />
-        </Box>
-        {/* </IsReadOnly.Provider> */}
-        {/* </UserContext.Provider> */}
+        <UserContext.Provider value={user}>
+          {/* <IsReadOnly.Provider value={passableValue}> */}
+          <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+            <NavBar />
+            <Container
+              sx={{
+                mt: 0.2,
+                mb: 3,
+                display: "flex",
+                flex: 1,
+                flexDirection: "column",
+              }}
+            >
+              <Component {...pageProps} />
+            </Container>
+            <Footer />
+          </Box>
+          {/* </IsReadOnly.Provider> */}
+        </UserContext.Provider>
       </ThemeProvider>
     </CacheProvider>
   );

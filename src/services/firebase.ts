@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
+import firebase from "firebase/compat/app";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -17,6 +18,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+
+export default firebase;
 
 // export async function signInUser(
 //   email: string,
