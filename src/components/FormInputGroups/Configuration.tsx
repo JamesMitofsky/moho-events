@@ -75,7 +75,7 @@ export default function ConfigurationGroup() {
             type="number"
           />
           <TextEditor
-            displayLabel="Remarques"
+            displayLabel="Remarques specifique à cette configuration"
             objLabel={`configuration.${index}.comments`}
           />
         </TitledArrayOfElements>
