@@ -71,14 +71,24 @@ interface ProgramInputs {
   comments: string;
 }
 
-type WifiInputs = {
+type UsernameAndPassword = {
   username: string;
   password: string;
 };
 
+type WifiInputs = {
+  connectionInfo: UsernameAndPassword[];
+  comments: string; // text editor
+};
+
+type SignageLocationAndText = {
+  location: string;
+  text: string;
+};
+
 type SignageInputs = {
-  lobby: string;
-  comments: string;
+  locationAndText: SignageLocationAndText[];
+  comments: string; // text editor
 };
 
 type ConfigurationInputs = {
@@ -97,7 +107,7 @@ type AllEventGroups = {
   generalInfo: GeneralInfoInputs;
   contact: ContactInputs;
   program: ProgramInputs;
-  wifi: WifiInputs[];
+  wifi: WifiInputs;
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
 };
@@ -136,4 +146,6 @@ export type {
   EventComponent,
   AllEventGroupPaths,
   UserObject,
+  UsernameAndPassword,
+  SignageLocationAndText,
 };

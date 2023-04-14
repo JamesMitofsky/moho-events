@@ -35,12 +35,15 @@ const EventSubmissionForm = () => {
         },
       ],
     },
-    wifi: [
-      {
-        username: "",
-        password: "",
-      },
-    ],
+    wifi: {
+      connectionInfo: [
+        {
+          username: "",
+          password: "",
+        },
+      ],
+      comments: "",
+    },
     configuration: [
       {
         room: "",
@@ -64,6 +67,14 @@ const EventSubmissionForm = () => {
         },
       ],
       comments: "",
+    },
+    signage: {
+      locationAndText: [
+        {
+          location: "",
+          text: "",
+        },
+      ],
     },
   };
 

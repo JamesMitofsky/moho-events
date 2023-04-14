@@ -10,7 +10,7 @@ export default function NewEvent() {
 
   return (
     <>
-      <PageTitle title="Créer un Evénement" />
+      <PageTitle title="Créer un Evènement" />
       <ReturnHome />
       <EventSubmissionForm />
     </>

@@ -1,23 +1,10 @@
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
-import { WifiInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
-import DisplayText from "./DisplayFormats/DisplayText";
 
-export default function DisplayWifi({
-  arrayOfWifis,
-}: {
-  arrayOfWifis: WifiInputs[];
-}) {
+export default function DisplayWifi() {
   return (
     <TitledGroup icon={WifiPasswordIcon} title="Wifi Accés">
-      {arrayOfWifis.map((wifi) => {
-        return (
-          <>
-            <DisplayText content={wifi.username} label="Identifiant" />
-            <DisplayText content={wifi.password} label="Mot de passe" />
-          </>
-        );
-      })}
+      wifi info here eventually
     </TitledGroup>
   );
 }

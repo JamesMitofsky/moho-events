@@ -1,14 +1,14 @@
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import { Box, Button, Divider } from "@mui/material";
 import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { ContactIndividual } from "../../types/globalTypes";
+import AddButton from "../buttons/AddButton";
 import PhoneNumber from "../inputs/PhoneNumber";
 import TextEditor from "../inputs/TextEditor";
+import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
 import { TitledGroup } from "../layouts/TitledGroup";
-import TitledGroupSubtitle from "../layouts/TitledGroupSubtitle";
 
 export default function ContactGroup() {
   const { isReadOnly } = useContext(ReadOnlyContext);
@@ -33,12 +33,12 @@ export default function ContactGroup() {
   return (
     <TitledGroup icon={ContactMailIcon} title="Contact">
       {fields.map((field, index) => (
-        <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
-          <TitledGroupSubtitle
-            label="Contact"
-            index={index}
-            listLength={fields.length}
-          />
+        <TitledArrayOfElements
+          key={field.id}
+          label="Contact"
+          index={index}
+          listLength={fields.length}
+        >
           <TextFieldElement
             fullWidth
             label="Nom de la société"
@@ -57,14 +57,9 @@ export default function ContactGroup() {
             label="Email"
             name={`contact.individuals.${index}.email`}
           />
-          <Divider sx={{ mt: 2, mb: 2 }} />
-        </Box>
+        </TitledArrayOfElements>
       ))}
-      {!isReadOnly && (
-        <Button variant="outlined" onClick={() => handleAdd()}>
-          Ajouter une autre « contact »
-        </Button>
-      )}
+      {!isReadOnly && <AddButton onClick={handleAdd} label="Contact" />}
 
       <TextEditor objLabel={`contact.comments`} displayLabel="Remarques" />
     </TitledGroup>
