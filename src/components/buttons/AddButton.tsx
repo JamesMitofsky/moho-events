@@ -8,7 +8,12 @@ type Props = {
 
 export default function AddButton({ onClick, label }: Props) {
   return (
-    <Button startIcon={<AddIcon />} variant="outlined" onClick={onClick}>
+    <Button
+      sx={{ mb: 4 }}
+      startIcon={<AddIcon />}
+      variant="outlined"
+      onClick={onClick}
+    >
       {label}
     </Button>
   );
