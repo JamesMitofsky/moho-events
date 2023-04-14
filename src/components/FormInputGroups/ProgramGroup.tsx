@@ -2,11 +2,10 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Typography } from "@mui/material";
 import { useContext } from "react";
 import { useFieldArray, useWatch } from "react-hook-form";
-import { TextFieldElement } from "react-hook-form-mui";
+import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import AddButton from "../buttons/AddButton";
-import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import SelectOptions from "../inputs/SelectOptions";
 import TextEditor from "../inputs/TextEditor";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
@@ -76,12 +75,10 @@ export default function ProgramGroup() {
               helperText="Ex: Pause café, Déjeuner, etc."
             />
             <TimeAndPlaceInput parentObj={`program.events.${index}`} />
-            <ControlledCheckbox
-              textLabel="Pertinent à l'equipe du restauration?"
-              propLabel={`program.events.${index}.involvesRestaurant`}
-              useSwitch={true}
+            <SwitchElement
+              label="Pertinent à l'equipe du restauration?"
+              name={`program.events.${index}.involvesRestaurant`}
             />
-
             {watchArray[index]?.involvesRestaurant && (
               <>
                 <TextFieldElement

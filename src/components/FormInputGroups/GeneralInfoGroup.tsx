@@ -1,6 +1,5 @@
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import { TextFieldElement } from "react-hook-form-mui";
-import ControlledDate from "../inputs/ControlledDate";
+import { DatePickerElement, TextFieldElement } from "react-hook-form-mui";
 import TextEditor from "../inputs/TextEditor";
 import { TitledGroup } from "../layouts/TitledGroup";
 
@@ -39,9 +38,9 @@ export default function GeneralInfoGroup() {
         label="Nombre de pax"
         name="program.numberOfPeople"
       />
-      <ControlledDate
-        dataLabel="generalInfo.eventDate"
-        textLabel="Date d'événement"
+      <DatePickerElement
+        label="Date d'événement"
+        name="generalInfo.eventDate"
       />
       <TextEditor objLabel="generalInfo.comments" displayLabel="Remarques" />
     </TitledGroup>

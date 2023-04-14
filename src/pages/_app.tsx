@@ -6,6 +6,9 @@ import localizedTheme from "@/styles/theme";
 import { EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { Box, Container, ThemeProvider } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import fr from "date-fns/locale/fr";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -69,25 +72,27 @@ export default function Layout({
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={localizedTheme}>
-        <UserContext.Provider value={user}>
-          {/* <IsReadOnly.Provider value={passableValue}> */}
-          <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <NavBar />
-            <Container
-              sx={{
-                mt: 0.2,
-                mb: 3,
-                display: "flex",
-                flex: 1,
-                flexDirection: "column",
-              }}
-            >
-              <Component {...pageProps} />
-            </Container>
-            <Footer />
-          </Box>
-          {/* </IsReadOnly.Provider> */}
-        </UserContext.Provider>
+        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
+          <UserContext.Provider value={user}>
+            {/* <IsReadOnly.Provider value={passableValue}> */}
+            <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+              <NavBar />
+              <Container
+                sx={{
+                  mt: 0.2,
+                  mb: 3,
+                  display: "flex",
+                  flex: 1,
+                  flexDirection: "column",
+                }}
+              >
+                <Component {...pageProps} />
+              </Container>
+              <Footer />
+            </Box>
+            {/* </IsReadOnly.Provider> */}
+          </UserContext.Provider>
+        </LocalizationProvider>
       </ThemeProvider>
     </CacheProvider>
   );

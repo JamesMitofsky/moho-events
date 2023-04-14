@@ -1,8 +1,7 @@
 import HandymanIcon from "@mui/icons-material/Handyman";
 import { useFieldArray } from "react-hook-form";
-import { TextFieldElement } from "react-hook-form-mui";
+import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import AddButton from "../buttons/AddButton";
-import ControlledCheckbox from "../inputs/ControlledCheckbox";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import TextEditor from "../inputs/TextEditor";
 import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
@@ -64,13 +63,10 @@ export default function ConfigurationGroup() {
             name={`configuration.${index}.microphones`}
             type="number"
           />
-          <ControlledCheckbox
-            propLabel={`configuration.${index}.visio`}
-            textLabel="Visio"
-          />
-          <ControlledCheckbox
-            propLabel={`configuration.${index}.captioning`}
-            textLabel="Captation"
+          <SwitchElement label="Visio" name={`configuration.${index}.visio`} />
+          <SwitchElement
+            label="Captation"
+            name={`configuration.${index}.captioning`}
           />
           <TextFieldElement
             fullWidth

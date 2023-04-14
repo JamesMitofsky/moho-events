@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
 import { FieldPath, useFormContext } from "react-hook-form";
+import { TimePickerElement } from "react-hook-form-mui";
 import { AllEventGroups } from "../../types/globalTypes";
-import ControlledTime from "./ControlledTime";
+import SpacedChildren from "../layouts/SpacedChildren";
 
 export default function TimeRangePicker({
   dataLabel,
@@ -15,9 +15,17 @@ export default function TimeRangePicker({
   const endTime = `${dataLabel}.end` as typeof dataLabel;
 
   return (
-    <Box sx={{ display: "grid", gap: 2, gridTemplateColumns: "1fr 1fr" }}>
-      <ControlledTime dataLabel={startTime} textLabel="Heure de début" />
-      <ControlledTime dataLabel={endTime} textLabel="Heure de fin" />
-    </Box>
+    <SpacedChildren flexDirection="row">
+      <TimePickerElement
+        sx={{ width: "100%" }}
+        label="Heure de début"
+        name={startTime}
+      />
+      <TimePickerElement
+        sx={{ width: "100%" }}
+        label="Heure de fin"
+        name={endTime}
+      />
+    </SpacedChildren>
   );
 }
