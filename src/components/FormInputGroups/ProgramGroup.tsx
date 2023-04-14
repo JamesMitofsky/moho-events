@@ -6,8 +6,6 @@ import { TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import ControlledCheckbox from "../inputs/ControlledCheckbox";
-import ControlledDate from "../inputs/ControlledDate";
-import ControlledTime from "../inputs/ControlledTime";
 import SelectOptions from "../inputs/SelectOptions";
 import TextEditor from "../inputs/TextEditor";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
@@ -62,19 +60,6 @@ export default function ProgramGroup() {
   return (
     <>
       <TitledGroup icon={DateRangeIcon} title="Programme">
-        <TextFieldElement
-          fullWidth
-          label="Nombre de pax"
-          name="program.numberOfPeople"
-        />
-        <ControlledDate
-          dataLabel="program.eventDate"
-          textLabel="Date d'événement"
-        />
-        <ControlledTime
-          dataLabel="program.departureTime"
-          textLabel="Heure de départ"
-        />
         {/* TODO: abstract into component container  */}
         <Box sx={{ display: "grid", gap: 2 }}>
           {fields.map((field, index) => (

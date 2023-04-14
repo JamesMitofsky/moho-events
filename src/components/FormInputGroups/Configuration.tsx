@@ -1,4 +1,4 @@
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import HandymanIcon from "@mui/icons-material/Handyman";
 import { Box, Button, Divider } from "@mui/material";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
@@ -31,7 +31,7 @@ export default function ConfigurationGroup() {
   };
 
   return (
-    <TitledGroup icon={DashboardIcon} title="Mise en Place">
+    <TitledGroup icon={HandymanIcon} title="Mise en Place">
       <Box sx={{ display: "grid", gap: 2 }}>
         {fields.map((field, index) => (
           <Box key={field.id} sx={{ display: "grid", gap: 2 }}>

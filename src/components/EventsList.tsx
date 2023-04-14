@@ -15,8 +15,8 @@ export default function EventsList() {
 
       // sort res array by decending date and when there is no date, put it at the end
       res.sort((a, b) => {
-        const dateA = a.program?.eventDate as { seconds: number };
-        const dateB = b.program?.eventDate as { seconds: number };
+        const dateA = a.generalInfo?.eventDate as { seconds: number };
+        const dateB = b.generalInfo?.eventDate as { seconds: number };
 
         if (dateA && dateB) {
           return dateB.seconds - dateA.seconds;
@@ -31,7 +31,7 @@ export default function EventsList() {
 
       // remove events which have no date or the date is passed
       const upcomingEvents = res.filter((event) => {
-        const date = event.program?.eventDate as { seconds: number };
+        const date = event.generalInfo?.eventDate as { seconds: number };
         if (date) {
           return date.seconds > Date.now() / 1000;
         } else {
@@ -42,7 +42,7 @@ export default function EventsList() {
 
       // array of events which have no date or the date is passed
       const pastEvents = res.filter((event) => {
-        const date = event.program?.eventDate as { seconds: number };
+        const date = event.generalInfo?.eventDate as { seconds: number };
         if (date) {
           return date.seconds < Date.now() / 1000;
         } else {
@@ -59,10 +59,10 @@ export default function EventsList() {
       <Typography variant="subtitle2">Prochains événements</Typography>
       <List>
         {events.map((event) => {
-          const eventName = event.society?.eventName;
-          const associationName = event.society?.associationName;
+          const eventName = event.generalInfo?.eventName;
+          const associationName = event.generalInfo?.associationName;
 
-          const dateFromServer = event.program?.eventDate as {
+          const dateFromServer = event.generalInfo?.eventDate as {
             seconds: number;
           };
 
@@ -97,10 +97,10 @@ export default function EventsList() {
       </Typography>
       <List>
         {pastEvents.map((event) => {
-          const eventName = event.society?.eventName;
-          const associationName = event.society?.associationName;
+          const eventName = event.generalInfo?.eventName;
+          const associationName = event.generalInfo?.associationName;
 
-          const dateFromServer = event.program?.eventDate as {
+          const dateFromServer = event.generalInfo?.eventDate as {
             seconds: number;
           };
 

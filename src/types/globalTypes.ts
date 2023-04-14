@@ -1,12 +1,14 @@
 import { FieldPath } from "react-hook-form";
 
-type SocietyInputs = {
+type GeneralInfoInputs = {
   associationName: string;
   category: string;
   eventName: string;
   eventType: string;
   numberOfQuote: number;
   soldBy: string;
+  numberOfPeople: number;
+  eventDate: Date | { seconds: number };
   comments: string;
 };
 
@@ -65,11 +67,8 @@ type EventComponent = {
   involvesRestaurant: boolean;
 };
 interface ProgramInputs {
-  comments: string;
-  numberOfPeople: number;
-  eventDate: Date | { seconds: number };
-  departureTime: Date;
   events: EventComponent[];
+  comments: string;
 }
 
 type WifiInputs = {
@@ -95,7 +94,7 @@ type ConfigurationInputs = {
 };
 
 type AllEventGroups = {
-  society: SocietyInputs;
+  generalInfo: GeneralInfoInputs;
   contact: ContactInputs;
   program: ProgramInputs;
   wifi: WifiInputs[];
@@ -126,7 +125,7 @@ type AllEventGroupPaths = FieldPath<AllEventGroups>;
 
 export type {
   Places,
-  SocietyInputs,
+  GeneralInfoInputs,
   ContactInputs,
   ContactIndividual,
   ProgramInputs,

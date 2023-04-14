@@ -1,4 +1,4 @@
-import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 import { Box, Button, Divider } from "@mui/material";
 import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
@@ -31,7 +31,7 @@ export default function ContactGroup() {
   };
 
   return (
-    <TitledGroup icon={AddIcCallIcon} title="Contact">
+    <TitledGroup icon={ContactMailIcon} title="Contact">
       {fields.map((field, index) => (
         <Box key={field.id} sx={{ display: "grid", gap: 2 }}>
           <TitledGroupSubtitle

@@ -7,9 +7,9 @@ import { FormContainer, SubmitHandler } from "react-hook-form-mui";
 import SpacedChildren from "../layouts/SpacedChildren";
 import Configuration from "./Configuration";
 import ContactGroup from "./ContactGroup";
+import GeneralInfoGroup from "./GeneralInfoGroup";
 import ProgramGroup from "./ProgramGroup";
 import SignageGroup from "./SignageGroup";
-import SocietyGroup from "./SocietyGroup";
 import WifiGroup from "./WifiGroup";
 
 const EventSubmissionForm = () => {
@@ -86,7 +86,7 @@ const EventSubmissionForm = () => {
       onSuccess={onSubmit}
     >
       <SpacedChildren>
-        <SocietyGroup />
+        <GeneralInfoGroup />
         <ContactGroup />
         <ProgramGroup />
         <SignageGroup />

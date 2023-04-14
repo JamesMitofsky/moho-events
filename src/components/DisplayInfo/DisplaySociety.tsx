@@ -1,5 +1,5 @@
 import GroupsIcon from "@mui/icons-material/Groups";
-import { SocietyInputs } from "../../types/globalTypes";
+import { GeneralInfoInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
@@ -11,7 +11,7 @@ export default function DisplaySociety({
   numberOfQuote,
   soldBy,
   comments,
-}: SocietyInputs) {
+}: GeneralInfoInputs) {
   return (
     <TitledGroup icon={GroupsIcon} title="Société">
       <DisplayText content={associationName} label="Nom de la société" />
