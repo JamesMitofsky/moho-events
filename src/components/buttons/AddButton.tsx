@@ -1,5 +1,5 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Button } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 
 type Props = {
   onClick: () => void;
@@ -8,13 +8,11 @@ type Props = {
 
 export default function AddButton({ onClick, label }: Props) {
   return (
-    <Button
-      sx={{ mb: 4 }}
-      startIcon={<AddIcon />}
-      variant="outlined"
-      onClick={onClick}
-    >
-      {label}
-    </Button>
+    <>
+      <Button startIcon={<AddIcon />} variant="outlined" onClick={onClick}>
+        {label}
+      </Button>
+      <Divider sx={{ my: 2 }} />
+    </>
   );
 }
