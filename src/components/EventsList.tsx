@@ -1,13 +1,56 @@
-import { Link, List, ListItem, ListItemText, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Link,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import filterDateOrNumberToDate from "../functions/filterDateOrNumberToDate";
 import { fetchAllEvents } from "../services/cloudFirestore";
 import { ModifiedServerResponse } from "../types/globalTypes";
+import SpacedChildren from "./layouts/SpacedChildren";
 
 export default function EventsList() {
   const [events, setEvents] = useState<ModifiedServerResponse[]>([]);
   const [pastEvents, setPastEvents] = useState<ModifiedServerResponse[]>([]);
+
+  function returnEventSummaryCards() {
+    const eventSummaries = events.flatMap((event) => {
+      const eventDateAsSeconds = (
+        event.generalInfo?.eventDate as { seconds: number }
+      ).seconds;
+
+      // if date doesn't match today, return empty array
+      const date = filterDateOrNumberToDate(eventDateAsSeconds);
+      if (date) {
+        const associationName = event.generalInfo?.associationName;
+        const today = new Date();
+        if (date.getDate() !== today.getDate()) {
+          return [];
+        } else
+          return [
+            <Link
+              component={NextLink}
+              key={event.docId}
+              href={`/evenement/${event.docId}`}
+            >
+              <Card>
+                <CardContent>
+                  <Typography variant="h3">
+                    {event.generalInfo?.eventName}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Link>,
+          ];
+      }
+    });
+    return eventSummaries;
+  }
 
   useEffect(() => {
     const getEvents = async function () {
@@ -28,27 +71,6 @@ export default function EventsList() {
           return 0;
         }
       });
-
-      // remove events which have no date or the date is passed
-      const upcomingEvents = res.filter((event) => {
-        const date = event.generalInfo?.eventDate as { seconds: number };
-        if (date) {
-          return date.seconds > Date.now() / 1000;
-        } else {
-          return false;
-        }
-      });
-      setEvents(upcomingEvents);
-
-      // array of events which have no date or the date is passed
-      const pastEvents = res.filter((event) => {
-        const date = event.generalInfo?.eventDate as { seconds: number };
-        if (date) {
-          return date.seconds < Date.now() / 1000;
-        } else {
-          return true;
-        }
-      });
       setPastEvents(pastEvents);
     };
     getEvents();
@@ -56,44 +78,16 @@ export default function EventsList() {
 
   return (
     <>
-      <Typography variant="subtitle2">Prochains événements</Typography>
-      <List>
-        {events.map((event) => {
-          const eventName = event.generalInfo?.eventName;
-          const associationName = event.generalInfo?.associationName;
-
-          const dateFromServer = event.generalInfo?.eventDate as {
-            seconds: number;
-          };
-
-          const formattedDate = dateFromServer
-            ? filterDateOrNumberToDate(
-                dateFromServer.seconds
-              ).toLocaleDateString("fr-FR", {
-                weekday: "long",
-                month: "long",
-                day: "numeric",
-              })
-            : "Pas de date";
-
-          return (
-            <Link
-              component={NextLink}
-              key={event.docId}
-              href={`/evenement/${event.docId}`}
-            >
-              <ListItem divider>
-                <ListItemText
-                  primary={`${eventName} - ${associationName}`}
-                  secondary={formattedDate}
-                />
-              </ListItem>
-            </Link>
-          );
-        })}
-      </List>
+      <SpacedChildren
+        flexDirection="row"
+        additionalStyles={{ alignItems: "center" }}
+      >
+        <Typography variant="subtitle1">Aujourd'hui </Typography>
+        <Typography variant="subtitle2">{new Date().toDateString()}</Typography>
+      </SpacedChildren>
+      <List></List>
       <Typography variant="subtitle2" sx={{ mt: 10 }}>
-        Événements passés
+        évènements passés
       </Typography>
       <List>
         {pastEvents.map((event) => {

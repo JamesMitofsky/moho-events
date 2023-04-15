@@ -18,12 +18,12 @@ export default function GeneralInfoGroup() {
       />
       <TextFieldElement
         fullWidth
-        label="Nom de l'événement"
+        label="Nom de l'évènement"
         name="generalInfo.eventName"
       />
       <TextFieldElement
         fullWidth
-        label="Type d'événement"
+        label="Type d'évènement"
         name="generalInfo.eventType"
       />
       <TextFieldElement
@@ -39,7 +39,7 @@ export default function GeneralInfoGroup() {
         name="program.numberOfPeople"
       />
       <DatePickerElement
-        label="Date d'événement"
+        label="Date d'évènement"
         name="generalInfo.eventDate"
       />
       <TextEditor objLabel="generalInfo.comments" displayLabel="Remarques" />

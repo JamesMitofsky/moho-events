@@ -142,7 +142,7 @@ export default function Temp() {
 //       {/* have the grid display two columns when the page is wide enough to allow */}
 //       <PageTitle
 //         title={eventData?.society?.eventName}
-//         subtitle="événement"
+//         subtitle="évènement"
 //         icon={EventAvailableIcon}
 //       />
 //       <Button size="small" onClick={toggleEdit}>

@@ -20,7 +20,7 @@ const ListOfEvents = () => {
           startIcon={<AddCircleIcon />}
           variant="outlined"
         >
-          Ajouter un événement
+          Ajouter un évènement
         </Button>
       </Box>
       <EventsList />
