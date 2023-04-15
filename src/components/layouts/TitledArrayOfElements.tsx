@@ -1,4 +1,5 @@
-import { Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
+import SpacedChildren from "./SpacedChildren";
 
 type Props = {
   label: string;
@@ -17,13 +18,15 @@ export default function TitledArrayOfElements({
   const isNotFirstItem = listLength > 0;
 
   return (
-    <>
-      {isNotFirstItem ? (
-        <Typography variant="subtitle2">
-          {label} #{index + 1}
-        </Typography>
-      ) : null}
-      {children}
-    </>
+    <Card>
+      <CardContent>
+        <SpacedChildren>
+          <Typography variant="subtitle1">
+            {label} #{index + 1}
+          </Typography>
+          {children}
+        </SpacedChildren>
+      </CardContent>
+    </Card>
   );
 }
