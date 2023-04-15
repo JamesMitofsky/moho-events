@@ -36,8 +36,8 @@ const theme: ThemeOptions = {
     },
     subtitle2: {
       fontWeight: 100,
-      color: "rgb(241, 103, 96)",
-      fontSize: 17,
+      color: "rgba(0, 0, 0, 0.6)",
+      fontSize: 14,
     },
   },
   palette: {
