@@ -15,7 +15,18 @@ import WifiGroup from "./WifiGroup";
 const EventSubmissionForm = () => {
   // const router = useRouter();
 
-  const formDefaultValues = {
+  const formDefaultValues: AllEventGroups = {
+    generalInfo: {
+      associationName: "",
+      category: "",
+      eventName: "",
+      eventType: "",
+      numberOfQuote: null,
+      soldBy: "",
+      numberOfPeople: null,
+      eventDate: null,
+      comments: "",
+    },
     program: {
       events: [
         {
@@ -34,6 +45,7 @@ const EventSubmissionForm = () => {
           involvesRestaurant: false,
         },
       ],
+      comments: "",
     },
     wifi: {
       connectionInfo: [
@@ -75,6 +87,7 @@ const EventSubmissionForm = () => {
           text: "",
         },
       ],
+      comments: "",
     },
   };
 

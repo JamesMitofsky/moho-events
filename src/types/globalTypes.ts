@@ -5,10 +5,10 @@ type GeneralInfoInputs = {
   category: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: number;
+  numberOfQuote: number | null;
   soldBy: string;
-  numberOfPeople: number;
-  eventDate: Date | { seconds: number };
+  numberOfPeople: number | null;
+  eventDate: Date | { seconds: number } | null;
   comments: string;
 };
 
