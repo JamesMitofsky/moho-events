@@ -1,7 +1,8 @@
 import HandymanIcon from "@mui/icons-material/Handyman";
 import { useFieldArray } from "react-hook-form";
-import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
+import { SwitchElement } from "react-hook-form-mui";
 import AddButton from "../buttons/AddButton";
+import ControlledTextField from "../inputs/ControlledTextField";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import TextEditor from "../inputs/TextEditor";
 import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
@@ -42,22 +43,22 @@ export default function ConfigurationGroup() {
             propLabel={`configuration.${index}.room`}
             isUnique={true}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Nombre de pax"
             name={`configuration.${index}.numberOfPeople`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Configuration"
             name={`configuration.${index}.layout`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Mobilier"
             name={`configuration.${index}.furnishedBy`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Microphones"
             name={`configuration.${index}.microphones`}
@@ -68,7 +69,7 @@ export default function ConfigurationGroup() {
             label="Captation"
             name={`configuration.${index}.captioning`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Prestetaires"
             name={`configuration.${index}.services`}

@@ -9,7 +9,6 @@ export default function DisplaySociety({
   category,
   eventName,
   numberOfQuote,
-  soldBy,
   comments,
 }: GeneralInfoInputs) {
   return (
@@ -18,7 +17,6 @@ export default function DisplaySociety({
       <DisplayText content={category} label="Catégorie" />
       <DisplayText content={eventName} label="Nom de l'évènement" />
       {/* <DisplayText content={numberOfQuote.toString()} label="Nombre de devis" /> */}
-      <DisplayText content={soldBy} label="Vendu par" />
       <DisplayHTML html={comments} label="Remarques" />
     </TitledGroup>
   );

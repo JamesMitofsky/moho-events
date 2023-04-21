@@ -1,10 +1,11 @@
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { useContext } from "react";
 import { useFieldArray, useWatch } from "react-hook-form";
-import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
+import { SwitchElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import AddButton from "../buttons/AddButton";
+import ControlledTextField from "../inputs/ControlledTextField";
 import SelectOptions from "../inputs/SelectOptions";
 import TextEditor from "../inputs/TextEditor";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
@@ -66,7 +67,7 @@ export default function ProgramGroup() {
           index={index}
           listLength={fields.length}
         >
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Contenu"
             name={`program.events.${index}.title`}
@@ -79,7 +80,7 @@ export default function ProgramGroup() {
           />
           {watchArray[index]?.involvesRestaurant && (
             <>
-              <TextFieldElement
+              <ControlledTextField
                 fullWidth
                 label="Nombre de pax"
                 name={`program.events.${index}.numberOfPeople`}
@@ -93,7 +94,7 @@ export default function ProgramGroup() {
                 propLabel={`program.events.${index}.catering`}
                 options={cateringOptions}
               />
-              <TextFieldElement
+              <ControlledTextField
                 fullWidth
                 label="Service facturé"
                 name={`program.events.${index}.billedService`}

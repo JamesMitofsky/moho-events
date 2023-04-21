@@ -1,10 +1,11 @@
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
-import { TextFieldElement } from "react-hook-form-mui";
+import {} from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { ContactIndividual } from "../../types/globalTypes";
 import AddButton from "../buttons/AddButton";
+import ControlledTextField from "../inputs/ControlledTextField";
 import PhoneNumber from "../inputs/PhoneNumber";
 import TextEditor from "../inputs/TextEditor";
 import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
@@ -39,12 +40,12 @@ export default function ContactGroup() {
           index={index}
           listLength={fields.length}
         >
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Nom de la société"
             name={`contact.individuals.${index}.companyName`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Nom de la personne"
             name={`contact.individuals.${index}.contactName`}
@@ -52,7 +53,7 @@ export default function ContactGroup() {
           <PhoneNumber
             propLabel={`contact.individuals.${index}.telephoneNumber`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Email"
             name={`contact.individuals.${index}.email`}

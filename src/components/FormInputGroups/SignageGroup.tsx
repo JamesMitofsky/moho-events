@@ -1,7 +1,8 @@
 import { SignageLocationAndText } from "@/types/globalTypes";
 import SignpostIcon from "@mui/icons-material/Signpost";
-import { TextFieldElement, useFieldArray } from "react-hook-form-mui";
+import { useFieldArray } from "react-hook-form-mui";
 import AddButton from "../buttons/AddButton";
+import ControlledTextField from "../inputs/ControlledTextField";
 import TextEditor from "../inputs/TextEditor";
 import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
 import { TitledGroup } from "../layouts/TitledGroup";
@@ -28,12 +29,12 @@ export default function SignageGroup() {
           index={index}
           listLength={fields.length}
         >
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="L'endoit"
             name={`signage.locationAndText.${index}.location`}
           />
-          <TextFieldElement
+          <ControlledTextField
             fullWidth
             label="Contenu"
             name={`signage.locationAndText.${index}.text`}

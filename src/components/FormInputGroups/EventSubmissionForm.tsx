@@ -22,7 +22,6 @@ const EventSubmissionForm = () => {
       eventName: "",
       eventType: "",
       numberOfQuote: null,
-      soldBy: "",
       numberOfPeople: null,
       eventDate: null,
       comments: "",

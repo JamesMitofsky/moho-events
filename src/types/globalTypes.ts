@@ -6,7 +6,6 @@ type GeneralInfoInputs = {
   eventName: string;
   eventType: string;
   numberOfQuote: number | null;
-  soldBy: string;
   numberOfPeople: number | null;
   eventDate: Date | { seconds: number } | null;
   comments: string;
