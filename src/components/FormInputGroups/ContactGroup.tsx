@@ -4,12 +4,12 @@ import { useFieldArray } from "react-hook-form";
 import {} from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { ContactIndividual } from "../../types/globalTypes";
-import AddButton from "../buttons/AddButton";
 import ControlledTextField from "../inputs/ControlledTextField";
 import PhoneNumber from "../inputs/PhoneNumber";
 import TextEditor from "../inputs/TextEditor";
-import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
+import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
+import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function ContactGroup() {
   const { isReadOnly } = useContext(ReadOnlyContext);
@@ -33,34 +33,35 @@ export default function ContactGroup() {
 
   return (
     <TitledGroup icon={ContactMailIcon} title="Contact">
-      {fields.map((field, index) => (
-        <TitledArrayOfElements
-          key={field.id}
-          label="Contact"
-          index={index}
-          listLength={fields.length}
-        >
-          <ControlledTextField
-            fullWidth
-            label="Nom de la société"
-            name={`contact.individuals.${index}.companyName`}
-          />
-          <ControlledTextField
-            fullWidth
-            label="Nom de la personne"
-            name={`contact.individuals.${index}.contactName`}
-          />
-          <PhoneNumber
-            propLabel={`contact.individuals.${index}.telephoneNumber`}
-          />
-          <ControlledTextField
-            fullWidth
-            label="Email"
-            name={`contact.individuals.${index}.email`}
-          />
-        </TitledArrayOfElements>
-      ))}
-      {!isReadOnly && <AddButton onClick={handleAdd} label="Contact" />}
+      <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
+        {fields.map((field, index) => (
+          <TitledArrayOfElements
+            key={field.id}
+            label="Contact"
+            index={index}
+            listLength={fields.length}
+          >
+            <ControlledTextField
+              fullWidth
+              label="Nom de la société"
+              name={`contact.individuals.${index}.companyName`}
+            />
+            <ControlledTextField
+              fullWidth
+              label="Nom de la personne"
+              name={`contact.individuals.${index}.contactName`}
+            />
+            <PhoneNumber
+              propLabel={`contact.individuals.${index}.telephoneNumber`}
+            />
+            <ControlledTextField
+              fullWidth
+              label="Email"
+              name={`contact.individuals.${index}.email`}
+            />
+          </TitledArrayOfElements>
+        ))}
+      </ArrayOfElementsWrapper>
 
       <TextEditor objLabel={`contact.comments`} displayLabel="Remarques" />
     </TitledGroup>

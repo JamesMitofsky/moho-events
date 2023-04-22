@@ -4,13 +4,13 @@ import { useFieldArray, useWatch } from "react-hook-form";
 import { SwitchElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
-import AddButton from "../buttons/AddButton";
 import ControlledTextField from "../inputs/ControlledTextField";
 import SelectOptions from "../inputs/SelectOptions";
 import TextEditor from "../inputs/TextEditor";
 import { TimeAndPlaceInput } from "../inputs/TimeAndPlaceInput";
-import TitledArrayOfElements from "../layouts/TitledArrayOfElements";
+import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
+import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function ProgramGroup() {
   const watchArray = useWatch({
@@ -59,62 +59,63 @@ export default function ProgramGroup() {
 
   return (
     <TitledGroup icon={DateRangeIcon} title="Programme">
-      {/* TODO: abstract into component container  */}
-      {fields.map((field, index) => (
-        <TitledArrayOfElements
-          key={field.id}
-          label="Partie"
-          index={index}
-          listLength={fields.length}
-        >
-          <ControlledTextField
-            fullWidth
-            label="Contenu"
-            name={`program.events.${index}.title`}
-            helperText="Ex: Pause café, Déjeuner, etc."
-          />
-          <TimeAndPlaceInput parentObj={`program.events.${index}`} />
-          <SwitchElement
-            label="Pertinent à l'equipe du restauration?"
-            name={`program.events.${index}.involvesRestaurant`}
-          />
-          {watchArray[index]?.involvesRestaurant && (
-            <>
-              <ControlledTextField
-                fullWidth
-                label="Nombre de pax"
-                name={`program.events.${index}.numberOfPeople`}
-              />
-              <TextEditor
-                displayLabel="Mobilier utilisé"
-                objLabel={`program.events.${index}.furnitureUsed`}
-              />
-              <SelectOptions
-                textLabel="Traiteurs"
-                propLabel={`program.events.${index}.catering`}
-                options={cateringOptions}
-              />
-              <ControlledTextField
-                fullWidth
-                label="Service facturé"
-                name={`program.events.${index}.billedService`}
-              />
-              <SelectOptions
-                textLabel="Format"
-                propLabel={`program.events.${index}.eventLayout`}
-                options={formatConfigurations}
-              />
-              <TextEditor
-                displayLabel="Détails"
-                objLabel={`program.events.${index}.details`}
-              />
-            </>
-          )}
-        </TitledArrayOfElements>
-      ))}
-      {!isReadOnly && (
-        <AddButton label="Partie d'évènement" onClick={handleAdd} />
-      )}
+      <ArrayOfElementsWrapper
+        addLabel="Partie d'évènement"
+        handleAddItem={handleAdd}
+      >
+        {fields.map((field, index) => (
+          <TitledArrayOfElements
+            key={field.id}
+            label="Partie"
+            index={index}
+            listLength={fields.length}
+          >
+            <ControlledTextField
+              fullWidth
+              label="Contenu"
+              name={`program.events.${index}.title`}
+              helperText="Ex: Pause café, Déjeuner, etc."
+            />
+            <TimeAndPlaceInput parentObj={`program.events.${index}`} />
+            <SwitchElement
+              label="Pertinent à l'equipe du restauration?"
+              name={`program.events.${index}.involvesRestaurant`}
+            />
+            {watchArray[index]?.involvesRestaurant && (
+              <>
+                <ControlledTextField
+                  fullWidth
+                  label="Nombre de pax"
+                  name={`program.events.${index}.numberOfPeople`}
+                />
+                <TextEditor
+                  displayLabel="Mobilier utilisé"
+                  objLabel={`program.events.${index}.furnitureUsed`}
+                />
+                <SelectOptions
+                  textLabel="Traiteurs"
+                  propLabel={`program.events.${index}.catering`}
+                  options={cateringOptions}
+                />
+                <ControlledTextField
+                  fullWidth
+                  label="Service facturé"
+                  name={`program.events.${index}.billedService`}
+                />
+                <SelectOptions
+                  textLabel="Format"
+                  propLabel={`program.events.${index}.eventLayout`}
+                  options={formatConfigurations}
+                />
+                <TextEditor
+                  displayLabel="Détails"
+                  objLabel={`program.events.${index}.details`}
+                />
+              </>
+            )}
+          </TitledArrayOfElements>
+        ))}
+      </ArrayOfElementsWrapper>
 
       <TextEditor objLabel="program.comments" displayLabel="Remarques" />
     </TitledGroup>
