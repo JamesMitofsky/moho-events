@@ -1,43 +1,45 @@
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
-import { DatePickerElement } from "react-hook-form-mui";
-import ControlledTextField from "../inputs/ControlledTextField";
+import { DatePickerElement, TextFieldElement } from "react-hook-form-mui";
 import TextEditor from "../inputs/TextEditor";
 import { TitledGroup } from "../layouts/TitledGroup";
 
 export default function GeneralInfoGroup() {
   return (
     <TitledGroup icon={ImportContactsIcon} title={"Info Général"}>
-      <ControlledTextField
+      <TextFieldElement
         fullWidth
         label="Nom de la société"
         name="generalInfo.associationName"
+        required
       />
-      <ControlledTextField
+      <TextFieldElement
         fullWidth
         label="Catégorie"
         name="generalInfo.category"
       />
-      <ControlledTextField
+      <TextFieldElement
         fullWidth
         label="Nom de l'évènement"
         name="generalInfo.eventName"
       />
-      <ControlledTextField
+      <TextFieldElement
         fullWidth
         label="Type d'évènement"
         name="generalInfo.eventType"
       />
-      <ControlledTextField
+      <TextFieldElement
+        fullWidth
         label="Numéro de devis"
         name="generalInfo.numberOfQuote"
         type="number"
       />
-      <ControlledTextField
+      <TextFieldElement
         fullWidth
         label="Nombre de pax"
         name="generalInfo.numberOfPeople"
       />
       <DatePickerElement
+        required
         label="Date d'évènement"
         name="generalInfo.eventDate"
       />
