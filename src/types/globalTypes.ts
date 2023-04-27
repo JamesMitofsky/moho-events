@@ -5,9 +5,9 @@ type GeneralInfoInputs = {
   category: string;
   eventName: string;
   eventType: string;
-  numberOfQuote: number | null;
-  numberOfPeople: number | null;
-  eventDate: Date | { seconds: number } | null;
+  numberOfQuote: string;
+  numberOfPeople: string;
+  eventDate: Date | { seconds: number } | string;
   comments: string;
 };
 
@@ -53,14 +53,14 @@ type Places =
 type EventComponent = {
   title: string;
   time: {
-    start: Date | null;
-    end: Date | null;
+    start: Date | string;
+    end: Date | string;
   };
   place: Places[];
-  numberOfPeople: number | null;
+  numberOfPeople: string;
   furnitureUsed: string;
   catering: string[];
-  billedService: number | null;
+  billedService: string;
   eventLayout: string;
   details: string;
   involvesRestaurant: boolean;
@@ -92,12 +92,12 @@ type SignageInputs = {
 
 type ConfigurationInputs = {
   room: string;
-  numberOfPeople: number | null;
+  numberOfPeople: string;
   layout: string;
   furnishedBy: string; // text editor
-  microphones: number | null;
-  visio: boolean | null;
-  captioning: boolean | null;
+  microphones: string;
+  visio: boolean | string;
+  captioning: boolean | string;
   services: string;
   comments: string; // text editor
 };
