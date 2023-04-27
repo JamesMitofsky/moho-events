@@ -1,46 +1,27 @@
-import { Autocomplete, TextField } from "@mui/material";
-import { Controller, useFormContext } from "react-hook-form";
-import { AllEventGroupPaths } from "../../types/globalTypes";
+import { AutocompleteElement } from "react-hook-form-mui";
 
 export interface SelectProps {
+  name: string;
+  label: string;
   options: string[];
-  textLabel: string;
-  propLabel: AllEventGroupPaths;
-  helperText?: string;
-  isUnique?: boolean;
+  multiple?: boolean;
 }
 
 export default function SelectOptions({
+  name,
   options,
-  textLabel,
-  propLabel,
-  helperText = `Tappez 'Entrée' après chaque réponse`,
-  isUnique = false,
+  label,
+  multiple,
 }: SelectProps) {
-  const { control } = useFormContext();
-
   return (
-    <Controller
-      name={propLabel}
-      control={control}
-      defaultValue={[]}
-      render={({ field: { value, onChange } }) => (
-        <Autocomplete
-          onChange={(_, data) => onChange(data)}
-          // coercing "value" because SelectOptions must receive string[]
-          value={(value as string[]) || []}
-          options={options}
-          multiple={isUnique ? false : true}
-          freeSolo
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label={textLabel}
-              helperText={isUnique ? "" : helperText}
-            />
-          )}
-        />
-      )}
+    <AutocompleteElement
+      autocompleteProps={{ freeSolo: true }}
+      multiple={multiple}
+      name={name}
+      options={options}
+      textFieldProps={{
+        placeholder: label,
+      }}
     />
   );
 }

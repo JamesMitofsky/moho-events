@@ -22,14 +22,14 @@ export default function ProgramGroup() {
   const blankProgramEvent: EventComponent = {
     title: "",
     time: {
-      start: null,
-      end: null,
+      start: "",
+      end: "",
     },
     place: [],
-    numberOfPeople: null,
+    numberOfPeople: "",
     furnitureUsed: "",
     catering: [],
-    billedService: null,
+    billedService: "",
     eventLayout: "",
     details: "",
     involvesRestaurant: false,
@@ -93,8 +93,8 @@ export default function ProgramGroup() {
                   objLabel={`program.events.${index}.furnitureUsed`}
                 />
                 <SelectOptions
-                  textLabel="Traiteurs"
-                  propLabel={`program.events.${index}.catering`}
+                  label="Traiteurs"
+                  name={`program.events.${index}.catering`}
                   options={cateringOptions}
                 />
                 <ControlledTextField
@@ -103,8 +103,8 @@ export default function ProgramGroup() {
                   name={`program.events.${index}.billedService`}
                 />
                 <SelectOptions
-                  textLabel="Format"
-                  propLabel={`program.events.${index}.eventLayout`}
+                  label="Format"
+                  name={`program.events.${index}.eventLayout`}
                   options={formatConfigurations}
                 />
                 <TextEditor

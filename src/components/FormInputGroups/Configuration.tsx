@@ -18,12 +18,12 @@ export default function ConfigurationGroup() {
   const handleAdd = () => {
     const blankConfiguration = {
       room: "",
-      numberOfPeople: null,
+      numberOfPeople: "",
       layout: "",
       furnishedBy: "",
-      microphones: null,
-      visio: null,
-      captioning: null,
+      microphones: "",
+      visio: "",
+      captioning: "",
       services: "",
       comments: "",
     };
@@ -44,8 +44,8 @@ export default function ConfigurationGroup() {
             listLength={fields.length}
           >
             <SelectMohoRoom
-              propLabel={`configuration.${index}.room`}
-              isUnique={true}
+              name={`configuration.${index}.room`}
+              multiple={true}
             />
             <ControlledTextField
               fullWidth

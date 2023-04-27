@@ -1,9 +1,10 @@
 import { Places } from "../../types/globalTypes";
 import SelectOptions, { SelectProps } from "./SelectOptions";
 
-export default function SelectMohoRoom(
-  props: Omit<SelectProps, "options" | "textLabel">
-) {
+export default function SelectMohoRoom({
+  name,
+  multiple,
+}: Pick<SelectProps, "multiple" | "name">) {
   const rooms: Places[] = [
     "Entrée principale",
     "Salle de conférence (Inspire)",
@@ -30,5 +31,12 @@ export default function SelectMohoRoom(
     "Cocktail espcae (à côté du Gymnase)",
   ];
 
-  return <SelectOptions {...props} options={rooms} textLabel="Lieu" />;
+  return (
+    <SelectOptions
+      name={name}
+      multiple={multiple}
+      options={rooms}
+      label="Lieu"
+    />
+  );
 }
