@@ -1,4 +1,4 @@
-import { FieldPath, useFormContext } from "react-hook-form";
+import { FieldPath } from "react-hook-form";
 import { TimePickerElement } from "react-hook-form-mui";
 import { AllEventGroups } from "../../types/globalTypes";
 import SpacedChildren from "../layouts/SpacedChildren";
@@ -8,8 +8,6 @@ export default function TimeRangePicker({
 }: {
   dataLabel: FieldPath<AllEventGroups>;
 }) {
-  const { control } = useFormContext();
-
   // coerce dataLabel to consider constructed strings as valid paths
   const startTime = `${dataLabel}.start` as typeof dataLabel;
   const endTime = `${dataLabel}.end` as typeof dataLabel;
