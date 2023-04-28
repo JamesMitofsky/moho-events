@@ -7,7 +7,7 @@ type GeneralInfoInputs = {
   eventType: string;
   numberOfQuote: string;
   numberOfPeople: string;
-  eventDate: Date | { seconds: number } | string;
+  eventDate: string;
   comments: string;
 };
 
