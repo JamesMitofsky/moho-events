@@ -7,8 +7,8 @@ import { EmotionCache } from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { Box, Container, ThemeProvider } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import fr from "date-fns/locale/fr";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/fr";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -72,7 +72,7 @@ export default function Layout({
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={localizedTheme}>
-        <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fr}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
           <UserContext.Provider value={user}>
             {/* <IsReadOnly.Provider value={passableValue}> */}
             <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>

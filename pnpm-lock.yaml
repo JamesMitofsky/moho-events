@@ -30,10 +30,10 @@ dependencies:
     version: 5.11.16(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.31)(react@18.2.0)
   '@mui/x-date-pickers':
     specifier: ^6.0.4
-    version: 6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)
-  date-fns:
-    specifier: ^2.29.3
-    version: 2.29.3
+    version: 6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(dayjs@1.11.7)(react-dom@18.2.0)(react@18.2.0)
+  dayjs:
+    specifier: ^1.11.7
+    version: 1.11.7
   encoding:
     specifier: ^0.1.13
     version: 0.1.13
@@ -162,7 +162,7 @@ packages:
       '@date-io/core': 2.16.0
     dev: false
 
-  /@date-io/date-fns@2.16.0(date-fns@2.29.3):
+  /@date-io/date-fns@2.16.0:
     resolution: {integrity: sha512-bfm5FJjucqlrnQcXDVU5RD+nlGmL3iWgkHTq3uAZWVIuBu6dDmGa3m8a6zo2VQQpu8ambq9H22UyUpn7590joA==}
     peerDependencies:
       date-fns: ^2.0.0
@@ -171,10 +171,9 @@ packages:
         optional: true
     dependencies:
       '@date-io/core': 2.16.0
-      date-fns: 2.29.3
     dev: false
 
-  /@date-io/dayjs@2.16.0:
+  /@date-io/dayjs@2.16.0(dayjs@1.11.7):
     resolution: {integrity: sha512-y5qKyX2j/HG3zMvIxTobYZRGnd1FUW2olZLS0vTj7bEkBQkjd2RO7/FEwDY03Z1geVGlXKnzIATEVBVaGzV4Iw==}
     peerDependencies:
       dayjs: ^1.8.17
@@ -183,6 +182,7 @@ packages:
         optional: true
     dependencies:
       '@date-io/core': 2.16.0
+      dayjs: 1.11.7
     dev: false
 
   /@date-io/hijri@2.16.1:
@@ -1138,7 +1138,7 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@mui/x-date-pickers@6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/x-date-pickers@6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(dayjs@1.11.7)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-blh91rqgnr8mdm+bn5vdde7fQII0gUDmeOMttKrMLv6P6OxkQXdz5aLSroXUpPTAAbX53zciFW/UG5Ynxqxtpw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -1177,9 +1177,9 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@date-io/core': 2.16.0
-      '@date-io/date-fns': 2.16.0(date-fns@2.29.3)
+      '@date-io/date-fns': 2.16.0
       '@date-io/date-fns-jalali': 2.16.0
-      '@date-io/dayjs': 2.16.0
+      '@date-io/dayjs': 2.16.0(dayjs@1.11.7)
       '@date-io/hijri': 2.16.1
       '@date-io/jalaali': 2.16.1
       '@date-io/luxon': 2.16.1
@@ -1191,7 +1191,7 @@ packages:
       '@mui/utils': 5.11.13(react@18.2.0)
       '@types/react-transition-group': 4.4.5
       clsx: 1.2.1
-      date-fns: 2.29.3
+      dayjs: 1.11.7
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -1802,9 +1802,8 @@ packages:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
 
-  /date-fns@2.29.3:
-    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
-    engines: {node: '>=0.11'}
+  /dayjs@1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug@3.2.7:
@@ -3441,7 +3440,7 @@ packages:
     dependencies:
       '@mui/icons-material': 5.11.11(@mui/material@5.11.15)(@types/react@18.0.31)(react@18.2.0)
       '@mui/material': 5.11.15(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.31)(react-dom@18.2.0)(react@18.2.0)
-      '@mui/x-date-pickers': 6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(date-fns@2.29.3)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/x-date-pickers': 6.0.4(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@mui/material@5.11.15)(@mui/system@5.11.16)(dayjs@1.11.7)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-hook-form: 7.43.9(react@18.2.0)
     dev: false

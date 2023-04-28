@@ -91,8 +91,18 @@ const EventSubmissionForm = () => {
   };
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
-    console.log(data);
-    const docRef = await uploadEventData(data);
+    const convertEventDateToString = (obj: AllEventGroups): AllEventGroups => {
+      const newObj = {
+        ...obj,
+        generalInfo: { eventDate: obj.generalInfo.eventDate.toString() },
+      };
+      return newObj as AllEventGroups;
+    };
+
+    const parsedData = convertEventDateToString(data);
+    console.log(parsedData);
+
+    const docRef = await uploadEventData(parsedData);
     if (docRef) {
       console.log("success");
       // TODO redirect to page with the completed, static form, triggering confetti
