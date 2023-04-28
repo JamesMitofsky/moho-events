@@ -88,13 +88,19 @@ const EventSubmissionForm = () => {
       ],
       comments: "",
     },
+    creationDetails: {
+      versionOfFormInputs: 1,
+    },
   };
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
     const convertEventDateToString = (obj: AllEventGroups): AllEventGroups => {
       const newObj = {
         ...obj,
-        generalInfo: { eventDate: obj.generalInfo.eventDate.toString() },
+        generalInfo: {
+          ...obj.generalInfo,
+          eventDate: obj.generalInfo.eventDate.toString(),
+        },
       };
       return newObj as AllEventGroups;
     };

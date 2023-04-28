@@ -109,6 +109,9 @@ type AllEventGroups = {
   wifi: WifiInputs;
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
+  creationDetails: {
+    versionOfFormInputs: 1;
+  };
 };
 
 interface ModifiedServerResponse extends AllEventGroups {
@@ -117,6 +120,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: Date;
     createdBy: string;
     creatorEmail: string;
+    versionOfFormInputs: 1;
   };
   docId: string;
 }
