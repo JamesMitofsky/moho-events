@@ -73,6 +73,9 @@ dependencies:
   uuid:
     specifier: ^9.0.0
     version: 9.0.0
+  uuid4:
+    specifier: ^2.0.3
+    version: 2.0.3
 
 devDependencies:
   '@types/node':
@@ -3921,6 +3924,10 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: false
+
+  /uuid4@2.0.3:
+    resolution: {integrity: sha512-CTpAkEVXMNJl2ojgtpLXHgz23dh8z81u6/HEPiQFOvBc/c2pde6TVHmH4uwY0d/GLF3tb7+VDAj4+2eJaQSdZQ==}
     dev: false
 
   /uuid@9.0.0:
