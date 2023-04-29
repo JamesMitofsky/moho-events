@@ -23,7 +23,7 @@ const theme: ThemeOptions = {
     },
     h3: {
       fontSize: 25,
-      fontFamily: antonio.style.fontFamily,
+      fontFamily: "sans-serif",
     },
     h4: {
       fontSize: 20,
