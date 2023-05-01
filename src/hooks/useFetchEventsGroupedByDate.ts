@@ -1,4 +1,4 @@
-import { fetchAllEvents } from "@/services/cloudFirestore";
+import getEvents from "@/services/database/getEvents";
 import { ModifiedServerResponse } from "@/types/globalTypes";
 import { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ export default function useFetchEventsGroupedByDate() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetchAllEvents();
+        const res = await getEvents("upcoming");
         const eventsGroupedByDate = groupEventsByDate(res);
         setEvents(eventsGroupedByDate);
       } catch (error) {
@@ -17,7 +17,7 @@ export default function useFetchEventsGroupedByDate() {
     };
     fetchData();
   }, []);
-
+  console.log(events);
   return events;
 }
 
@@ -27,11 +27,8 @@ function groupEventsByDate(
   // Create a map to group events by date
   const eventsByDate = new Map<string, ModifiedServerResponse[]>();
   events.forEach((event) => {
-    console.log(event);
-    // Get the date of the event in yyyy-mm-dd format
-    const dateKey = new Date(event.generalInfo.eventDate as string)
-      .toISOString()
-      .slice(0, 10);
+    const dateKey = event.generalInfo.dateAsISO.slice(0, 10);
+    console.log(dateKey);
     if (!eventsByDate.has(dateKey)) {
       eventsByDate.set(dateKey, []);
     }

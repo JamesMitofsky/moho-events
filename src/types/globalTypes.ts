@@ -7,7 +7,7 @@ type GeneralInfoInputs = {
   eventType: string;
   numberOfQuote: string;
   numberOfPeople: string;
-  eventDate: string;
+  dateAsISO: string;
   comments: string;
 };
 
@@ -117,12 +117,12 @@ type AllEventGroups = {
 interface ModifiedServerResponse extends AllEventGroups {
   creationDetails: {
     creatorId: string;
-    createdAt: Date;
+    createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
     versionOfFormInputs: 1;
   };
-  docId: string;
+  id: string;
 }
 
 interface UserObject {
@@ -136,7 +136,10 @@ export const nameof = <T>(name: keyof T) => name;
 
 type AllEventGroupPaths = FieldPath<AllEventGroups>;
 
+type ModifiedServerResponsePaths = FieldPath<ModifiedServerResponse>;
+
 export type {
+  ModifiedServerResponsePaths,
   Places,
   GeneralInfoInputs,
   ContactInputs,

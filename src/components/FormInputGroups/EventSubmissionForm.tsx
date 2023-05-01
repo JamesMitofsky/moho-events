@@ -2,6 +2,7 @@ import { uploadEventData } from "@/services/cloudFirestore";
 import { AllEventGroups } from "@/types/globalTypes";
 import { SendSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import dayjs from "dayjs";
 import router from "next/router";
 import { FormContainer, SubmitHandler } from "react-hook-form-mui";
 import SpacedChildren from "../layouts/SpacedChildren";
@@ -23,7 +24,7 @@ const EventSubmissionForm = () => {
       eventType: "",
       numberOfQuote: "",
       numberOfPeople: "",
-      eventDate: "",
+      dateAsISO: "",
       comments: "",
     },
     program: {
@@ -94,21 +95,18 @@ const EventSubmissionForm = () => {
   };
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
-    const convertEventDateToString = (obj: AllEventGroups): AllEventGroups => {
-      const newObj = {
-        ...obj,
-        generalInfo: {
-          ...obj.generalInfo,
-          eventDate: obj.generalInfo.eventDate.toString(),
-        },
-      };
-      return newObj as AllEventGroups;
+    const dateAsISO = dayjs(data.generalInfo.dateAsISO).toISOString();
+    const preparedInputData: AllEventGroups = {
+      ...data,
+      generalInfo: {
+        ...data.generalInfo,
+        dateAsISO,
+      },
     };
 
-    const parsedData = convertEventDateToString(data);
-    console.log(parsedData);
+    console.log(preparedInputData);
 
-    const docRef = await uploadEventData(parsedData);
+    const docRef = await uploadEventData(preparedInputData);
     if (docRef) {
       console.log("success");
       // TODO redirect to page with the completed, static form, triggering confetti

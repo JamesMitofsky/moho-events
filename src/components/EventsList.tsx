@@ -8,15 +8,14 @@ import LinkToEvent from "./LinkToEvent";
 export default function EventsList() {
   const events = useFetchEventsGroupedByDate();
 
-  console.log(events);
-
   const eventsGroupedByDay = events?.map((eventGroup) => {
     const trimmedDate = trimDateString(eventGroup[0]);
     const constructedGroup = eventGroup.map((event) => {
       return (
         <LinkToEvent
+          key={event.id}
           associationName={event.generalInfo?.associationName}
-          docId={event.docId}
+          docId={event.id}
           numberOfPeople={event.generalInfo?.numberOfPeople}
         />
       );
@@ -36,8 +35,7 @@ export default function EventsList() {
 }
 
 function trimDateString(eventGroup: ModifiedServerResponse) {
-  const stringifiedDate = eventGroup.generalInfo.eventDate;
-  const dateObj = new Date(stringifiedDate);
+  const dateObj = new Date(eventGroup.generalInfo.dateAsISO);
   const trimmedDate = dateObj.toLocaleString("fr", {
     month: "short",
     day: "numeric",

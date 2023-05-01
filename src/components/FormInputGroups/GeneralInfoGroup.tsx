@@ -41,7 +41,7 @@ export default function GeneralInfoGroup() {
       <DatePickerElement
         required
         label="Date d'évènement"
-        name="generalInfo.eventDate"
+        name="generalInfo.dateAsISO"
       />
       <TextEditor objLabel="generalInfo.comments" displayLabel="Remarques" />
     </TitledGroup>

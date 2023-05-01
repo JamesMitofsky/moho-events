@@ -1,7 +1,6 @@
 import returnUserRole from "@/functions/returnUserRole";
-import { User } from "firebase/auth";
+import { User, getAuth, onAuthStateChanged } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import firebase from "../services/firebase";
 
 type PossibleRoles = "admin" | "resident" | "unregistered" | "reg_nonresident";
 type UnregisteredRole = { role: { unregistered: true } };
@@ -14,7 +13,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
 
   // assign user to state
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(async (thisUser) => {
+    onAuthStateChanged(getAuth(), async (thisUser) => {
       // if the server finds no user, empty the local representation
       if (!thisUser) {
         setUser({ role: { unregistered: true } });

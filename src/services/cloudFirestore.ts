@@ -1,15 +1,17 @@
 import {
   addDoc,
   collection,
+  doc,
+  getDoc,
   getDocs,
   getFirestore,
   serverTimestamp,
 } from "firebase/firestore";
 import { ModifiedServerResponse } from "../types/globalTypes";
-import { auth } from "./firebase";
 
 // get already initialized instance of firebase app
-import { app } from "./firebase";
+import addIdToEventData from "@/functions/addIdToEventData";
+import { app, auth } from "./firebase";
 
 export const db = getFirestore(app);
 
@@ -36,36 +38,30 @@ export async function uploadEventData(data: any): Promise<string | boolean> {
 
 export async function fetchAllEvents(): Promise<ModifiedServerResponse[]> {
   const querySnapshot = await getDocs(collection(db, "eventsData"));
-  let allEvents: any = [];
+  let allEvents: ModifiedServerResponse[] = [];
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    // console.log(doc.id, " => ", doc.data());
+    const eventWithId = addIdToEventData(doc);
 
-    const docData = doc.data();
-    const docId = doc.id;
-    const docWithId = { ...docData, docId: docId };
-
-    allEvents.push(docWithId);
+    allEvents.push(eventWithId);
   });
   return allEvents;
 }
 
 export async function fetchSpecificEvent(
   eventId: string
-): Promise<ModifiedServerResponse> {
-  const querySnapshot = await getDocs(collection(db, "eventsData"));
-  let specificEvent: any = {};
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    // console.log(doc.id, " => ", doc.data());
+): Promise<ModifiedServerResponse | null> {
+  const docRef = doc(db, "eventsData", eventId);
 
-    const docData = doc.data();
-    const docId = doc.id;
-    const docWithId = { ...docData, docId: docId };
+  const eventData = await getDoc(docRef);
+  if (eventData.exists()) {
+    const res = eventData.data();
+    const eventDataWithId = {
+      ...res,
+      id: eventId,
+    } as ModifiedServerResponse;
 
-    if (docId === eventId) {
-      specificEvent = docWithId;
-    }
-  });
-  return specificEvent;
+    return eventDataWithId;
+  } else {
+    return null;
+  }
 }
