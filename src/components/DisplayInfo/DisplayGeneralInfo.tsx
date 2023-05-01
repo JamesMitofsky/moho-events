@@ -4,7 +4,7 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
-export default function DisplaySociety({
+export default function DisplayGeneralInfo({
   associationName,
   category,
   eventName,
@@ -16,7 +16,7 @@ export default function DisplaySociety({
       <DisplayText content={associationName} label="Nom de la société" />
       <DisplayText content={category} label="Catégorie" />
       <DisplayText content={eventName} label="Nom de l'évènement" />
-      {/* <DisplayText content={numberOfQuote.toString()} label="Nombre de devis" /> */}
+      <DisplayText content={numberOfQuote} label="Nombre de devis" />
       <DisplayHTML html={comments} label="Remarques" />
     </TitledGroup>
   );
