@@ -1,7 +1,7 @@
 import useFetchEventsGroupedByDate from "@/hooks/useFetchEventsGroupedByDate";
 import { ModifiedServerResponse } from "@/types/globalTypes";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { List, Typography } from "@mui/material";
+import { grey } from "@mui/material/colors";
 import { v4 as uuid4 } from "uuid";
 import LinkToEvent from "./LinkToEvent";
 
@@ -22,10 +22,7 @@ export default function EventsList() {
     });
     return (
       <List key={uuid4()}>
-        <Typography mt={4} variant="h3">
-          <CalendarTodayIcon sx={{ mr: 2 }} />
-          {trimmedDate}
-        </Typography>
+        <Typography sx={{ mt: 4, color: grey[700] }}>{trimmedDate}</Typography>
         {constructedGroup}
       </List>
     );

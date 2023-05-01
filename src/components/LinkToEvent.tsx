@@ -16,6 +16,7 @@ export default function LinkToEvent({
     <Link key={docId} href={`/evenement/${docId}`} component={NextLink}>
       <ListItem divider>
         <ListItemText
+          primaryTypographyProps={{ fontSize: "1.4rem" }}
           primary={`${associationName}`}
           secondary={numberOfPeople && `${numberOfPeople} personnes`}
         />
