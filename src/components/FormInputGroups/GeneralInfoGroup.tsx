@@ -42,6 +42,7 @@ export default function GeneralInfoGroup() {
         required
         label="Date d'évènement"
         name="generalInfo.dateAsISO"
+        disablePast
       />
       <TextEditor objLabel="generalInfo.comments" displayLabel="Remarques" />
     </TitledGroup>
