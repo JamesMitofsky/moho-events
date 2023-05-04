@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
 import parse from "html-react-parser";
+import DisplayEmptyField from "./DisplayEmptyField";
+import DisplayWrapper from "./DisplayWrapper";
 
 interface Props {
   html: string;
@@ -7,27 +8,10 @@ interface Props {
 }
 
 export default function DisplayHTML({ html, label }: Props) {
-  // display simply a dash if the content is empty
-
-  const parsedHTML = parse(html);
+  const parsedHTML = parse(html) as string;
   return (
-    <Box>
-      <Typography sx={{ fontSize: 14, color: "grey" }}>{label}</Typography>
-      {html.length > 0 ? (
-        <Typography
-          sx={{
-            fontSize: 14,
-            backgroundColor: "#f2f5f5",
-            borderRadius: 1,
-            px: 2,
-            py: 1,
-          }}
-        >
-          {parsedHTML}
-        </Typography>
-      ) : (
-        <Typography sx={{ fontSize: 14 }}>—</Typography>
-      )}
-    </Box>
+    <DisplayEmptyField input={html} label={label}>
+      <DisplayWrapper content={parsedHTML} label={label} />
+    </DisplayEmptyField>
   );
 }
