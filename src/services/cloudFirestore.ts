@@ -7,7 +7,7 @@ import {
   getFirestore,
   serverTimestamp,
 } from "firebase/firestore";
-import { ModifiedServerResponse } from "../types/globalTypes";
+import { AllEventGroups, ModifiedServerResponse } from "../types/globalTypes";
 
 // get already initialized instance of firebase app
 import addIdToEventData from "@/functions/addIdToEventData";
@@ -15,7 +15,9 @@ import { app, auth } from "./firebase";
 
 export const db = getFirestore(app);
 
-export async function uploadEventData(data: any): Promise<string | boolean> {
+export async function uploadEventData(
+  data: AllEventGroups
+): Promise<string | boolean> {
   console.log(data);
   const authorIncluded = {
     ...data,
