@@ -5,7 +5,7 @@ import { TitledGroup } from "../layouts/TitledGroup";
 
 export default function GeneralInfoGroup() {
   return (
-    <TitledGroup icon={ImportContactsIcon} title={"Info Général"}>
+    <TitledGroup icon={ImportContactsIcon} title={"Info Générale"}>
       <TextFieldElement
         fullWidth
         label="Nom de la société"

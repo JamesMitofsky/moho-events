@@ -31,7 +31,7 @@ export default function SignageGroup() {
           >
             <TextFieldElement
               fullWidth
-              label="L'endoit"
+              label="Lieu"
               name={`signage.locationAndText.${index}.location`}
             />
             <TextFieldElement

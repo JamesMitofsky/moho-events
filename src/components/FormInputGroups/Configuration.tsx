@@ -77,7 +77,7 @@ export default function ConfigurationGroup() {
             />
             <TextFieldElement
               fullWidth
-              label="Prestetaires"
+              label="Prestataires"
               name={`configuration.${index}.services`}
               type="number"
             />

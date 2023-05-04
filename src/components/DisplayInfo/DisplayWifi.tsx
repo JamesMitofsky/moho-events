@@ -3,7 +3,7 @@ import { TitledGroup } from "../layouts/TitledGroup";
 
 export default function DisplayWifi() {
   return (
-    <TitledGroup icon={WifiPasswordIcon} title="Wifi Accés">
+    <TitledGroup icon={WifiPasswordIcon} title="Accès Wifi">
       wifi info here eventually
     </TitledGroup>
   );

@@ -22,7 +22,7 @@ export default function WifiGroup() {
   };
 
   return (
-    <TitledGroup icon={WifiPasswordIcon} title={"Wifi Accés"}>
+    <TitledGroup icon={WifiPasswordIcon} title={"Accès Wifi"}>
       <ArrayOfElementsWrapper addLabel="Code Wifi" handleAddItem={handleAdd}>
         {fields.map((field, index) => (
           <TitledArrayOfElements
