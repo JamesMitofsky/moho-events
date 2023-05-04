@@ -5,6 +5,7 @@ import {
   ModifiedServerResponse,
 } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
+import DisplayDate from "./DisplayFormats/DisplayDate";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
@@ -18,11 +19,12 @@ export default function DisplayGeneralInfo({
   eventName,
   numberOfQuote,
   comments,
+  dateAsISO,
   createdBy,
 }: Props) {
   return (
     <TitledGroup icon={GroupsIcon} title="Société">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} columnSpacing={5}>
         <Grid xs={12} md={6}>
           <DisplayText content={associationName} label="Nom de la société" />
         </Grid>
@@ -41,7 +43,9 @@ export default function DisplayGeneralInfo({
         <Grid xs={12} md={6}>
           <DisplayText content={createdBy} label="Vendu par" />
         </Grid>
-
+        <Grid xs={12} md={6}>
+          <DisplayDate date={dateAsISO} label="Date" />
+        </Grid>
         <Grid xs={12} md={6}>
           <DisplayHTML html={comments} label="Remarques" />
         </Grid>
