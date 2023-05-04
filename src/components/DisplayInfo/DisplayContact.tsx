@@ -1,8 +1,8 @@
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
-import { Box } from "@mui/material";
 import { v4 as generateId } from "uuid";
 import { ContactInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
+import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
@@ -12,9 +12,14 @@ export default function DisplayContact({
 }: ContactInputs) {
   return (
     <TitledGroup icon={AddIcCallIcon} title="Contact">
-      {individuals.map((individual) => {
+      {individuals.map((individual, index) => {
         return (
-          <Box key={generateId()} sx={{ mb: 2, display: "grid", gap: 1 }}>
+          <TitledArrayOfElements
+            key={generateId()}
+            label="Contact"
+            index={index}
+            listLength={individuals.length}
+          >
             <DisplayText
               content={individual.contactName}
               label="Nom de la personne"
@@ -28,7 +33,7 @@ export default function DisplayContact({
               content={individual.telephoneNumber}
               label="Téléphone"
             />
-          </Box>
+          </TitledArrayOfElements>
         );
       })}
       <DisplayHTML html={comments} label="Remarques" />

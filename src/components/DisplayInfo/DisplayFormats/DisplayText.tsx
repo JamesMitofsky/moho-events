@@ -7,11 +7,9 @@ interface Props {
 }
 
 export default function DisplayText({ content, label }: Props) {
-  // display simply a dash if the content is empty
   return (
     <DisplayEmptyField label={label} input={content}>
-
-        <DisplayWrapper content={content} label={label} />
+      <DisplayWrapper content={content} label={label} />
     </DisplayEmptyField>
   );
 }

@@ -56,10 +56,10 @@ type EventComponent = {
     start: Date | string;
     end: Date | string;
   };
-  place: Places[];
+  place: Places;
   numberOfPeople: string;
   furnitureUsed: string;
-  catering: string[];
+  catering: string;
   billedService: string;
   eventLayout: string;
   details: string;

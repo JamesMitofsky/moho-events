@@ -24,10 +24,10 @@ export default function ProgramGroup() {
       start: "",
       end: "",
     },
-    place: [],
+    place: "",
     numberOfPeople: "",
     furnitureUsed: "",
-    catering: [],
+    catering: "",
     billedService: "",
     eventLayout: "",
     details: "",
@@ -71,7 +71,7 @@ export default function ProgramGroup() {
           >
             <TextFieldElement
               fullWidth
-              label="Contenu"
+              label="Type"
               name={`program.events.${index}.title`}
               helperText="Ex: Pause café, Déjeuner, etc."
             />
