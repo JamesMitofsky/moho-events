@@ -14,7 +14,7 @@ export default function DisplayWrapper({ label, content }: Props) {
   };
   return (
     <Box>
-      <Typography>{label}</Typography>
+      <Typography fontSize=".8rem">{label}</Typography>
       <Box
         sx={{
           backgroundColor: grey[100],
