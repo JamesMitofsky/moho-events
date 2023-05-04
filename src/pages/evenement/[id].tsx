@@ -13,7 +13,10 @@ export default function SpecificEventInformation() {
     <Container sx={{ height: "100%" }}>
       {event ? (
         <>
-          <DisplayGeneralInfo {...event.generalInfo} />
+          <DisplayGeneralInfo
+            createdBy={event.creationDetails.createdBy}
+            {...event.generalInfo}
+          />
           <DisplayContact {...event.contact} />
           <DisplayProgram {...event.program} />
           <DisplaySignage {...event.signage} />
