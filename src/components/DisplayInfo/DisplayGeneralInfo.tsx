@@ -23,7 +23,7 @@ export default function DisplayGeneralInfo({
   createdBy,
 }: Props) {
   return (
-    <TitledGroup icon={GroupsIcon} title="Société">
+    <TitledGroup icon={GroupsIcon} title="Info Générale">
       <Grid container spacing={2} columnSpacing={5}>
         <Grid xs={12} md={6}>
           <DisplayText content={associationName} label="Nom de la société" />
