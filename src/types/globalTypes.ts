@@ -144,6 +144,7 @@ export type {
   GeneralInfoInputs,
   ContactInputs,
   ContactIndividual,
+  ConfigurationInputs,
   ProgramInputs,
   WifiInputs,
   SignageInputs,

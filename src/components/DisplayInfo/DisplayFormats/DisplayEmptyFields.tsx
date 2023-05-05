@@ -1,11 +1,27 @@
+import {
+  ConfigurationInputs,
+  ContactInputs,
+  GeneralInfoInputs,
+  ProgramInputs,
+  SignageInputs,
+  WifiInputs,
+} from "@/types/globalTypes";
 import labelKeys from "@/types/labelKey";
 import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import { useMemo } from "react";
 
+type IndividualEventGroups =
+  | (GeneralInfoInputs & { createdBy: string })
+  | ContactInputs
+  | ProgramInputs
+  | WifiInputs
+  | SignageInputs
+  | ConfigurationInputs;
+
 type Props = {
-  fields: Record<string, string>;
+  fields: IndividualEventGroups;
   sectionName: keyof typeof labelKeys;
 };
 
