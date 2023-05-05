@@ -20,7 +20,7 @@ export const TitledGroup = ({
           {title}
         </Typography>
       </Stack>
-      <Grid container spacing={2} columnSpacing={5}>
+      <Grid container spacing={2}>
         {children}
       </Grid>
     </SpacedChildren>

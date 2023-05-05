@@ -10,7 +10,7 @@ interface Props {
 export default function DisplayHTML({ html, label }: Props) {
   const parsedHTML = parse(html) as string;
   return (
-    <WrapperEmptyField input={html} label={label}>
+    <WrapperEmptyField input={html}>
       <DisplayWrapper content={parsedHTML} label={label} />
     </WrapperEmptyField>
   );
