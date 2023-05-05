@@ -1,5 +1,6 @@
 import { SignageLocationAndText } from "@/types/globalTypes";
 import SignpostIcon from "@mui/icons-material/Signpost";
+import Grid from "@mui/system/Unstable_Grid";
 import { TextFieldElement, useFieldArray } from "react-hook-form-mui";
 import TextEditor from "../inputs/TextEditor";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
@@ -29,20 +30,26 @@ export default function SignageGroup() {
             index={index}
             listLength={fields.length}
           >
-            <TextFieldElement
-              fullWidth
-              label="Lieu"
-              name={`signage.locationAndText.${index}.location`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Contenu"
-              name={`signage.locationAndText.${index}.text`}
-            />
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Lieu"
+                name={`signage.locationAndText.${index}.location`}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Contenu"
+                name={`signage.locationAndText.${index}.text`}
+              />
+            </Grid>
           </TitledArrayOfElements>
         ))}
       </ArrayOfElementsWrapper>
-      <TextEditor displayLabel="Remarques" objLabel="signage.comments" />
+      <Grid xs={12}>
+        <TextEditor displayLabel="Remarques" objLabel="signage.comments" />
+      </Grid>
     </TitledGroup>
   );
 }

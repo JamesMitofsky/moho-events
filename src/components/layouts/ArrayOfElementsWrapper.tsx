@@ -15,15 +15,17 @@ export default function ArrayOfElementsWrapper({
   handleAddItem,
 }: Props) {
   return (
-    <Card>
-      <CardContent>
-        <Grid container spacing={2}>
-          {children}
-          <Grid xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
-            <AddButton onClick={handleAddItem} label={addLabel} />
+    <Grid xs={12}>
+      <Card>
+        <CardContent>
+          <Grid container spacing={2}>
+            {children}
+            <Grid xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
+              <AddButton onClick={handleAddItem} label={addLabel} />
+            </Grid>
           </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }
