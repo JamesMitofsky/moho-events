@@ -1,4 +1,5 @@
 import HandymanIcon from "@mui/icons-material/Handyman";
+import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
@@ -42,49 +43,75 @@ export default function ConfigurationGroup() {
             index={index}
             listLength={fields.length}
           >
-            <SelectMohoRoom
-              name={`configuration.${index}.room`}
-              multiple={true}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Nombre de pax"
-              name={`configuration.${index}.numberOfPeople`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Configuration"
-              name={`configuration.${index}.layout`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Mobilier"
-              name={`configuration.${index}.furnishedBy`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Microphones"
-              name={`configuration.${index}.microphones`}
-              type="number"
-            />
-            <SwitchElement
-              label="Visio"
-              name={`configuration.${index}.visio`}
-            />
-            <SwitchElement
-              label="Captation"
-              name={`configuration.${index}.captioning`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Prestataires"
-              name={`configuration.${index}.services`}
-              type="number"
-            />
-            <TextEditor
-              displayLabel="Remarques specifique à cette configuration"
-              objLabel={`configuration.${index}.comments`}
-            />
+            <Grid xs={12} md={6}>
+              <SelectMohoRoom
+                name={`configuration.${index}.room`}
+                multiple={true}
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Nombre de pax"
+                name={`configuration.${index}.numberOfPeople`}
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Configuration"
+                name={`configuration.${index}.layout`}
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Mobilier"
+                name={`configuration.${index}.furnishedBy`}
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Microphones"
+                name={`configuration.${index}.microphones`}
+                type="number"
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Prestataires"
+                name={`configuration.${index}.services`}
+                type="number"
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <SwitchElement
+                label="Visio"
+                name={`configuration.${index}.visio`}
+              />
+            </Grid>
+
+            <Grid xs={12} md={6}>
+              <SwitchElement
+                label="Captation"
+                name={`configuration.${index}.captioning`}
+              />
+            </Grid>
+
+            <Grid xs={12}>
+              <TextEditor
+                displayLabel="Remarques specifique à cette configuration"
+                objLabel={`configuration.${index}.comments`}
+              />
+            </Grid>
           </TitledArrayOfElements>
         ))}
       </ArrayOfElementsWrapper>
