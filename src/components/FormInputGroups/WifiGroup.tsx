@@ -1,5 +1,6 @@
 import { UsernameAndPassword } from "@/types/globalTypes";
 import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
+import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
 import TextEditor from "../inputs/TextEditor";
@@ -31,20 +32,27 @@ export default function WifiGroup() {
             index={index}
             listLength={fields.length}
           >
-            <TextFieldElement
-              fullWidth
-              label="Identifiant"
-              name={`wifi.connectionInfo.${index}.username`}
-            />
-            <TextFieldElement
-              fullWidth
-              label="Mot de passe"
-              name={`wifi.connectionInfo.${index}.password`}
-            />
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Identifiant"
+                name={`wifi.connectionInfo.${index}.username`}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Mot de passe"
+                name={`wifi.connectionInfo.${index}.password`}
+              />
+            </Grid>
           </TitledArrayOfElements>
         ))}
       </ArrayOfElementsWrapper>
-      <TextEditor displayLabel="Remarques" objLabel="wifi.comments" />
+
+      <Grid xs={12}>
+        <TextEditor displayLabel="Remarques" objLabel="wifi.comments" />
+      </Grid>
     </TitledGroup>
   );
 }
