@@ -39,7 +39,7 @@ export default function DisplayEmptyFields({ fields, sectionName }: Props) {
     });
   }, [keysOfEmptyFields, labelKeys]);
 
-  return (
+  return emptyFieldsWithLabels.length === 0 ? null : (
     <Grid xs={12}>
       <Typography fontSize=".8rem">Champs vides</Typography>
       <Typography sx={{ fontSize: ".8rem", lineHeight: 1, color: grey[600] }}>
