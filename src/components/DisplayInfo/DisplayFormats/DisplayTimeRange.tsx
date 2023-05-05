@@ -14,7 +14,7 @@ export default function DisplayTimeRange({
   const formattedStart = getHoursAndMinutes(startTime);
   const formattedEnd = getHoursAndMinutes(endTime);
   return (
-    <WrapperEmptyField label={label} input={startTime}>
+    <WrapperEmptyField input={startTime}>
       <DisplayWrapper
         content={`${formattedStart} — ${formattedEnd}`}
         label={label}

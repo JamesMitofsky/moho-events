@@ -8,7 +8,7 @@ interface Props {
 
 export default function DisplayText({ content, label }: Props) {
   return (
-    <WrapperEmptyField label={label} input={content}>
+    <WrapperEmptyField input={content}>
       <DisplayWrapper content={content} label={label} />
     </WrapperEmptyField>
   );

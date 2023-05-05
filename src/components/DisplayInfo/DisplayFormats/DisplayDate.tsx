@@ -13,7 +13,7 @@ export default function DisplayDate({ date, label }: Props) {
     year: "numeric",
   });
   return (
-    <WrapperEmptyField label={label} input={formattedDate}>
+    <WrapperEmptyField input={formattedDate}>
       <DisplayWrapper content={formattedDate} label={label} />
     </WrapperEmptyField>
   );

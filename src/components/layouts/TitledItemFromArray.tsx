@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import SpacedChildren from "./SpacedChildren";
+import Grid from "@mui/system/Unstable_Grid";
 
 type Props = {
   label: string;
@@ -22,11 +22,13 @@ export default function TitledItemFromArray({
   const margin = shouldAddMargin ? 5 : null;
 
   return (
-    <SpacedChildren additionalStyles={{ mb: margin }}>
-      <Typography variant="subtitle1">
-        {label} #{index + 1}
-      </Typography>
+    <>
+      <Grid xs={12}>
+        <Typography variant="subtitle1">
+          {label} #{index + 1}
+        </Typography>
+      </Grid>
       {children}
-    </SpacedChildren>
+    </>
   );
 }

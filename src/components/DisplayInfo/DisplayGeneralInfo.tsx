@@ -5,6 +5,7 @@ import {
 } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayDate from "./DisplayFormats/DisplayDate";
+import DisplayEmptyFields from "./DisplayFormats/DisplayEmptyFields";
 import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
@@ -12,15 +13,17 @@ type Props = GeneralInfoInputs & {
   createdBy: ModifiedServerResponse["creationDetails"]["createdBy"];
 };
 
-export default function DisplayGeneralInfo({
-  associationName,
-  category,
-  eventName,
-  numberOfQuote,
-  comments,
-  dateAsISO,
-  createdBy,
-}: Props) {
+export default function DisplayGeneralInfo(props: Props) {
+  const {
+    associationName,
+    category,
+    eventName,
+    numberOfQuote,
+    comments,
+    dateAsISO,
+    createdBy,
+  } = props;
+
   return (
     <TitledGroup icon={GroupsIcon} title="Info Générale">
       <DisplayText content={associationName} label="Nom de la société" />
@@ -36,6 +39,8 @@ export default function DisplayGeneralInfo({
       <DisplayDate date={dateAsISO} label="Date" />
 
       <DisplayHTML html={comments} label="Remarques" />
+
+      <DisplayEmptyFields fields={props} sectionName="generalInfo" />
     </TitledGroup>
   );
 }

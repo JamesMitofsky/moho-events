@@ -6,7 +6,7 @@ type Props = { items: string[]; label: string };
 
 export default function DisplayList({ items, label }: Props) {
   return (
-    <WrapperEmptyField label={label} input={items}>
+    <WrapperEmptyField input={items}>
       <Typography>{label}</Typography>
       <List>
         {items.map((item) => {
