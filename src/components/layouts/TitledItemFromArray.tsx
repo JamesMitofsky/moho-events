@@ -23,7 +23,7 @@ export default function TitledItemFromArray({
 
   return (
     <>
-      <Grid xs={12}>
+      <Grid xs={12} sx={{ mt: 2 }}>
         <Typography variant="subtitle1">
           {label} #{index + 1}
         </Typography>

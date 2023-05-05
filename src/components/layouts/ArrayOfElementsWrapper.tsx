@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@mui/material";
+import Grid from "@mui/system/Unstable_Grid/Grid";
 import AddButton from "../buttons/AddButton";
-import SpacedChildren from "./SpacedChildren";
 
 type Props = {
   children: React.ReactNode;
@@ -17,10 +17,12 @@ export default function ArrayOfElementsWrapper({
   return (
     <Card>
       <CardContent>
-        <SpacedChildren>
+        <Grid container spacing={2}>
           {children}
-          <AddButton onClick={handleAddItem} label={addLabel} />
-        </SpacedChildren>
+          <Grid xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
+            <AddButton onClick={handleAddItem} label={addLabel} />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );
