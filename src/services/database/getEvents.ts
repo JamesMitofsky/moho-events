@@ -16,13 +16,16 @@ type Props = (
 const getEvents: Props = async (eventsFilter) => {
   const filterDirection = eventsFilter === "upcoming" ? ">=" : "<";
 
-  const today = new Date().toISOString();
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  const yesterdayAsISO = yesterday.toISOString();
 
   const eventDate: ModifiedServerResponsePaths = "generalInfo.dateAsISO";
   const queryParams = query(
     collection(db, "eventsData"),
     orderBy(eventDate),
-    where(eventDate, filterDirection, today)
+    where(eventDate, filterDirection, yesterdayAsISO)
   );
   const querySnapshot = await getDocs(queryParams);
   let allEvents: ModifiedServerResponse[] = [];

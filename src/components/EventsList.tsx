@@ -1,7 +1,8 @@
 import useFetchEventsGroupedByDate from "@/hooks/useFetchEventsGroupedByDate";
 import { ModifiedServerResponse } from "@/types/globalTypes";
-import { List, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import Grid from "@mui/system/Unstable_Grid";
 import { v4 as uuid4 } from "uuid";
 import LinkToEvent from "./LinkToEvent";
 
@@ -17,18 +18,30 @@ export default function EventsList() {
           associationName={event.generalInfo?.associationName}
           docId={event.id}
           numberOfPeople={event.generalInfo?.numberOfPeople}
+          eventStartTime={event.program?.events[0].time.start as string}
+          eventStartDate={event.generalInfo?.dateAsISO}
         />
       );
     });
     return (
-      <List key={uuid4()}>
-        <Typography sx={{ mt: 4, color: grey[700] }}>{trimmedDate}</Typography>
-        {constructedGroup}
-      </List>
+      <>
+        <Grid xs={12} key={uuid4()}>
+          <Typography sx={{ mt: 4, color: grey[700] }}>
+            {trimmedDate}
+          </Typography>
+        </Grid>
+        <Grid container spacing={2} xs={12} key={uuid4()}>
+          {constructedGroup}
+        </Grid>
+      </>
     );
   });
 
-  return <>{eventsGroupedByDay}</>;
+  return (
+    <Grid container spacing={2}>
+      {eventsGroupedByDay}
+    </Grid>
+  );
 }
 
 function trimDateString(eventGroup: ModifiedServerResponse) {
