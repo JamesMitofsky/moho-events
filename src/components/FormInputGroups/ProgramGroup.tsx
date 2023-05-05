@@ -87,7 +87,7 @@ export default function ProgramGroup() {
             </Grid>
             <Grid xs={12} md={6}>
               <SwitchElement
-                label="Pertinent à l'equipe du restauration?"
+                label="Restauration concerné?"
                 name={`program.events.${index}.involvesRestaurant`}
               />
             </Grid>
