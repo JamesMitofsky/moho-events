@@ -8,7 +8,7 @@ type Props = {
   content: string;
 };
 
-export default function DisplayWrapper({ label, content }: Props) {
+export default function WrapperCopyContent({ label, content }: Props) {
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
   };

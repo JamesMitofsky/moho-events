@@ -1,6 +1,6 @@
 import getHoursAndMinutes from "@/functions/getHoursAndMinutes";
-import DisplayEmptyField from "./DisplayEmptyField";
-import DisplayWrapper from "./DisplayWrapper";
+import DisplayWrapper from "./WrapperCopyContent";
+import WrapperEmptyField from "./WrapperEmptyField";
 
 export default function DisplayTimeRange({
   startTime,
@@ -14,11 +14,11 @@ export default function DisplayTimeRange({
   const formattedStart = getHoursAndMinutes(startTime);
   const formattedEnd = getHoursAndMinutes(endTime);
   return (
-    <DisplayEmptyField label={label} input={startTime}>
+    <WrapperEmptyField label={label} input={startTime}>
       <DisplayWrapper
         content={`${formattedStart} — ${formattedEnd}`}
         label={label}
       />
-    </DisplayEmptyField>
+    </WrapperEmptyField>
   );
 }

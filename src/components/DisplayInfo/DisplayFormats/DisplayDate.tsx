@@ -1,5 +1,5 @@
-import DisplayEmptyField from "./DisplayEmptyField";
-import DisplayWrapper from "./DisplayWrapper";
+import DisplayWrapper from "./WrapperCopyContent";
+import WrapperEmptyField from "./WrapperEmptyField";
 
 type Props = {
   date: string;
@@ -13,8 +13,8 @@ export default function DisplayDate({ date, label }: Props) {
     year: "numeric",
   });
   return (
-    <DisplayEmptyField label={label} input={formattedDate}>
+    <WrapperEmptyField label={label} input={formattedDate}>
       <DisplayWrapper content={formattedDate} label={label} />
-    </DisplayEmptyField>
+    </WrapperEmptyField>
   );
 }

@@ -1,5 +1,4 @@
 import GroupsIcon from "@mui/icons-material/Groups";
-import Grid from "@mui/system/Unstable_Grid/Grid";
 import {
   GeneralInfoInputs,
   ModifiedServerResponse,
@@ -24,32 +23,19 @@ export default function DisplayGeneralInfo({
 }: Props) {
   return (
     <TitledGroup icon={GroupsIcon} title="Info Générale">
-      <Grid container spacing={2} columnSpacing={5}>
-        <Grid xs={12} md={6}>
-          <DisplayText content={associationName} label="Nom de la société" />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayText content={category} label="Catégorie" />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayText content={eventName} label="Nom de l'évènement" />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayText
-            content={numberOfQuote.toString()}
-            label="Nombre de devis"
-          />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayText content={createdBy} label="Vendu par" />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayDate date={dateAsISO} label="Date" />
-        </Grid>
-        <Grid xs={12} md={6}>
-          <DisplayHTML html={comments} label="Remarques" />
-        </Grid>
-      </Grid>
+      <DisplayText content={associationName} label="Nom de la société" />
+
+      <DisplayText content={category} label="Catégorie" />
+
+      <DisplayText content={eventName} label="Nom de l'évènement" />
+
+      <DisplayText content={numberOfQuote.toString()} label="Nombre de devis" />
+
+      <DisplayText content={createdBy} label="Vendu par" />
+
+      <DisplayDate date={dateAsISO} label="Date" />
+
+      <DisplayHTML html={comments} label="Remarques" />
     </TitledGroup>
   );
 }

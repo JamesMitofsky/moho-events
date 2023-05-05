@@ -1,6 +1,6 @@
 import parse from "html-react-parser";
-import DisplayEmptyField from "./DisplayEmptyField";
-import DisplayWrapper from "./DisplayWrapper";
+import DisplayWrapper from "./WrapperCopyContent";
+import WrapperEmptyField from "./WrapperEmptyField";
 
 interface Props {
   html: string;
@@ -10,8 +10,8 @@ interface Props {
 export default function DisplayHTML({ html, label }: Props) {
   const parsedHTML = parse(html) as string;
   return (
-    <DisplayEmptyField input={html} label={label}>
+    <WrapperEmptyField input={html} label={label}>
       <DisplayWrapper content={parsedHTML} label={label} />
-    </DisplayEmptyField>
+    </WrapperEmptyField>
   );
 }

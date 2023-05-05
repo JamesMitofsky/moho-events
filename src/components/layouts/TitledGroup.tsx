@@ -1,5 +1,6 @@
 import { SvgIconComponent } from "@mui/icons-material";
 import { Stack, SvgIcon, Typography } from "@mui/material";
+import Grid from "@mui/system/Unstable_Grid";
 import SpacedChildren from "./SpacedChildren";
 
 export const TitledGroup = ({
@@ -19,7 +20,9 @@ export const TitledGroup = ({
           {title}
         </Typography>
       </Stack>
-      {children}
+      <Grid container spacing={2} columnSpacing={5}>
+        {children}
+      </Grid>
     </SpacedChildren>
   );
 };

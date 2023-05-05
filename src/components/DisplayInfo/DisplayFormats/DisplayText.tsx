@@ -1,5 +1,5 @@
-import DisplayEmptyField from "./DisplayEmptyField";
-import DisplayWrapper from "./DisplayWrapper";
+import DisplayWrapper from "./WrapperCopyContent";
+import WrapperEmptyField from "./WrapperEmptyField";
 
 interface Props {
   content: string;
@@ -8,8 +8,8 @@ interface Props {
 
 export default function DisplayText({ content, label }: Props) {
   return (
-    <DisplayEmptyField label={label} input={content}>
+    <WrapperEmptyField label={label} input={content}>
       <DisplayWrapper content={content} label={label} />
-    </DisplayEmptyField>
+    </WrapperEmptyField>
   );
 }
