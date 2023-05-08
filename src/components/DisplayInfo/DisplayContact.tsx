@@ -1,6 +1,7 @@
 import AddIcCallIcon from "@mui/icons-material/AddIcCall";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import Grid from "@mui/system/Unstable_Grid";
 import { v4 as generateId } from "uuid";
 import { ContactInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
