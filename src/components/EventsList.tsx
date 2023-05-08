@@ -26,11 +26,11 @@ export default function EventsList() {
     return (
       <>
         <Grid xs={12} key={uuid4()}>
-          <Typography sx={{ mt: 4, color: grey[700] }}>
+          <Typography sx={{ mt: 6, color: grey[700] }}>
             {trimmedDate}
           </Typography>
         </Grid>
-        <Grid container spacing={2} xs={12} key={uuid4()}>
+        <Grid container spacing={2} xs={12}>
           {constructedGroup}
         </Grid>
       </>

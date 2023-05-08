@@ -21,7 +21,6 @@ export default function LinkToEvent({
   return (
     <Grid
       xs={12}
-      md={6}
       key={docId}
       href={`/evenement/${docId}`}
       component={NextLink}
