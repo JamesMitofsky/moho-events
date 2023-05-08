@@ -1,3 +1,4 @@
+import DisplayCatering from "@/components/DisplayInfo/DisplayCatering";
 import DisplayContact from "@/components/DisplayInfo/DisplayContact";
 import DisplayGeneralInfo from "@/components/DisplayInfo/DisplayGeneralInfo";
 import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
@@ -19,6 +20,7 @@ export default function SpecificEventInformation() {
           />
           <DisplayContact {...event.contact} />
           <DisplayProgram {...event.program} />
+          <DisplayCatering {...event.program} />
           <DisplaySignage {...event.signage} />
         </>
       ) : (
