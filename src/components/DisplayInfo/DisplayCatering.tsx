@@ -18,7 +18,7 @@ export default function DisplayCatering({
 
   return (
     <TitledGroup icon={RestaurantMenuIcon} title="Restauration">
-      {caterings[0].place !== "" ? (
+      {!caterings[0].place ? (
         caterings.map((catering, index) => {
           return (
             <TitledArrayOfElements
