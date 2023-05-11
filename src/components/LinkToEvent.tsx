@@ -1,12 +1,13 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import NextLink from "next/link";
+import { NextRouter, useRouter } from "next/router";
 import EventTimeIndicator from "./EventTimeIndicator";
+import CateringButton from "./buttons/CateringButton";
 
 type Props = {
   docId: string;
   associationName: string;
-  numberOfPeople: string;
   eventStartTime: string;
   eventDate: string;
   eventEndTime: string;
@@ -15,11 +16,11 @@ type Props = {
 export default function LinkToEvent({
   docId,
   associationName,
-  numberOfPeople,
   eventStartTime,
   eventDate,
   eventEndTime,
 }: Props) {
+  const router = useRouter();
   return (
     <Grid
       xs={12}
@@ -35,20 +36,32 @@ export default function LinkToEvent({
           justifyContent: "space-between",
         }}
       >
-        <CardContent>
-          <Typography variant="h3" color="primary">
-            {associationName}
-          </Typography>
-          <Typography variant="subtitle1">
-            {numberOfPeople && `${numberOfPeople} personnes`}
-          </Typography>
+        <CardContent
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Box>
+            <Typography variant="h3" color="primary" sx={{ mb: 1 }}>
+              {associationName}
+            </Typography>
+            <EventTimeIndicator
+              eventStartTime={eventStartTime}
+              eventEndTime={eventEndTime}
+              eventDate={eventDate}
+            />
+          </Box>
+          <CateringButton
+            onClick={() => navigateToRestaurationView(docId, router)}
+          />
         </CardContent>
-        <EventTimeIndicator
-          eventStartTime={eventStartTime}
-          eventEndTime={eventEndTime}
-          eventDate={eventDate}
-        />
       </Card>
     </Grid>
   );
+}
+
+function navigateToRestaurationView(docId: string, router: NextRouter) {
+  router.push(`/evenement/${docId}/restauration`);
 }
