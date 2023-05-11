@@ -1,4 +1,5 @@
 import { EventComponent } from "@/types/globalTypes";
+import DisplayHTML from "../DisplayFormats/DisplayHTML";
 import DisplayText from "../DisplayFormats/DisplayText";
 import DisplayTimeRange from "../DisplayFormats/DisplayTimeRange";
 
@@ -27,8 +28,8 @@ export default function CateringDetails({
       <DisplayText content={catering} label="Traiteurs" />
       <DisplayText content={billedService} label="Service facturé" />
       <DisplayText content={eventLayout} label="Format" />
-      <DisplayText content={furnitureUsed} label="Mobilier utilisé" />
-      <DisplayText content={details} label="Détails" />
+      <DisplayHTML html={furnitureUsed} label="Mobilier utilisé" />
+      <DisplayHTML html={details} label="Détails" />
     </>
   );
 }

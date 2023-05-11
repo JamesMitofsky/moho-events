@@ -1,3 +1,4 @@
+import { grey } from "@mui/material/colors";
 import { frFR } from "@mui/material/locale";
 import { ThemeOptions, createTheme } from "@mui/material/styles";
 import { Antonio } from "next/font/google";
@@ -14,6 +15,7 @@ const theme: ThemeOptions = {
     fontFamily: "sans-serif",
     h1: {
       fontSize: 40,
+      color: grey[800],
       fontFamily: antonio.style.fontFamily,
     },
     h2: {

@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 interface Props {
   title: string;
@@ -11,9 +11,7 @@ const PageTitle = ({ title, subtitle, icon }: Props) => {
   return (
     <>
       <Box sx={{ mt: 2, mb: 2 }}>
-        <Typography color="#414141" variant="h1">
-          {title}
-        </Typography>
+        <Typography variant="h1">{title}</Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           {icon && <Icon fontSize="small" color="grey" />}
           <Typography variant="subtitle1">{subtitle}</Typography>

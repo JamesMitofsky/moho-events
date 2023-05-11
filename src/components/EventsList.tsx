@@ -24,7 +24,6 @@ export default function EventsList({ eventsFilter, order = "asc" }: Props) {
           key={event.id}
           associationName={event.generalInfo?.associationName}
           docId={event.id}
-          numberOfPeople={event.generalInfo?.numberOfPeople}
           eventStartTime={event.program?.events[0].time.start as string}
           eventEndTime={eventEndTime}
           eventDate={event.generalInfo?.dateAsISO}

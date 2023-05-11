@@ -40,7 +40,6 @@ export default function EventTimeIndicator({
   return isEventActive ? (
     <Box
       sx={{
-        m: 1,
         height: "fit-content",
         alignItems: "center",
         display: "flex",
