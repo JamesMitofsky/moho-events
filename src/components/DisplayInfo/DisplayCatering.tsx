@@ -16,6 +16,8 @@ export default function DisplayCatering({
     return [];
   });
 
+  console.log("caterings", caterings);
+
   return (
     <TitledGroup icon={RestaurantMenuIcon} title="Restauration">
       {caterings[0]?.place ? (

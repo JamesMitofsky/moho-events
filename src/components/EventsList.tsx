@@ -1,17 +1,24 @@
 import useFetchEventsGroupedByDate from "@/hooks/useFetchEventsGroupedByDate";
-import { ModifiedServerResponse } from "@/types/globalTypes";
+import { EventComponent, ModifiedServerResponse } from "@/types/globalTypes";
 import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/system/Unstable_Grid";
 import { v4 as uuid4 } from "uuid";
 import LinkToEvent from "./LinkToEvent";
 
-export default function EventsList() {
-  const events = useFetchEventsGroupedByDate();
+type Props = {
+  eventsFilter: "upcoming" | "past" | "all";
+  order?: "asc" | "desc";
+};
+
+export default function EventsList({ eventsFilter, order = "asc" }: Props) {
+  const events = useFetchEventsGroupedByDate(eventsFilter);
 
   const eventsGroupedByDay = events?.map((eventGroup) => {
     const trimmedDate = trimDateString(eventGroup[0]);
     const constructedGroup = eventGroup.map((event) => {
+      const eventEndTime = getEventEndTime(event.program?.events);
+
       return (
         <LinkToEvent
           key={event.id}
@@ -19,7 +26,8 @@ export default function EventsList() {
           docId={event.id}
           numberOfPeople={event.generalInfo?.numberOfPeople}
           eventStartTime={event.program?.events[0].time.start as string}
-          eventStartDate={event.generalInfo?.dateAsISO}
+          eventEndTime={eventEndTime}
+          eventDate={event.generalInfo?.dateAsISO}
         />
       );
     });
@@ -39,7 +47,7 @@ export default function EventsList() {
 
   return (
     <Grid container spacing={2}>
-      {eventsGroupedByDay}
+      {order === "asc" ? eventsGroupedByDay : eventsGroupedByDay?.reverse()}
     </Grid>
   );
 }
@@ -51,4 +59,10 @@ function trimDateString(eventGroup: ModifiedServerResponse) {
     day: "numeric",
   });
   return trimmedDate;
+}
+
+function getEventEndTime(events: EventComponent[]): string {
+  const lastEvent = events[events.length - 1];
+  const endTime = lastEvent.time.end as string;
+  return endTime;
 }

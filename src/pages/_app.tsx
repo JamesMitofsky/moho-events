@@ -41,12 +41,16 @@ export default function Layout({
 
   const router = useRouter();
 
-  function navigateNewUserHome() {
+  function navigateToLogin() {
     // only allow this function to run if the user is on the login page
-    const currentPath = router.pathname;
-    const loginPagePath = "connexion";
-    if (currentPath === loginPagePath) {
-      const pathToListOfEvents = "/tout";
+    const pathToListOfEvents = "/connexion";
+    router.push(pathToListOfEvents);
+  }
+
+  function navigateFromConnexionToHome() {
+    // only allow this function to run if the user is on the login page
+    if (router.pathname === "/connexion") {
+      const pathToListOfEvents = "/";
       router.push(pathToListOfEvents);
     }
   }
@@ -54,18 +58,19 @@ export default function Layout({
   // authenticate user
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      console.log("Checking for user...");
+      console.log("Verifying user");
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUser(user);
         console.log(user);
+        navigateFromConnexionToHome();
 
         // prevent page from rendering twice if the user is already where they should be going
-        navigateNewUserHome();
       } else {
         // User is signed out
         console.log("No user is signed in.");
+        navigateToLogin();
       }
     });
   }, []);
@@ -79,11 +84,12 @@ export default function Layout({
               <NavBar />
               <Container
                 sx={{
-                  mt: 0.2,
+                  mt: 3,
                   mb: 3,
                   display: "flex",
                   flex: 1,
                   flexDirection: "column",
+                  height: "100%",
                 }}
               >
                 <Component {...pageProps} />

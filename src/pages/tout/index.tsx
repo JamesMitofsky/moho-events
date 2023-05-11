@@ -1,7 +1,8 @@
 import EventsList from "@/components/EventsList";
 import PageTitle from "@/components/layouts/PageTitle";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Box, Button, Link } from "@mui/material";
+import { Box, Button, Link, Typography } from "@mui/material";
+import NextLink from "next/link";
 
 const ListOfEvents = () => {
   return (
@@ -13,7 +14,14 @@ const ListOfEvents = () => {
           justifyContent: "space-between",
         }}
       >
-        <PageTitle title="L'Accueil" />
+        <Box>
+          <PageTitle title="L'Accueil" />
+          <Typography>
+            <Link component={NextLink} href="/evenements-passes">
+              Les Evènements Passés
+            </Link>
+          </Typography>
+        </Box>
         <Button
           component={Link}
           href="/creer"
@@ -23,7 +31,7 @@ const ListOfEvents = () => {
           Ajouter un évènement
         </Button>
       </Box>
-      <EventsList />
+      <EventsList eventsFilter="upcoming" />
     </>
   );
 };

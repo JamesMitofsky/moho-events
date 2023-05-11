@@ -4,25 +4,39 @@ import { Box } from "@mui/system";
 
 type Props = {
   eventStartTime: string;
-  eventStartDate: string;
+  eventEndTime: string;
+  eventDate: string;
 };
 
 export default function EventTimeIndicator({
   eventStartTime,
-  eventStartDate,
+  eventEndTime,
+  eventDate,
 }: Props) {
-  const eventTimeAsDateObj = new Date(eventStartTime);
-  const eventDateAsDateObj = new Date(eventStartDate);
+  const startTimeObj = new Date(eventStartTime);
+  const endTimeObj = new Date(eventEndTime);
+  const dateObj = new Date(eventDate);
 
-  const inferredSpecificStartDate = new Date(
-    eventDateAsDateObj.getFullYear(),
-    eventDateAsDateObj.getMonth(),
-    eventDateAsDateObj.getDate(),
-    eventTimeAsDateObj.getHours(),
-    eventTimeAsDateObj.getMinutes()
+  const eventStartTimeAndDate = new Date(
+    dateObj.getFullYear(),
+    dateObj.getMonth(),
+    dateObj.getDate(),
+    startTimeObj.getHours(),
+    startTimeObj.getMinutes()
   );
 
-  const isEventActive = inferredSpecificStartDate < new Date();
+  const eventEndTimeAndDate = new Date(
+    dateObj.getFullYear(),
+    dateObj.getMonth(),
+    dateObj.getDate(),
+    endTimeObj.getHours(),
+    endTimeObj.getMinutes()
+  );
+
+  const isAfterEventStart = eventStartTimeAndDate < new Date();
+  const isNotYetFinished = eventEndTimeAndDate > new Date();
+
+  const isEventActive = isAfterEventStart && isNotYetFinished;
   return isEventActive ? (
     <Box
       sx={{
