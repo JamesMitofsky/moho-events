@@ -2,13 +2,15 @@ import getEvents from "@/services/database/getEvents";
 import { ModifiedServerResponse } from "@/types/globalTypes";
 import { useEffect, useState } from "react";
 
-export default function useFetchEventsGroupedByDate() {
+export default function useFetchEventsGroupedByDate(
+  eventsFilter: "all" | "upcoming" | "past"
+) {
   const [events, setEvents] = useState<ModifiedServerResponse[][] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getEvents("upcoming");
+        const res = await getEvents(eventsFilter);
         const eventsGroupedByDate = groupEventsByDate(res);
         setEvents(eventsGroupedByDate);
       } catch (error) {

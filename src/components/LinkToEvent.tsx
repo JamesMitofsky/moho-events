@@ -8,7 +8,8 @@ type Props = {
   associationName: string;
   numberOfPeople: string;
   eventStartTime: string;
-  eventStartDate: string;
+  eventDate: string;
+  eventEndTime: string;
 };
 
 export default function LinkToEvent({
@@ -16,7 +17,8 @@ export default function LinkToEvent({
   associationName,
   numberOfPeople,
   eventStartTime,
-  eventStartDate,
+  eventDate,
+  eventEndTime,
 }: Props) {
   return (
     <Grid
@@ -43,7 +45,8 @@ export default function LinkToEvent({
         </CardContent>
         <EventTimeIndicator
           eventStartTime={eventStartTime}
-          eventStartDate={eventStartDate}
+          eventEndTime={eventEndTime}
+          eventDate={eventDate}
         />
       </Card>
     </Grid>
