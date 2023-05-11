@@ -6,9 +6,12 @@ import Grid from "@mui/system/Unstable_Grid";
 import { v4 as uuid4 } from "uuid";
 import LinkToEvent from "./LinkToEvent";
 
-type Props = { eventsFilter: "upcoming" | "past" | "all" };
+type Props = {
+  eventsFilter: "upcoming" | "past" | "all";
+  order?: "asc" | "desc";
+};
 
-export default function EventsList({ eventsFilter }: Props) {
+export default function EventsList({ eventsFilter, order = "asc" }: Props) {
   const events = useFetchEventsGroupedByDate(eventsFilter);
 
   const eventsGroupedByDay = events?.map((eventGroup) => {
@@ -44,7 +47,7 @@ export default function EventsList({ eventsFilter }: Props) {
 
   return (
     <Grid container spacing={2}>
-      {eventsGroupedByDay}
+      {order === "asc" ? eventsGroupedByDay : eventsGroupedByDay?.reverse()}
     </Grid>
   );
 }
