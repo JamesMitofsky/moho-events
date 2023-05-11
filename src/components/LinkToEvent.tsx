@@ -22,13 +22,7 @@ export default function LinkToEvent({
 }: Props) {
   const router = useRouter();
   return (
-    <Grid
-      xs={12}
-      key={docId}
-      href={`/evenement/${docId}`}
-      component={NextLink}
-      sx={{ textDecoration: "none" }}
-    >
+    <Grid xs={12} key={docId} sx={{ alignItems: "center" }}>
       <Card
         sx={{
           display: "flex",
@@ -36,27 +30,39 @@ export default function LinkToEvent({
           justifyContent: "space-between",
         }}
       >
-        <CardContent
+        <Box
           sx={{
-            width: "100%",
             display: "flex",
             justifyContent: "space-between",
+            width: "100%",
+            alignItems: "center",
           }}
         >
-          <Box>
-            <Typography variant="h3" color="primary" sx={{ mb: 1 }}>
-              {associationName}
-            </Typography>
-            <EventTimeIndicator
-              eventStartTime={eventStartTime}
-              eventEndTime={eventEndTime}
-              eventDate={eventDate}
-            />
-          </Box>
+          <CardContent
+            href={`/evenement/${docId}`}
+            component={NextLink}
+            sx={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+              textDecoration: "none",
+            }}
+          >
+            <Box>
+              <Typography variant="h3" color="primary" sx={{ mb: 1 }}>
+                {associationName}
+              </Typography>
+              <EventTimeIndicator
+                eventStartTime={eventStartTime}
+                eventEndTime={eventEndTime}
+                eventDate={eventDate}
+              />
+            </Box>
+          </CardContent>
           <CateringButton
             onClick={() => navigateToRestaurationView(docId, router)}
           />
-        </CardContent>
+        </Box>
       </Card>
     </Grid>
   );
