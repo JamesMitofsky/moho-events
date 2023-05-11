@@ -8,17 +8,17 @@ export default function useParamsToFetchEvent() {
   const [event, setEvent] = useState<ModifiedServerResponse | null>(null);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { eventId } = router.query;
 
-  // query firebase using the eventId
+  // query firebase using the eventeventId
   useEffect(() => {
-    if (!id) return;
+    if (!eventId) return;
     const getEvent = async function () {
-      const res = await fetchSpecificEvent(id as string);
+      const res = await fetchSpecificEvent(eventId as string);
       setEvent(res);
     };
     getEvent();
-  }, [id]);
+  }, [eventId]);
 
   return event;
 }

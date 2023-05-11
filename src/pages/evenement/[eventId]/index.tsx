@@ -5,13 +5,14 @@ import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
 import DisplaySignage from "@/components/DisplayInfo/DisplaySignage";
 import Loading from "@/components/Loading";
 import useParamsToFetchEvent from "@/hooks/useParamsToFetchEvent";
-import { Container } from "@mui/system";
 
 export default function SpecificEventInformation() {
   const event = useParamsToFetchEvent();
 
+  console.log("event loaded", event);
+
   return (
-    <Container sx={{ height: "100%" }}>
+    <>
       {event ? (
         <>
           <DisplayGeneralInfo
@@ -26,6 +27,6 @@ export default function SpecificEventInformation() {
       ) : (
         <Loading />
       )}
-    </Container>
+    </>
   );
 }

@@ -1,16 +1,10 @@
-import { Typography, Link } from "@mui/material";
-import NextLink from "next/link";
+import UserContext from "@/contexts/UserContext";
+import { useContext } from "react";
+import Login from "./connexion";
+import ListOfEvents from "./tout";
 
 export default function HomePage() {
-  return (
-    <>
-      <Typography variant="h1">Home, woohoo</Typography>
-      <Link component={NextLink} href="/tout">
-        List of Events
-      </Link>
-      <Link component={NextLink} href="/creer">
-        Create event
-      </Link>
-    </>
-  );
+  const user = useContext(UserContext);
+
+  return <>{user.displayName ? <ListOfEvents /> : <Login />}</>;
 }
