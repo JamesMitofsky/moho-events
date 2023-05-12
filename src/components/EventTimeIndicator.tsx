@@ -37,7 +37,7 @@ export default function EventTimeIndicator({
   const isNotYetFinished = eventEndTimeAndDate > new Date();
 
   const isEventActive = isAfterEventStart && isNotYetFinished;
-  return isEventActive ? (
+  return (
     <Box
       sx={{
         height: "fit-content",
@@ -47,17 +47,29 @@ export default function EventTimeIndicator({
         gap: 1,
       }}
     >
-      <Typography component="span" sx={{ fontSize: 12, color: grey[600] }}>
-        Actif
-      </Typography>
-      <Box
-        sx={{
-          backgroundColor: "#03bd03",
-          borderRadius: "50%",
-          height: 10,
-          width: 10,
-        }}
-      />
+      {isEventActive ? (
+        <>
+          <Typography component="span" sx={{ fontSize: 12, color: grey[600] }}>
+            Actif
+          </Typography>
+          <Box
+            sx={{
+              backgroundColor: "#03bd03",
+              borderRadius: "50%",
+              height: 10,
+              width: 10,
+            }}
+          />
+        </>
+      ) : (
+        <Typography component="span" sx={{ fontSize: 12, color: grey[600] }}>
+          Début{" "}
+          {startTimeObj.toLocaleString("fr-FR", {
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </Typography>
+      )}
     </Box>
-  ) : null;
+  );
 }
