@@ -39,7 +39,7 @@ const EventSubmissionForm = ({ formDefaultValues, onSubmit }: Props) => {
           variant="contained"
           type="submit"
         >
-          Submit
+          Envoyer
         </Button>
       </SpacedChildren>
     </FormContainer>
