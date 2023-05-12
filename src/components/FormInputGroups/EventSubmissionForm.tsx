@@ -1,4 +1,4 @@
-import { AllEventGroups } from "@/types/globalTypes";
+import { AllEventGroups, ModifiedServerResponse } from "@/types/globalTypes";
 import { SendSharp } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { FormContainer, SubmitHandler } from "react-hook-form-mui";
@@ -10,21 +10,16 @@ import ProgramGroup from "./ProgramGroup";
 import SignageGroup from "./SignageGroup";
 import WifiGroup from "./WifiGroup";
 
-// this will actually be modified server response, but that's not relevant to the form
+type PossibleInputType = AllEventGroups | ModifiedServerResponse;
+
 type Props = {
-  formDefaultValues: AllEventGroups;
-  onSubmit: SubmitHandler<AllEventGroups>;
+  formDefaultValues: PossibleInputType;
+  onSubmit: SubmitHandler<PossibleInputType>;
 };
 
 const EventSubmissionForm = ({ formDefaultValues, onSubmit }: Props) => {
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-
-    <FormContainer
-      defaultValues={formDefaultValues}
-      // onSubmit={() => handleSubmit(onSubmit)}
-      onSuccess={onSubmit}
-    >
+    <FormContainer defaultValues={formDefaultValues} onSuccess={onSubmit}>
       <SpacedChildren>
         <GeneralInfoGroup />
         <ContactGroup />

@@ -3,7 +3,6 @@ import WifiPasswordIcon from "@mui/icons-material/WifiPassword";
 import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
-import TextEditor from "../inputs/TextEditor";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
@@ -51,7 +50,12 @@ export default function WifiGroup() {
       </ArrayOfElementsWrapper>
 
       <Grid xs={12}>
-        <TextEditor displayLabel="Remarques" objLabel="wifi.comments" />
+        <TextFieldElement
+          fullWidth
+          label="Remarques"
+          multiline
+          name={`wifi.comments`}
+        />
       </Grid>
     </TitledGroup>
   );

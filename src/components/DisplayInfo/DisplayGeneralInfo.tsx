@@ -6,7 +6,6 @@ import {
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayDate from "./DisplayFormats/DisplayDate";
 import DisplayEmptyFields from "./DisplayFormats/DisplayEmptyFields";
-import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
 type Props = GeneralInfoInputs & {
@@ -38,7 +37,7 @@ export default function DisplayGeneralInfo(props: Props) {
 
       <DisplayDate date={dateAsISO} label="Date" />
 
-      <DisplayHTML html={comments} label="Remarques" />
+      <DisplayText content={comments} label="Remarques" />
 
       <DisplayEmptyFields fields={props} sectionName="generalInfo" />
     </TitledGroup>

@@ -6,7 +6,6 @@ import { v4 as generateId } from "uuid";
 import { ContactInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
-import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
 export default function DisplayContact({
@@ -47,7 +46,7 @@ export default function DisplayContact({
           </Typography>
         </Grid>
       )}
-      <DisplayHTML html={comments} label="Remarques" />
+      <DisplayText content={comments} label="Remarques" />
     </TitledGroup>
   );
 }

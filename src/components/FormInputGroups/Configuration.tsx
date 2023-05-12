@@ -3,7 +3,6 @@ import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
-import TextEditor from "../inputs/TextEditor";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
@@ -106,10 +105,12 @@ export default function ConfigurationGroup() {
               />
             </Grid>
 
-            <Grid xs={12}>
-              <TextEditor
-                displayLabel="Remarques specifique à cette configuration"
-                objLabel={`configuration.${index}.comments`}
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                multiline
+                label="Remarques specifique à cette configuration"
+                name={`configuration.${index}.comments`}
               />
             </Grid>
           </TitledArrayOfElements>
