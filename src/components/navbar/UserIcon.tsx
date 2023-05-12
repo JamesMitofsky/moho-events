@@ -1,19 +1,20 @@
-import {
-  MenuItem,
-  Menu,
-  Button,
-  ListItemText,
-  ListItemIcon,
-} from "@mui/material";
-import LogoutIcon from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import {
-  usePopupState,
-  bindTrigger,
-  bindMenu,
-} from "material-ui-popup-state/hooks";
-import { signOut, getAuth } from "firebase/auth";
+  Button,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+import { getAuth, signOut } from "firebase/auth";
+import {
+  bindMenu,
+  bindTrigger,
+  usePopupState,
+} from "material-ui-popup-state/hooks";
 import Link from "next/link";
 
 export default function UserIcon({
@@ -48,6 +49,12 @@ export default function UserIcon({
             <HomeIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>L'Accueil</ListItemText>
+        </MenuItem>
+        <MenuItem component={Link} href="/restauration">
+          <ListItemIcon>
+            <RestaurantMenuIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Restauration</ListItemText>
         </MenuItem>
         <MenuItem onClick={() => handleLogout(popupState)}>
           <ListItemIcon>

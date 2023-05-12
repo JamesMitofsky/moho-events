@@ -1,9 +1,8 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import NextLink from "next/link";
-import { NextRouter, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import EventTimeIndicator from "./EventTimeIndicator";
-import CateringButton from "./buttons/CateringButton";
 
 type Props = {
   docId: string;
@@ -11,6 +10,7 @@ type Props = {
   eventStartTime: string;
   eventDate: string;
   eventEndTime: string;
+  linkToSpecificEventSection?: "restauration";
 };
 
 export default function LinkToEvent({
@@ -19,6 +19,7 @@ export default function LinkToEvent({
   eventStartTime,
   eventDate,
   eventEndTime,
+  linkToSpecificEventSection,
 }: Props) {
   const router = useRouter();
   return (
@@ -30,44 +31,30 @@ export default function LinkToEvent({
           justifyContent: "space-between",
         }}
       >
-        <Box
+        <CardContent
+          href={`/evenement/${docId}${
+            linkToSpecificEventSection ? `/${linkToSpecificEventSection}` : ""
+          }`}
+          component={NextLink}
           sx={{
+            width: "100%",
             display: "flex",
             justifyContent: "space-between",
-            width: "100%",
-            alignItems: "center",
+            textDecoration: "none",
           }}
         >
-          <CardContent
-            href={`/evenement/${docId}`}
-            component={NextLink}
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              textDecoration: "none",
-            }}
-          >
-            <Box>
-              <Typography variant="h3" color="primary" sx={{ mb: 1 }}>
-                {associationName}
-              </Typography>
-              <EventTimeIndicator
-                eventStartTime={eventStartTime}
-                eventEndTime={eventEndTime}
-                eventDate={eventDate}
-              />
-            </Box>
-          </CardContent>
-          <CateringButton
-            onClick={() => navigateToRestaurationView(docId, router)}
-          />
-        </Box>
+          <Box>
+            <Typography variant="h3" color="primary" sx={{ mb: 1 }}>
+              {associationName}
+            </Typography>
+            <EventTimeIndicator
+              eventStartTime={eventStartTime}
+              eventEndTime={eventEndTime}
+              eventDate={eventDate}
+            />
+          </Box>
+        </CardContent>
       </Card>
     </Grid>
   );
-}
-
-function navigateToRestaurationView(docId: string, router: NextRouter) {
-  router.push(`/evenement/${docId}/restauration`);
 }
