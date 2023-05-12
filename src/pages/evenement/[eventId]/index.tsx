@@ -4,6 +4,7 @@ import DisplayGeneralInfo from "@/components/DisplayInfo/DisplayGeneralInfo";
 import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
 import DisplaySignage from "@/components/DisplayInfo/DisplaySignage";
 import Loading from "@/components/Loading";
+import DeleteButton from "@/components/buttons/DeleteButton";
 import useParamsToFetchEvent from "@/hooks/useParamsToFetchEvent";
 
 export default function SpecificEventInformation() {
@@ -23,6 +24,7 @@ export default function SpecificEventInformation() {
           <DisplayProgram {...event.program} />
           <DisplayCatering {...event.program} />
           <DisplaySignage {...event.signage} />
+          <DeleteButton event={event} />
         </>
       ) : (
         <Loading />
