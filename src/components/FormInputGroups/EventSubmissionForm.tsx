@@ -1,5 +1,5 @@
 import { AllEventGroups, ModifiedServerResponse } from "@/types/globalTypes";
-import { SendSharp } from "@mui/icons-material";
+import SaveIcon from "@mui/icons-material/Save";
 import { Button } from "@mui/material";
 import { FormContainer, SubmitHandler } from "react-hook-form-mui";
 import SpacedChildren from "../layouts/SpacedChildren";
@@ -29,12 +29,12 @@ const EventSubmissionForm = ({ formDefaultValues, onSubmit }: Props) => {
         <Configuration />
 
         <Button
-          endIcon={<SendSharp />}
+          startIcon={<SaveIcon />}
           sx={{ width: "fit-content", ml: "auto" }}
           variant="contained"
           type="submit"
         >
-          Envoyer
+          Sauveguarder
         </Button>
       </SpacedChildren>
     </FormContainer>

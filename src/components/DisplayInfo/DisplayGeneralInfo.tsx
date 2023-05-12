@@ -3,6 +3,7 @@ import {
   GeneralInfoInputs,
   ModifiedServerResponse,
 } from "../../types/globalTypes";
+import EditButton from "../buttons/EditButton";
 import { TitledGroup } from "../layouts/TitledGroup";
 import DisplayDate from "./DisplayFormats/DisplayDate";
 import DisplayEmptyFields from "./DisplayFormats/DisplayEmptyFields";
@@ -10,7 +11,7 @@ import DisplayText from "./DisplayFormats/DisplayText";
 
 type Props = GeneralInfoInputs & {
   createdBy: ModifiedServerResponse["creationDetails"]["createdBy"];
-};
+} & { id: string };
 
 export default function DisplayGeneralInfo(props: Props) {
   const {
@@ -21,10 +22,15 @@ export default function DisplayGeneralInfo(props: Props) {
     comments,
     dateAsISO,
     createdBy,
+    id,
   } = props;
 
   return (
-    <TitledGroup icon={GroupsIcon} title="Info Générale">
+    <TitledGroup
+      actionButtons={<EditButton eventId={id} />}
+      icon={GroupsIcon}
+      title="Info Générale"
+    >
       <DisplayText content={associationName} label="Nom de la société" />
 
       <DisplayText content={category} label="Catégorie" />

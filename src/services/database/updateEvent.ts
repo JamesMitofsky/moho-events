@@ -1,18 +1,26 @@
 import { ModifiedServerResponse } from "@/types/globalTypes";
+import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import { db } from "../cloudFirestore";
 
 export default async function updateEvent(
-  newData: ModifiedServerResponse,
-  eventId: string
+  eventToUpdate: ModifiedServerResponse
 ) {
   try {
-    // Update the document in Firestore
-    // await
-    // collection(db, "eventsData"),.doc(eventId).update(newData);
+    console.log("eventToUpdate", eventToUpdate);
+    // create new event
+    const docRef = await addDoc(collection(db, "eventsData"), eventToUpdate);
+    console.log(
+      "Created a new event with the modifications, creating a new ID"
+    );
 
-    // Handle success or update UI accordingly
-    console.log("Data updated successfully");
-  } catch (error) {
-    // Handle error and update UI accordingly
-    console.error("Error updating data:", error);
+    // delete existing event from eventsData
+    await deleteDoc(doc(db, "eventsData", eventToUpdate.id));
+    console.log(
+      "Deleted original event. Now navigate to the 'updated version' of the event"
+    );
+
+    return docRef.id;
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
 }

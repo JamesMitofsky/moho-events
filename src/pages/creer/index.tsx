@@ -1,7 +1,7 @@
 import PageTitle from "@/components/layouts/PageTitle";
+import prepareInputsForServer from "@/functions/prepareInputsForServer";
 import { uploadEventData } from "@/services/cloudFirestore";
 import { AllEventGroups } from "@/types/globalTypes";
-import dayjs from "dayjs";
 import dynamic from "next/dynamic";
 import router from "next/router";
 import { SubmitHandler } from "react-hook-form";
@@ -91,14 +91,7 @@ export default function NewEvent() {
   };
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {
-    const dateAsISO = dayjs(data.generalInfo.dateAsISO).toISOString();
-    const preparedInputData: AllEventGroups = {
-      ...data,
-      generalInfo: {
-        ...data.generalInfo,
-        dateAsISO,
-      },
-    };
+    const preparedInputData = prepareInputsForServer(data);
 
     console.log(preparedInputData);
 

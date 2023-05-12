@@ -1,8 +1,11 @@
 import EventSubmissionForm from "@/components/FormInputGroups/EventSubmissionForm";
 import PageTitle from "@/components/layouts/PageTitle";
+import prepareInputsForServer from "@/functions/prepareInputsForServer";
 import useParamsToFetchEvent from "@/hooks/useParamsToFetchEvent";
+import updateEvent from "@/services/database/updateEvent";
 import { ModifiedServerResponse } from "@/types/globalTypes";
 import dayjs from "dayjs";
+import router from "next/router";
 import { SubmitHandler } from "react-hook-form";
 
 export default function EditEvent() {
@@ -11,15 +14,18 @@ export default function EditEvent() {
   const formattedEvent = event ? convertDatesToDayJs(event) : null;
 
   const onSubmit: SubmitHandler<ModifiedServerResponse> = async (data) => {
-    // const docRef = await updateEvent(preparedInputData);
-    // if (docRef) {
-    //   console.log("success");
-    //   // TODO redirect to page with the completed, static form, triggering confetti
-    //   router.push(`/evenement/${docRef}`);
-    // }
-  };
+    if (!formattedEvent) return;
 
-  console.log(dayjs("2023-05-11T22:00:00.000Z"));
+    const eventPreparedForServer = prepareInputsForServer(
+      data
+    ) as ModifiedServerResponse;
+
+    const docRef = await updateEvent(eventPreparedForServer);
+    if (docRef) {
+      console.log("successfully updated event");
+      router.push(`/evenement/${docRef}`);
+    }
+  };
 
   return (
     <>
@@ -46,13 +52,14 @@ function convertDatesToDayJs(
     },
     program: {
       ...event.program,
-      events: event.program.events.map((event) => ({
-        ...event,
+      // @ts-ignore
+      events: event.program.events.map((eventComponent) => ({
+        ...eventComponent,
         time: {
-          start: dayjs(event.time.start),
-          end: dayjs(event.time.end),
+          start: dayjs(eventComponent.time.start),
+          end: dayjs(eventComponent.time.end),
         },
-      })) as any,
+      })),
     },
   };
 

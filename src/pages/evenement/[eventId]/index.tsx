@@ -18,6 +18,7 @@ export default function SpecificEventInformation() {
         <>
           <DisplayGeneralInfo
             createdBy={event.creationDetails.createdBy}
+            id={event.id}
             {...event.generalInfo}
           />
           <DisplayContact {...event.contact} />
