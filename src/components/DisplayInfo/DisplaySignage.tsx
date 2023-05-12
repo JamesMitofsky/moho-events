@@ -6,7 +6,6 @@ import { v4 as uuid4 } from "uuid";
 import { SignageInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
-import DisplayHTML from "./DisplayFormats/DisplayHTML";
 import DisplayText from "./DisplayFormats/DisplayText";
 
 export default function DisplaySignage({
@@ -37,7 +36,7 @@ export default function DisplaySignage({
         </Grid>
       )}
 
-      <DisplayHTML html={comments} label="Remarques" />
+      <DisplayText content={comments} label="Remarques" />
     </TitledGroup>
   );
 }

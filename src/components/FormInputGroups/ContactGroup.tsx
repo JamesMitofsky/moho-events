@@ -6,7 +6,6 @@ import { TextFieldElement } from "react-hook-form-mui";
 import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { ContactIndividual } from "../../types/globalTypes";
 import PhoneNumber from "../inputs/PhoneNumber";
-import TextEditor from "../inputs/TextEditor";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
@@ -75,7 +74,12 @@ export default function ContactGroup() {
       </Grid>
 
       <Grid xs={12}>
-        <TextEditor objLabel={`contact.comments`} displayLabel="Remarques" />
+        <TextFieldElement
+          fullWidth
+          label="Remarques"
+          multiline
+          name="contact.comments"
+        />
       </Grid>
     </TitledGroup>
   );

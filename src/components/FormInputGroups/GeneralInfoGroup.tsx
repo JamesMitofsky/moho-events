@@ -1,7 +1,6 @@
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import Grid from "@mui/system/Unstable_Grid";
 import { DatePickerElement, TextFieldElement } from "react-hook-form-mui";
-import TextEditor from "../inputs/TextEditor";
 import { TitledGroup } from "../layouts/TitledGroup";
 
 export default function GeneralInfoGroup() {
@@ -62,7 +61,12 @@ export default function GeneralInfoGroup() {
         />
       </Grid>
       <Grid xs={12} md={6}>
-        <TextEditor objLabel="generalInfo.comments" displayLabel="Remarques" />
+        <TextFieldElement
+          fullWidth
+          multiline
+          label="Remarques"
+          name="generalInfo.comments"
+        />
       </Grid>
     </TitledGroup>
   );

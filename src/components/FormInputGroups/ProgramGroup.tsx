@@ -7,7 +7,6 @@ import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import SelectOptions from "../inputs/SelectOptions";
-import TextEditor from "../inputs/TextEditor";
 import TimeRangePicker from "../inputs/TimeRangePicker";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
@@ -122,15 +121,19 @@ export default function ProgramGroup() {
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
-                  <TextEditor
-                    displayLabel="Mobilier utilisé"
-                    objLabel={`program.events.${index}.furnitureUsed`}
+                  <TextFieldElement
+                    multiline
+                    fullWidth
+                    label="Mobilier utilisé"
+                    name={`program.events.${index}.furnitureUsed`}
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
-                  <TextEditor
-                    displayLabel="Détails"
-                    objLabel={`program.events.${index}.details`}
+                  <TextFieldElement
+                    multiline
+                    fullWidth
+                    label="Détails"
+                    name={`program.events.${index}.details`}
                   />
                 </Grid>
               </Grid>
@@ -140,7 +143,12 @@ export default function ProgramGroup() {
       </ArrayOfElementsWrapper>
 
       <Grid xs={12}>
-        <TextEditor objLabel="program.comments" displayLabel="Remarques" />
+        <TextFieldElement
+          multiline
+          fullWidth
+          label="Remarques"
+          name={`program.comments`}
+        />
       </Grid>
     </TitledGroup>
   );
