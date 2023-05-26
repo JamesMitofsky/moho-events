@@ -1,17 +1,26 @@
 import CalendarPeople from "@/components/design/CalendarPeople";
 import PageTitle from "@/components/layouts/PageTitle";
+import UserContext from "@/contexts/UserContext";
 import { signInWithGoogle } from "@/services/firebase";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { LoadingButton } from "@mui/lab";
 import { Typography } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleClick = () => {
+  const { setUser } = useContext(UserContext);
+
+  const handleClick = async () => {
+    console.log("Login click detected");
     setIsLoading(true);
-    signInWithGoogle();
+    const user = await signInWithGoogle();
+    console.log("Login processing...");
+    setUser(user.user);
+    console.log("Login completed");
+
+    console.log("Redirecting to /tout");
   };
 
   return (

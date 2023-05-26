@@ -16,6 +16,7 @@ import {
   usePopupState,
 } from "material-ui-popup-state/hooks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function UserIcon({
   photoURL,
@@ -26,12 +27,15 @@ export default function UserIcon({
 }) {
   const popupState = usePopupState({ variant: "popover", popupId: "menu" });
   const auth = getAuth();
+  const router = useRouter();
 
   function handleLogout(popupState: any) {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
         popupState.close();
+
+        router.reload();
       })
       .catch((error) => {
         // An error happened.

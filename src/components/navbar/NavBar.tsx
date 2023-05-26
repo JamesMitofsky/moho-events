@@ -6,7 +6,7 @@ import MohoEventsLogo from "../MohoEventsLogo";
 import UserIcon from "./UserIcon";
 
 const NavBar = () => {
-  const { photoURL, displayName } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   return (
     <AppBar sx={{ mb: 2 }} position="static">
@@ -21,8 +21,8 @@ const NavBar = () => {
         <Link href="/tout">
           <MohoEventsLogo color="white" height={45} />
         </Link>
-        {photoURL && displayName && (
-          <UserIcon photoURL={photoURL} name={displayName} />
+        {user.photoURL && user.displayName && (
+          <UserIcon photoURL={user.photoURL} name={user.displayName} />
         )}
       </Toolbar>
     </AppBar>

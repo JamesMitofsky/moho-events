@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -37,6 +37,8 @@ const provider = new GoogleAuthProvider();
 //   return { user };
 // }
 
-export function signInWithGoogle() {
-  signInWithRedirect(auth, provider);
+export async function signInWithGoogle() {
+  // signInWithRedirect(auth, provider);
+  const userCred = await signInWithPopup(auth, provider);
+  return userCred;
 }
