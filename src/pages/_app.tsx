@@ -39,19 +39,16 @@ export default function Layout({
     photoURL: "",
   } as User);
 
+  const userValue = { user, setUser };
+
   const router = useRouter();
 
-  function navigateToLogin() {
-    // only allow this function to run if the user is on the login page
-    const pathToListOfEvents = "/connexion";
-    router.push(pathToListOfEvents);
-  }
+  function logoutRedirection() {
+    const currentPath = router.pathname;
+    const pathToHome = "/";
 
-  function navigateFromConnexionToHome() {
-    // only allow this function to run if the user is on the login page
-    if (router.pathname === "/connexion") {
-      const pathToListOfEvents = "/";
-      router.push(pathToListOfEvents);
+    if (currentPath !== pathToHome) {
+      router.push(pathToHome);
     }
   }
 
@@ -64,13 +61,13 @@ export default function Layout({
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUser(user);
         console.log(user);
-        navigateFromConnexionToHome();
 
         // prevent page from rendering twice if the user is already where they should be going
       } else {
         // User is signed out
         console.log("No user is signed in.");
-        navigateToLogin();
+        logoutRedirection();
+        // navigateToLogin();
       }
     });
   }, []);
@@ -78,7 +75,7 @@ export default function Layout({
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={localizedTheme}>
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={userValue}>
             {/* <IsReadOnly.Provider value={passableValue}> */}
             <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
               <NavBar />

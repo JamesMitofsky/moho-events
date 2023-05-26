@@ -1,6 +1,14 @@
 import { User } from "firebase/auth";
 import { createContext } from "react";
 
-const UserContext = createContext<User>({} as User);
+type UserContextProps = {
+  user: User;
+  setUser: (user: User) => void;
+};
+
+const UserContext = createContext<UserContextProps>({
+  user: {} as User,
+  setUser: () => {},
+});
 
 export default UserContext;

@@ -14,64 +14,24 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
   // assign user to state
   useEffect(() => {
     onAuthStateChanged(getAuth(), async (thisUser) => {
+      console.log("Auth change detected", thisUser);
       // if the server finds no user, empty the local representation
       if (!thisUser) {
         setUser({ role: { unregistered: true } });
         return;
       } else {
-        // if user signs in for first time, record their info (returns false if no auth is returned)
         const userWithRole = await returnUserRole(thisUser.uid);
-
-        if (userWithRole) {
-          setUser(userWithRole);
-          return;
-        } else {
-          // if server returned the user has no roles object attached, redirect to non-resident page
-          setUser({ ...userWithRole, role: { reg_nonresident: true } });
-          return;
+        switch (userWithRole) {
+          case userWithRole.role.admin || userWithRole.role.resident: {
+            setUser(userWithRole);
+          }
+          case userWithRole.role.reg_nonresident: {
+            setUser({ ...userWithRole, role: { reg_nonresident: true } });
+          }
         }
       }
     });
   }, []);
-
-  console.log(user);
-
-  // handle routing
-  //   useEffect(() => {
-  //     // exit if user has not yet been assigned to state
-  //     if (!user) return;
-
-  //     // PUBLIC ROUTES; do not respect auth rules for these paths
-  //     const pathName = Router.pathname;
-  //     if (pathName === "/key" || pathName === "/about") return;
-
-  //     // if server has user
-  //     const userHasRole = user.roles.admin || user.roles.resident;
-  //     console.log(userHasRole);
-
-  //     // send authorized users to code from the login page
-  //     if (userHasRole) {
-  //       // exit if not located on "login" or "welcome" pages
-  //       if (pathName !== "/" && pathName !== "/new-user") return;
-
-  //       // push to the code view
-  //       Router.push("/code");
-  //       return;
-  //     }
-
-  //     // exit if user has not authenticated (regardless of authroization status)
-  //     if (user.roles.reg_nonresident) {
-  //       Router.push("/new-user");
-  //       return;
-  //     }
-
-  //     if (user.roles.unregistered) {
-  //       Router.push("/");
-  //       return;
-  //     }
-
-  // if user is not authorized, redirect to key page
-  // }, [user]);
 
   return <AppContext.Provider value={user}>{children}</AppContext.Provider>;
 }
