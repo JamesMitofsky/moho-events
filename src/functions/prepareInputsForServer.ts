@@ -13,14 +13,25 @@ export default function prepareInputsForServer(
     },
     program: {
       ...event.program,
-      // @ts-ignore
-      events: event.program.events.map((eventComponent) => ({
-        ...eventComponent,
-        time: {
-          start: dayjs(eventComponent.time.start).toISOString(),
-          end: dayjs(eventComponent.time.end).toISOString(),
-        },
-      })),
+      events: event.program.events.map((eventComponent) => {
+        const startAsDayJs = dayjs(eventComponent.time.start);
+        const formattedStart = startAsDayJs.isValid()
+          ? startAsDayJs.toISOString()
+          : "";
+
+        const endAsDayJs = dayjs(eventComponent.time.end);
+        const formattedEnd = endAsDayJs.isValid()
+          ? endAsDayJs.toISOString()
+          : "";
+
+        return {
+          ...eventComponent,
+          time: {
+            start: formattedStart,
+            end: formattedEnd,
+          },
+        };
+      }),
     },
   };
 

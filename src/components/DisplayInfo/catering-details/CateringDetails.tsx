@@ -8,7 +8,7 @@ export default function CateringDetails({
   details,
   eventLayout,
   furnitureUsed,
-  involvesRestaurant,
+  cateringComments,
   numberOfPeople,
   place,
   time,
@@ -29,6 +29,7 @@ export default function CateringDetails({
       <DisplayText content={eventLayout} label="Format" />
       <DisplayText content={furnitureUsed} label="Mobilier utilisé" />
       <DisplayText content={details} label="Détails" />
+      <DisplayText content={cateringComments} label="Remarques" />
     </>
   );
 }

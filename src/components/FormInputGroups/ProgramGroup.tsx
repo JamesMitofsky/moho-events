@@ -1,9 +1,7 @@
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import Grid from "@mui/system/Unstable_Grid";
-import { useContext } from "react";
 import { useFieldArray, useWatch } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
-import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import SelectOptions from "../inputs/SelectOptions";
@@ -16,8 +14,6 @@ export default function ProgramGroup() {
   const watchArray = useWatch({
     name: `program.events`,
   });
-
-  const { isReadOnly } = useContext(ReadOnlyContext);
 
   const blankProgramEvent: EventComponent = {
     title: "",
@@ -33,6 +29,8 @@ export default function ProgramGroup() {
     eventLayout: "",
     details: "",
     involvesRestaurant: false,
+    cateringComments: "",
+    comments: "",
   };
 
   const handleAdd = () => {
@@ -76,10 +74,18 @@ export default function ProgramGroup() {
             <Grid xs={12} md={6}>
               <SelectMohoRoom name={`program.events.${index}.place`} />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
               <TimeRangePicker dataLabel={`program.events.${index}.time`} />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
+              <TextFieldElement
+                multiline
+                fullWidth
+                label="Remarques"
+                name={`program.events.${index}.comments`}
+              />
+            </Grid>
+            <Grid xs={12}>
               <SwitchElement
                 label="Restauration concerné?"
                 name={`program.events.${index}.involvesRestaurant`}
@@ -129,6 +135,14 @@ export default function ProgramGroup() {
                     fullWidth
                     label="Détails"
                     name={`program.events.${index}.details`}
+                  />
+                </Grid>
+                <Grid xs={12}>
+                  <TextFieldElement
+                    multiline
+                    fullWidth
+                    label="Remarques de restauration"
+                    name={`program.events.${index}.cateringComments`}
                   />
                 </Grid>
               </>

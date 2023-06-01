@@ -64,6 +64,8 @@ type EventComponent = {
   eventLayout: string;
   details: string;
   involvesRestaurant: boolean;
+  cateringComments: string;
+  comments: string;
 };
 interface ProgramInputs {
   events: EventComponent[];
@@ -110,7 +112,7 @@ type AllEventGroups = {
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
   creationDetails: {
-    versionOfFormInputs: 1;
+    versionOfFormInputs: 1.1;
   };
 };
 
@@ -120,7 +122,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1;
+    versionOfFormInputs: 1.1;
   };
   id: string;
 }
