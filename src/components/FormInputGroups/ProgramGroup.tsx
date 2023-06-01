@@ -64,12 +64,7 @@ export default function ProgramGroup() {
         handleAddItem={handleAdd}
       >
         {fields.map((field, index) => (
-          <TitledArrayOfElements
-            key={field.id}
-            label="Partie"
-            index={index}
-            listLength={fields.length}
-          >
+          <TitledArrayOfElements key={field.id} label="Partie" index={index}>
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth

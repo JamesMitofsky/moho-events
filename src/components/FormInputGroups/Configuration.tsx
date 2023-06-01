@@ -41,7 +41,6 @@ export default function ConfigurationGroup() {
             key={field.id}
             label="Configuration"
             index={index}
-            listLength={fields.length}
           >
             <Grid xs={12} md={6}>
               <SelectMohoRoom

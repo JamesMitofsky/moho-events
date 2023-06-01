@@ -21,7 +21,6 @@ export default function DisplaySignage({
               key={uuid4()}
               label="Signalétique"
               index={index}
-              listLength={locationAndText.length}
             >
               <DisplayText content={item.location} label="Lieu" />
               <DisplayText content={item.text} label="Contenu" />

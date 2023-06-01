@@ -35,12 +35,7 @@ export default function ContactGroup() {
       <Grid xs={12}>
         <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
           {fields.map((field, index) => (
-            <TitledArrayOfElements
-              key={field.id}
-              label="Contact"
-              index={index}
-              listLength={fields.length}
-            >
+            <TitledArrayOfElements key={field.id} label="Contact" index={index}>
               <Grid xs={12} md={6}>
                 <TextFieldElement
                   fullWidth
