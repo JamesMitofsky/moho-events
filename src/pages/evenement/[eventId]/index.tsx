@@ -1,4 +1,5 @@
 import DisplayCatering from "@/components/DisplayInfo/DisplayCatering";
+import DisplayConfiguration from "@/components/DisplayInfo/DisplayConfiguration";
 import DisplayContact from "@/components/DisplayInfo/DisplayContact";
 import DisplayGeneralInfo from "@/components/DisplayInfo/DisplayGeneralInfo";
 import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
@@ -25,6 +26,7 @@ export default function SpecificEventInformation() {
           <DisplayProgram {...event.program} />
           <DisplayCatering {...event.program} />
           <DisplaySignage {...event.signage} />
+          <DisplayConfiguration configurations={event.configuration} />
           <DeleteButton event={event} />
         </>
       ) : (

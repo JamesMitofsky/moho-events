@@ -27,7 +27,6 @@ export default function SignageGroup() {
             key={field.id}
             label="Signalétique"
             index={index}
-            listLength={fields.length}
           >
             <Grid xs={12} md={6}>
               <TextFieldElement

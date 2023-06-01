@@ -32,46 +32,39 @@ export default function ContactGroup() {
 
   return (
     <TitledGroup icon={ContactMailIcon} title="Contact">
-      <Grid xs={12}>
-        <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
-          {fields.map((field, index) => (
-            <TitledArrayOfElements
-              key={field.id}
-              label="Contact"
-              index={index}
-              listLength={fields.length}
-            >
-              <Grid xs={12} md={6}>
-                <TextFieldElement
-                  fullWidth
-                  label="Nom de la société"
-                  name={`contact.individuals.${index}.companyName`}
-                />
-              </Grid>
+      <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
+        {fields.map((field, index) => (
+          <TitledArrayOfElements key={field.id} label="Contact" index={index}>
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Nom de la société"
+                name={`contact.individuals.${index}.companyName`}
+              />
+            </Grid>
 
-              <Grid xs={12} md={6}>
-                <TextFieldElement
-                  fullWidth
-                  label="Nom de la personne"
-                  name={`contact.individuals.${index}.contactName`}
-                />
-              </Grid>
-              <Grid xs={12} md={6}>
-                <PhoneNumber
-                  propLabel={`contact.individuals.${index}.telephoneNumber`}
-                />
-              </Grid>
-              <Grid xs={12} md={6}>
-                <TextFieldElement
-                  fullWidth
-                  label="Email"
-                  name={`contact.individuals.${index}.email`}
-                />
-              </Grid>
-            </TitledArrayOfElements>
-          ))}
-        </ArrayOfElementsWrapper>
-      </Grid>
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Nom de la personne"
+                name={`contact.individuals.${index}.contactName`}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <PhoneNumber
+                propLabel={`contact.individuals.${index}.telephoneNumber`}
+              />
+            </Grid>
+            <Grid xs={12} md={6}>
+              <TextFieldElement
+                fullWidth
+                label="Email"
+                name={`contact.individuals.${index}.email`}
+              />
+            </Grid>
+          </TitledArrayOfElements>
+        ))}
+      </ArrayOfElementsWrapper>
 
       <Grid xs={12}>
         <TextFieldElement

@@ -25,12 +25,7 @@ export default function WifiGroup() {
     <TitledGroup icon={WifiPasswordIcon} title={"Accès Wifi"}>
       <ArrayOfElementsWrapper addLabel="Code Wifi" handleAddItem={handleAdd}>
         {fields.map((field, index) => (
-          <TitledArrayOfElements
-            key={field.id}
-            label="Code"
-            index={index}
-            listLength={fields.length}
-          >
+          <TitledArrayOfElements key={field.id} label="Code" index={index}>
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth

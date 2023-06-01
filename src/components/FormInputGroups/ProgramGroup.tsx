@@ -1,9 +1,7 @@
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import Grid from "@mui/system/Unstable_Grid";
-import { useContext } from "react";
 import { useFieldArray, useWatch } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
-import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { EventComponent } from "../../types/globalTypes";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
 import SelectOptions from "../inputs/SelectOptions";
@@ -17,22 +15,22 @@ export default function ProgramGroup() {
     name: `program.events`,
   });
 
-  const { isReadOnly } = useContext(ReadOnlyContext);
-
   const blankProgramEvent: EventComponent = {
     title: "",
     time: {
       start: "",
       end: "",
     },
-    place: "",
+    place: [],
     numberOfPeople: "",
     furnitureUsed: "",
-    catering: "",
+    catering: [],
     billedService: "",
     eventLayout: "",
     details: "",
     involvesRestaurant: false,
+    cateringComments: "",
+    comments: "",
   };
 
   const handleAdd = () => {
@@ -64,12 +62,7 @@ export default function ProgramGroup() {
         handleAddItem={handleAdd}
       >
         {fields.map((field, index) => (
-          <TitledArrayOfElements
-            key={field.id}
-            label="Partie"
-            index={index}
-            listLength={fields.length}
-          >
+          <TitledArrayOfElements key={field.id} label="Partie" index={index}>
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth
@@ -79,19 +72,30 @@ export default function ProgramGroup() {
               />
             </Grid>
             <Grid xs={12} md={6}>
-              <SelectMohoRoom name={`program.events.${index}.place`} />
+              <SelectMohoRoom
+                multiple={true}
+                name={`program.events.${index}.place`}
+              />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
               <TimeRangePicker dataLabel={`program.events.${index}.time`} />
             </Grid>
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
+              <TextFieldElement
+                multiline
+                fullWidth
+                label="Remarques"
+                name={`program.events.${index}.comments`}
+              />
+            </Grid>
+            <Grid xs={12}>
               <SwitchElement
                 label="Restauration concerné?"
                 name={`program.events.${index}.involvesRestaurant`}
               />
             </Grid>
             {watchArray[index]?.involvesRestaurant && (
-              <Grid container spacing={2}>
+              <>
                 <Grid xs={12} md={6}>
                   <TextFieldElement
                     fullWidth
@@ -101,6 +105,7 @@ export default function ProgramGroup() {
                 </Grid>
                 <Grid xs={12} md={6}>
                   <SelectOptions
+                    multiple={true}
                     label="Traiteurs"
                     name={`program.events.${index}.catering`}
                     options={cateringOptions}
@@ -136,7 +141,15 @@ export default function ProgramGroup() {
                     name={`program.events.${index}.details`}
                   />
                 </Grid>
-              </Grid>
+                <Grid xs={12}>
+                  <TextFieldElement
+                    multiline
+                    fullWidth
+                    label="Remarques de restauration"
+                    name={`program.events.${index}.cateringComments`}
+                  />
+                </Grid>
+              </>
             )}
           </TitledArrayOfElements>
         ))}

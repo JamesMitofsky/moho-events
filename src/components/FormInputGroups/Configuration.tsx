@@ -1,8 +1,10 @@
+import { ConfigurationInputs } from "@/types/globalTypes";
 import HandymanIcon from "@mui/icons-material/Handyman";
 import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
+import SelectOptions from "../inputs/SelectOptions";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
@@ -15,15 +17,15 @@ export default function ConfigurationGroup() {
   );
 
   const handleAdd = () => {
-    const blankConfiguration = {
-      room: "",
+    const blankConfiguration: ConfigurationInputs = {
+      room: [],
       numberOfPeople: "",
       layout: "",
       furnishedBy: "",
       microphones: "",
-      visio: "",
-      captioning: "",
-      services: "",
+      visio: false,
+      captioning: false,
+      services: [],
       comments: "",
     };
     append(blankConfiguration);
@@ -40,7 +42,6 @@ export default function ConfigurationGroup() {
             key={field.id}
             label="Configuration"
             index={index}
-            listLength={fields.length}
           >
             <Grid xs={12} md={6}>
               <SelectMohoRoom
@@ -83,11 +84,11 @@ export default function ConfigurationGroup() {
             </Grid>
 
             <Grid xs={12} md={6}>
-              <TextFieldElement
-                fullWidth
+              <SelectOptions
+                multiple={true}
                 label="Prestataires"
                 name={`configuration.${index}.services`}
-                type="number"
+                options={[]}
               />
             </Grid>
 
@@ -105,7 +106,7 @@ export default function ConfigurationGroup() {
               />
             </Grid>
 
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
               <TextFieldElement
                 fullWidth
                 multiline
