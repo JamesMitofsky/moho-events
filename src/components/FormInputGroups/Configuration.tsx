@@ -4,6 +4,7 @@ import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
+import SelectOptions from "../inputs/SelectOptions";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
@@ -24,7 +25,7 @@ export default function ConfigurationGroup() {
       microphones: "",
       visio: "",
       captioning: "",
-      services: "",
+      services: [],
       comments: "",
     };
     append(blankConfiguration);
@@ -83,11 +84,11 @@ export default function ConfigurationGroup() {
             </Grid>
 
             <Grid xs={12} md={6}>
-              <TextFieldElement
-                fullWidth
+              <SelectOptions
+                multiple={true}
                 label="Prestataires"
                 name={`configuration.${index}.services`}
-                type="number"
+                options={[]}
               />
             </Grid>
 

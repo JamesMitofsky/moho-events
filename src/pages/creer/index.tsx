@@ -63,7 +63,7 @@ export default function NewEvent() {
         microphones: "",
         visio: "",
         captioning: "",
-        services: "",
+        services: [],
         comments: "",
       },
     ],

@@ -100,7 +100,7 @@ type ConfigurationInputs = {
   microphones: string;
   visio: boolean | string;
   captioning: boolean | string;
-  services: string;
+  services: string[];
   comments: string; // text editor
 };
 
