@@ -1,7 +1,8 @@
 import { ConfigurationInputs } from "@/types/globalTypes";
 import HandymanIcon from "@mui/icons-material/Handyman";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import Grid from "@mui/system/Unstable_Grid";
 import { v4 as uuid4 } from "uuid";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";

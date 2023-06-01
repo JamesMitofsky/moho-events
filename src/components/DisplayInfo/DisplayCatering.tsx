@@ -5,7 +5,6 @@ import { grey } from "@mui/material/colors";
 import Grid from "@mui/system/Unstable_Grid";
 import { v4 as uuid4 } from "uuid";
 import { TitledGroup } from "../layouts/TitledGroup";
-import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 import CateringDetails from "./catering-details/CateringDetails";
 
 export default function DisplayCatering({
@@ -23,13 +22,15 @@ export default function DisplayCatering({
       {caterings[0]?.place ? (
         caterings.map((catering, index) => {
           return (
-            <TitledArrayOfElements
-              key={uuid4()}
-              label="Resturation"
-              index={index}
-            >
+            <>
+              <Grid xs={12}>
+                <Typography component="h2" variant="h3">
+                  {catering.title}
+                </Typography>
+              </Grid>
               <CateringDetails key={uuid4()} {...catering} />
-            </TitledArrayOfElements>
+              <Grid mb={5} />
+            </>
           );
         })
       ) : (
