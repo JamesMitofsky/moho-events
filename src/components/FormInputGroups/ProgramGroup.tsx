@@ -86,7 +86,7 @@ export default function ProgramGroup() {
               />
             </Grid>
             {watchArray[index]?.involvesRestaurant && (
-              <Grid container spacing={2}>
+              <>
                 <Grid xs={12} md={6}>
                   <TextFieldElement
                     fullWidth
@@ -131,7 +131,7 @@ export default function ProgramGroup() {
                     name={`program.events.${index}.details`}
                   />
                 </Grid>
-              </Grid>
+              </>
             )}
           </TitledArrayOfElements>
         ))}
