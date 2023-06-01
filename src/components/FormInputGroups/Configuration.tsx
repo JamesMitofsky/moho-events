@@ -18,13 +18,13 @@ export default function ConfigurationGroup() {
 
   const handleAdd = () => {
     const blankConfiguration: ConfigurationInputs = {
-      room: "",
+      room: [],
       numberOfPeople: "",
       layout: "",
       furnishedBy: "",
       microphones: "",
-      visio: "",
-      captioning: "",
+      visio: false,
+      captioning: false,
       services: [],
       comments: "",
     };

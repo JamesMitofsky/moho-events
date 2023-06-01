@@ -56,13 +56,13 @@ export default function NewEvent() {
     },
     configuration: [
       {
-        room: "",
+        room: [],
         numberOfPeople: "",
         layout: "",
         furnishedBy: "",
         microphones: "",
-        visio: "",
-        captioning: "",
+        visio: false,
+        captioning: false,
         services: [],
         comments: "",
       },
@@ -88,7 +88,7 @@ export default function NewEvent() {
       comments: "",
     },
     creationDetails: {
-      versionOfFormInputs: 1.2,
+      versionOfFormInputs: 1.3,
     },
   };
 
