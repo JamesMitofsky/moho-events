@@ -1,4 +1,5 @@
 import { EventComponent } from "@/types/globalTypes";
+import DisplayList from "../DisplayFormats/DisplayList";
 import DisplayText from "../DisplayFormats/DisplayText";
 import DisplayTimeRange from "../DisplayFormats/DisplayTimeRange";
 
@@ -17,7 +18,7 @@ export default function CateringDetails({
   return (
     <>
       <DisplayText content={title} label="Type" />
-      <DisplayText content={place} label="Lieu" />
+      <DisplayList items={place} label="Lieu" />
       <DisplayTimeRange
         label="Heure de début et de fin"
         startTime={time.start as string}

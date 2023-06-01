@@ -6,6 +6,7 @@ import { v4 as uuid4 } from "uuid";
 import { ProgramInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
+import DisplayList from "./DisplayFormats/DisplayList";
 import DisplayText from "./DisplayFormats/DisplayText";
 import DisplayTimeRange from "./DisplayFormats/DisplayTimeRange";
 
@@ -18,7 +19,7 @@ export default function DisplayProgram(props: ProgramInputs) {
           return (
             <TitledArrayOfElements key={uuid4()} label="Partie" index={index}>
               <DisplayText content={event.title} label="Type" />
-              <DisplayText content={event.place} label="Lieu" />
+              <DisplayList items={event.place} label="Lieu" />
               <DisplayTimeRange
                 startTime={event.time.start as string}
                 endTime={event.time.end as string}

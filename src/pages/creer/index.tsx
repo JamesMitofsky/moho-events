@@ -31,7 +31,7 @@ export default function NewEvent() {
             start: "",
             end: "",
           },
-          place: "",
+          place: [],
           numberOfPeople: "",
           furnitureUsed: "",
           catering: "",
@@ -88,7 +88,7 @@ export default function NewEvent() {
       comments: "",
     },
     creationDetails: {
-      versionOfFormInputs: 1.1,
+      versionOfFormInputs: 1.2,
     },
   };
 

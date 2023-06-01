@@ -21,7 +21,7 @@ export default function ProgramGroup() {
       start: "",
       end: "",
     },
-    place: "",
+    place: [],
     numberOfPeople: "",
     furnitureUsed: "",
     catering: "",
@@ -72,7 +72,10 @@ export default function ProgramGroup() {
               />
             </Grid>
             <Grid xs={12} md={6}>
-              <SelectMohoRoom name={`program.events.${index}.place`} />
+              <SelectMohoRoom
+                multiple={true}
+                name={`program.events.${index}.place`}
+              />
             </Grid>
             <Grid xs={12}>
               <TimeRangePicker dataLabel={`program.events.${index}.time`} />

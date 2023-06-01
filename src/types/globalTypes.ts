@@ -56,7 +56,7 @@ type EventComponent = {
     start: Date | string;
     end: Date | string;
   };
-  place: Places;
+  place: Places[];
   numberOfPeople: string;
   furnitureUsed: string;
   catering: string;
@@ -112,7 +112,7 @@ type AllEventGroups = {
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
   creationDetails: {
-    versionOfFormInputs: 1.1;
+    versionOfFormInputs: 1.2;
   };
 };
 
@@ -122,7 +122,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1.1;
+    versionOfFormInputs: 1.2;
   };
   id: string;
 }
