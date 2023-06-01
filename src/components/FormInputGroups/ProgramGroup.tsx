@@ -24,7 +24,7 @@ export default function ProgramGroup() {
     place: [],
     numberOfPeople: "",
     furnitureUsed: "",
-    catering: "",
+    catering: [],
     billedService: "",
     eventLayout: "",
     details: "",
@@ -105,6 +105,7 @@ export default function ProgramGroup() {
                 </Grid>
                 <Grid xs={12} md={6}>
                   <SelectOptions
+                    multiple={true}
                     label="Traiteurs"
                     name={`program.events.${index}.catering`}
                     options={cateringOptions}

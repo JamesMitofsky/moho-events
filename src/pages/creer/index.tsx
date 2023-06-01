@@ -34,7 +34,7 @@ export default function NewEvent() {
           place: [],
           numberOfPeople: "",
           furnitureUsed: "",
-          catering: "",
+          catering: [],
           billedService: "",
           eventLayout: "",
           details: "",

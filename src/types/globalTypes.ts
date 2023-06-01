@@ -59,7 +59,7 @@ type EventComponent = {
   place: Places[];
   numberOfPeople: string;
   furnitureUsed: string;
-  catering: string;
+  catering: string[];
   billedService: string;
   eventLayout: string;
   details: string;

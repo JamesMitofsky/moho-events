@@ -34,7 +34,7 @@ export default function DisplayProgram(props: ProgramInputs) {
                 content={event.furnitureUsed}
                 label="Mobilier utilisé"
               />
-              <DisplayText content={event.catering} label="Traiteurs" />
+              <DisplayList items={event.catering} label="Traiteurs" />
             </TitledArrayOfElements>
           );
         })
