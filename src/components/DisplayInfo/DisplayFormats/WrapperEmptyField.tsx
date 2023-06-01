@@ -8,7 +8,7 @@ type Props = {
 export default function WrapperEmptyField({ input, children }: Props) {
   return (
     <>
-      {input.length > 0 ? (
+      {input?.length > 0 ? (
         <Grid xs={12} md={6}>
           {children}
         </Grid>
