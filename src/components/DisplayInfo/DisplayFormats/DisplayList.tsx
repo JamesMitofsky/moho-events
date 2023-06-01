@@ -10,9 +10,10 @@ export default function DisplayList({ items, label }: Props) {
     <WrapperEmptyField input={items}>
       <Typography fontSize=".8rem">{label}</Typography>
       <Box sx={{ display: "flex", gap: 1 }}>
-        {items.map((item) => {
-          return <Chip key={uuid4()} label={item} />;
-        })}
+        {items &&
+          items.map((item) => {
+            return <Chip key={uuid4()} label={item} />;
+          })}
       </Box>
     </WrapperEmptyField>
   );
