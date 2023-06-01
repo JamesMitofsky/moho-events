@@ -24,7 +24,7 @@ export const TitledGroup = ({
       </SpacedChildren>
       {actionButtons}
     </Stack>
-    <Grid container spacing={2}>
+    <Grid container spacing={2} xs={12}>
       {children}
     </Grid>
   </SpacedChildren>
