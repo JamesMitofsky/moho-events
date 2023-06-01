@@ -1,3 +1,4 @@
+import { ConfigurationInputs } from "@/types/globalTypes";
 import HandymanIcon from "@mui/icons-material/Handyman";
 import Grid from "@mui/system/Unstable_Grid";
 import { useFieldArray } from "react-hook-form";
@@ -15,7 +16,7 @@ export default function ConfigurationGroup() {
   );
 
   const handleAdd = () => {
-    const blankConfiguration = {
+    const blankConfiguration: ConfigurationInputs = {
       room: "",
       numberOfPeople: "",
       layout: "",
@@ -105,7 +106,7 @@ export default function ConfigurationGroup() {
               />
             </Grid>
 
-            <Grid xs={12} md={6}>
+            <Grid xs={12}>
               <TextFieldElement
                 fullWidth
                 multiline
