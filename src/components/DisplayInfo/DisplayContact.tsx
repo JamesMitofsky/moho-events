@@ -21,7 +21,6 @@ export default function DisplayContact({
               key={generateId()}
               label="Contact"
               index={index}
-              listLength={individuals.length}
             >
               <DisplayText
                 content={individual.contactName}

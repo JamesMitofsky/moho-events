@@ -56,14 +56,16 @@ type EventComponent = {
     start: Date | string;
     end: Date | string;
   };
-  place: Places;
+  place: Places[];
   numberOfPeople: string;
   furnitureUsed: string;
-  catering: string;
+  catering: string[];
   billedService: string;
   eventLayout: string;
   details: string;
   involvesRestaurant: boolean;
+  cateringComments: string;
+  comments: string;
 };
 interface ProgramInputs {
   events: EventComponent[];
@@ -77,7 +79,7 @@ type UsernameAndPassword = {
 
 type WifiInputs = {
   connectionInfo: UsernameAndPassword[];
-  comments: string; // text editor
+  comments: string;
 };
 
 type SignageLocationAndText = {
@@ -87,19 +89,19 @@ type SignageLocationAndText = {
 
 type SignageInputs = {
   locationAndText: SignageLocationAndText[];
-  comments: string; // text editor
+  comments: string;
 };
 
 type ConfigurationInputs = {
-  room: string;
+  room: string[];
   numberOfPeople: string;
   layout: string;
-  furnishedBy: string; // text editor
+  furnishedBy: string;
   microphones: string;
-  visio: boolean | string;
-  captioning: boolean | string;
-  services: string;
-  comments: string; // text editor
+  visio: boolean;
+  captioning: boolean;
+  services: string[];
+  comments: string;
 };
 
 type AllEventGroups = {
@@ -110,7 +112,7 @@ type AllEventGroups = {
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
   creationDetails: {
-    versionOfFormInputs: 1;
+    versionOfFormInputs: 1.3;
   };
 };
 
@@ -120,7 +122,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1;
+    versionOfFormInputs: 1.3;
   };
   id: string;
 }

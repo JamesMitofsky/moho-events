@@ -27,7 +27,6 @@ export default function DisplayCatering({
               key={uuid4()}
               label="Resturation"
               index={index}
-              listLength={caterings.length}
             >
               <CateringDetails key={uuid4()} {...catering} />
             </TitledArrayOfElements>
