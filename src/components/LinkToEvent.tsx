@@ -1,27 +1,28 @@
+import getEventEndTime from "@/functions/getEventEndTime";
+import { ModifiedServerResponse } from "@/types/globalTypes";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import NextLink from "next/link";
-import { useRouter } from "next/router";
 import EventTimeIndicator from "./EventTimeIndicator";
+import DeleteButtonIcon from "./buttons/DeleteButtonIcon";
 
 type Props = {
-  docId: string;
-  associationName: string;
-  eventStartTime: string;
+  event: ModifiedServerResponse;
   eventDate: string;
-  eventEndTime: string;
   linkToSpecificEventSection?: "restauration";
 };
 
 export default function LinkToEvent({
-  docId,
-  associationName,
-  eventStartTime,
+  event,
   eventDate,
-  eventEndTime,
   linkToSpecificEventSection,
 }: Props) {
-  const router = useRouter();
+  const docId = event.id;
+  const associationName = event.generalInfo?.associationName;
+  const eventStartTime = event.program?.events[0].time.start as string;
+
+  const eventEndTime = getEventEndTime(event.program?.events);
+
   return (
     <Grid xs={12} key={docId} sx={{ alignItems: "center" }}>
       <Card
@@ -54,6 +55,7 @@ export default function LinkToEvent({
             />
           </Box>
         </CardContent>
+        <DeleteButtonIcon event={event} />
       </Card>
     </Grid>
   );

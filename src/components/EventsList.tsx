@@ -1,4 +1,3 @@
-import getEventEndTime from "@/functions/getEventEndTime";
 import trimDateString from "@/functions/trimDateString";
 import useFetchEventsGroupedByDate from "@/hooks/useFetchEventsGroupedByDate";
 import { Typography } from "@mui/material";
@@ -18,15 +17,10 @@ export default function EventsList({ eventsFilter, order = "asc" }: Props) {
   const eventsGroupedByDay = events?.map((eventGroup) => {
     const trimmedDate = trimDateString(eventGroup[0]);
     const constructedGroup = eventGroup.map((event) => {
-      const eventEndTime = getEventEndTime(event.program?.events);
-
       return (
         <LinkToEvent
           key={event.id}
-          associationName={event.generalInfo?.associationName}
-          docId={event.id}
-          eventStartTime={event.program?.events[0].time.start as string}
-          eventEndTime={eventEndTime}
+          event={event}
           eventDate={event.generalInfo?.dateAsISO}
         />
       );

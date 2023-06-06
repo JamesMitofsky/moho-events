@@ -1,5 +1,4 @@
 import LinkToEvent from "@/components/LinkToEvent";
-import getEventEndTime from "@/functions/getEventEndTime";
 import groupEventsByDate from "@/functions/groupEventsByDate";
 import trimDateString from "@/functions/trimDateString";
 import useFetchEvents from "@/hooks/useFetchEvents";
@@ -32,15 +31,10 @@ export default function ListOfEventsWithCatering({
   const renderedEventGroups = cateringEventsGroupedByDay?.map((eventGroup) => {
     const trimmedDate = trimDateString(eventGroup[0]);
     const constructedGroup = eventGroup.map((event) => {
-      const eventEndTime = getEventEndTime(event.program?.events);
-
       return (
         <LinkToEvent
           key={event.id}
-          associationName={event.generalInfo?.associationName}
-          docId={event.id}
-          eventStartTime={event.program?.events[0].time.start as string}
-          eventEndTime={eventEndTime}
+          event={event}
           eventDate={event.generalInfo?.dateAsISO}
           linkToSpecificEventSection="restauration"
         />
