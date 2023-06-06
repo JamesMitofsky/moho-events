@@ -11,7 +11,7 @@ export default function DeleteButton({
 }) {
   const router = useRouter();
   function confirmArchive() {
-    if (confirm("Are you sure you want to archive this event?")) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet évènement ?")) {
       archiveEvent(event);
       navigateHome();
     }

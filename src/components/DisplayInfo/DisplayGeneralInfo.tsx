@@ -25,6 +25,8 @@ export default function DisplayGeneralInfo(props: Props) {
     id,
   } = props;
 
+  const formattedQuoteNumber = "MOVED" + numberOfQuote.toString();
+
   return (
     <TitledGroup
       actionButtons={<EditButton eventId={id} />}
@@ -37,7 +39,10 @@ export default function DisplayGeneralInfo(props: Props) {
 
       <DisplayText content={eventName} label="Nom de l'évènement" />
 
-      <DisplayText content={numberOfQuote.toString()} label="Nombre de devis" />
+      <DisplayText
+        content={numberOfQuote ? formattedQuoteNumber : ""}
+        label="Numéro de devis"
+      />
 
       <DisplayText content={createdBy} label="Vendu par" />
 
