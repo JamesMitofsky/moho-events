@@ -1,7 +1,7 @@
 import groupEventsByDate from "@/functions/groupEventsByDate";
 import trimDateString from "@/functions/trimDateString";
 import useListenToAllEvents from "@/hooks/useListenToAllEvents";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/system/Unstable_Grid";
 import { useMemo } from "react";
@@ -32,8 +32,8 @@ export default function EventsList({ eventsFilter, order = "asc" }: Props) {
       );
     });
     return (
-      <>
-        <Grid xs={12} key={uuid4()}>
+      <Box sx={{ width: "100%" }} key={uuid4()}>
+        <Grid xs={12}>
           <Typography sx={{ mt: 6, color: grey[700] }}>
             {trimmedDate}
           </Typography>
@@ -41,7 +41,7 @@ export default function EventsList({ eventsFilter, order = "asc" }: Props) {
         <Grid container spacing={2} xs={12}>
           {constructedGroup}
         </Grid>
-      </>
+      </Box>
     );
   });
 
