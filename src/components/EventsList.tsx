@@ -1,8 +1,10 @@
+import groupEventsByDate from "@/functions/groupEventsByDate";
 import trimDateString from "@/functions/trimDateString";
-import useFetchEventsGroupedByDate from "@/hooks/useFetchEventsGroupedByDate";
+import useListenToAllEvents from "@/hooks/useListenToAllEvents";
 import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/system/Unstable_Grid";
+import { useMemo } from "react";
 import { v4 as uuid4 } from "uuid";
 import LinkToEvent from "./LinkToEvent";
 
@@ -12,9 +14,13 @@ type Props = {
 };
 
 export default function EventsList({ eventsFilter, order = "asc" }: Props) {
-  const events = useFetchEventsGroupedByDate(eventsFilter);
+  const events = useListenToAllEvents(eventsFilter);
 
-  const eventsGroupedByDay = events?.map((eventGroup) => {
+  const eventsGroupedByDate = useMemo(() => {
+    return events ? groupEventsByDate(events) : [];
+  }, [events]);
+
+  const eventsGroupedByDay = eventsGroupedByDate?.map((eventGroup) => {
     const trimmedDate = trimDateString(eventGroup[0]);
     const constructedGroup = eventGroup.map((event) => {
       return (
