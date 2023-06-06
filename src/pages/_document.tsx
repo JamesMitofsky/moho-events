@@ -1,5 +1,4 @@
 import createEmotionServer from "@emotion/server/create-instance";
-import { Analytics } from "@vercel/analytics/react";
 import { AppType } from "next/app";
 import Document, {
   DocumentContext,
@@ -30,7 +29,6 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
       <body>
         <Main />
         <NextScript />
-        <Analytics />
       </body>
     </Html>
   );
