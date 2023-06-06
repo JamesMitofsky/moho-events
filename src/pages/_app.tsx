@@ -8,6 +8,7 @@ import { CacheProvider } from "@emotion/react";
 import { Box, Container, ThemeProvider } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Analytics } from "@vercel/analytics/react";
 import "dayjs/locale/fr";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { AppProps } from "next/app";
@@ -90,6 +91,7 @@ export default function Layout({
                 }}
               >
                 <Component {...pageProps} />
+                <Analytics />
               </Container>
               <Footer />
             </Box>
