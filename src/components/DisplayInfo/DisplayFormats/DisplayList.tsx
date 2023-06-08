@@ -9,7 +9,7 @@ export default function DisplayList({ items, label }: Props) {
   return (
     <WrapperEmptyField input={items}>
       <Typography fontSize=".8rem">{label}</Typography>
-      <Box sx={{ display: "flex", gap: 1 }}>
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
         {items &&
           items.map((item) => {
             return <Chip key={uuid4()} label={item} />;
