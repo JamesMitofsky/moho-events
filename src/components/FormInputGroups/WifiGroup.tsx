@@ -8,7 +8,7 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function WifiGroup() {
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "wifi.connectionInfo",
   });
 
@@ -25,7 +25,12 @@ export default function WifiGroup() {
     <TitledGroup icon={WifiPasswordIcon} title={"Accès Wifi"}>
       <ArrayOfElementsWrapper addLabel="Code Wifi" handleAddItem={handleAdd}>
         {fields.map((field, index) => (
-          <TitledArrayOfElements key={field.id} label="Code" index={index}>
+          <TitledArrayOfElements
+            key={field.id}
+            label="Code"
+            index={index}
+            deleteFunction={remove}
+          >
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth

@@ -10,11 +10,9 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function ConfigurationGroup() {
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      name: "configuration",
-    }
-  );
+  const { fields, append, remove } = useFieldArray({
+    name: "configuration",
+  });
 
   const handleAdd = () => {
     const blankConfiguration: ConfigurationInputs = {
@@ -39,6 +37,7 @@ export default function ConfigurationGroup() {
       >
         {fields.map((field, index) => (
           <TitledArrayOfElements
+            deleteFunction={remove}
             key={field.id}
             label="Configuration"
             index={index}

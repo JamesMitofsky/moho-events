@@ -27,6 +27,7 @@ export default function WrapperCopyContent({ label, content }: Props) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          overflow: "hidden",
         }}
       >
         <Typography>{content}</Typography>
