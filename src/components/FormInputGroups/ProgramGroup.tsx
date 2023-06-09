@@ -28,6 +28,7 @@ export default function ProgramGroup() {
     billedService: "",
     eventLayout: "",
     details: "",
+    membership: "",
     involvesRestaurant: false,
     cateringComments: "",
     comments: "",
@@ -126,6 +127,13 @@ export default function ProgramGroup() {
                     label="Format"
                     name={`program.events.${index}.eventLayout`}
                     options={formatConfigurations}
+                  />
+                </Grid>
+                <Grid xs={12} md={6}>
+                  <TextFieldElement
+                    fullWidth
+                    label="Prix / forfait"
+                    name={`program.events.${index}.membership`}
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
