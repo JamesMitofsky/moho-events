@@ -37,6 +37,7 @@ export default function NewEvent() {
           catering: [],
           billedService: "",
           eventLayout: "",
+          membership: "",
           details: "",
           involvesRestaurant: false,
           cateringComments: "",
@@ -88,7 +89,7 @@ export default function NewEvent() {
       comments: "",
     },
     creationDetails: {
-      versionOfFormInputs: 1.3,
+      versionOfFormInputs: 1.2,
     },
   };
 

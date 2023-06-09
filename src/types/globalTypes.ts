@@ -62,6 +62,7 @@ type EventComponent = {
   catering: string[];
   billedService: string;
   eventLayout: string;
+  membership: string;
   details: string;
   involvesRestaurant: boolean;
   cateringComments: string;
@@ -112,7 +113,7 @@ type AllEventGroups = {
   signage: SignageInputs;
   configuration: ConfigurationInputs[];
   creationDetails: {
-    versionOfFormInputs: 1.3;
+    versionOfFormInputs: 1.2;
   };
 };
 
@@ -122,7 +123,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1.3;
+    versionOfFormInputs: 1.2;
   };
   id: string;
 }
