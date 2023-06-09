@@ -9,7 +9,7 @@ import router from "next/router";
 import { SubmitHandler } from "react-hook-form";
 
 export default function EditEvent() {
-  const event = useParamsToFetchEvent();
+  const event = useParamsToFetchEvent("eventsData");
 
   const formattedEvent = event ? convertDatesToDayJs(event) : null;
 
