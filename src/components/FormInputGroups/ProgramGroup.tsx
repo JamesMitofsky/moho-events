@@ -49,11 +49,9 @@ export default function ProgramGroup() {
 
   const cateringOptions = ["Le Spot", "Moholicious", "Dely"];
 
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      name: "program.events", // unique name for your Field Array
-    }
-  );
+  const { fields, append, remove } = useFieldArray({
+    name: "program.events", // unique name for your Field Array
+  });
 
   return (
     <TitledGroup icon={DateRangeIcon} title="Programme">
@@ -62,7 +60,12 @@ export default function ProgramGroup() {
         handleAddItem={handleAdd}
       >
         {fields.map((field, index) => (
-          <TitledArrayOfElements key={field.id} label="Partie" index={index}>
+          <TitledArrayOfElements
+            key={field.id}
+            label="Partie"
+            index={index}
+            deleteFunction={remove}
+          >
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth

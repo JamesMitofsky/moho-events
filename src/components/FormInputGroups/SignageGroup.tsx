@@ -7,7 +7,7 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function SignageGroup() {
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "signage.locationAndText",
   });
 
@@ -24,6 +24,7 @@ export default function SignageGroup() {
       <ArrayOfElementsWrapper addLabel="Signalétique" handleAddItem={handleAdd}>
         {fields.map((field, index) => (
           <TitledArrayOfElements
+            deleteFunction={remove}
             key={field.id}
             label="Signalétique"
             index={index}
