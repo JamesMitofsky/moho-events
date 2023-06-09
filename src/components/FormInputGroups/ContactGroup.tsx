@@ -1,9 +1,7 @@
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import Grid from "@mui/system/Unstable_Grid";
-import { useContext } from "react";
 import { useFieldArray } from "react-hook-form";
 import { TextFieldElement } from "react-hook-form-mui";
-import ReadOnlyContext from "../../contexts/ReadOnlyContext";
 import { ContactIndividual } from "../../types/globalTypes";
 import PhoneNumber from "../inputs/PhoneNumber";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
@@ -11,8 +9,6 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 
 export default function ContactGroup() {
-  const { isReadOnly } = useContext(ReadOnlyContext);
-
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
       name: "contact.individuals", // unique name for your Field Array
@@ -34,7 +30,12 @@ export default function ContactGroup() {
     <TitledGroup icon={ContactMailIcon} title="Contact">
       <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
         {fields.map((field, index) => (
-          <TitledArrayOfElements key={field.id} label="Contact" index={index}>
+          <TitledArrayOfElements
+            key={field.id}
+            label="Contact"
+            index={index}
+            deleteFunction={remove}
+          >
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth
