@@ -9,7 +9,7 @@ export default function WrapperEmptyField({ input, children }: Props) {
   return (
     <>
       {input?.length > 0 ? (
-        <Grid xs={12} md={6}>
+        <Grid sx={{ display: "flex", flexDirection: "column" }} xs={12} md={6}>
           {children}
         </Grid>
       ) : null}
