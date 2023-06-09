@@ -14,6 +14,7 @@ export default function CateringDetails({
   place,
   time,
   title,
+  membership,
 }: EventComponent) {
   return (
     <>
@@ -29,6 +30,7 @@ export default function CateringDetails({
       <DisplayText content={billedService} label="Service facturé" />
       <DisplayText content={eventLayout} label="Format" />
       <DisplayText content={furnitureUsed} label="Mobilier utilisé" />
+      <DisplayText content={membership} label="Prix / forfait" />
       <DisplayText content={details} label="Détails" />
       <DisplayText content={cateringComments} label="Remarques" />
     </>
