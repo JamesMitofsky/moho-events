@@ -3,9 +3,18 @@ import { ModifiedServerResponse } from "@/types/globalTypes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function useParamsToFetchEvent() {
+/**
+ * Expects to get eventId from the router.query
+ *
+ * State begins as undefined, then becomes either the actual event object or null if the eventId is invalid
+ */
+export default function useParamsToFetchEvent(
+  databaseName: "eventsData" | "archivedEvents"
+) {
   // Define your state variables
-  const [event, setEvent] = useState<ModifiedServerResponse | null>(null);
+  const [event, setEvent] = useState<ModifiedServerResponse | null | undefined>(
+    undefined
+  );
 
   const router = useRouter();
   const { eventId } = router.query;
@@ -14,8 +23,12 @@ export default function useParamsToFetchEvent() {
   useEffect(() => {
     if (!eventId) return;
     const getEvent = async function () {
-      const res = await fetchSpecificEvent(eventId as string);
-      setEvent(res);
+      const res = await fetchSpecificEvent(eventId as string, databaseName);
+      if (res) {
+        setEvent(res);
+      } else {
+        setEvent(null);
+      }
     };
     getEvent();
   }, [eventId]);
