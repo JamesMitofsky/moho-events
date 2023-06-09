@@ -5,7 +5,7 @@ import { Box, Link, Typography } from "@mui/material";
 import NextLink from "next/link";
 
 export default function CateringPage() {
-  const event = useParamsToFetchEvent();
+  const event = useParamsToFetchEvent("eventsData");
   return event ? (
     <>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
