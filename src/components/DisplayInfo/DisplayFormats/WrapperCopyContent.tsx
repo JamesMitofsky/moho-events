@@ -1,6 +1,4 @@
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { IconButton, Snackbar, Typography } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
 
@@ -18,31 +16,20 @@ export default function WrapperCopyContent({ label, content }: Props) {
   };
   return (
     <Box>
-      <Typography fontSize=".8rem">{label}</Typography>
+      <Typography fontSize=".8rem" fontWeight={900}>
+        {label}
+      </Typography>
       <Box
         sx={{
-          backgroundColor: grey[100],
-          px: 1,
-          py: 0.5,
+          mb: 0.5,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           overflow: "hidden",
         }}
       >
-        <Typography>{content}</Typography>
-        <Box sx={{ display: "flex", alignSelf: "flex-start" }}>
-          <IconButton onClick={() => copyToClipboard(content)}>
-            <ContentCopyIcon />
-          </IconButton>
-        </Box>
+        <Typography fontWeight={100}>{content}</Typography>
       </Box>
-      <Snackbar
-        open={open}
-        autoHideDuration={2500}
-        onClose={() => setOpen(false)}
-        message={`"${label}" copié!`}
-      />
     </Box>
   );
 }

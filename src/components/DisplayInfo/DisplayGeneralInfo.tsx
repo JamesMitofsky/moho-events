@@ -31,7 +31,7 @@ export default function DisplayGeneralInfo(props: Props) {
     <TitledGroup
       actionButtons={<EditButton eventId={id} />}
       icon={GroupsIcon}
-      title="Info Générale"
+      title="Infos Générales"
     >
       <DisplayText content={associationName} label="Nom de la société" />
 
