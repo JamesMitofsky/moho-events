@@ -1,11 +1,12 @@
-import CalendarPeople from "@/components/design/CalendarPeople";
 import PageTitle from "@/components/layouts/PageTitle";
 import UserContext from "@/contexts/UserContext";
 import { signInWithGoogle } from "@/services/firebase";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { LoadingButton } from "@mui/lab";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { useContext, useState } from "react";
+import MohoModel from "../../assets/moho-model.png";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -37,9 +38,29 @@ export default function Login() {
         loading={isLoading}
         sx={{ my: 5 }}
       >
-        Authentifier avec Google
+        Connexion avec Google
       </LoadingButton>
-      <CalendarPeople widthLimit={3} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <Image
+          src={MohoModel}
+          alt="Un modèle 3D du Moho"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            width: "100%",
+            maxWidth: 500,
+            height: "auto",
+          }}
+        />
+      </Box>
     </>
   );
 }
