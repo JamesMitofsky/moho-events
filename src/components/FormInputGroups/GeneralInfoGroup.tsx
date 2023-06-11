@@ -47,7 +47,7 @@ export default function GeneralInfoGroup() {
       <Grid xs={12} md={6}>
         <TextFieldElement
           fullWidth
-          label="Nombre de pax"
+          label="Nombre de personnes"
           name="generalInfo.numberOfPeople"
         />
       </Grid>

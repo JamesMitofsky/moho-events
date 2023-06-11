@@ -25,7 +25,7 @@ export default function DisplayConfiguration({ configurations }: Props) {
 
               <DisplayText
                 content={configuration.numberOfPeople}
-                label="Nombre de pax"
+                label="Nombre de personnes"
               />
               <DisplayText
                 content={configuration.layout}

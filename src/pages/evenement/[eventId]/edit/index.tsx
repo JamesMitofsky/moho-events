@@ -24,6 +24,8 @@ export default function EditEvent() {
     if (docRef) {
       console.log("successfully updated event");
       router.push(`/evenement/${docRef}`);
+    } else {
+      alert("Une erreur est survenue, veuillez réessayer.");
     }
   };
 

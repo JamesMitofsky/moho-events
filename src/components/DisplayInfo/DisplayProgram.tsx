@@ -28,7 +28,7 @@ export default function DisplayProgram(props: ProgramInputs) {
 
               <DisplayText
                 content={event.numberOfPeople}
-                label="Nombre de pax"
+                label="Nombre de personnes"
               />
               <DisplayText
                 content={event.furnitureUsed}

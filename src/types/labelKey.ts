@@ -5,7 +5,7 @@ const labelKeys = {
     eventName: "Nom de l'évènement",
     eventType: "Type d'évènement",
     numberOfQuote: "Numéro de devis",
-    numberOfPeople: "Nombre de pax",
+    numberOfPeople: "Nombre de personnes",
     dateAsISO: "Date d'évènement",
     comments: "Remarques",
   },
@@ -18,7 +18,7 @@ const labelKeys = {
           end: "Heure de fin",
         },
         place: "Lieu",
-        numberOfPeople: "Nombre de pax",
+        numberOfPeople: "Nombre de personnes",
         furnitureUsed: "Mobilier utilisé",
         catering: "Traiteurs",
         billedService: "Service facturé",
@@ -41,7 +41,7 @@ const labelKeys = {
   configuration: [
     {
       room: "Lieu",
-      numberOfPeople: "Nombre de pax",
+      numberOfPeople: "Nombre de personnes",
       layout: "Configuration",
       furnishedBy: "Mobilier",
       microphones: "Microphones",

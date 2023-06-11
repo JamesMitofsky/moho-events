@@ -52,7 +52,7 @@ export default function ConfigurationGroup() {
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth
-                label="Nombre de pax"
+                label="Nombre de personnes"
                 name={`configuration.${index}.numberOfPeople`}
               />
             </Grid>

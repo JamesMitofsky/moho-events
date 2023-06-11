@@ -25,7 +25,7 @@ export default function CateringDetails({
         startTime={time.start as string}
         endTime={time.end as string}
       />
-      <DisplayText content={numberOfPeople} label="Nombre de pax" />
+      <DisplayText content={numberOfPeople} label="Nombre de personnes" />
       <DisplayList items={catering} label="Traiteurs" />
       <DisplayText content={billedService} label="Service facturé" />
       <DisplayText content={eventLayout} label="Format" />
