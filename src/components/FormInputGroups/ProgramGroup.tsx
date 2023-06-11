@@ -63,7 +63,7 @@ export default function ProgramGroup() {
         {fields.map((field, index) => (
           <TitledArrayOfElements
             key={field.id}
-            label="Partie"
+            typeOfItem="Partie"
             index={index}
             deleteFunction={remove}
           >

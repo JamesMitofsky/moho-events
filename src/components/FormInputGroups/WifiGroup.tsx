@@ -27,7 +27,7 @@ export default function WifiGroup() {
         {fields.map((field, index) => (
           <TitledArrayOfElements
             key={field.id}
-            label="Code"
+            typeOfItem="Code"
             index={index}
             deleteFunction={remove}
           >

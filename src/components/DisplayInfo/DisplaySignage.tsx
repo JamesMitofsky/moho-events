@@ -19,7 +19,7 @@ export default function DisplaySignage({
           return (
             <TitledArrayOfElements
               key={uuid4()}
-              label="Signalétique"
+              typeOfItem="Signalétique"
               index={index}
             >
               <DisplayText content={item.location} label="Lieu" />

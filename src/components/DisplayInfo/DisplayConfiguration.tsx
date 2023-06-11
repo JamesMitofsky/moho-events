@@ -20,7 +20,11 @@ export default function DisplayConfiguration({ configurations }: Props) {
       {configurations[0].room[0] ? (
         configurations.map((configuration, index) => {
           return (
-            <TitledArrayOfElements key={uuid4()} label="Partie" index={index}>
+            <TitledArrayOfElements
+              key={uuid4()}
+              typeOfItem="Partie"
+              index={index}
+            >
               <DisplayList items={configuration.room} label="Lieu" />
 
               <DisplayText

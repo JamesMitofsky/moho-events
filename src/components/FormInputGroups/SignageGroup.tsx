@@ -26,7 +26,7 @@ export default function SignageGroup() {
           <TitledArrayOfElements
             deleteFunction={remove}
             key={field.id}
-            label="Signalétique"
+            typeOfItem="Signalétique"
             index={index}
           >
             <Grid xs={12} md={6}>
