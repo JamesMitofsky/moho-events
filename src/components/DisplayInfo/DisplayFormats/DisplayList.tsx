@@ -8,7 +8,9 @@ type Props = { items: string[]; label: string };
 export default function DisplayList({ items, label }: Props) {
   return (
     <WrapperEmptyField input={items}>
-      <Typography fontSize=".8rem">{label}</Typography>
+      <Typography fontSize=".8rem" fontWeight={900}>
+        {label}
+      </Typography>
       <Box
         sx={{
           display: "flex",
