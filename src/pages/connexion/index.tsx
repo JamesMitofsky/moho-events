@@ -25,7 +25,7 @@ export default function Login() {
 
   return (
     <>
-      <PageTitle title="Bienvenu" />
+      <PageTitle title="Bienvenue" />
       <Typography variant="subtitle1">
         Moho Events permet de facilement ajouter, modifier et partager les
         évènements.
