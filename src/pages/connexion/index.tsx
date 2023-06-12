@@ -1,7 +1,7 @@
 import PageTitle from "@/components/layouts/PageTitle";
 import UserContext from "@/contexts/UserContext";
 import { signInWithGoogle } from "@/services/firebase";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
+import GoogleIcon from "@mui/icons-material/Google";
 import { LoadingButton } from "@mui/lab";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -28,17 +28,17 @@ export default function Login() {
     <>
       <PageTitle title="Bienvenue" />
       <Typography variant="subtitle1">
-        Moho Events permet de facilement ajouter, modifier et partager les
+        Moho Events permet de facilement ajouter, modifier et gérer les
         évènements.
       </Typography>
       <LoadingButton
-        startIcon={<HowToRegIcon />}
+        startIcon={<GoogleIcon />}
         variant="outlined"
         onClick={handleClick}
         loading={isLoading}
         sx={{ my: 5 }}
       >
-        Connexion avec Google
+        Connexion
       </LoadingButton>
       <Box
         sx={{
