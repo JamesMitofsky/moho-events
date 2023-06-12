@@ -6,7 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { useContext, useState } from "react";
-import MohoModel from "../../assets/moho-model.png";
+import MohoModel from "../../assets/moho-model.gif";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
