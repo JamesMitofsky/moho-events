@@ -3,20 +3,30 @@ import { Box, IconButton, Typography } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import { UseFieldArrayRemove } from "react-hook-form-mui";
 
+/**
+ * @param nameOfThisItem is used to determine the label of the item
+ * @param typeOfItem is a backup if nameOfThisItem doesn't exist. It is used to determine the label of the item. eg. Contact
+ */
 type Props = {
-  label: string;
   index: number;
   key: string | number;
   children: React.ReactNode;
   deleteFunction?: UseFieldArrayRemove;
-};
+} & (
+  | { typeOfItem: string; nameOfThisItem?: never }
+  | { typeOfItem?: never; nameOfThisItem: string }
+);
 
 export default function TitledItemFromArray({
-  label,
   index,
   children,
   deleteFunction,
+  typeOfItem,
+  nameOfThisItem,
 }: Props) {
+  const fallBackLabel = typeOfItem + " #" + (index + 1).toString();
+  const label = nameOfThisItem ? nameOfThisItem : fallBackLabel;
+
   return (
     <>
       <Grid
@@ -24,9 +34,7 @@ export default function TitledItemFromArray({
         xs={12}
         sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}
       >
-        <Typography variant="subtitle1">
-          {label} #{index + 1}
-        </Typography>
+        <Typography variant="subtitle1">{label}</Typography>
         {deleteFunction && index > 0 && (
           <Box sx={{ mr: 5, my: "auto" }}>
             <IconButton

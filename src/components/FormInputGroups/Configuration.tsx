@@ -39,7 +39,7 @@ export default function ConfigurationGroup() {
           <TitledArrayOfElements
             deleteFunction={remove}
             key={field.id}
-            label="Configuration"
+            typeOfItem="Configuration"
             index={index}
           >
             <Grid xs={12} md={6}>

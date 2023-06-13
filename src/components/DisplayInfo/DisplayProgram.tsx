@@ -17,8 +17,11 @@ export default function DisplayProgram(props: ProgramInputs) {
       {events[0].time.start !== "" ? (
         events.map((event, index) => {
           return (
-            <TitledArrayOfElements key={uuid4()} label="Partie" index={index}>
-              <DisplayText content={event.title} label="Type" />
+            <TitledArrayOfElements
+              key={uuid4()}
+              nameOfThisItem={event.title}
+              index={index}
+            >
               <DisplayList items={event.place} label="Lieu" />
               <DisplayTimeRange
                 startTime={event.time.start as string}

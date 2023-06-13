@@ -32,7 +32,7 @@ export default function ContactGroup() {
         {fields.map((field, index) => (
           <TitledArrayOfElements
             key={field.id}
-            label="Contact"
+            typeOfItem="Contact"
             index={index}
             deleteFunction={remove}
           >

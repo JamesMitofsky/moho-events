@@ -18,7 +18,6 @@ export default function CateringDetails({
 }: EventComponent) {
   return (
     <>
-      <DisplayText content={title} label="Type" />
       <DisplayList items={place} label="Lieu" />
       <DisplayTimeRange
         label="Heure de début et de fin"

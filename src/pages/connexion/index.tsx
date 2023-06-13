@@ -1,10 +1,9 @@
-import CalendarPeople from "@/components/design/CalendarPeople";
 import PageTitle from "@/components/layouts/PageTitle";
 import UserContext from "@/contexts/UserContext";
 import { signInWithGoogle } from "@/services/firebase";
-import HowToRegIcon from "@mui/icons-material/HowToReg";
+import GoogleIcon from "@mui/icons-material/Google";
 import { LoadingButton } from "@mui/lab";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 
 export default function Login() {
@@ -25,21 +24,37 @@ export default function Login() {
 
   return (
     <>
-      <PageTitle title="Bienvenu" />
+      <PageTitle title="Bienvenue" />
       <Typography variant="subtitle1">
-        Moho Events permet de facilement ajouter, modifier et partager les
+        Moho Events permet de facilement ajouter, modifier et gérer les
         évènements.
       </Typography>
       <LoadingButton
-        startIcon={<HowToRegIcon />}
+        startIcon={<GoogleIcon />}
         variant="outlined"
         onClick={handleClick}
         loading={isLoading}
         sx={{ my: 5 }}
       >
-        Authentifier avec Google
+        Connexion
       </LoadingButton>
-      <CalendarPeople widthLimit={3} />
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          style={{ width: "100%", maxWidth: "500px", height: "auto" }}
+        >
+          <source src="moho-model.mp4" />
+        </video>
+      </Box>
     </>
   );
 }
