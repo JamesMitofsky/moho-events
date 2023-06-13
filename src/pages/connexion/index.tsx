@@ -4,9 +4,7 @@ import { signInWithGoogle } from "@/services/firebase";
 import GoogleIcon from "@mui/icons-material/Google";
 import { LoadingButton } from "@mui/lab";
 import { Box, Typography } from "@mui/material";
-import Image from "next/image";
 import { useContext, useState } from "react";
-import MohoModel from "../../assets/moho-model.gif";
 
 export default function Login() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -48,18 +46,14 @@ export default function Login() {
           height: "100%",
         }}
       >
-        <Image
-          src={MohoModel}
-          alt="Un modèle 3D du Moho"
-          width={0}
-          height={0}
-          sizes="100vw"
-          style={{
-            width: "100%",
-            maxWidth: 500,
-            height: "auto",
-          }}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          style={{ width: "100%", maxWidth: "500px", height: "auto" }}
+        >
+          <source src="moho-model.mp4" />
+        </video>
       </Box>
     </>
   );
