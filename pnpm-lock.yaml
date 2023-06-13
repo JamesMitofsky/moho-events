@@ -34,6 +34,9 @@ dependencies:
   '@vercel/analytics':
     specifier: ^1.0.1
     version: 1.0.1
+  awesome-phonenumber:
+    specifier: ^5.8.0
+    version: 5.8.0
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -1654,6 +1657,11 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /awesome-phonenumber@5.8.0:
+    resolution: {integrity: sha512-Y6q7dYOHWyn5EkHOKQXcAAFQGPX7qPoN4nUPq3932Kfc8wYDv3h+uWzNztenTkY+ZMlhWDIokAP8MyLIwdR1LQ==}
+    engines: {node: '>=14'}
+    dev: false
 
   /axe-core@4.6.3:
     resolution: {integrity: sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==}
