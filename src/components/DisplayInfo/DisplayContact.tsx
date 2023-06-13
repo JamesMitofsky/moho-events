@@ -6,6 +6,7 @@ import { v4 as generateId } from "uuid";
 import { ContactInputs } from "../../types/globalTypes";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
+import DisplayPhoneNumber from "./DisplayFormats/DisplayPhoneNumber";
 import DisplayText from "./DisplayFormats/DisplayText";
 
 export default function DisplayContact({
@@ -23,10 +24,7 @@ export default function DisplayContact({
               index={index}
             >
               <DisplayText content={individual.email} label="Email" />
-              <DisplayText
-                content={individual.telephoneNumber}
-                label="Téléphone"
-              />
+              <DisplayPhoneNumber phoneNumber={individual.telephoneNumber} />
             </TitledArrayOfElements>
           );
         })

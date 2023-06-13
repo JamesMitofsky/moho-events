@@ -19,8 +19,7 @@ export default function DisplayText({ content, label }: Props) {
 }
 
 function wrapLinksWithElement(text: string): React.ReactNode {
-  const urlPattern =
-    /(http[s]?:\/\/(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)/g;
+  const urlPattern = /((?:https?:\/\/|www\.)[^\s]+)/g;
   const parts: React.ReactNode[] = [];
 
   let lastIndex = 0;
