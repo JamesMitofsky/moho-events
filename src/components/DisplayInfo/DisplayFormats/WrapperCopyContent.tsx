@@ -4,7 +4,7 @@ import { useState } from "react";
 
 type Props = {
   label: string;
-  content: string;
+  content: string | React.ReactNode;
 };
 
 export default function WrapperCopyContent({ label, content }: Props) {
