@@ -1,5 +1,5 @@
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardHeader, IconButton } from "@mui/material";
 import Grid from "@mui/system/Unstable_Grid";
 import { UseFieldArrayRemove } from "react-hook-form-mui";
 
@@ -28,26 +28,28 @@ export default function TitledItemFromArray({
   const label = nameOfThisItem ? nameOfThisItem : fallBackLabel;
 
   return (
-    <>
-      <Grid
-        container
-        xs={12}
-        sx={{ mt: 2, display: "flex", justifyContent: "space-between" }}
-      >
-        <Typography variant="subtitle1">{label}</Typography>
-        {deleteFunction && index > 0 && (
-          <Box sx={{ mr: 5, my: "auto" }}>
-            <IconButton
-              onClick={() => deleteFunction(index)}
-              edge="end"
-              aria-label="delete"
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Box>
-        )}
-      </Grid>
-      {children}
-    </>
+    <Grid xs={12}>
+      <Card sx={{ mt: 2 }}>
+        <Grid
+          container
+          xs={12}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <CardHeader title={label} />
+          {deleteFunction && index > 0 && (
+            <Box sx={{ mr: 5, my: "auto" }}>
+              <IconButton
+                onClick={() => deleteFunction(index)}
+                edge="end"
+                aria-label="delete"
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Box>
+          )}
+        </Grid>
+        <CardContent>{children}</CardContent>
+      </Card>
+    </Grid>
   );
 }
