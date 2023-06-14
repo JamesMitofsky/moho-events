@@ -68,6 +68,7 @@ export default function ConfigurationGroup() {
             <Grid xs={12} md={6}>
               <TextFieldElement
                 fullWidth
+                multiline
                 label="Mobilier"
                 name={`configuration.${index}.furnishedBy`}
               />
