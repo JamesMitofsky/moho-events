@@ -152,7 +152,7 @@ export default function ProgramGroup() {
                     name={`program.events.${index}.details`}
                   />
                 </Grid>
-                <Grid xs={12}>
+                <Grid xs={12} md={6}>
                   <TextFieldElement
                     multiline
                     fullWidth
