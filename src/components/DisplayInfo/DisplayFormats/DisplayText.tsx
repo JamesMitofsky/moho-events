@@ -19,29 +19,34 @@ export default function DisplayText({ content, label }: Props) {
 }
 
 function wrapLinksWithElement(text: string): React.ReactNode {
-  const urlPattern = /((?:https?:\/\/|www\.)[^\s]+)/g;
+  if (typeof text !== "string") {
+    return text;
+  }
+
+  const pattern = /((?:https?:\/\/|www\.|[\w.-]+@[\w-]+\.[\w.-]+)[^\s]+)/g;
+
   const parts: React.ReactNode[] = [];
-
   let lastIndex = 0;
-  let match: RegExpExecArray | null;
 
-  while ((match = urlPattern.exec(text)) !== null) {
-    const url = match[0];
-    const linkStartIndex = match.index;
-    const linkEndIndex = match.index + url.length;
+  text.replace(pattern, (match, link, index) => {
+    const linkStartIndex = index;
+    const linkEndIndex = index + match.length;
 
     if (linkStartIndex > lastIndex) {
       parts.push(text.substring(lastIndex, linkStartIndex));
     }
 
+    const href = link.startsWith("http") ? link : `mailto:${link}`;
+
     parts.push(
-      <Link component={NextLink} href={url} key={url}>
-        {url}
+      <Link component={NextLink} href={href} key={link}>
+        {link}
       </Link>
     );
 
     lastIndex = linkEndIndex;
-  }
+    return "";
+  });
 
   if (lastIndex < text.length) {
     parts.push(text.substring(lastIndex));
