@@ -1,3 +1,4 @@
+import returnStartAndEndTimes from "@/functions/returnStartAndEndTimes";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
@@ -8,7 +9,6 @@ import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
 import DisplayList from "./DisplayFormats/DisplayList";
 import DisplayText from "./DisplayFormats/DisplayText";
-import DisplayTimeRange from "./DisplayFormats/DisplayTimeRange";
 
 export default function DisplayProgram(props: ProgramInputs) {
   const { events, comments } = props;
@@ -16,19 +16,15 @@ export default function DisplayProgram(props: ProgramInputs) {
     <TitledGroup icon={DateRangeIcon} title="Programme">
       {events[0].time.start !== "" ? (
         events.map((event, index) => {
+          const formattedTime = returnStartAndEndTimes(event.time);
           return (
             <TitledArrayOfElements
               key={uuid4()}
               nameOfThisItem={event.title}
+              subtitle={formattedTime}
               index={index}
             >
               <DisplayList items={event.place} label="Lieu" />
-              <DisplayTimeRange
-                startTime={event.time.start as string}
-                endTime={event.time.end as string}
-                label="Heure"
-              />
-
               <DisplayText
                 content={event.numberOfPeople}
                 label="Nombre de personnes"
