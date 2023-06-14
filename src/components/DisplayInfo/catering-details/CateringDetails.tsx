@@ -26,11 +26,11 @@ export default function CateringDetails({
       />
       <DisplayText content={numberOfPeople} label="Nombre de personnes" />
       <DisplayList items={catering} label="Traiteurs" />
+      <DisplayText content={details} label="Détails" />
       <DisplayText content={billedService} label="Service facturé" />
       <DisplayText content={eventLayout} label="Format" />
       <DisplayText content={furnitureUsed} label="Mobilier utilisé" />
       <DisplayText content={membership} label="Prix / forfait" />
-      <DisplayText content={details} label="Détails" />
       <DisplayText content={cateringComments} label="Remarques" />
     </>
   );

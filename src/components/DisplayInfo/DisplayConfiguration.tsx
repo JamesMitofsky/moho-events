@@ -53,6 +53,7 @@ export default function DisplayConfiguration({ configurations }: Props) {
                 boolean={configuration.captioning}
                 label="Captation"
               />
+              <DisplayText content={configuration.comments} label="Remarques" />
             </TitledArrayOfElements>
           );
         })
