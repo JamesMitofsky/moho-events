@@ -11,7 +11,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Analytics } from "@vercel/analytics/react";
 import "dayjs/locale/fr";
 import { User, onAuthStateChanged } from "firebase/auth";
-import { AnimatePresence, motion } from "framer-motion";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -78,40 +77,25 @@ export default function Layout({
       <ThemeProvider theme={localizedTheme}>
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="fr">
           <UserContext.Provider value={userValue}>
-            {/* begin testing */}
+            {/* <IsReadOnly.Provider value={passableValue}> */}
             <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
               <NavBar />
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  style={{ flex: 1 }}
-                  key={router.route}
-                  initial={{ x: 300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: 300, opacity: 0 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 20,
-                  }}
-                >
-                  <Container
-                    sx={{
-                      mt: 3,
-                      mb: 3,
-                      display: "flex",
-                      flex: 1,
-                      flexDirection: "column",
-                      height: "100%",
-                    }}
-                  >
-                    <Component {...pageProps} />
-                    <Analytics />
-                  </Container>
-                </motion.div>
-              </AnimatePresence>
+              <Container
+                sx={{
+                  mt: 3,
+                  mb: 3,
+                  display: "flex",
+                  flex: 1,
+                  flexDirection: "column",
+                  height: "100%",
+                }}
+              >
+                <Component {...pageProps} />
+                <Analytics />
+              </Container>
               <Footer />
             </Box>
-            {/* end testing */}
+            {/* </IsReadOnly.Provider> */}
           </UserContext.Provider>
         </LocalizationProvider>
       </ThemeProvider>
