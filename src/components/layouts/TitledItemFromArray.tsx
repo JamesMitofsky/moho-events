@@ -28,8 +28,8 @@ export default function TitledItemFromArray({
   const label = nameOfThisItem ? nameOfThisItem : fallBackLabel;
 
   return (
-    <Grid xs={12}>
-      <Card sx={{ mt: 2 }}>
+    <Grid sx={{ mt: 2 }} xs={12}>
+      <Card>
         <Grid
           container
           xs={12}
@@ -48,7 +48,11 @@ export default function TitledItemFromArray({
             </Box>
           )}
         </Grid>
-        <CardContent>{children}</CardContent>
+        <CardContent>
+          <Grid container xs={12}>
+            {children}
+          </Grid>
+        </CardContent>
       </Card>
     </Grid>
   );
