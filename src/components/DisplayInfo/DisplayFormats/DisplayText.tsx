@@ -37,10 +37,15 @@ function wrapLinksWithElement(text: string): React.ReactNode {
     }
 
     const href = link.startsWith("http") ? link : `mailto:${link}`;
+    const displayLink = link.replace(/^https?:\/\//, "");
+    const linkContent =
+      displayLink.length > 40
+        ? displayLink.substring(0, 40) + "..."
+        : displayLink;
 
     parts.push(
       <Link component={NextLink} href={href} key={link}>
-        {link}
+        {linkContent}
       </Link>
     );
 
