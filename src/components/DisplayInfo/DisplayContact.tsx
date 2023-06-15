@@ -20,7 +20,8 @@ export default function DisplayContact({
           return (
             <TitledArrayOfElements
               key={generateId()}
-              nameOfThisItem={`${individual.contactName} - ${individual.companyName}`}
+              nameOfThisItem={individual.contactName}
+              subtitle={individual.companyName}
               index={index}
             >
               <DisplayText content={individual.email} label="Email" />

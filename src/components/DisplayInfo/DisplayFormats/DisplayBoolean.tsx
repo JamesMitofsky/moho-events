@@ -1,5 +1,4 @@
 import CheckIcon from "@mui/icons-material/Check";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import { Typography } from "@mui/material";
 import WrapperEmptyField from "./WrapperEmptyField";
 
@@ -9,9 +8,8 @@ type Props = {
 };
 
 export default function DisplayBoolean({ boolean, label }: Props) {
-  const icon = boolean ? <CheckIcon /> : <RemoveCircleOutlineIcon />;
   return (
-    <WrapperEmptyField input={boolean.toString()}>
+    <WrapperEmptyField input={!boolean ? "" : " "}>
       <Typography fontSize=".8rem" fontWeight={900}>
         {label}
       </Typography>
@@ -24,8 +22,8 @@ export default function DisplayBoolean({ boolean, label }: Props) {
           fontWeight: 100,
         }}
       >
-        {icon}
-        {boolean ? "Oui" : "Non"}
+        <CheckIcon />
+        Oui
       </Typography>
     </WrapperEmptyField>
   );

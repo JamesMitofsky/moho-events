@@ -1,3 +1,4 @@
+import returnStartAndEndTimes from "@/functions/returnStartAndEndTimes";
 import { ProgramInputs } from "@/types/globalTypes";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import { Typography } from "@mui/material";
@@ -22,10 +23,13 @@ export default function DisplayCatering({
     <TitledGroup icon={RestaurantMenuIcon} title="Restauration">
       {caterings[0]?.place ? (
         caterings.map((catering, index) => {
+          const formattedTime = returnStartAndEndTimes(catering.time);
+
           return (
             <TitledArrayOfElements
               key={uuid4()}
               nameOfThisItem={catering.title}
+              subtitle={formattedTime}
               index={index}
             >
               <CateringDetails key={uuid4()} {...catering} />

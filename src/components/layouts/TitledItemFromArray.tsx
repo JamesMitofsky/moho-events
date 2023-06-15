@@ -13,8 +13,8 @@ type Props = {
   children: React.ReactNode;
   deleteFunction?: UseFieldArrayRemove;
 } & (
-  | { typeOfItem: string; nameOfThisItem?: never }
-  | { typeOfItem?: never; nameOfThisItem: string }
+  | { typeOfItem: string; nameOfThisItem?: never; subtitle?: never }
+  | { typeOfItem?: never; nameOfThisItem: string; subtitle?: string }
 );
 
 export default function TitledItemFromArray({
@@ -23,6 +23,7 @@ export default function TitledItemFromArray({
   deleteFunction,
   typeOfItem,
   nameOfThisItem,
+  subtitle,
 }: Props) {
   const fallBackLabel = typeOfItem + " #" + (index + 1).toString();
   const label = nameOfThisItem ? nameOfThisItem : fallBackLabel;
@@ -35,7 +36,7 @@ export default function TitledItemFromArray({
           xs={12}
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
-          <CardHeader title={label} />
+          <CardHeader title={label} subheader={subtitle} />
           {deleteFunction && index > 0 && (
             <Box sx={{ mr: 5, my: "auto" }}>
               <IconButton
