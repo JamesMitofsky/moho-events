@@ -4,6 +4,7 @@ import DisplayContact from "@/components/DisplayInfo/DisplayContact";
 import DisplayGeneralInfo from "@/components/DisplayInfo/DisplayGeneralInfo";
 import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
 import DisplaySignage from "@/components/DisplayInfo/DisplaySignage";
+import DisplayWifi from "@/components/DisplayInfo/DisplayWifi";
 import EventDoesNotExist from "@/components/EventDoesNotExist";
 import Loading from "@/components/Loading";
 import DeleteButton from "@/components/buttons/DeleteButton";
@@ -31,6 +32,7 @@ export default function SpecificEventInformation() {
           <DisplayProgram {...event.program} />
           <DisplayCatering {...event.program} />
           <DisplaySignage {...event.signage} />
+          <DisplayWifi {...event.wifi} />
           <DisplayConfiguration configurations={event.configuration} />
           <DeleteButton event={event} />
         </>
