@@ -23,9 +23,13 @@ export default function DisplayGeneralInfo(props: Props) {
     dateAsISO,
     createdBy,
     id,
+    eventType,
+    numberOfPeople,
   } = props;
 
   const formattedQuoteNumber = "MOVED" + numberOfQuote.toString();
+
+  console.log(props);
 
   return (
     <TitledGroup
@@ -37,7 +41,11 @@ export default function DisplayGeneralInfo(props: Props) {
 
       <DisplayText content={category} label="Catégorie" />
 
+      <DisplayText content={eventType} label="Type d'évènement" />
+
       <DisplayText content={eventName} label="Nom de l'évènement" />
+
+      <DisplayText content={numberOfPeople} label="Nombre de personnes" />
 
       <DisplayText
         content={numberOfQuote ? formattedQuoteNumber : ""}
