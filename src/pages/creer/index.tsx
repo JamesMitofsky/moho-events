@@ -26,22 +26,36 @@ export default function NewEvent() {
     program: {
       events: [
         {
-          title: "",
+          type: "",
           time: {
             start: "",
             end: "",
           },
           place: [],
-          numberOfPeople: "",
-          furnitureUsed: "",
-          catering: [],
-          billedService: "",
-          eventLayout: "",
-          membership: "",
-          details: "",
-          involvesRestaurant: false,
-          cateringComments: "",
           comments: "",
+          involvesRestaurant: false,
+          restaurant: {
+            numberOfPeople: "",
+            furnitureUsed: "",
+            catering: [],
+            billedService: "",
+            eventLayout: "",
+            details: "",
+            membership: "",
+            comments: "",
+          },
+          hasConfiguration: false,
+          configuration: {
+            room: [],
+            numberOfPeople: "",
+            layout: "",
+            furnishedBy: "",
+            microphones: "",
+            visio: false,
+            captioning: false,
+            services: [],
+            comments: "",
+          },
         },
       ],
       comments: "",
@@ -55,19 +69,6 @@ export default function NewEvent() {
       ],
       comments: "",
     },
-    configuration: [
-      {
-        room: [],
-        numberOfPeople: "",
-        layout: "",
-        furnishedBy: "",
-        microphones: "",
-        visio: false,
-        captioning: false,
-        services: [],
-        comments: "",
-      },
-    ],
     contact: {
       individuals: [
         {
@@ -89,7 +90,7 @@ export default function NewEvent() {
       comments: "",
     },
     creationDetails: {
-      versionOfFormInputs: 1.2,
+      versionOfFormInputs: 1.3,
     },
   };
 

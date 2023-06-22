@@ -28,7 +28,11 @@ export default function ContactGroup() {
 
   return (
     <TitledGroup icon={ContactMailIcon} title="Contact">
-      <ArrayOfElementsWrapper addLabel="Contact" handleAddItem={handleAdd}>
+      <ArrayOfElementsWrapper
+        noCardWrapper={true}
+        addLabel="Contact"
+        handleAddItem={handleAdd}
+      >
         {fields.map((field, index) => (
           <TitledArrayOfElements
             key={field.id}

@@ -9,6 +9,7 @@ import TimeRangePicker from "../inputs/TimeRangePicker";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
+import ConfigurationGroup from "./Configuration";
 
 export default function ProgramGroup() {
   const watchArray = useWatch({
@@ -16,22 +17,36 @@ export default function ProgramGroup() {
   });
 
   const blankProgramEvent: EventComponent = {
-    title: "",
+    type: "",
     time: {
       start: "",
       end: "",
     },
     place: [],
-    numberOfPeople: "",
-    furnitureUsed: "",
-    catering: [],
-    billedService: "",
-    eventLayout: "",
-    details: "",
-    membership: "",
-    involvesRestaurant: false,
-    cateringComments: "",
     comments: "",
+    involvesRestaurant: false,
+    restaurant: {
+      numberOfPeople: "",
+      furnitureUsed: "",
+      catering: [],
+      billedService: "",
+      eventLayout: "",
+      details: "",
+      membership: "",
+      comments: "",
+    },
+    hasConfiguration: false,
+    configuration: {
+      room: [],
+      numberOfPeople: "",
+      layout: "",
+      furnishedBy: "",
+      microphones: "",
+      visio: false,
+      captioning: false,
+      services: [],
+      comments: "",
+    },
   };
 
   const handleAdd = () => {
@@ -57,6 +72,7 @@ export default function ProgramGroup() {
   return (
     <TitledGroup icon={DateRangeIcon} title="Programme">
       <ArrayOfElementsWrapper
+        noCardWrapper={true}
         addLabel="Partie d'évènement"
         handleAddItem={handleAdd}
       >
@@ -71,7 +87,7 @@ export default function ProgramGroup() {
               <TextFieldElement
                 fullWidth
                 label="Type"
-                name={`program.events.${index}.title`}
+                name={`program.events.${index}.type`}
                 helperText="Ex: Pause café, Déjeuner, etc."
               />
             </Grid>
@@ -161,6 +177,15 @@ export default function ProgramGroup() {
                   />
                 </Grid>
               </>
+            )}
+            <Grid xs={12}>
+              <SwitchElement
+                label="Mise en Place?"
+                name={`program.events.${index}.hasConfiguration`}
+              />
+            </Grid>
+            {watchArray[index]?.hasConfiguration && (
+              <ConfigurationGroup index={index} />
             )}
           </TitledArrayOfElements>
         ))}

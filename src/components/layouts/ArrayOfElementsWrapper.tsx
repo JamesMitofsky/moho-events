@@ -6,6 +6,7 @@ type Props = {
   children: React.ReactNode;
   handleAddItem: () => void;
   addLabel: string;
+  noCardWrapper?: boolean;
 };
 
 /** Should wrap an array of elements given from use of the useFieldArray hook from react-hook-form */
@@ -13,8 +14,18 @@ export default function ArrayOfElementsWrapper({
   children,
   addLabel,
   handleAddItem,
+  noCardWrapper = false,
 }: Props) {
-  return (
+  return noCardWrapper ? (
+    <Grid xs={12}>
+      <Grid container spacing={2}>
+        {children}
+        <Grid xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <AddButton onClick={handleAddItem} label={addLabel} />
+        </Grid>
+      </Grid>
+    </Grid>
+  ) : (
     <Grid xs={12}>
       <Card>
         <CardContent>

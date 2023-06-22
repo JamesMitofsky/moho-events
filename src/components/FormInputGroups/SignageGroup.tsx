@@ -21,7 +21,11 @@ export default function SignageGroup() {
 
   return (
     <TitledGroup icon={SignpostIcon} title="Signalétique">
-      <ArrayOfElementsWrapper addLabel="Signalétique" handleAddItem={handleAdd}>
+      <ArrayOfElementsWrapper
+        noCardWrapper={true}
+        addLabel="Signalétique"
+        handleAddItem={handleAdd}
+      >
         {fields.map((field, index) => (
           <TitledArrayOfElements
             deleteFunction={remove}

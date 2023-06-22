@@ -51,12 +51,20 @@ type Places =
   | "4 Rue de la Gare";
 
 type EventComponent = {
-  title: string;
+  type: string;
   time: {
     start: Date | string;
     end: Date | string;
   };
   place: Places[];
+  comments: string;
+  involvesRestaurant: boolean;
+  restaurant: RestaurantInputs;
+  hasConfiguration: boolean;
+  configuration: ConfigurationInputs;
+};
+
+type RestaurantInputs = {
   numberOfPeople: string;
   furnitureUsed: string;
   catering: string[];
@@ -64,8 +72,6 @@ type EventComponent = {
   eventLayout: string;
   membership: string;
   details: string;
-  involvesRestaurant: boolean;
-  cateringComments: string;
   comments: string;
 };
 interface ProgramInputs {
@@ -111,9 +117,8 @@ type AllEventGroups = {
   program: ProgramInputs;
   wifi: WifiInputs;
   signage: SignageInputs;
-  configuration: ConfigurationInputs[];
   creationDetails: {
-    versionOfFormInputs: 1.2;
+    versionOfFormInputs: 1.3;
   };
 };
 
@@ -123,7 +128,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1.2;
+    versionOfFormInputs: 1.3;
   };
   id: string;
 }
