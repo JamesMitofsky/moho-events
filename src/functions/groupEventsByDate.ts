@@ -9,20 +9,24 @@ export default function groupEventsByDate(
     return bTime.localeCompare(aTime);
   });
 
-  // Create a map to group events by date
   const eventsByDate = new Map<string, ModifiedServerResponse[]>();
   eventsOrderedByStartTime.forEach((event) => {
     const dateKey = event.generalInfo.dateAsISO.slice(0, 10);
-    console.log(dateKey);
     if (!eventsByDate.has(dateKey)) {
       eventsByDate.set(dateKey, []);
     }
     eventsByDate.get(dateKey)?.push(event);
   });
 
-  // Convert the map to an array of arrays
-  const eventGroups: ModifiedServerResponse[][] = [];
-  eventsByDate.forEach((events) => eventGroups.push(events));
+  const eventGroups: ModifiedServerResponse[][] = Array.from(
+    eventsByDate.values()
+  );
 
-  return eventGroups;
+  const sortedEventGroups = eventGroups.sort((a, b) => {
+    const aMonth = a[0].generalInfo.dateAsISO.slice(0, 7);
+    const bMonth = b[0].generalInfo.dateAsISO.slice(0, 7);
+    return aMonth.localeCompare(bMonth);
+  });
+
+  return sortedEventGroups;
 }
