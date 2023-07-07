@@ -19,10 +19,27 @@ export default function DisplayCatering({
 
   console.log("caterings", caterings);
 
+  function getDateWithHourAndMinuteFromISO8601(dateString: string): Date {
+    const dt = new Date(dateString);
+    const hour = dt.getHours();
+    const minute = dt.getMinutes();
+    const fixedDate = new Date(2000, 0, 1, hour, minute); // Fixed date with year, month, and day set to 2000-01-01
+    return fixedDate;
+  }
+
+  const cateringsOrderedByTime = caterings.sort((a, b) => {
+    const hourA = getDateWithHourAndMinuteFromISO8601(a.time.start as string);
+    const hourB = getDateWithHourAndMinuteFromISO8601(b.time.start as string);
+
+    if (hourA < hourB) return -1;
+    if (hourA > hourB) return 1;
+    return 0;
+  });
+
   return (
     <TitledGroup icon={RestaurantMenuIcon} title="Restauration">
-      {caterings[0]?.place ? (
-        caterings.map((catering, index) => {
+      {cateringsOrderedByTime[0]?.place ? (
+        cateringsOrderedByTime.map((catering, index) => {
           const formattedTime = returnStartAndEndTimes(catering.time);
 
           return (
