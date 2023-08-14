@@ -31,9 +31,7 @@ export default function EventDoesNotExist() {
           <DisplayProgram {...eventFromArchive.program} />
           <DisplayCatering {...eventFromArchive.program} />
           <DisplaySignage {...eventFromArchive.signage} />
-          <DisplayConfiguration
-            configurations={eventFromArchive.configuration}
-          />
+          <DisplayConfiguration {...eventFromArchive.program} />
         </>
       ) : eventFromArchive === undefined ? (
         <Loading />

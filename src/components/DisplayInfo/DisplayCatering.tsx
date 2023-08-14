@@ -17,8 +17,6 @@ export default function DisplayCatering({
     return [];
   });
 
-  console.log("caterings", caterings);
-
   function getDateWithHourAndMinuteFromISO8601(dateString: string): Date {
     const dt = new Date(dateString);
     const hour = dt.getHours();

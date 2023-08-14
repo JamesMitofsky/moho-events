@@ -1,4 +1,5 @@
-import { ConfigurationInputs } from "@/types/globalTypes";
+import returnStartAndEndTimes from "@/functions/returnStartAndEndTimes";
+import { ProgramInputs } from "@/types/globalTypes";
 import HandymanIcon from "@mui/icons-material/Handyman";
 import { Typography } from "@mui/material";
 import { grey } from "@mui/material/colors";
@@ -10,19 +11,31 @@ import DisplayBoolean from "./DisplayFormats/DisplayBoolean";
 import DisplayList from "./DisplayFormats/DisplayList";
 import DisplayText from "./DisplayFormats/DisplayText";
 
-type Props = {
-  configurations: ConfigurationInputs[];
-};
+export default function DisplayConfiguration({
+  events,
+}: Pick<ProgramInputs, "events">) {
+  const eventsWithConfiguration = events?.flatMap((event) => {
+    if (event.involvesConfiguration) return [event];
+    return [];
+  });
 
-export default function DisplayConfiguration({ configurations }: Props) {
+  if (!eventsWithConfiguration || eventsWithConfiguration.length === 0)
+    return null;
+
   return (
     <TitledGroup icon={HandymanIcon} title="Configuration">
-      {configurations[0].room[0] ? (
-        configurations.map((configuration, index) => {
+      {eventsWithConfiguration[0].title ? (
+        eventsWithConfiguration.map((event, index) => {
+          // get the configuration from the event object
+          const { configuration } = event;
+
+          const formattedTime = returnStartAndEndTimes(event.time);
+
           return (
             <TitledArrayOfElements
               key={uuid4()}
-              typeOfItem="Partie"
+              nameOfThisItem={event.title}
+              subtitle={formattedTime}
               index={index}
             >
               <DisplayList items={configuration.room} label="Lieu" />

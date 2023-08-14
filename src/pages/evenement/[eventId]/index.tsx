@@ -12,6 +12,7 @@ import useParamsToFetchEvent from "@/hooks/useParamsToFetchEvent";
 
 export default function SpecificEventInformation() {
   const event = useParamsToFetchEvent("eventsData");
+  console.log(event);
 
   // const eventExists = event !== undefined || event !== null;
   // const eventExists = useMemo(
@@ -33,7 +34,7 @@ export default function SpecificEventInformation() {
           <DisplayCatering {...event.program} />
           <DisplaySignage {...event.signage} />
           <DisplayWifi {...event.wifi} />
-          <DisplayConfiguration configurations={event.configuration} />
+          <DisplayConfiguration {...event.program} />
           <DeleteButton event={event} />
         </>
       ) : event === undefined ? (

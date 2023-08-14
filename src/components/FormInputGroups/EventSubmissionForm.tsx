@@ -3,7 +3,6 @@ import SaveIcon from "@mui/icons-material/Save";
 import { Button } from "@mui/material";
 import { FormContainer, SubmitHandler } from "react-hook-form-mui";
 import SpacedChildren from "../layouts/SpacedChildren";
-import Configuration from "./Configuration";
 import ContactGroup from "./ContactGroup";
 import GeneralInfoGroup from "./GeneralInfoGroup";
 import ProgramGroup from "./ProgramGroup";
@@ -26,7 +25,6 @@ const EventSubmissionForm = ({ formDefaultValues, onSubmit }: Props) => {
         <ProgramGroup />
         <SignageGroup />
         <WifiGroup />
-        <Configuration />
 
         <Button
           startIcon={<SaveIcon />}

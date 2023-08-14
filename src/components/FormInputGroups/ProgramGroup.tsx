@@ -4,11 +4,12 @@ import { useFieldArray, useWatch } from "react-hook-form";
 import { SwitchElement, TextFieldElement } from "react-hook-form-mui";
 import { EventComponent } from "../../types/globalTypes";
 import SelectMohoRoom from "../inputs/SelectMohoRoom";
-import SelectOptions from "../inputs/SelectOptions";
 import TimeRangePicker from "../inputs/TimeRangePicker";
 import ArrayOfElementsWrapper from "../layouts/ArrayOfElementsWrapper";
 import { TitledGroup } from "../layouts/TitledGroup";
 import TitledArrayOfElements from "../layouts/TitledItemFromArray";
+import CateringInputGroup from "./childrenOfGroupInputs/CateringInputGroup";
+import ConfigurationInputGroup from "./childrenOfGroupInputs/ConfigurationInputGroup";
 
 export default function ProgramGroup() {
   const watchArray = useWatch({
@@ -30,8 +31,20 @@ export default function ProgramGroup() {
     details: "",
     membership: "",
     involvesRestaurant: false,
+    involvesConfiguration: false,
     cateringComments: "",
     comments: "",
+    configuration: {
+      room: [],
+      numberOfPeople: "",
+      layout: "",
+      furnishedBy: "",
+      microphones: "",
+      visio: false,
+      captioning: false,
+      services: [],
+      comments: "",
+    },
   };
 
   const handleAdd = () => {
@@ -99,68 +112,20 @@ export default function ProgramGroup() {
               />
             </Grid>
             {watchArray[index]?.involvesRestaurant && (
-              <>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    fullWidth
-                    label="Nombre de personnes"
-                    name={`program.events.${index}.numberOfPeople`}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <SelectOptions
-                    multiple={true}
-                    label="Traiteurs"
-                    name={`program.events.${index}.catering`}
-                    options={cateringOptions}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    fullWidth
-                    label="Service facturé"
-                    name={`program.events.${index}.billedService`}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <SelectOptions
-                    label="Format"
-                    name={`program.events.${index}.eventLayout`}
-                    options={formatConfigurations}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    fullWidth
-                    label="Prix / forfait"
-                    name={`program.events.${index}.membership`}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    multiline
-                    fullWidth
-                    label="Mobilier utilisé"
-                    name={`program.events.${index}.furnitureUsed`}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    multiline
-                    fullWidth
-                    label="Détails"
-                    name={`program.events.${index}.details`}
-                  />
-                </Grid>
-                <Grid xs={12} md={6}>
-                  <TextFieldElement
-                    multiline
-                    fullWidth
-                    label="Remarques de restauration"
-                    name={`program.events.${index}.cateringComments`}
-                  />
-                </Grid>
-              </>
+              <CateringInputGroup
+                cateringOptions={cateringOptions}
+                formatConfigurations={formatConfigurations}
+                index={index}
+              />
+            )}
+            <Grid xs={12}>
+              <SwitchElement
+                label="Mise en place?"
+                name={`program.events.${index}.involvesConfiguration`}
+              />
+            </Grid>
+            {watchArray[index]?.involvesConfiguration && (
+              <ConfigurationInputGroup index={index} />
             )}
           </TitledArrayOfElements>
         ))}
