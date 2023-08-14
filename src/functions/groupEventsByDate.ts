@@ -15,7 +15,12 @@ export default function groupEventsByDate(
     if (!eventsByDate.has(dateKey)) {
       eventsByDate.set(dateKey, []);
     }
-    eventsByDate.get(dateKey)?.push(event);
+
+    const eventToAdd = eventsByDate.get(dateKey);
+
+    if (!eventToAdd) throw new Error("eventsByDate.get(dateKey) is undefined");
+
+    eventToAdd.push(event);
   });
 
   const eventGroups: ModifiedServerResponse[][] = Array.from(
