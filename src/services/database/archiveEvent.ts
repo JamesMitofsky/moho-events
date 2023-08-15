@@ -1,5 +1,5 @@
 import { ModifiedServerResponse } from "@/types/globalTypes";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../cloudFirestore";
 
 export default async function archiveEvent(
@@ -7,14 +7,13 @@ export default async function archiveEvent(
 ) {
   try {
     // create duplicate of event in archive
-    const docRef = doc(db, "archivedEvents", existingEvent.id);
-    await setDoc(docRef, existingEvent);
-    console.log("Archived a copy using the same ID");
+    const docRef = doc(db, "eventsData", existingEvent.id);
 
-    // delete event from eventsData
-    await deleteDoc(doc(db, "eventsData", existingEvent.id));
-    console.log("Deleted original event from main database");
+    await updateDoc(docRef, {
+      eventIsArchived: true,
+    });
+    console.log("Archived event by updating its 'archived' field to `true`");
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Error archiving this document document: ", e);
   }
 }

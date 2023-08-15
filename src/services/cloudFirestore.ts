@@ -55,10 +55,9 @@ export async function fetchAllEvents(): Promise<ModifiedServerResponse[]> {
 }
 
 export async function fetchSpecificEvent(
-  eventId: string,
-  databaseName: string
+  eventId: string
 ): Promise<ModifiedServerResponse | null> {
-  const docRef = doc(db, databaseName, eventId);
+  const docRef = doc(db, "eventsData", eventId);
 
   const eventData = await getDoc(docRef);
   if (eventData.exists()) {

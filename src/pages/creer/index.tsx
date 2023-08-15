@@ -90,6 +90,7 @@ export default function NewEvent() {
     creationDetails: {
       versionOfFormInputs: process.env.NEXT_PUBLIC_CURRRENT_SCHEMA_VERSION,
     },
+    eventIsArchived: false,
   };
 
   const onSubmit: SubmitHandler<AllEventGroups> = async (data) => {

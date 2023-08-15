@@ -5,13 +5,13 @@ import DisplayGeneralInfo from "@/components/DisplayInfo/DisplayGeneralInfo";
 import DisplayProgram from "@/components/DisplayInfo/DisplayProgram";
 import DisplaySignage from "@/components/DisplayInfo/DisplaySignage";
 import DisplayWifi from "@/components/DisplayInfo/DisplayWifi";
-import EventDoesNotExist from "@/components/EventDoesNotExist";
 import Loading from "@/components/Loading";
 import DeleteButton from "@/components/buttons/DeleteButton";
 import useParamsToFetchEvent from "@/hooks/useParamsToFetchEvent";
+import { Typography } from "@mui/material";
 
 export default function SpecificEventInformation() {
-  const event = useParamsToFetchEvent("eventsData");
+  const event = useParamsToFetchEvent();
   console.log(event);
 
   // const eventExists = event !== undefined || event !== null;
@@ -40,7 +40,7 @@ export default function SpecificEventInformation() {
       ) : event === undefined ? (
         <Loading />
       ) : (
-        <EventDoesNotExist />
+        <Typography>Cet évènement n'existe pas.</Typography>
       )}
     </>
   );

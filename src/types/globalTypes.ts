@@ -116,6 +116,7 @@ type AllEventGroups = {
   creationDetails: {
     versionOfFormInputs: typeof process.env.NEXT_PUBLIC_CURRRENT_SCHEMA_VERSION;
   };
+  eventIsArchived: boolean;
 };
 
 interface ModifiedServerResponse extends AllEventGroups {

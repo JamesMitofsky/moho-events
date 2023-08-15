@@ -13,7 +13,7 @@ import Loading from "./Loading";
  * Check if the event exists in the deleted events database.
  */
 export default function EventDoesNotExist() {
-  const eventFromArchive = useParamsToFetchEvent("archivedEvents");
+  const eventFromArchive = useParamsToFetchEvent();
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>

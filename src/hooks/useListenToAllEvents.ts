@@ -29,10 +29,16 @@ const useListenToAllEvents: Props = (eventsFilter) => {
   const yesterdayAsISO = yesterday.toISOString();
 
   const eventDate: ModifiedServerResponsePaths = "generalInfo.dateAsISO";
+  const queryParamToGetEventsBasedOnDate = where(
+    eventDate,
+    filterDirection,
+    yesterdayAsISO
+  );
+
   const queryParams = query(
     collection(db, "eventsData"),
     orderBy(eventDate),
-    where(eventDate, filterDirection, yesterdayAsISO)
+    queryParamToGetEventsBasedOnDate
   );
 
   useEffect(() => {
@@ -40,8 +46,16 @@ const useListenToAllEvents: Props = (eventsFilter) => {
       const temporaryEventsHolder: ModifiedServerResponse[] = [];
       querySnapshot.forEach((doc) => {
         const eventWithId = addIdToEventData(doc);
-        temporaryEventsHolder.push(eventWithId);
+
+        // if the event is archived, do nothing. Otherwise add it to the array of events to send the user.
+        if (eventWithId.eventIsArchived) {
+          return;
+        } else {
+          temporaryEventsHolder.push(eventWithId);
+        }
       });
+
+      console.log(temporaryEventsHolder);
 
       const eventsMatchingCurrentSchema = verifySchemaOfMultipleEvents(
         temporaryEventsHolder

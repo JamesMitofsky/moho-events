@@ -9,9 +9,7 @@ import { useEffect, useState } from "react";
  *
  * State begins as undefined, then becomes either the actual event object or null if the eventId is invalid
  */
-export default function useParamsToFetchEvent(
-  databaseName: "eventsData" | "archivedEvents"
-) {
+export default function useParamsToFetchEvent() {
   // Define your state variables
   const [event, setEvent] = useState<ModifiedServerResponse | null | undefined>(
     undefined
@@ -25,7 +23,7 @@ export default function useParamsToFetchEvent(
     if (!eventId) return;
 
     const getEvent = async function () {
-      const res = await fetchSpecificEvent(eventId as string, databaseName);
+      const res = await fetchSpecificEvent(eventId as string);
 
       if (!res) throw new Error("Unable to fetch individual event.");
 
