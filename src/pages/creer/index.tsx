@@ -88,7 +88,7 @@ export default function NewEvent() {
       comments: "",
     },
     creationDetails: {
-      versionOfFormInputs: 1.3,
+      versionOfFormInputs: process.env.NEXT_PUBLIC_CURRRENT_SCHEMA_VERSION,
     },
   };
 

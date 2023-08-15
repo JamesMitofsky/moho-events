@@ -19,13 +19,18 @@ export async function uploadEventData(
   data: AllEventGroups
 ): Promise<string | boolean> {
   console.log(data);
-  const authorIncluded = {
+
+  if (!auth.currentUser) return false;
+
+  const authorIncluded: Omit<ModifiedServerResponse, "id"> = {
     ...data,
     creationDetails: {
-      createdBy: auth.currentUser?.displayName,
-      creatorEmail: auth.currentUser?.email,
-      creatorId: auth.currentUser?.uid,
-      createdAt: serverTimestamp(),
+      versionOfFormInputs: data.creationDetails.versionOfFormInputs,
+      createdBy: auth.currentUser.displayName ?? "",
+      creatorEmail: auth.currentUser.email ?? "",
+      creatorId: auth.currentUser.uid,
+      createdAt:
+        serverTimestamp() as unknown as ModifiedServerResponse["creationDetails"]["createdAt"],
     },
   };
   try {

@@ -1,4 +1,5 @@
 import addIdToEventData from "@/functions/addIdToEventData";
+import { verifySchemaOfMultipleEvents } from "@/functions/schemaVerificicationFunctions";
 import { db } from "@/services/cloudFirestore";
 import {
   ModifiedServerResponse,
@@ -36,12 +37,17 @@ const useListenToAllEvents: Props = (eventsFilter) => {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(queryParams, (querySnapshot) => {
-      const temporaryEventsHolder: any = [];
+      const temporaryEventsHolder: ModifiedServerResponse[] = [];
       querySnapshot.forEach((doc) => {
         const eventWithId = addIdToEventData(doc);
         temporaryEventsHolder.push(eventWithId);
       });
-      setEvents(temporaryEventsHolder);
+
+      const eventsMatchingCurrentSchema = verifySchemaOfMultipleEvents(
+        temporaryEventsHolder
+      );
+
+      setEvents(eventsMatchingCurrentSchema);
     });
 
     return unsubscribe;

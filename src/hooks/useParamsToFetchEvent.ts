@@ -1,3 +1,4 @@
+import { verifySchemaOfOneEvent } from "@/functions/schemaVerificicationFunctions";
 import { fetchSpecificEvent } from "@/services/cloudFirestore";
 import { ModifiedServerResponse } from "@/types/globalTypes";
 import { useRouter } from "next/router";
@@ -22,13 +23,17 @@ export default function useParamsToFetchEvent(
   // query firebase using the eventeventId
   useEffect(() => {
     if (!eventId) return;
+
     const getEvent = async function () {
       const res = await fetchSpecificEvent(eventId as string, databaseName);
-      if (res) {
-        setEvent(res);
-      } else {
-        setEvent(null);
-      }
+
+      if (!res) throw new Error("Unable to fetch individual event.");
+
+      const onlyEventsMatchingCurrentSchema = verifySchemaOfOneEvent(res);
+
+      onlyEventsMatchingCurrentSchema
+        ? setEvent(onlyEventsMatchingCurrentSchema)
+        : setEvent(null);
     };
     getEvent();
   }, [eventId]);

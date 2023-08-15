@@ -114,7 +114,7 @@ type AllEventGroups = {
   wifi: WifiInputs;
   signage: SignageInputs;
   creationDetails: {
-    versionOfFormInputs: 1.3;
+    versionOfFormInputs: typeof process.env.NEXT_PUBLIC_CURRRENT_SCHEMA_VERSION;
   };
 };
 
@@ -124,7 +124,7 @@ interface ModifiedServerResponse extends AllEventGroups {
     createdAt: { seconds: number };
     createdBy: string;
     creatorEmail: string;
-    versionOfFormInputs: 1.3;
+    versionOfFormInputs: typeof process.env.NEXT_PUBLIC_CURRRENT_SCHEMA_VERSION;
   };
   id: string;
 }
